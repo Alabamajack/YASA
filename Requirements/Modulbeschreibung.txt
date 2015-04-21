@@ -68,3 +68,17 @@ Task Abbruch
 Abbruch:
 fragt stoptaster ab über client server
 set Event für Schussanlage
+
+_______________________________
+
+Schussanlage
+
+- besteht aus 2 Tasks(bzw. Runnables)
+- 1 Task für Abbrucheinheint, da sehr wichtig dieses Event jederzeit abfangen zu können (Task wartet auf Event)
+- 2 Task kommuniziert mit Trigger, ob Ereignisse anstehen, die für die Ansteuerung
+- des Schussmotor sprechen.
+- synchronisiert sich mit Trigger: Wenn Trigger Meldung gegeben, dass das was ist, dann wird Trigger solange auf Wait gesetzt, bis 
+  er von der Schussanlage wieder scharf gestellt wird
+- Sendet sowohl Event als auch Nachricht an die Output-Einheit
+- Hohe Priorität
+- kein Autostart, kann über den Trigger gestartet werden(sich 2 selbst beendende Tasks, die sich gegenseitige aufrufen)
