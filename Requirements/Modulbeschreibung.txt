@@ -1,0 +1,70 @@
+Ausgabeeinheit (Output)
+
+Task Anzeige
+-kein autostart
+-prio 1
+
+Task nachricht empfangen
+-autostart
+-prio höher als Anzeige
+
+---------------------
+
+
+Anzeige:
+switch-Case anweisung abhaengig von nachrichten inhalt
+
+
+nachricht empfangen:
+while(1)
+wenn nachricht empfangen
+anzeige
+_______________________________
+
+Motorsteuerung:
+
+Task Schiessen
+-kein autostart
+-prio zweithöchste
+
+Client(Schussanlage) startet Servertask
+
+Schiessen:
+Motoransteuern
+Bestimmte Zeit schießen
+________________________________
+
+Ultraschall
+
+Task Erkennung
+-kein autostart
+-prio dritthöchste
+
+Timer
+
+Client(Trigger) startet Servertask
+
+Erkennung:
+while( keine Stopanweisung)
+alle 50 ms abfrage -> Bei erkennung Trigger_Eventsetzen
+________________________________
+Trigger
+
+Task Trigger
+-Autostart
+-prio hoch
+-Event für Ultraschall
+
+
+________________________________
+
+Abbrucheinheint
+
+Task Abbruch
+-autostart
+-höchste
+
+
+Abbruch:
+fragt stoptaster ab über client server
+set Event für Schussanlage
