@@ -76,8 +76,8 @@ Tobias Schwindl (TobiS)
 
 \begin{itemize}
  \item 1-2 Bricks
- \item Displays Ausgabe
- \item Stop-Taster
+ \item Ausgabe(durch Display,LEDs etc.)
+ \item Stop-Trigger
  \item Variable Aufteilung unter den Bricks: Stopp-Taste, Auslösung Taste(auch über Ultraschall), Ausgabe
 \end{itemize}
 
@@ -122,12 +122,11 @@ Tobias Schwindl (TobiS)
 \subsection*{Schussanlage (FL)}
 
 \begin{itemize}
- \item Besteht aus einem Task mit zwei Runnables
- \item Erste Runnable für die Abbruch-Bedingung
- \item Zweite Runnable wird durch Trigger gestartet (Schussfreigabe)
- \item Sendet sowohl Event als auch Nachricht an die Output-Einheit
- \item Hohe Priorität
- \item Kein Autostart, kann über den Trigger gestartet werden
+	\item Besteht aus einer Task mit zwei Runnables
+	\item erste Runnable prüft periodische die Abbruchbedinung(hier: Taster)
+	\item zweite Runnable managt den Schussmotor
+	\item Kein Autostart des Tasks, wird über den Trigger gestartet
+	\item Ports siehe Komponentendiagramm
 \end{itemize}
 
 Benötigt: Task und Event
@@ -137,8 +136,7 @@ Benötigt: Task und Event
 \begin{itemize}
  \item Ein Task
  \item Wird zu beginn gestartet (Autostart)
- \item Wartet auf Event vom Ultraschall
- \item Besitzt hohe Priorität
+ \item Wartet auf Event vom Input
 \end{itemize}
 
 Benötigt: Task und Event
@@ -146,7 +144,6 @@ Benötigt: Task und Event
 \subsection*{Output (MW)}
 
 \begin{itemize}
- \item Task mit niedriger Priorität
  \item Autostart
  \item Wird durch Event von Schussanlage getriggert
  \item Prüft nach Event die empfangene Nachricht
@@ -155,53 +152,37 @@ Benötigt: Task und Event
 
 Benötigt: Task und Event
 
-\subsection*{Display (MW)}
-
-Steuert Display an.
-
 
 \subsection*{SchussMotor (TimS)}
 
 \begin{itemize}
  \item Kein Autostart
- \item Sehr hohe Priorität
  \item Servertask wird durch Schussanlage (client) gestartet
  \item Steuert Motor zum schießen an
 \end{itemize}
 
-\subsection*{Motor (TimS)}
-
-Steuert Motor an.
 
 \subsection*{StopSensor (TobiS)}
 
 \begin{itemize}
  \item Autostart
- \item Sehr hohe Priorität
  \item Prüft Taster
  \item Setzt Event für Schussanlage
 \end{itemize}
 
 Benötigt: Task, Timer und Event
 
-\subsection*{Taster (TobiS)}
-
-Prüft Taster Wert.
 
 \subsection*{StartTrigger (TobiS)}
 
 \begin{itemize}
  \item Task zum Erkennen von Zielen
  \item Autostart
- \item Sehr hohe Priorität
  \item Sendet Event an Trigger
  \item Erkennung durch periodische Abfrage
 \end{itemize}
 
 Benötigt: Task und Timer
 
-\subsection*{Ultraschall (TobiS)}
-
-Prüft Ultraschall Wert.
 
 \end{document}
