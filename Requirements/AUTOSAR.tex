@@ -11,6 +11,7 @@
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \usepackage{geometry}
 \geometry{a4paper,left=30mm,right=20mm, top=26mm, bottom=35mm}
+\usepackage{enumerate}
 
 \ifpdf
   \usepackage[pdftex]{graphicx}
@@ -184,5 +185,48 @@ Benötigt: Task, Timer und Event
 
 Benötigt: Task und Timer
 
+\section{Architekturschicht und Funktionsapi}
+
+\includegraphics{Komponenten.png}
+
+\subsection{Funktionapi}
+\begin{enumerate}[1.)]
+\item System Services
+	\begin{itemize}
+	\item 
+	\end{itemize}
+\item Communication Services
+	\begin{itemize}
+	\item Abstraktionsebene um Nachrichten zu verschicken
+	\item $bool~SendMessage(char*~message)$
+	\item $bool~ReadMessage(char*~message)$
+	\end{itemize}
+\item I/O Hardware Abstraction
+	\begin{itemize}
+	\item $StdReturnType~ReadDigitalInput(Port_Name)$
+	\item $StdReturnType~ReadAnalogInput(Port_Name)$
+	\item $StdReturnType~DriveMotor(Port_Name, Direction, speed, angle)$
+	\end{itemize}
+\item Communication Hardware Abstraction
+	\begin{itemize}
+	\item es wird eine Abstraktionsebene eingezogen, sodass es wurscht wäre, ob die Nachricht über BT oder z.B. Infrarot versendet wird; da nur BT zur Verfügung steht, ist diese Abstraktionsebene quasi überflüssig
+	\item $bool~SendMessageOverAir(char*~message)$
+	\item $bool~ReadMessageFromAir(char*~message)$
+	\end{itemize}
+\item Communication Drivers
+	\begin{itemize}
+	\item es wird nur ein Treiber für das Hardware BT gebraucht:
+	\item $bool~BT_Write(char*~message)$ 
+	\item $bool~BT_Read(char*~message)$
+	\end{itemize}
+\item I/O Drivers
+	\begin{itemize}
+	\item benötigt für den zusätzlichen I2C expander
+	\item $StdReturnType ReadI2C(Port_Name)$
+	\item $StdReturnType WriteI2C(Port_Name)$
+	
+	\end{itemize}
+\end{enumerate}
 
 \end{document}
+
