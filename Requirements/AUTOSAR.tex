@@ -191,42 +191,38 @@ Benötigt: Task und Timer
 
 \subsection{Funktionapi}
 \begin{enumerate}[1.)]
-\item System Services
-	\begin{itemize}
-	\item 
-	\end{itemize}
+\item System Services\\
+	keine Funktionen
 \item Communication Services
 	\begin{itemize}
-	\item Abstraktionsebene um Nachrichten zu verschicken
-	\item $bool~SendMessage(char*~message)$
-	\item $bool~ReadMessage(char*~message)$
+	\item \underline{Abstraktionsebene um Nachrichten zu verschicken}
+	\item \lstinline|StdReturnType TransmitMessage(char* message)|
+	\item \lstinline|StdReturnType ReceiveMessage(char* message)|
 	\end{itemize}
 \item I/O Hardware Abstraction
 	\begin{itemize}
-	\item $StdReturnType~ReadDigitalInput(Port_Name)$
-	\item $StdReturnType~ReadAnalogInput(Port_Name)$
-	\item $StdReturnType~DriveMotor(Port_Name, Direction, speed, angle)$
+	\item \lstinline|StdReturnType ReadDigitalInput(PortName)|
+	\item \lstinline|StdReturnType ReadAnalogInput(PortName)|
+	\item \lstinline|StdReturnType DriveMotor(Port_Name, Direction, speed, angle)|
 	\end{itemize}
 \item Communication Hardware Abstraction
 	\begin{itemize}
-	\item es wird eine Abstraktionsebene eingezogen, sodass es wurscht wäre, ob die Nachricht über BT oder z.B. Infrarot versendet wird; da nur BT zur Verfügung steht, ist diese Abstraktionsebene quasi überflüssig
-	\item $bool~SendMessageOverAir(char*~message)$
-	\item $bool~ReadMessageFromAir(char*~message)$
+	\item \underline{Für unser Projekt eigentlich unnötig, da wir nur eine Kommunikationsebene haben}(theoretisch mehr durch I2C, aber hier uninteressant)
+	\item \lstinline|StdReturnType SendMessageBT(char* message )|
+	\item \lstinline|StdReturnType GetMessageBT(char* message)|
 	\end{itemize}
 \item Communication Drivers
 	\begin{itemize}
-	\item es wird nur ein Treiber für das Hardware BT gebraucht:
-	\item $bool~BT_Write(char*~message)$ 
-	\item $bool~BT_Read(char*~message)$
+	\item \underline{es wird nur ein Treiber für das Hardware BT gebraucht:}
+	\item \lstinline|StdReturnType BT_Write(char* message)| 
+	\item \lstinline|StdReturnType BT_Read(char* message)|
 	\end{itemize}
 \item I/O Drivers
 	\begin{itemize}
-	\item benötigt für den zusätzlichen I2C expander
-	\item $StdReturnType ReadI2C(Port_Name)$
-	\item $StdReturnType WriteI2C(Port_Name)$
-	
+	\item \underline{benötigt für den zusätzlichen I2C expander}
+	\item \lstinline|StdReturnType ReadI2C(PortName)|
+	\item \lstinline|StdReturnType WriteI2C(PortName)|	
 	\end{itemize}
 \end{enumerate}
-
 \end{document}
 
