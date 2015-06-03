@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ShootingMachine -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="shootingmachineemfmodel.presentation.ShootingmachineemfmodelModelWizardID"
+            name="%_UI_ShootingmachineemfmodelModelWizard_label"
+            class="shootingmachineemfmodel.presentation.ShootingmachineemfmodelModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ShootingmachineemfmodelModelFile.gif">
+         <description>%_UI_ShootingmachineemfmodelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated ShootingMachine -->
+      <editor
+            id="shootingmachineemfmodel.presentation.ShootingmachineemfmodelEditorID"
+            name="%_UI_ShootingmachineemfmodelEditor_label"
+            icon="icons/full/obj16/ShootingmachineemfmodelModelFile.gif"
+            extensions="shootingmachineemfmodel"
+            class="shootingmachineemfmodel.presentation.ShootingmachineemfmodelEditor"
+            contributorClass="shootingmachineemfmodel.presentation.ShootingmachineemfmodelActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

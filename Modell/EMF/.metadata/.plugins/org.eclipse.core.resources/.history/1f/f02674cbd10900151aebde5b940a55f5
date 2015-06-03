@@ -1,0 +1,38 @@
+/**
+ */
+package shootingmachineemfmodel.impl;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Runnable</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * </p>
+ *
+ * @generated
+ */
+public class RunnableImpl extends MinimalEObjectImpl.Container implements shootingmachineemfmodel.Runnable {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RunnableImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return ShootingmachineemfmodelPackage.Literals.RUNNABLE;
+	}
+
+} //RunnableImpl
