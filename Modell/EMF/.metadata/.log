@@ -1,0 +1,135 @@
+!SESSION 2015-06-03 10:06:57.530 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_75
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-06-03 10:11:32.390
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-06-03 10:11:32.436
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'G:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jface 2 0 2015-06-03 10:18:47.538
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-06-03 10:18:47.538
+!MESSAGE A conflict occurred for ALT+CTRL+C:
+Binding(ALT+CTRL+C,
+	ParameterizedCommand(Command(org.eclipse.linuxtools.changelog.core.actions.KeyActionCommand,Insert ChangeLog entry,
+		Insert a ChangeLog entry,
+		Category(org.eclipse.linuxtools.changelog,Changelog,Changelog key bindings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@175d65c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+Binding(ALT+CTRL+C,
+	ParameterizedCommand(Command(AnyEdit.capitalize.command,Capitalize,
+		,
+		Category(AnyEdit.category,AnyEdit Tools,AnyEdit Tools key bindings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@9bb52c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2015-06-03 10:38:36.234
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 1 10001 2015-06-03 10:38:36.234
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:36.234
+!MESSAGE "Ecore Diagram Editor (SDK)" is already installed, so an update will be performed instead.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:36.234
+!MESSAGE "Ecore Diagram Editor (Legacy)" is already installed, so an update will be performed instead.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:36.234
+!MESSAGE "Diagram Editor for Ecore (Capabilities)" is already installed, so an update will be performed instead.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2015-06-03 10:38:36.234
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:36.234
+!MESSAGE Software being installed: Ecore Diagram Editor (Legacy) 2.0.3.201411191338 (org.eclipse.emf.ecoretools.feature.group 2.0.3.201411191338)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:36.234
+!MESSAGE Missing requirement: EMF Tabbed Properties 2.0.3.201411191338 (org.eclipse.emf.ecoretools.tabbedproperties 2.0.3.201411191338) requires 'bundle org.eclipse.sirius 0.0.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-06-03 10:38:36.234
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:36.234
+!MESSAGE From: Ecore Diagram Editor (Legacy) 2.0.3.201411191338 (org.eclipse.emf.ecoretools.feature.group 2.0.3.201411191338)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:36.234
+!MESSAGE To: org.eclipse.emf.ecoretools.tabbedproperties [2.0.3.201411191338]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2015-06-03 10:38:37.263
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 1 10001 2015-06-03 10:38:37.263
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:37.263
+!MESSAGE "Ecore Diagram Editor (SDK)" is already installed, so an update will be performed instead.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:37.263
+!MESSAGE "Ecore Diagram Editor (Legacy)" is already installed, so an update will be performed instead.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:37.263
+!MESSAGE "Diagram Editor for Ecore (Capabilities)" is already installed, so an update will be performed instead.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2015-06-03 10:38:37.263
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.263
+!MESSAGE Software being installed: Ecore Diagram Editor (Legacy) 2.0.3.201411191338 (org.eclipse.emf.ecoretools.feature.group 2.0.3.201411191338)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.263
+!MESSAGE Missing requirement: EMF Tabbed Properties 2.0.3.201411191338 (org.eclipse.emf.ecoretools.tabbedproperties 2.0.3.201411191338) requires 'bundle org.eclipse.sirius 0.0.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-06-03 10:38:37.263
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.263
+!MESSAGE From: Ecore Diagram Editor (Legacy) 2.0.3.201411191338 (org.eclipse.emf.ecoretools.feature.group 2.0.3.201411191338)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.263
+!MESSAGE To: org.eclipse.emf.ecoretools.tabbedproperties [2.0.3.201411191338]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2015-06-03 10:38:37.294
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 1 10001 2015-06-03 10:38:37.294
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:37.294
+!MESSAGE "Ecore Diagram Editor (SDK)" is already installed, so an update will be performed instead.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:37.294
+!MESSAGE "Ecore Diagram Editor (Legacy)" is already installed, so an update will be performed instead.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:37.294
+!MESSAGE "Diagram Editor for Ecore (Capabilities)" is already installed, so an update will be performed instead.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2015-06-03 10:38:37.294
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.294
+!MESSAGE Software being installed: Ecore Diagram Editor (Legacy) 2.0.3.201411191338 (org.eclipse.emf.ecoretools.feature.group 2.0.3.201411191338)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.294
+!MESSAGE Missing requirement: EMF Tabbed Properties 2.0.3.201411191338 (org.eclipse.emf.ecoretools.tabbedproperties 2.0.3.201411191338) requires 'bundle org.eclipse.sirius 0.0.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-06-03 10:38:37.294
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.294
+!MESSAGE From: Ecore Diagram Editor (Legacy) 2.0.3.201411191338 (org.eclipse.emf.ecoretools.feature.group 2.0.3.201411191338)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.294
+!MESSAGE To: org.eclipse.emf.ecoretools.tabbedproperties [2.0.3.201411191338]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2015-06-03 10:38:37.372
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 1 10001 2015-06-03 10:38:37.372
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:37.372
+!MESSAGE "Ecore Diagram Editor (SDK)" is already installed, so an update will be performed instead.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:37.372
+!MESSAGE "Ecore Diagram Editor (Legacy)" is already installed, so an update will be performed instead.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 1 10003 2015-06-03 10:38:37.372
+!MESSAGE "Diagram Editor for Ecore (Capabilities)" is already installed, so an update will be performed instead.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2015-06-03 10:38:37.372
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.372
+!MESSAGE Software being installed: Ecore Diagram Editor (Legacy) 2.0.3.201411191338 (org.eclipse.emf.ecoretools.feature.group 2.0.3.201411191338)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.372
+!MESSAGE Missing requirement: EMF Tabbed Properties 2.0.3.201411191338 (org.eclipse.emf.ecoretools.tabbedproperties 2.0.3.201411191338) requires 'bundle org.eclipse.sirius 0.0.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-06-03 10:38:37.372
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.372
+!MESSAGE From: Ecore Diagram Editor (Legacy) 2.0.3.201411191338 (org.eclipse.emf.ecoretools.feature.group 2.0.3.201411191338)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-06-03 10:38:37.372
+!MESSAGE To: org.eclipse.emf.ecoretools.tabbedproperties [2.0.3.201411191338]

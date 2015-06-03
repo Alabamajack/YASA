@@ -1,0 +1,18 @@
+/**
+ */
+package shootingmachineemfmodel;
+
+import org.eclipse.emf.ecore.EObject;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Standardclass</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ *
+ * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getStandardclass()
+ * @model abstract="true"
+ * @generated
+ */
+public interface Standardclass extends EObject {
+} // Standardclass
