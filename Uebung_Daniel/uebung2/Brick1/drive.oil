@@ -1,0 +1,128 @@
+#include "implementation.oil"
+
+CPU ATMEL_AT91SAM7S256
+{
+	APPMODE appmode1{};
+	
+	OS LEJOS_OSEK
+	{
+		STATUS = EXTENDED;
+		STARTUPHOOK = FALSE;
+		ERRORHOOK = FALSE;
+		SHUTDOWNHOOK = FALSE;
+		PRETASKHOOK = FALSE;
+		POSTTASKHOOK = FALSE;
+		USEGETSERVICEID = FALSE;
+		USEPARAMETERACCESS = FALSE;
+		USERESSCHEDULER = FALSE;
+	};
+
+	TASK Main
+	{
+		AUTOSTART = TRUE
+		{
+			APPMODE = appmode1;
+		};
+		PRIORITY = 1;
+		ACTIVATION = 1;
+		SCHEDULE = FULL;
+		STACKSIZE = 512;
+		EVENT = evt_drive;
+	};
+	
+	//TASK Disp
+	//{
+	//	AUTOSTART = TRUE
+	//	{
+	//		APPMODE = appmode1;
+	//	};
+	//	PRIORITY = 2;
+	//	ACTIVATION = 1;
+	//	SCHEDULE = FULL;
+	//	STACKSIZE = 512;
+	//	EVENT = evt_disp;
+	//};
+	
+	TASK checkDriveButton
+	{
+		AUTOSTART = FALSE;
+		PRIORITY = 2;
+		ACTIVATION = 1;
+		SCHEDULE = FULL;
+		STACKSIZE = 512;
+	};
+	
+	TASK checkTurnButton
+	{
+		AUTOSTART = FALSE;
+		PRIORITY = 2;
+		ACTIVATION = 1;
+		SCHEDULE = FULL;
+		STACKSIZE = 512;
+	};
+	
+	TASK ReverseDir
+	{
+		AUTOSTART = TRUE
+		{
+			APPMODE = appmode1;
+		};
+		PRIORITY = 2;
+		ACTIVATION = 1;
+		SCHEDULE = FULL;
+		STACKSIZE = 512;
+		EVENT = evt_turn;
+	};
+	
+	ALARM driveAlarm 
+	{
+		COUNTER = finalCountdown;
+		ACTION = ACTIVATETASK
+		{
+			TASK = checkDriveButton;
+		};
+		AUTOSTART = TRUE
+		{
+			ALARMTIME = 50;
+			CYCLETIME = 100;
+			APPMODE = appmode1;
+		};
+	};
+	
+	ALARM turnAlarm
+	{
+		COUNTER = finalCountdown;
+		ACTION = ACTIVATETASK
+		{
+			TASK = checkTurnButton;
+		};
+		AUTOSTART = TRUE
+		{
+			ALARMTIME = 50;
+			CYCLETIME = 100;
+			APPMODE = appmode1;
+		};
+	};
+	
+	COUNTER finalCountdown
+	{
+		MINCYCLE = 1;
+		MAXALLOWEDVALUE = 100;
+		TICKSPERBASE = 1;
+	};
+	
+	EVENT evt_turn
+	{
+		MASK = AUTO;
+	};
+	
+	EVENT evt_drive
+	{
+		MASK = AUTO;
+	};
+
+	EVENT evt_disp
+	{
+		MASK = AUTO;
+	};
+};
