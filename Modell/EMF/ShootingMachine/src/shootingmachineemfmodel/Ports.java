@@ -3,7 +3,6 @@
 package shootingmachineemfmodel;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface Ports extends EObject {
+public interface Ports extends Standardclass {
 
 	/**
 	 * Returns the value of the '<em><b>Has Message Ports</b></em>' reference list.

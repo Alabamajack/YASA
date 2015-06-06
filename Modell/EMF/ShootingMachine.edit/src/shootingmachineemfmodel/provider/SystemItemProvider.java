@@ -9,8 +9,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -19,7 +17,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import shootingmachineemfmodel.ShootingmachineemfmodelFactory;
@@ -32,7 +29,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * @generated
  */
 public class SystemItemProvider
-	extends ItemProviderAdapter
+	extends StandardclassItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -116,7 +113,10 @@ public class SystemItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_System_type");
+		String label = ((shootingmachineemfmodel.System)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_System_type") :
+			getString("_UI_System_type") + " " + label;
 	}
 
 	/**
@@ -176,17 +176,6 @@ public class SystemItemProvider
 			(createChildParameter
 				(ShootingmachineemfmodelPackage.Literals.SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM,
 				 ShootingmachineemfmodelFactory.eINSTANCE.createInterBrickCommunication()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return ShootingMachineEditPlugin.INSTANCE;
 	}
 
 }

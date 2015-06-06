@@ -9,8 +9,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -18,8 +16,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
+import shootingmachineemfmodel.Component;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
 /**
@@ -29,7 +27,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * @generated
  */
 public class ComponentItemProvider
-	extends ItemProviderAdapter
+	extends StandardclassItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -92,7 +90,10 @@ public class ComponentItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Component_type");
+		String label = ((Component)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Component_type") :
+			getString("_UI_Component_type") + " " + label;
 	}
 
 	/**
@@ -118,17 +119,6 @@ public class ComponentItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return ShootingMachineEditPlugin.INSTANCE;
 	}
 
 }

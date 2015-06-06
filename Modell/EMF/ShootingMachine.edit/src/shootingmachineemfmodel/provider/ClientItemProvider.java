@@ -16,6 +16,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import shootingmachineemfmodel.Client;
+
 /**
  * This is the item provider adapter for a {@link shootingmachineemfmodel.Client} object.
  * <!-- begin-user-doc -->
@@ -74,7 +76,10 @@ public class ClientItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Client_type");
+		String label = ((Client)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Client_type") :
+			getString("_UI_Client_type") + " " + label;
 	}
 
 	/**

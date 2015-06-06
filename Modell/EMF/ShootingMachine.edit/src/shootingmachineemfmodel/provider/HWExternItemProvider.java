@@ -57,25 +57,25 @@ public class HWExternItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPortnumberPropertyDescriptor(object);
+			addPinnumberPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Portnumber feature.
+	 * This adds a property descriptor for the Pinnumber feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPortnumberPropertyDescriptor(Object object) {
+	protected void addPinnumberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_HWExtern_Portnumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HWExtern_Portnumber_feature", "_UI_HWExtern_type"),
-				 ShootingmachineemfmodelPackage.Literals.HW_EXTERN__PORTNUMBER,
+				 getString("_UI_HWExtern_Pinnumber_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HWExtern_Pinnumber_feature", "_UI_HWExtern_type"),
+				 ShootingmachineemfmodelPackage.Literals.HW_EXTERN__PINNUMBER,
 				 true,
 				 false,
 				 false,
@@ -103,8 +103,10 @@ public class HWExternItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		HWExtern hwExtern = (HWExtern)object;
-		return getString("_UI_HWExtern_type") + " " + hwExtern.getPortnumber();
+		String label = ((HWExtern)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_HWExtern_type") :
+			getString("_UI_HWExtern_type") + " " + label;
 	}
 
 	/**
@@ -119,7 +121,7 @@ public class HWExternItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HWExtern.class)) {
-			case ShootingmachineemfmodelPackage.HW_EXTERN__PORTNUMBER:
+			case ShootingmachineemfmodelPackage.HW_EXTERN__PINNUMBER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

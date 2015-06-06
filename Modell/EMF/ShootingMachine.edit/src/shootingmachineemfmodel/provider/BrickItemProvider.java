@@ -9,8 +9,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -20,7 +18,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import shootingmachineemfmodel.Brick;
@@ -34,7 +31,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * @generated
  */
 public class BrickItemProvider
-	extends ItemProviderAdapter
+	extends StandardclassItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -141,7 +138,10 @@ public class BrickItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Brick_type");
+		String label = ((Brick)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Brick_type") :
+			getString("_UI_Brick_type") + " " + label;
 	}
 
 	/**
@@ -211,17 +211,6 @@ public class BrickItemProvider
 			(createChildParameter
 				(ShootingmachineemfmodelPackage.Literals.BRICK__HAS_HW_PORTS_BRICK,
 				 ShootingmachineemfmodelFactory.eINSTANCE.createDisplay()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return ShootingMachineEditPlugin.INSTANCE;
 	}
 
 }

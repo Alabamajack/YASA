@@ -4,8 +4,6 @@ package shootingmachineemfmodel;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Brick</b></em>'.
@@ -26,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Brick extends EObject {
+public interface Brick extends Standardclass {
 	/**
 	 * Returns the value of the '<em><b>Has Task Brick</b></em>' containment reference list.
 	 * The list contents are of type {@link shootingmachineemfmodel.Task}.

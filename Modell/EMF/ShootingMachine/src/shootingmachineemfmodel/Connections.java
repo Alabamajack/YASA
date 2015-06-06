@@ -4,8 +4,6 @@ package shootingmachineemfmodel;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Connections</b></em>'.
@@ -23,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Connections extends EObject {
+public interface Connections extends Standardclass {
 	/**
 	 * Returns the value of the '<em><b>Has Receiver Ports</b></em>' reference list.
 	 * The list contents are of type {@link shootingmachineemfmodel.ReceiverPorts}.

@@ -5,9 +5,6 @@ package shootingmachineemfmodel.impl;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Ports;
@@ -26,7 +23,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  *
  * @generated
  */
-public abstract class PortsImpl extends MinimalEObjectImpl.Container implements Ports {
+public abstract class PortsImpl extends StandardclassImpl implements Ports {
 	/**
 	 * The cached value of the '{@link #getHasMessagePorts() <em>Has Message Ports</em>}' reference list.
 	 * <!-- begin-user-doc -->

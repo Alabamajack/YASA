@@ -4,8 +4,6 @@ package shootingmachineemfmodel;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>System</b></em>'.
@@ -25,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface System extends EObject {
+public interface System extends Standardclass {
 	/**
 	 * Returns the value of the '<em><b>Has Component</b></em>' containment reference list.
 	 * The list contents are of type {@link shootingmachineemfmodel.Component}.

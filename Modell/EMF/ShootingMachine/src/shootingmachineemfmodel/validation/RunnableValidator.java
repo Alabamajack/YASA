@@ -17,6 +17,8 @@ import shootingmachineemfmodel.Task;
 public interface RunnableValidator {
 	boolean validate();
 
+	boolean validateApplicationcode(String value);
+
 	boolean validateName(String value);
 
 	boolean validateHasRunnable(EList<Task> value);

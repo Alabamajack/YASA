@@ -5,9 +5,6 @@ package shootingmachineemfmodel.impl;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import shootingmachineemfmodel.Component;
 import shootingmachineemfmodel.HWPorts;
@@ -26,7 +23,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  *
  * @generated
  */
-public abstract class ComponentImpl extends MinimalEObjectImpl.Container implements Component {
+public abstract class ComponentImpl extends StandardclassImpl implements Component {
 	/**
 	 * The cached value of the '{@link #getHasHWPortsComponent() <em>Has HW Ports Component</em>}' reference list.
 	 * <!-- begin-user-doc -->

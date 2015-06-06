@@ -11,7 +11,7 @@ package shootingmachineemfmodel;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link shootingmachineemfmodel.HWExtern#getPortnumber <em>Portnumber</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.HWExtern#getPinnumber <em>Pinnumber</em>}</li>
  * </ul>
  * </p>
  *
@@ -21,29 +21,29 @@ package shootingmachineemfmodel;
  */
 public interface HWExtern extends HWInput {
 	/**
-	 * Returns the value of the '<em><b>Portnumber</b></em>' attribute.
+	 * Returns the value of the '<em><b>Pinnumber</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Portnumber</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Pinnumber</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Portnumber</em>' attribute.
-	 * @see #setPortnumber(int)
-	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getHWExtern_Portnumber()
+	 * @return the value of the '<em>Pinnumber</em>' attribute.
+	 * @see #setPinnumber(int)
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getHWExtern_Pinnumber()
 	 * @model
 	 * @generated
 	 */
-	int getPortnumber();
+	int getPinnumber();
 
 	/**
-	 * Sets the value of the '{@link shootingmachineemfmodel.HWExtern#getPortnumber <em>Portnumber</em>}' attribute.
+	 * Sets the value of the '{@link shootingmachineemfmodel.HWExtern#getPinnumber <em>Pinnumber</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Portnumber</em>' attribute.
-	 * @see #getPortnumber()
+	 * @param value the new value of the '<em>Pinnumber</em>' attribute.
+	 * @see #getPinnumber()
 	 * @generated
 	 */
-	void setPortnumber(int value);
+	void setPinnumber(int value);
 
 } // HWExtern

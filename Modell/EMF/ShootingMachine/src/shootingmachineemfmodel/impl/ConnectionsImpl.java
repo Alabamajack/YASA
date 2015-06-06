@@ -3,19 +3,12 @@
 package shootingmachineemfmodel.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import shootingmachineemfmodel.Connections;
 import shootingmachineemfmodel.ReceiverPorts;
 import shootingmachineemfmodel.SenderPorts;
@@ -35,7 +28,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  *
  * @generated
  */
-public class ConnectionsImpl extends MinimalEObjectImpl.Container implements Connections {
+public class ConnectionsImpl extends StandardclassImpl implements Connections {
 	/**
 	 * The cached value of the '{@link #getHasReceiverPorts() <em>Has Receiver Ports</em>}' reference list.
 	 * <!-- begin-user-doc -->

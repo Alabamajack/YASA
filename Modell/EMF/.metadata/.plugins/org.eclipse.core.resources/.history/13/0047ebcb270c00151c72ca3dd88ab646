@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ShootingMachine/src" modelPluginID="ShootingMachine"
+    modelName="ShootingMachine" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>ShootingMachineEMFModel.ecore</foreignModel>
+  <genPackages prefix="Shootingmachineemfmodel" resource="XML" disposableProviderFactory="true"
+      ecorePackage="ShootingMachineEMFModel.ecore#/">
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//System">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//System/hasComponent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//System/hasBrick"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//System/hasConnections"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ShootingMachineEMFModel.ecore#//Component"/>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Brick">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//Brick/hasTaskBrick"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//Brick/hasEventBrick"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//Brick/hasAlarmBrick"/>
+    </genClasses>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//SA_Component">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//SA_Component/hasPortsSAC"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//SA_Component/hasRunnableSAC"/>
+    </genClasses>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//SW_Component">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//SW_Component/hasPortsSWC"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//SW_Component/hasRunnableSWC"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ShootingMachineEMFModel.ecore#//Ports"/>
+    <genClasses image="false" ecoreClass="ShootingMachineEMFModel.ecore#//SenderPorts"/>
+    <genClasses image="false" ecoreClass="ShootingMachineEMFModel.ecore#//ReceiverPorts"/>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Sender"/>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Client"/>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//SendEvent"/>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Receiver"/>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Server"/>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//GetEvent"/>
+    <genClasses image="false" ecoreClass="ShootingMachineEMFModel.ecore#//Standardclass"/>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Task">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//Task/hasEvent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//Task/hasAlarm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//Task/hasRunnable"/>
+    </genClasses>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Event"/>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Alarm">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//Alarm/hasCounter"/>
+    </genClasses>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Counter"/>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Connections">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//Connections/hasReceiverPorts"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ShootingMachineEMFModel.ecore#//Connections/hasSenderPorts"/>
+    </genClasses>
+    <genClasses ecoreClass="ShootingMachineEMFModel.ecore#//Runnable"/>
+  </genPackages>
+</genmodel:GenModel>

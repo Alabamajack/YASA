@@ -2,7 +2,6 @@
  */
 package shootingmachineemfmodel;
 
-import org.eclipse.emf.ecore.EObject;
 
 
 /**
@@ -13,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link shootingmachineemfmodel.Runnable#getName <em>Name</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.Runnable#getApplicationcode <em>Applicationcode</em>}</li>
  * </ul>
  * </p>
  *
@@ -21,31 +20,31 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Runnable extends EObject {
+public interface Runnable extends Standardclass {
 
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Applicationcode</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Applicationcode</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getRunnable_Name()
+	 * @return the value of the '<em>Applicationcode</em>' attribute.
+	 * @see #setApplicationcode(String)
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getRunnable_Applicationcode()
 	 * @model
 	 * @generated
 	 */
-	String getName();
+	String getApplicationcode();
 
 	/**
-	 * Sets the value of the '{@link shootingmachineemfmodel.Runnable#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link shootingmachineemfmodel.Runnable#getApplicationcode <em>Applicationcode</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
+	 * @param value the new value of the '<em>Applicationcode</em>' attribute.
+	 * @see #getApplicationcode()
 	 * @generated
 	 */
-	void setName(String value);
+	void setApplicationcode(String value);
 } // Runnable

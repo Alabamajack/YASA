@@ -95,18 +95,21 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 			case ShootingmachineemfmodelPackage.SYSTEM: {
 				shootingmachineemfmodel.System system = (shootingmachineemfmodel.System)theEObject;
 				T result = caseSystem(system);
+				if (result == null) result = caseStandardclass(system);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ShootingmachineemfmodelPackage.COMPONENT: {
 				Component component = (Component)theEObject;
 				T result = caseComponent(component);
+				if (result == null) result = caseStandardclass(component);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ShootingmachineemfmodelPackage.BRICK: {
 				Brick brick = (Brick)theEObject;
 				T result = caseBrick(brick);
+				if (result == null) result = caseStandardclass(brick);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -114,6 +117,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				SA_Component sA_Component = (SA_Component)theEObject;
 				T result = caseSA_Component(sA_Component);
 				if (result == null) result = caseComponent(sA_Component);
+				if (result == null) result = caseStandardclass(sA_Component);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -121,12 +125,14 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				SW_Component sW_Component = (SW_Component)theEObject;
 				T result = caseSW_Component(sW_Component);
 				if (result == null) result = caseComponent(sW_Component);
+				if (result == null) result = caseStandardclass(sW_Component);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ShootingmachineemfmodelPackage.PORTS: {
 				Ports ports = (Ports)theEObject;
 				T result = casePorts(ports);
+				if (result == null) result = caseStandardclass(ports);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -134,6 +140,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				SenderPorts senderPorts = (SenderPorts)theEObject;
 				T result = caseSenderPorts(senderPorts);
 				if (result == null) result = casePorts(senderPorts);
+				if (result == null) result = caseStandardclass(senderPorts);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -141,6 +148,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				ReceiverPorts receiverPorts = (ReceiverPorts)theEObject;
 				T result = caseReceiverPorts(receiverPorts);
 				if (result == null) result = casePorts(receiverPorts);
+				if (result == null) result = caseStandardclass(receiverPorts);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -149,6 +157,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				T result = caseSender(sender);
 				if (result == null) result = caseSenderPorts(sender);
 				if (result == null) result = casePorts(sender);
+				if (result == null) result = caseStandardclass(sender);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -157,6 +166,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				T result = caseClient(client);
 				if (result == null) result = caseSenderPorts(client);
 				if (result == null) result = casePorts(client);
+				if (result == null) result = caseStandardclass(client);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -165,6 +175,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				T result = caseSendEvent(sendEvent);
 				if (result == null) result = caseSenderPorts(sendEvent);
 				if (result == null) result = casePorts(sendEvent);
+				if (result == null) result = caseStandardclass(sendEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -173,6 +184,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				T result = caseReceiver(receiver);
 				if (result == null) result = caseReceiverPorts(receiver);
 				if (result == null) result = casePorts(receiver);
+				if (result == null) result = caseStandardclass(receiver);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -181,6 +193,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				T result = caseServer(server);
 				if (result == null) result = caseReceiverPorts(server);
 				if (result == null) result = casePorts(server);
+				if (result == null) result = caseStandardclass(server);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -189,6 +202,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				T result = caseGetEvent(getEvent);
 				if (result == null) result = caseReceiverPorts(getEvent);
 				if (result == null) result = casePorts(getEvent);
+				if (result == null) result = caseStandardclass(getEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -229,24 +243,28 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 			case ShootingmachineemfmodelPackage.CONNECTIONS: {
 				Connections connections = (Connections)theEObject;
 				T result = caseConnections(connections);
+				if (result == null) result = caseStandardclass(connections);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ShootingmachineemfmodelPackage.RUNNABLE: {
 				shootingmachineemfmodel.Runnable runnable = (shootingmachineemfmodel.Runnable)theEObject;
 				T result = caseRunnable(runnable);
+				if (result == null) result = caseStandardclass(runnable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION: {
 				InterBrickCommunication interBrickCommunication = (InterBrickCommunication)theEObject;
 				T result = caseInterBrickCommunication(interBrickCommunication);
+				if (result == null) result = caseStandardclass(interBrickCommunication);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ShootingmachineemfmodelPackage.HW_PORTS: {
 				HWPorts hwPorts = (HWPorts)theEObject;
 				T result = caseHWPorts(hwPorts);
+				if (result == null) result = caseStandardclass(hwPorts);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -254,6 +272,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				HWInput hwInput = (HWInput)theEObject;
 				T result = caseHWInput(hwInput);
 				if (result == null) result = caseHWPorts(hwInput);
+				if (result == null) result = caseStandardclass(hwInput);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -261,6 +280,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				HWOutput hwOutput = (HWOutput)theEObject;
 				T result = caseHWOutput(hwOutput);
 				if (result == null) result = caseHWPorts(hwOutput);
+				if (result == null) result = caseStandardclass(hwOutput);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -269,6 +289,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				T result = caseHWIntern(hwIntern);
 				if (result == null) result = caseHWInput(hwIntern);
 				if (result == null) result = caseHWPorts(hwIntern);
+				if (result == null) result = caseStandardclass(hwIntern);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -277,6 +298,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				T result = caseHWExtern(hwExtern);
 				if (result == null) result = caseHWInput(hwExtern);
 				if (result == null) result = caseHWPorts(hwExtern);
+				if (result == null) result = caseStandardclass(hwExtern);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -285,6 +307,7 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				T result = caseMotor(motor);
 				if (result == null) result = caseHWOutput(motor);
 				if (result == null) result = caseHWPorts(motor);
+				if (result == null) result = caseStandardclass(motor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -293,12 +316,14 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				T result = caseDisplay(display);
 				if (result == null) result = caseHWOutput(display);
 				if (result == null) result = caseHWPorts(display);
+				if (result == null) result = caseStandardclass(display);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ShootingmachineemfmodelPackage.MESSAGE: {
 				Message message = (Message)theEObject;
 				T result = caseMessage(message);
+				if (result == null) result = caseStandardclass(message);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

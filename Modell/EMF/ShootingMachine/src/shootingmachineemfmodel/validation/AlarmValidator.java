@@ -16,4 +16,16 @@ public interface AlarmValidator {
 	boolean validate();
 
 	boolean validateHasCounter(Counter value);
+
+	boolean validateMINCYCLE(int value);
+
+	boolean validateMAXALLOWEDVALUE(int value);
+
+	boolean validateTICKSPERBASE(int value);
+
+	boolean validateAUTOSTART(boolean value);
+
+	boolean validateALARMTIME(int value);
+
+	boolean validateCYCLETIME(int value);
 }

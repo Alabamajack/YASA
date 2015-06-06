@@ -16,6 +16,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import shootingmachineemfmodel.HWIntern;
+
 /**
  * This is the item provider adapter for a {@link shootingmachineemfmodel.HWIntern} object.
  * <!-- begin-user-doc -->
@@ -74,7 +76,10 @@ public class HWInternItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_HWIntern_type");
+		String label = ((HWIntern)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_HWIntern_type") :
+			getString("_UI_HWIntern_type") + " " + label;
 	}
 
 	/**

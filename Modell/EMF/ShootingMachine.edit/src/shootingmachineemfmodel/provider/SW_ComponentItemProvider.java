@@ -112,7 +112,10 @@ public class SW_ComponentItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_SW_Component_type");
+		String label = ((SW_Component)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_SW_Component_type") :
+			getString("_UI_SW_Component_type") + " " + label;
 	}
 
 	/**

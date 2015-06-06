@@ -9,8 +9,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -21,7 +19,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import shootingmachineemfmodel.InterBrickCommunication;
@@ -35,7 +32,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * @generated
  */
 public class InterBrickCommunicationItemProvider
-	extends ItemProviderAdapter
+	extends StandardclassItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -65,7 +62,6 @@ public class InterBrickCommunicationItemProvider
 
 			addHasBrickInterBrickCommunicationPropertyDescriptor(object);
 			addMessageIDPropertyDescriptor(object);
-			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -110,28 +106,6 @@ public class InterBrickCommunicationItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InterBrickCommunication_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InterBrickCommunication_name_feature", "_UI_InterBrickCommunication_type"),
-				 ShootingmachineemfmodelPackage.Literals.INTER_BRICK_COMMUNICATION__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -204,7 +178,6 @@ public class InterBrickCommunicationItemProvider
 
 		switch (notification.getFeatureID(InterBrickCommunication.class)) {
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__MESSAGE_ID:
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION:
@@ -229,17 +202,6 @@ public class InterBrickCommunicationItemProvider
 			(createChildParameter
 				(ShootingmachineemfmodelPackage.Literals.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION,
 				 ShootingmachineemfmodelFactory.eINSTANCE.createMessage()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return ShootingMachineEditPlugin.INSTANCE;
 	}
 
 }

@@ -14,10 +14,4 @@
             genModel="model/ShootingMachine.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated ShootingMachine -->
-      <parser
-            type="shootingmachineemfmodel"
-            class="shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl"/>
-   </extension>
 </plugin>

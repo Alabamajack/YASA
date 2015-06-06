@@ -3,12 +3,8 @@
 package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
@@ -21,13 +17,12 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * <ul>
  *   <li>{@link shootingmachineemfmodel.impl.MessageImpl#getMessageHeader <em>Message Header</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.MessageImpl#getMyMessage <em>My Message</em>}</li>
- *   <li>{@link shootingmachineemfmodel.impl.MessageImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class MessageImpl extends MinimalEObjectImpl.Container implements Message {
+public class MessageImpl extends StandardclassImpl implements Message {
 	/**
 	 * The default value of the '{@link #getMessageHeader() <em>Message Header</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -67,26 +62,6 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
 	 * @ordered
 	 */
 	protected String myMessage = MY_MESSAGE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,27 +129,6 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.MESSAGE__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -182,8 +136,6 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
 				return getMessageHeader();
 			case ShootingmachineemfmodelPackage.MESSAGE__MY_MESSAGE:
 				return getMyMessage();
-			case ShootingmachineemfmodelPackage.MESSAGE__NAME:
-				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -201,9 +153,6 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
 				return;
 			case ShootingmachineemfmodelPackage.MESSAGE__MY_MESSAGE:
 				setMyMessage((String)newValue);
-				return;
-			case ShootingmachineemfmodelPackage.MESSAGE__NAME:
-				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -223,9 +172,6 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
 			case ShootingmachineemfmodelPackage.MESSAGE__MY_MESSAGE:
 				setMyMessage(MY_MESSAGE_EDEFAULT);
 				return;
-			case ShootingmachineemfmodelPackage.MESSAGE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -242,8 +188,6 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
 				return messageHeader != MESSAGE_HEADER_EDEFAULT;
 			case ShootingmachineemfmodelPackage.MESSAGE__MY_MESSAGE:
 				return MY_MESSAGE_EDEFAULT == null ? myMessage != null : !MY_MESSAGE_EDEFAULT.equals(myMessage);
-			case ShootingmachineemfmodelPackage.MESSAGE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -262,8 +206,6 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
 		result.append(messageHeader);
 		result.append(", myMessage: ");
 		result.append(myMessage);
-		result.append(", name: ");
-		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

@@ -3,19 +3,12 @@
 package shootingmachineemfmodel.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.Component;
 import shootingmachineemfmodel.Connections;
@@ -38,7 +31,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  *
  * @generated
  */
-public class SystemImpl extends MinimalEObjectImpl.Container implements shootingmachineemfmodel.System {
+public class SystemImpl extends StandardclassImpl implements shootingmachineemfmodel.System {
 	/**
 	 * The cached value of the '{@link #getHasComponent() <em>Has Component</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

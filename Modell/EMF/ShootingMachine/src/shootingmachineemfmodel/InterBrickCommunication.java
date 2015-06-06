@@ -2,7 +2,6 @@
  */
 package shootingmachineemfmodel;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasBrickInterBrickCommunication <em>Has Brick Inter Brick Communication</em>}</li>
  *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasMessageInterBrickCommunication <em>Has Message Inter Brick Communication</em>}</li>
  *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getMessageID <em>Message ID</em>}</li>
- *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface InterBrickCommunication extends EObject {
+public interface InterBrickCommunication extends Standardclass {
 	/**
 	 * Returns the value of the '<em><b>Has Brick Inter Brick Communication</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -101,31 +99,5 @@ public interface InterBrickCommunication extends EObject {
 	 * @generated
 	 */
 	void setMessageID(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getInterBrickCommunication_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link shootingmachineemfmodel.InterBrickCommunication#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
 
 } // InterBrickCommunication

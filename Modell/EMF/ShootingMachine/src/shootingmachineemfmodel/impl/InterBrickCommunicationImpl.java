@@ -4,13 +4,9 @@ package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.Message;
@@ -26,13 +22,12 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getHasBrickInterBrickCommunication <em>Has Brick Inter Brick Communication</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getHasMessageInterBrickCommunication <em>Has Message Inter Brick Communication</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getMessageID <em>Message ID</em>}</li>
- *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class InterBrickCommunicationImpl extends MinimalEObjectImpl.Container implements InterBrickCommunication {
+public class InterBrickCommunicationImpl extends StandardclassImpl implements InterBrickCommunication {
 	/**
 	 * The cached value of the '{@link #getHasBrickInterBrickCommunication() <em>Has Brick Inter Brick Communication</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -72,26 +67,6 @@ public class InterBrickCommunicationImpl extends MinimalEObjectImpl.Container im
 	 * @ordered
 	 */
 	protected int messageID = MESSAGE_ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -219,27 +194,6 @@ public class InterBrickCommunicationImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -264,8 +218,6 @@ public class InterBrickCommunicationImpl extends MinimalEObjectImpl.Container im
 				return getHasMessageInterBrickCommunication();
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__MESSAGE_ID:
 				return getMessageID();
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__NAME:
-				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -286,9 +238,6 @@ public class InterBrickCommunicationImpl extends MinimalEObjectImpl.Container im
 				return;
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__MESSAGE_ID:
 				setMessageID((Integer)newValue);
-				return;
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__NAME:
-				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -311,9 +260,6 @@ public class InterBrickCommunicationImpl extends MinimalEObjectImpl.Container im
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__MESSAGE_ID:
 				setMessageID(MESSAGE_ID_EDEFAULT);
 				return;
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -332,8 +278,6 @@ public class InterBrickCommunicationImpl extends MinimalEObjectImpl.Container im
 				return hasMessageInterBrickCommunication != null;
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__MESSAGE_ID:
 				return messageID != MESSAGE_ID_EDEFAULT;
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -350,8 +294,6 @@ public class InterBrickCommunicationImpl extends MinimalEObjectImpl.Container im
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (messageID: ");
 		result.append(messageID);
-		result.append(", name: ");
-		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

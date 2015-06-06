@@ -18,7 +18,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link shootingmachineemfmodel.impl.HWExternImpl#getPortnumber <em>Portnumber</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.impl.HWExternImpl#getPinnumber <em>Pinnumber</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,24 +26,24 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  */
 public class HWExternImpl extends HWInputImpl implements HWExtern {
 	/**
-	 * The default value of the '{@link #getPortnumber() <em>Portnumber</em>}' attribute.
+	 * The default value of the '{@link #getPinnumber() <em>Pinnumber</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPortnumber()
+	 * @see #getPinnumber()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int PORTNUMBER_EDEFAULT = 0;
+	protected static final int PINNUMBER_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getPortnumber() <em>Portnumber</em>}' attribute.
+	 * The cached value of the '{@link #getPinnumber() <em>Pinnumber</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPortnumber()
+	 * @see #getPinnumber()
 	 * @generated
 	 * @ordered
 	 */
-	protected int portnumber = PORTNUMBER_EDEFAULT;
+	protected int pinnumber = PINNUMBER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,8 +69,8 @@ public class HWExternImpl extends HWInputImpl implements HWExtern {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPortnumber() {
-		return portnumber;
+	public int getPinnumber() {
+		return pinnumber;
 	}
 
 	/**
@@ -78,11 +78,11 @@ public class HWExternImpl extends HWInputImpl implements HWExtern {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPortnumber(int newPortnumber) {
-		int oldPortnumber = portnumber;
-		portnumber = newPortnumber;
+	public void setPinnumber(int newPinnumber) {
+		int oldPinnumber = pinnumber;
+		pinnumber = newPinnumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.HW_EXTERN__PORTNUMBER, oldPortnumber, portnumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.HW_EXTERN__PINNUMBER, oldPinnumber, pinnumber));
 	}
 
 	/**
@@ -93,8 +93,8 @@ public class HWExternImpl extends HWInputImpl implements HWExtern {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.HW_EXTERN__PORTNUMBER:
-				return getPortnumber();
+			case ShootingmachineemfmodelPackage.HW_EXTERN__PINNUMBER:
+				return getPinnumber();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -107,8 +107,8 @@ public class HWExternImpl extends HWInputImpl implements HWExtern {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.HW_EXTERN__PORTNUMBER:
-				setPortnumber((Integer)newValue);
+			case ShootingmachineemfmodelPackage.HW_EXTERN__PINNUMBER:
+				setPinnumber((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,8 +122,8 @@ public class HWExternImpl extends HWInputImpl implements HWExtern {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.HW_EXTERN__PORTNUMBER:
-				setPortnumber(PORTNUMBER_EDEFAULT);
+			case ShootingmachineemfmodelPackage.HW_EXTERN__PINNUMBER:
+				setPinnumber(PINNUMBER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,8 +137,8 @@ public class HWExternImpl extends HWInputImpl implements HWExtern {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.HW_EXTERN__PORTNUMBER:
-				return portnumber != PORTNUMBER_EDEFAULT;
+			case ShootingmachineemfmodelPackage.HW_EXTERN__PINNUMBER:
+				return pinnumber != PINNUMBER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -153,8 +153,8 @@ public class HWExternImpl extends HWInputImpl implements HWExtern {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (Portnumber: ");
-		result.append(portnumber);
+		result.append(" (Pinnumber: ");
+		result.append(pinnumber);
 		result.append(')');
 		return result.toString();
 	}

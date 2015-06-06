@@ -25,5 +25,11 @@ public interface TaskValidator {
 
 	boolean validateHasEvent(Event value);
 	boolean validateHasRunnable(EList<Runnable> value);
+	boolean validateAUTOSTART(boolean value);
+
+	boolean validatePRIORITY(int value);
+
+	boolean validateACTIVATION(int value);
+
 	boolean validateHasAlarm(Alarm value);
 }

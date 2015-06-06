@@ -636,6 +636,33 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTask_AUTOSTART() {
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTask_PRIORITY() {
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTask_ACTIVATION() {
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEvent() {
 		return eventEClass;
 	}
@@ -656,6 +683,60 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 */
 	public EReference getAlarm_HasCounter() {
 		return (EReference)alarmEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAlarm_MINCYCLE() {
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAlarm_MAXALLOWEDVALUE() {
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAlarm_TICKSPERBASE() {
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAlarm_AUTOSTART() {
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAlarm_ALARMTIME() {
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAlarm_CYCLETIME() {
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -708,7 +789,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRunnable_Name() {
+	public EAttribute getRunnable_Applicationcode() {
 		return (EAttribute)runnableEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -753,8 +834,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInterBrickCommunication_Name() {
-		return (EAttribute)interBrickCommunicationEClass.getEStructuralFeatures().get(3);
+	public EClass getHWPorts() {
+		return hwPortsEClass;
 	}
 
 	/**
@@ -762,8 +843,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHWPorts() {
-		return hwPortsEClass;
+	public EAttribute getHWPorts_Portnumber() {
+		return (EAttribute)hwPortsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -807,7 +888,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHWExtern_Portnumber() {
+	public EAttribute getHWExtern_Pinnumber() {
 		return (EAttribute)hwExternEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -854,15 +935,6 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 */
 	public EAttribute getMessage_MyMessage() {
 		return (EAttribute)messageEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMessage_Name() {
-		return (EAttribute)messageEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -943,11 +1015,20 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		createEReference(taskEClass, TASK__HAS_EVENT);
 		createEReference(taskEClass, TASK__HAS_ALARM);
 		createEReference(taskEClass, TASK__HAS_RUNNABLE);
+		createEAttribute(taskEClass, TASK__AUTOSTART);
+		createEAttribute(taskEClass, TASK__PRIORITY);
+		createEAttribute(taskEClass, TASK__ACTIVATION);
 
 		eventEClass = createEClass(EVENT);
 
 		alarmEClass = createEClass(ALARM);
 		createEReference(alarmEClass, ALARM__HAS_COUNTER);
+		createEAttribute(alarmEClass, ALARM__MINCYCLE);
+		createEAttribute(alarmEClass, ALARM__MAXALLOWEDVALUE);
+		createEAttribute(alarmEClass, ALARM__TICKSPERBASE);
+		createEAttribute(alarmEClass, ALARM__AUTOSTART);
+		createEAttribute(alarmEClass, ALARM__ALARMTIME);
+		createEAttribute(alarmEClass, ALARM__CYCLETIME);
 
 		counterEClass = createEClass(COUNTER);
 
@@ -956,15 +1037,15 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		createEReference(connectionsEClass, CONNECTIONS__HAS_SENDER_PORTS);
 
 		runnableEClass = createEClass(RUNNABLE);
-		createEAttribute(runnableEClass, RUNNABLE__NAME);
+		createEAttribute(runnableEClass, RUNNABLE__APPLICATIONCODE);
 
 		interBrickCommunicationEClass = createEClass(INTER_BRICK_COMMUNICATION);
 		createEReference(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__HAS_BRICK_INTER_BRICK_COMMUNICATION);
 		createEReference(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION);
 		createEAttribute(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__MESSAGE_ID);
-		createEAttribute(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__NAME);
 
 		hwPortsEClass = createEClass(HW_PORTS);
+		createEAttribute(hwPortsEClass, HW_PORTS__PORTNUMBER);
 
 		hwInputEClass = createEClass(HW_INPUT);
 
@@ -973,7 +1054,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		hwInternEClass = createEClass(HW_INTERN);
 
 		hwExternEClass = createEClass(HW_EXTERN);
-		createEAttribute(hwExternEClass, HW_EXTERN__PORTNUMBER);
+		createEAttribute(hwExternEClass, HW_EXTERN__PINNUMBER);
 
 		motorEClass = createEClass(MOTOR);
 
@@ -982,7 +1063,6 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		messageEClass = createEClass(MESSAGE);
 		createEAttribute(messageEClass, MESSAGE__MESSAGE_HEADER);
 		createEAttribute(messageEClass, MESSAGE__MY_MESSAGE);
-		createEAttribute(messageEClass, MESSAGE__NAME);
 	}
 
 	/**
@@ -1013,8 +1093,12 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		systemEClass.getESuperTypes().add(this.getStandardclass());
+		componentEClass.getESuperTypes().add(this.getStandardclass());
+		brickEClass.getESuperTypes().add(this.getStandardclass());
 		sA_ComponentEClass.getESuperTypes().add(this.getComponent());
 		sW_ComponentEClass.getESuperTypes().add(this.getComponent());
+		portsEClass.getESuperTypes().add(this.getStandardclass());
 		senderPortsEClass.getESuperTypes().add(this.getPorts());
 		receiverPortsEClass.getESuperTypes().add(this.getPorts());
 		senderEClass.getESuperTypes().add(this.getSenderPorts());
@@ -1027,12 +1111,17 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		eventEClass.getESuperTypes().add(this.getStandardclass());
 		alarmEClass.getESuperTypes().add(this.getStandardclass());
 		counterEClass.getESuperTypes().add(this.getStandardclass());
+		connectionsEClass.getESuperTypes().add(this.getStandardclass());
+		runnableEClass.getESuperTypes().add(this.getStandardclass());
+		interBrickCommunicationEClass.getESuperTypes().add(this.getStandardclass());
+		hwPortsEClass.getESuperTypes().add(this.getStandardclass());
 		hwInputEClass.getESuperTypes().add(this.getHWPorts());
 		hwOutputEClass.getESuperTypes().add(this.getHWPorts());
 		hwInternEClass.getESuperTypes().add(this.getHWInput());
 		hwExternEClass.getESuperTypes().add(this.getHWInput());
 		motorEClass.getESuperTypes().add(this.getHWOutput());
 		displayEClass.getESuperTypes().add(this.getHWOutput());
+		messageEClass.getESuperTypes().add(this.getStandardclass());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(systemEClass, shootingmachineemfmodel.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1085,11 +1174,20 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEReference(getTask_HasEvent(), this.getEvent(), null, "hasEvent", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_HasAlarm(), this.getAlarm(), null, "hasAlarm", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_HasRunnable(), this.getRunnable(), null, "hasRunnable", null, 1, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_AUTOSTART(), ecorePackage.getEBoolean(), "AUTOSTART", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_PRIORITY(), ecorePackage.getEInt(), "PRIORITY", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_ACTIVATION(), ecorePackage.getEInt(), "ACTIVATION", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(alarmEClass, Alarm.class, "Alarm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAlarm_HasCounter(), this.getCounter(), null, "hasCounter", null, 1, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAlarm_MINCYCLE(), ecorePackage.getEInt(), "MINCYCLE", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAlarm_MAXALLOWEDVALUE(), ecorePackage.getEInt(), "MAXALLOWEDVALUE", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAlarm_TICKSPERBASE(), ecorePackage.getEInt(), "TICKSPERBASE", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAlarm_AUTOSTART(), ecorePackage.getEBoolean(), "AUTOSTART", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAlarm_ALARMTIME(), ecorePackage.getEInt(), "ALARMTIME", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAlarm_CYCLETIME(), ecorePackage.getEInt(), "CYCLETIME", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(counterEClass, Counter.class, "Counter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1098,15 +1196,15 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEReference(getConnections_HasSenderPorts(), this.getSenderPorts(), null, "hasSenderPorts", null, 1, 1, Connections.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runnableEClass, shootingmachineemfmodel.Runnable.class, "Runnable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRunnable_Name(), ecorePackage.getEString(), "name", null, 0, 1, shootingmachineemfmodel.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRunnable_Applicationcode(), ecorePackage.getEString(), "applicationcode", null, 0, 1, shootingmachineemfmodel.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(interBrickCommunicationEClass, InterBrickCommunication.class, "InterBrickCommunication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInterBrickCommunication_HasBrickInterBrickCommunication(), this.getBrick(), null, "hasBrickInterBrickCommunication", null, 1, 1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInterBrickCommunication_HasMessageInterBrickCommunication(), this.getMessage(), null, "hasMessageInterBrickCommunication", null, 1, 1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInterBrickCommunication_MessageID(), ecorePackage.getEInt(), "messageID", null, 0, 1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInterBrickCommunication_Name(), ecorePackage.getEString(), "name", null, 0, 1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwPortsEClass, HWPorts.class, "HWPorts", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHWPorts_Portnumber(), ecorePackage.getEInt(), "Portnumber", null, 0, 1, HWPorts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwInputEClass, HWInput.class, "HWInput", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1115,7 +1213,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEClass(hwInternEClass, HWIntern.class, "HWIntern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(hwExternEClass, HWExtern.class, "HWExtern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getHWExtern_Portnumber(), ecorePackage.getEInt(), "Portnumber", null, 0, 1, HWExtern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHWExtern_Pinnumber(), ecorePackage.getEInt(), "Pinnumber", null, 0, 1, HWExtern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(motorEClass, Motor.class, "Motor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1124,7 +1222,6 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMessage_MessageHeader(), ecorePackage.getEChar(), "MessageHeader", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessage_MyMessage(), ecorePackage.getEString(), "myMessage", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMessage_Name(), ecorePackage.getEString(), "name", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -11,12 +11,14 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import shootingmachineemfmodel.Alarm;
@@ -58,8 +60,146 @@ public class AlarmItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addMINCYCLEPropertyDescriptor(object);
+			addMAXALLOWEDVALUEPropertyDescriptor(object);
+			addTICKSPERBASEPropertyDescriptor(object);
+			addAUTOSTARTPropertyDescriptor(object);
+			addALARMTIMEPropertyDescriptor(object);
+			addCYCLETIMEPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the MINCYCLE feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMINCYCLEPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Alarm_MINCYCLE_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Alarm_MINCYCLE_feature", "_UI_Alarm_type"),
+				 ShootingmachineemfmodelPackage.Literals.ALARM__MINCYCLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the MAXALLOWEDVALUE feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMAXALLOWEDVALUEPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Alarm_MAXALLOWEDVALUE_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Alarm_MAXALLOWEDVALUE_feature", "_UI_Alarm_type"),
+				 ShootingmachineemfmodelPackage.Literals.ALARM__MAXALLOWEDVALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the TICKSPERBASE feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTICKSPERBASEPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Alarm_TICKSPERBASE_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Alarm_TICKSPERBASE_feature", "_UI_Alarm_type"),
+				 ShootingmachineemfmodelPackage.Literals.ALARM__TICKSPERBASE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the AUTOSTART feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAUTOSTARTPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Alarm_AUTOSTART_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Alarm_AUTOSTART_feature", "_UI_Alarm_type"),
+				 ShootingmachineemfmodelPackage.Literals.ALARM__AUTOSTART,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the ALARMTIME feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addALARMTIMEPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Alarm_ALARMTIME_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Alarm_ALARMTIME_feature", "_UI_Alarm_type"),
+				 ShootingmachineemfmodelPackage.Literals.ALARM__ALARMTIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the CYCLETIME feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCYCLETIMEPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Alarm_CYCLETIME_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Alarm_CYCLETIME_feature", "_UI_Alarm_type"),
+				 ShootingmachineemfmodelPackage.Literals.ALARM__CYCLETIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -129,6 +269,14 @@ public class AlarmItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Alarm.class)) {
+			case ShootingmachineemfmodelPackage.ALARM__MINCYCLE:
+			case ShootingmachineemfmodelPackage.ALARM__MAXALLOWEDVALUE:
+			case ShootingmachineemfmodelPackage.ALARM__TICKSPERBASE:
+			case ShootingmachineemfmodelPackage.ALARM__AUTOSTART:
+			case ShootingmachineemfmodelPackage.ALARM__ALARMTIME:
+			case ShootingmachineemfmodelPackage.ALARM__CYCLETIME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case ShootingmachineemfmodelPackage.ALARM__HAS_COUNTER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

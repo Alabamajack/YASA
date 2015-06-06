@@ -16,6 +16,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import shootingmachineemfmodel.HWInput;
+
 /**
  * This is the item provider adapter for a {@link shootingmachineemfmodel.HWInput} object.
  * <!-- begin-user-doc -->
@@ -63,7 +65,10 @@ public class HWInputItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_HWInput_type");
+		String label = ((HWInput)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_HWInput_type") :
+			getString("_UI_HWInput_type") + " " + label;
 	}
 
 	/**
