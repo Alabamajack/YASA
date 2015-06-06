@@ -1,0 +1,142 @@
+\documentclass[]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings} 
+\usepackage{xcolor}
+\usepackage{enumerate}
+
+\usepackage{hyperref}
+
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstdefinestyle{customasm}{
+  belowcaptionskip=1\baselineskip,
+  frame=L,
+  xleftmargin=\parindent,
+  language=[x86masm]Assembler,
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\itshape\color{purple!40!black},
+}
+\lstset{escapechar=@,style=customc}
+
+\newcommand{\DokAutosar}{AUTOSAR.pdf}
+
+%opening
+\title{Implementierungsvorschriften AUTOSAR}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+Kurzer Überblick
+
+\section{Coding-Rules}
+\label{sec:Coding-Rules}
+\subsection{Runnables}
+\label{sbsec:Runnables}
+Jeder Teil des Systems wird in Runnables aufgeteilt. Eine Runnable ist dabei nur eine Funktion, die vom Task, dem die Runnable zugeordnet ist, angesprungen wird(Im besten Fall per \lstinline{#define RUNABLE (CODE)}). In die Runnable gehört \underline{NUR} der reine Applikationscode. D.h. sobald eine Kommunikation mit einer anderen Komponente erfolgt, sind entsprechende \textbf{RTE}-Funktionen aufzurufen(Dokumentation: siehe \DokAutosar).\\
+Beispiel:
+\begin{lstlisting}
+//Falsch:
+TASK(Output) // definition siehe Komponentendiagramm
+{
+	myPrintln("three"); // mit wie in den Ubungen definierter Funktion myPrintln
+	TerminateTask();
+}
+// Problem: Applikationscode nicht in Runnables aufgeteilt und direkt eine OS-Funktion aufgerufen
+
+//RICHTIG:
+
+void myRunnable(char *s)
+{
+	RTE_Write_OutputPort_out(s); // bei der Codegenerierung entscheiden wir dann, welcher Codeschnipsel fuer diese Funktion eingefuegt wird
+}
+
+TASK(Output)
+{
+	myRunnable("three");
+	TerminateTask();
+}
+\end{lstlisting}
+Funktionen um Runnables übersichtlicher zu gestalten folgen im Punkt \ref{sbsec:Funktionen}. Runnables zeichnen sich außerdem aus durch:
+\begin{itemize}
+\item keinen Rückgabewert
+\item keine übergebenen Parameter
+\item keine \lstinline|while(true)| Schleifen (??)
+\end{itemize}
+
+\subsection{Funktionen}
+\label{sbsec:Funktionen}
+Es gibt zwei Arten von Funktionen:
+\begin{itemize}
+\item RTE-Funktionen
+\item nicht RTE-Funktionen, diese sind nur lokal für eine Runnable nötig
+\end{itemize}
+\subsubsection{RTE-Funktionen}
+\label{sbbsec:RTE-Funktionen}
+Alle RTE-Funktionen sind im Dokument \DokAutosar definiert. Es sind nur diese Funktionsköpfe zu nutzen. Es darf keine individuellen Anpassungen geben. Sollte jemand eine Änderung an einer Funktion benötigen(für Applikationscode) ist erst ein \textit{Issue} auf \href{www.github.com}{github} zu schreiben. Eventuell wird dann eine andere RTE-Funktion zusätzlich verfasst oder eine Änderung vorgenommen. Wenn jemand RTE-Funktionen einfach so ändert, ist er für die Seiteneffekte verantwortlich!
+
+
+\subsubsection{nicht RTE-Funktionen}
+\label{sbbsec:nicht RTE-Funktionen}
+diese Funktionen zeichnen sich dadurch aus, das sie nichts mit der übrigen Applikation zu tun haben und nur der Übersichtlichkeit innerhalb einer Runnable dienen. Es gibt zwei Möglichkeiten damit umzugehen:
+\begin{enumerate}[1.)]
+\item lokal innerhalb der Runnable definieren. Beispiel:
+\begin{lstlisting}
+void myRunnable()
+{
+	uint32_t returnbigger(uint32_t a, uint32_t b){
+		if(a < b)
+			return b;
+		else
+			return a;
+	}
+	
+	...
+	
+	bigger = returnbigger(a,b);
+}
+\end{lstlisting}
+\item global im speziellen file (Input filename), welches dann inkludiert werden muss(eindeutiger Funktionsname mit Beschreibung).
+Im besten Fall die Funktion durch \lstinline|#define XX| definieren(Achtung: siehe \ref{sbsec:Defines}). Beispiel:
+\begin{lstlisting}
+//im File funktionen.h
+#define returnbigger(a,b) (((a>b) ? a : b))
+
+//im Runnable
+void myRunnable()
+{
+	bigger = returnbigger(a,b);
+}
+\end{lstlisting}
+
+\end{enumerate}
+
+\subsection{Defines}
+\label{sbsec:Defines}
+Für die allermeisten Fälle in unserem Projekt reicht es Funktionen durch \lstinline|#define| zu deklarieren(Außerdem wird dann die Codegenerierung tendentiel leichter). Punkte, die zu beachten sind:
+\begin{itemize}
+\item Bei der Deklaration auf die Konkrete Notation achten! siehe \href{http://www2.informatik.uni-halle.de/lehre/c/c_define.html}{Notation}
+\item keine terminierendes \lstinline|;| am Ende des \lstinline|#define|! Wenn sich die Berechnung über mehrere Zeilen zieht oder einen komplett abgeschlossenen Codeblock darstellt, müssen natürlich die entsprechenden \lstinline|;| vorhanden sein. Unter Umständen ist dann auch ein abschließendes \lstinline|;| nötig. Dies ist deutlich kenntlich zu machen und ordentlich zu dokumentieren!
+\item Ein \lstinline|#define| ist \underline{GLOBAL}. Bitte bei der Namensgebung dann darauf achten, das dieses \lstinline|#define| eindeutig ist. Wenn lokale Funktionen \lstinline|#define|t werden, dann den Namen so lange und eindeutig wählen, dass zu 100\% keine Seiteneffekte auftreten können!
+\end{itemize}
+
+
+\section{Ordner- und Filestruktur}
+
+\end{document}
