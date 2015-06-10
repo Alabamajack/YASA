@@ -1,0 +1,543 @@
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h}{\section{Code/include/\-Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.h File Reference}
+\label{_y_a_s_a___r_t_e_a_p_i_8h}\index{Code/include/\-Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Code/include/\-Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+}
+
+
+In dieser Datei stehen alle Funktionsprototypen fuer den R\-T\-E. Diese sind sowohl bei der Implementierung der Funktionen als auch bei der Benutzung zu verwenden. Es dürfen keine Seiteneffekte innerhalb der Funktionen auftreten. Der den Code geschrieben hat, ist dafuer verantwortlich. Es ist eine Versionierung zu benutzen! siehe dazu Coding-\/\-Rules.  
+
+
+{\ttfamily \#include \char`\"{}Y\-A\-S\-A\-\_\-types.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a92c1912c74cdd2f1f5383ada0a5878d5}{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a52819a4508138092e02888252bd680f3}{R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In} (uint8\-\_\-t $\ast$value)
+\begin{DoxyCompactList}\small\item\em Funktion die sich aus dem Betriebssystem den Status holt, mit dem die ganze Maschinerie gestoppt werden kann. \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a057cc557e1f9c9a46c9e0a815f971830}{R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out} ()
+\begin{DoxyCompactList}\small\item\em Setzt Event für S\-W-\/\-Komponente Schussanlage Setzt ein Event wenn die Schussanlage gestoppt werden soll Dieses \char`\"{}\-Event\char`\"{} ist entweder ein wirkliches Event(konfiguriert), oder aber eine Nachricht an einen anderen Brick. \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_abb336eca805711d79288c158e9c64508}{R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In} (const \hyperlink{_y_a_s_a__types_8h_a195ef78acb1edefc968c447d077e6dda}{Y\-A\-S\-A\-\_\-message} $\ast$message)
+\begin{DoxyCompactList}\small\item\em Receiver Port für Signale von der Schussanlage. \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a436c4bca74f77c7cee049e93a6bb21bf}{R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Set\-Output\-Value\-\_\-\-O\-S\-Port\-\_\-\-Out} (const uint32\-\_\-t $\ast$degree)
+\begin{DoxyCompactList}\small\item\em Abstraktion um auf die Output-\/\-Hardware zuzugreifen. hier\-: Zugriff auf Motor. \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_ad00dd74da6ec20e0687fcd23c98e542b}{R\-T\-E\-\_\-\-Output\-\_\-\-Set\-Output\-\_\-\-O\-S\-Port\-\_\-\-Out} (const uint8\-\_\-t $\ast$message)
+\begin{DoxyCompactList}\small\item\em Aufruf einer Funktion, die Ausgaben macht. \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a4b3796d3662c11a4f9f39654d140e71e}{R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In} ()
+\begin{DoxyCompactList}\small\item\em Wartet auf ein konfiguriertes Event. \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a4f52e7ab6687cd0aabe0fd84a3bca039}{R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Server\-\_\-\-In} (\hyperlink{_y_a_s_a__types_8h_a195ef78acb1edefc968c447d077e6dda}{Y\-A\-S\-A\-\_\-message} $\ast$message)
+\begin{DoxyCompactList}\small\item\em holt sich die Nachricht, die auf dem Display angezeigt werden soll \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_ab4d201a5131a1c503222971d87402c48}{R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out} ()
+\begin{DoxyCompactList}\small\item\em setzt ein Event, das symbolisiert ob gestartet werden soll \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_af3ba52d6a26e9453d2858b5ba17878c8}{R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In} (uint8\-\_\-t $\ast$value)
+\begin{DoxyCompactList}\small\item\em Kommuniziert mit aussen und gibt an ob von aussen getriggert worden ist oder nicht. Einfachster Fall ist ein Taster, komplizierterer Fall ist z.\-B. ein Ultraschallsensor dessen Output aber auch auf einen diskreten Wert runtergebrochen werden muss. \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a02322a62903497851e596f3d39e3ca7f}{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In} ()
+\begin{DoxyCompactList}\small\item\em Wartet auf ein konfiguriertes Event. \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_ab04087938919c2afceea75a4f2cd4621}{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In} (const \hyperlink{_y_a_s_a__types_8h_a195ef78acb1edefc968c447d077e6dda}{Y\-A\-S\-A\-\_\-message} $\ast$message)
+\begin{DoxyCompactList}\small\item\em Nimmt eine Nachricht von der S\-W-\/\-Komponente Trigger entgegen. Dort wird verarbeitet ob gestartet werden soll oder nicht. \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a85005e3ae556bea61477669333ac1275}{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Send\-Message\-\_\-\-Client\-\_\-\-Out} (const \hyperlink{_y_a_s_a__types_8h_a195ef78acb1edefc968c447d077e6dda}{Y\-A\-S\-A\-\_\-message} $\ast$message)
+\begin{DoxyCompactList}\small\item\em Setzt eine Nachricht für den Multicast-\/\-Betrieb. Beinhaltet bereits die gesamte Nachricht! \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_ac544e1f4442d1828e632df31a0cfa3b4}{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out} ()
+\begin{DoxyCompactList}\small\item\em setzt Event um der S\-A\-K Output zu signalisieren, dass sich der interne Zustand geändert hat und jetzt was ausgegeben werden kann \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a30989ebe24f1860b3c1ec697395c21ea}{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out} (const \hyperlink{_y_a_s_a__types_8h_a195ef78acb1edefc968c447d077e6dda}{Y\-A\-S\-A\-\_\-message} $\ast$message)
+\begin{DoxyCompactList}\small\item\em setzt einen Befehl der von Schuss\-Motor ausgeführt werden soll \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_acaa6e2529992707c374b0743fd8f4951}{R\-T\-E\-\_\-\-Trigger\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out} (const \hyperlink{_y_a_s_a__types_8h_a195ef78acb1edefc968c447d077e6dda}{Y\-A\-S\-A\-\_\-message} $\ast$message)
+\begin{DoxyCompactList}\small\item\em setzt einen Befehl um die Zustand der Kommunikation mit aussen anzuzeigen \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a44badf70548d98836720d9d61fd2e550}{R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Message\-\_\-\-Server\-\_\-\-In} (const \hyperlink{_y_a_s_a__types_8h_a195ef78acb1edefc968c447d077e6dda}{Y\-A\-S\-A\-\_\-message} $\ast$message)
+\begin{DoxyCompactList}\small\item\em bekommt eine Nachricht, in der bestimmte Informationen über den Zustand der Schussanlage drinstehen \end{DoxyCompactList}\item 
+\hyperlink{_y_a_s_a__types_8h_ae10e86ea67357e654a764da2baa765a1}{std\-\_\-return} \hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_aa3c020a95ebf3f86df83f087a9620ff5}{R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In} ()
+\begin{DoxyCompactList}\small\item\em Status des Events abfragen, welches symbolisiert, dass der Trigger gestartet wurde. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+In dieser Datei stehen alle Funktionsprototypen fuer den R\-T\-E. Diese sind sowohl bei der Implementierung der Funktionen als auch bei der Benutzung zu verwenden. Es dürfen keine Seiteneffekte innerhalb der Funktionen auftreten. Der den Code geschrieben hat, ist dafuer verantwortlich. Es ist eine Versionierung zu benutzen! siehe dazu Coding-\/\-Rules. \begin{DoxyVersion}{Version}
+1.\-0 Initiale Version 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/07 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_a92c1912c74cdd2f1f5383ada0a5878d5}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I}}
+\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I}]{\setlength{\rightskip}{0pt plus 5cm}\#define Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I}}\label{_y_a_s_a___r_t_e_a_p_i_8h_a92c1912c74cdd2f1f5383ada0a5878d5}
+
+
+\subsection{Function Documentation}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_a4b3796d3662c11a4f9f39654d140e71e}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In@{R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In}}
+\index{R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In@{R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_a4b3796d3662c11a4f9f39654d140e71e}
+
+
+Wartet auf ein konfiguriertes Event. 
+
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert) 
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initiale Version 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/08 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_a4f52e7ab6687cd0aabe0fd84a3bca039}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Server\-\_\-\-In@{R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Server\-\_\-\-In}}
+\index{R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Server\-\_\-\-In@{R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Server\-\_\-\-In}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Server\-\_\-\-In}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Output\-\_\-\-Get\-Value\-\_\-\-Server\-\_\-\-In (
+\begin{DoxyParamCaption}
+\item[{{\bf Y\-A\-S\-A\-\_\-message} $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_a4f52e7ab6687cd0aabe0fd84a3bca039}
+
+
+holt sich die Nachricht, die auf dem Display angezeigt werden soll 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Nachricht die angezeigt werden soll \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert) 
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initiale Version 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/08 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_ad00dd74da6ec20e0687fcd23c98e542b}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Output\-\_\-\-Set\-Output\-\_\-\-O\-S\-Port\-\_\-\-Out@{R\-T\-E\-\_\-\-Output\-\_\-\-Set\-Output\-\_\-\-O\-S\-Port\-\_\-\-Out}}
+\index{R\-T\-E\-\_\-\-Output\-\_\-\-Set\-Output\-\_\-\-O\-S\-Port\-\_\-\-Out@{R\-T\-E\-\_\-\-Output\-\_\-\-Set\-Output\-\_\-\-O\-S\-Port\-\_\-\-Out}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Output\-\_\-\-Set\-Output\-\_\-\-O\-S\-Port\-\_\-\-Out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Output\-\_\-\-Set\-Output\-\_\-\-O\-S\-Port\-\_\-\-Out (
+\begin{DoxyParamCaption}
+\item[{const uint8\-\_\-t $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_ad00dd74da6ec20e0687fcd23c98e542b}
+
+
+Aufruf einer Funktion, die Ausgaben macht. 
+
+Funktionen für die S\-A-\/\-Komponente Output 
+\begin{DoxyParams}{Parameters}
+{\em message} & Nachricht die Ausgegeben werden soll. Dabei ist dies keine \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{_y_a_s_a__types_8h_a195ef78acb1edefc968c447d077e6dda}{Y\-A\-S\-A\-\_\-message} mehr, sondern nur noch die \char`\"{}nackte\char`\"{} Nachricht, die Interpretation der Nachricht erfolt in der aufrufenden S\-A\-K Output 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert) 
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initiale Version 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/08 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_ab04087938919c2afceea75a4f2cd4621}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In@{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In}}
+\index{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In@{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In (
+\begin{DoxyParamCaption}
+\item[{const {\bf Y\-A\-S\-A\-\_\-message} $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_ab04087938919c2afceea75a4f2cd4621}
+
+
+Nimmt eine Nachricht von der S\-W-\/\-Komponente Trigger entgegen. Dort wird verarbeitet ob gestartet werden soll oder nicht. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & enthält ganzzahl, wobei die Interpretation noch anzugeben ist\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initiale Version
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/10
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]Interpretation von order festlegen \begin{DoxySeeAlso}{See Also}
+R\-T\-E\-\_\-\-Trigger\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out(const uint8\-\_\-t $\ast$order); 
+\end{DoxySeeAlso}
+\end{DoxyRefDesc}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_a02322a62903497851e596f3d39e3ca7f}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In@{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In}}
+\index{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In@{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_a02322a62903497851e596f3d39e3ca7f}
+
+
+Wartet auf ein konfiguriertes Event. 
+
+Funktionen für die S\-W-\/\-Komponente Schussanlage \begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert) 
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initale Version 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/09 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_a85005e3ae556bea61477669333ac1275}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Send\-Message\-\_\-\-Client\-\_\-\-Out@{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Send\-Message\-\_\-\-Client\-\_\-\-Out}}
+\index{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Send\-Message\-\_\-\-Client\-\_\-\-Out@{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Send\-Message\-\_\-\-Client\-\_\-\-Out}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Send\-Message\-\_\-\-Client\-\_\-\-Out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Send\-Message\-\_\-\-Client\-\_\-\-Out (
+\begin{DoxyParamCaption}
+\item[{const {\bf Y\-A\-S\-A\-\_\-message} $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_a85005e3ae556bea61477669333ac1275}
+
+
+Setzt eine Nachricht für den Multicast-\/\-Betrieb. Beinhaltet bereits die gesamte Nachricht! 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Nachricht die per Multicast nach aussen gesendet werden soll\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initale Version
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/10 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_a30989ebe24f1860b3c1ec697395c21ea}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out@{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out}}
+\index{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out@{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out (
+\begin{DoxyParamCaption}
+\item[{const {\bf Y\-A\-S\-A\-\_\-message} $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_a30989ebe24f1860b3c1ec697395c21ea}
+
+
+setzt einen Befehl der von Schuss\-Motor ausgeführt werden soll 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & enthält ganzzahl die den Befehl angibt\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initale Version
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/10 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_ac544e1f4442d1828e632df31a0cfa3b4}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out@{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out}}
+\index{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out@{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_ac544e1f4442d1828e632df31a0cfa3b4}
+
+
+setzt Event um der S\-A\-K Output zu signalisieren, dass sich der interne Zustand geändert hat und jetzt was ausgegeben werden kann 
+
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initale Version
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/10 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_abb336eca805711d79288c158e9c64508}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In@{R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In}}
+\index{R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In@{R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Get\-Order\-\_\-\-Receiver\-\_\-\-In (
+\begin{DoxyParamCaption}
+\item[{const {\bf Y\-A\-S\-A\-\_\-message} $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_abb336eca805711d79288c158e9c64508}
+
+
+Receiver Port für Signale von der Schussanlage. 
+
+Funktionen für die S\-A-\/\-Komponente Schuss\-Motor 
+\begin{DoxyParams}{Parameters}
+{\em message} & enhält die Anzahl, wie oft die Aktion ausgeführt werden soll, constant(hier\-: wie oft geschossen werden soll, bis abgebrochen werden kann)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+Die restlichen Variablen die für das schiessen wichtig sind werden global definiert. Diese Definitionen sind dann zu verwenden 
+
+Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl I\-M\-M\-E\-R bis zum Ende ausgeführt wird. Sollte also 5 übergeben werden, werden diese 5 Schüsse ausgeführt, egal ob bei 1 unterbrochen werden soll!
+\end{DoxyAttention}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]globale Variablen für den Motor definieren\end{DoxyRefDesc}
+
+
+\begin{DoxySeeAlso}{See Also}
+R\-T\-E\-\_\-\-Schussanlage\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out(const uint8\-\_\-t $\ast$order);
+\end{DoxySeeAlso}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/07 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_a436c4bca74f77c7cee049e93a6bb21bf}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Set\-Output\-Value\-\_\-\-O\-S\-Port\-\_\-\-Out@{R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Set\-Output\-Value\-\_\-\-O\-S\-Port\-\_\-\-Out}}
+\index{R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Set\-Output\-Value\-\_\-\-O\-S\-Port\-\_\-\-Out@{R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Set\-Output\-Value\-\_\-\-O\-S\-Port\-\_\-\-Out}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Set\-Output\-Value\-\_\-\-O\-S\-Port\-\_\-\-Out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Schuss\-Motor\-\_\-\-Set\-Output\-Value\-\_\-\-O\-S\-Port\-\_\-\-Out (
+\begin{DoxyParamCaption}
+\item[{const uint32\-\_\-t $\ast$}]{degree}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_a436c4bca74f77c7cee049e93a6bb21bf}
+
+
+Abstraktion um auf die Output-\/\-Hardware zuzugreifen. hier\-: Zugriff auf Motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em degree} & Anzahl der Umdrehungen die der Motor machen soll\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Die übrigen Parameter um den Motor fahren zu lassen werden global definiert
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/08 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_af3ba52d6a26e9453d2858b5ba17878c8}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In@{R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In}}
+\index{R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In@{R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_af3ba52d6a26e9453d2858b5ba17878c8}
+
+
+Kommuniziert mit aussen und gibt an ob von aussen getriggert worden ist oder nicht. Einfachster Fall ist ein Taster, komplizierterer Fall ist z.\-B. ein Ultraschallsensor dessen Output aber auch auf einen diskreten Wert runtergebrochen werden muss. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & gibt an ob getriggert worden ist oder nicht -\/$>$ 0 \-:= nicht getriggertm !0 \-:= getriggert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert) 
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initiale Version 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/08 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_ab4d201a5131a1c503222971d87402c48}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out@{R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out}}
+\index{R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out@{R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Start\-Trigger\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_ab4d201a5131a1c503222971d87402c48}
+
+
+setzt ein Event, das symbolisiert ob gestartet werden soll 
+
+Funktionen für die S\-A-\/\-Komponente Start\-Trigger \begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert) 
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initiale Version 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/08 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_a52819a4508138092e02888252bd680f3}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In@{R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In}}
+\index{R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In@{R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Get\-Sensor\-Value\-\_\-\-O\-S\-Port\-\_\-\-In (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_a52819a4508138092e02888252bd680f3}
+
+
+Funktion die sich aus dem Betriebssystem den Status holt, mit dem die ganze Maschinerie gestoppt werden kann. 
+
+includes S\-A\-K Stop\-Sensor 
+\begin{DoxyParams}{Parameters}
+{\em value} & gibt an, ob von aussen gestoppt werden soll(im einfachsten Fall per Taster) 0 \-:= nicht ausgelöst !0 \-:= ausgelöst\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initiale Version 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/07 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_a057cc557e1f9c9a46c9e0a815f971830}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out@{R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out}}
+\index{R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out@{R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Stop\-Sensor\-\_\-\-Set\-Value\-\_\-\-Event\-\_\-\-Out (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_a057cc557e1f9c9a46c9e0a815f971830}
+
+
+Setzt Event für S\-W-\/\-Komponente Schussanlage Setzt ein Event wenn die Schussanlage gestoppt werden soll Dieses \char`\"{}\-Event\char`\"{} ist entweder ein wirkliches Event(konfiguriert), oder aber eine Nachricht an einen anderen Brick. 
+
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initiale Version 
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/07 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_a44badf70548d98836720d9d61fd2e550}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Message\-\_\-\-Server\-\_\-\-In@{R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Message\-\_\-\-Server\-\_\-\-In}}
+\index{R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Message\-\_\-\-Server\-\_\-\-In@{R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Message\-\_\-\-Server\-\_\-\-In}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Message\-\_\-\-Server\-\_\-\-In}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Message\-\_\-\-Server\-\_\-\-In (
+\begin{DoxyParamCaption}
+\item[{const {\bf Y\-A\-S\-A\-\_\-message} $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_a44badf70548d98836720d9d61fd2e550}
+
+
+bekommt eine Nachricht, in der bestimmte Informationen über den Zustand der Schussanlage drinstehen 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Nachricht\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initale Version
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/10
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]Nachrichten definieren, um Kommunikation sicherzustellen \end{DoxyRefDesc}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_aa3c020a95ebf3f86df83f087a9620ff5}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In@{R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In}}
+\index{R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In@{R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Trigger\-\_\-\-Get\-Value\-\_\-\-Event\-\_\-\-In (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_aa3c020a95ebf3f86df83f087a9620ff5}
+
+
+Status des Events abfragen, welches symbolisiert, dass der Trigger gestartet wurde. 
+
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initale Version
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/10 
+\end{DoxyDate}
+\hypertarget{_y_a_s_a___r_t_e_a_p_i_8h_acaa6e2529992707c374b0743fd8f4951}{\index{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}!R\-T\-E\-\_\-\-Trigger\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out@{R\-T\-E\-\_\-\-Trigger\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out}}
+\index{R\-T\-E\-\_\-\-Trigger\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out@{R\-T\-E\-\_\-\-Trigger\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out}!YASA_RTEAPI.h@{Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h}}
+\subsubsection[{R\-T\-E\-\_\-\-Trigger\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\-\_\-return} R\-T\-E\-\_\-\-Trigger\-\_\-\-Set\-Order\-\_\-\-Sender\-\_\-\-Out (
+\begin{DoxyParamCaption}
+\item[{const {\bf Y\-A\-S\-A\-\_\-message} $\ast$}]{message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{_y_a_s_a___r_t_e_a_p_i_8h_acaa6e2529992707c374b0743fd8f4951}
+
+
+setzt einen Befehl um die Zustand der Kommunikation mit aussen anzuzeigen 
+
+S\-W\-K Trigger 
+\begin{DoxyParams}{Parameters}
+{\em message} & ganzahl die angibt wie der Zustand ist\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Errorcode, 0 \-:= alles O\-K, !0 \-:= Fehlercode(aktuell undefiniert)
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0 Initale Version
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/10 
+\end{DoxyDate}
