@@ -257,6 +257,41 @@ Benötigt: Task und Timer
 \end{enumerate}
 
 \section{Versendete Nachrichten}
+Jede versendete Nachricht besteht aus 
+\begin{itemize}
+\item 1 Byte Header
+\item bis zu 127 Byte Nachricht(allerdings mit terminierender $0$, das heißt nur 126 Byte Nutzdaten)
+\end{itemize}
+Diese Größe ist Applikationsspezifisch. Außerdem gibt es noch für jede Nachricht eine eindeutige \textit{ID}, diese wird allerdings nicht von der Applikation, sondern von den \textit{Communication Services} vergeben und versendet, bleibt also für die Applikation unsichtbar.
+(TODO:)
+2 Möglichkeiten: 1 Möglichkeit die der Nachrichtenheader wird auch im ComService aufgelöst und dann kann man nur noch die eigentlichen Daten an den entsprechenden Port weiterleiten oder aber der Header wird in der Applikation aufgelöst. Ich beschreibe hier Möglichkeit 2, dann sollte das System flexibler sein, das auflösen wird dann in der SW-Komponente über einen Funktionsaufruf gemacht
+(End TODO)
+\subsection{Nachricht}
+Es gibt mehrere verschiedene Modi für Nachrichten:
+\begin{enumerate}[1.)]
+\item Nachricht: eine String-Nachricht soll übertragen:\\
+	Nachrichtenheader $\&0x80 == 1 \Rightarrow$ zeigt das die folgende Nachricht einem String entspricht: Die restlichen Bits des Header zeigen an wie viele der folgenden Nachrichtenbytes gültig sind. Der Nachrichtenheader $\&0x7F$ zeigt an wie viele Bytes als Nachricht gültig sind.
+\item Nachricht wird als Integer übertragen:
+	Nachrichtenheader $\&0x80 == 0 \Rightarrow$ zeigt an das folgende Nachricht ein Integer sein muss. Dieser ist IMMER ein \textit{unsignend integer}. Es gilt weiterhin: Alle restlichen Bits des Nachrichtenheader \textbf{müssen} $0$ sein. Die folgende Nachricht muss ausserdem auch nur aus $0$en bestehen.
+\item Nachricht wird als Event übertragen:
+	Nachrichtenheader $\&0x80 == 0 \Rightarrow$ zeigt an das folgende Nachricht ein Event übertragen wird, wenn der Nachrichtenheader nicht aus lauter $0$en besteht. Dabei ist die Eventnummer die Zahl nach dem Nachrichtenheader $\&0x7F$. Es gibt als maximal 127 verschiedene Events. Die eigentliche Nachricht besteht nur aus $0$en.
+\end{enumerate}
+\subsection{Nachrichten-IDs}
+Jede mögliche Nachricht hat eine eindeutige ID, diese wird von dem \textit{Com-Service} vergeben. Die Anzahl der IDs ist abhängig von der Applikation.\\ OS-spezifische Zugriffe können nicht über BT versendet werden und brauchen deswegen keine ID.
+Folgende IDs sind für unsere Applikation vergeben:\\~\\
+\centering
+	\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{Verbindung} & \textbf{Porttyp} & \textbf{ID}\\
+	\hline
+	SAK StopSensor - SWK Schussanlage & Event & 1\\
+	SWK Schussanlage - SAK Schussmotor & SenderReceiver & 2\\
+	SAK Start\_Trigger - SWK Trigger & Event & 4\\
+	SWK Schussanlage - SAK Output & Event & 8\\
+	SWK Schussanlage - (SWK Trigger, SAK Output) & ServerClient & 16\\
+	SWK Trigger - SWK Schussanlage & SenderReceiver & 32\\
+	\hline
+	\end{tabular}
 
 \chapter{Konventionen/Definitionen}
 \section{Tasks}
