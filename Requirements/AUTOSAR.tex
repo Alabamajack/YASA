@@ -6,12 +6,37 @@
 \usepackage{multicol}
 \usepackage{ifpdf}
 \usepackage[pdftex]{color}
+\usepackage{xcolor}
 \usepackage{scrhack}
 \usepackage{listings}
 \usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \usepackage{geometry}
 \geometry{a4paper,left=30mm,right=20mm, top=26mm, bottom=35mm}
 \usepackage{enumerate}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstdefinestyle{customasm}{
+  belowcaptionskip=1\baselineskip,
+  frame=L,
+  xleftmargin=\parindent,
+  language=[x86masm]Assembler,
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\itshape\color{purple!40!black},
+}
+\lstset{escapechar=@,style=customc}
 
 \ifpdf
   \usepackage[pdftex]{graphicx}
@@ -63,6 +88,7 @@ Tobias Schwindl (TobiS)
 	\textbf{VersionsNr} &  \textbf{Datum} & \textbf{Auslöser} & \textbf{Beschreibung} \\
 	\hline
 	1.0 & 21.04.2015 & DT & Erster Entwurf \\
+	1.1 & 7.06.2015 & & Überarbeitung/Funktionsapi\\
 	\hline
 	\end{tabular}
 
@@ -105,10 +131,10 @@ Tobias Schwindl (TobiS)
 \section{Namenskonventionen und Standardrückgabtyp (Alle)}
 
 \begin{tabular}{ll}
- Für RTE-Funktionen: & RTE\_<Funktionsname>\_<Portname>\_<Direction> \\
+ Für RTE-Funktionen: & RTE\_<Komponentenname>\_<Funktionsname>\_<Portname>\_<Direction> \\
  Für den Rest: & <Komponente>\_<Funktionsname> \\
  \\
- Standardrückgabtyp: & uint32\_t \\
+ Standardrückgabtyp: & uint32\_t $\equiv$ std\_return \\
 \end{tabular}
 
 \begin{figure}[htbp]
@@ -119,8 +145,11 @@ Tobias Schwindl (TobiS)
 \end{figure}
 
 \section{Komponenten Funktionsapi}
+Die Funktionsprototypen für die RTE-Funktionen sind in der Codedokumentation zu finden(unter \textit{YASA\_RTEAPI.h}).
 
 \chapter{Komponenten-Beschreibung}
+
+\section{Lose Beschreibung}
 
 \subsection*{Schussanlage (FL)}
 
@@ -226,5 +255,13 @@ Benötigt: Task und Timer
 	\item \lstinline|StdReturnType WriteI2C(PortName)|	
 	\end{itemize}
 \end{enumerate}
+
+\section{Versendete Nachrichten}
+
+\chapter{Konventionen/Definitionen}
+\section{Tasks}
+\subsection{impliziter Task}
+Pro Brick gibt es einen impliziten Task, der immer bei der Codegenerierung mithineingeneriert wird. Dieser Task ist für die Nachrichtenabholung, die per Bluetooth eintreffen, zuständig. Dieser Task hat nur eine Runnable. In der Runnable ist nichts zu tun, ausser auf Nachrichten zu warten und wenn eine Nachricht eintritt den Communicationservice aufzurufen/zu informieren.
+
 \end{document}
 

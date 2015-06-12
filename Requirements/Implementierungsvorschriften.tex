@@ -82,14 +82,14 @@ Funktionen um Runnables übersichtlicher zu gestalten folgen im Punkt \ref{sbsec
 
 \subsection{Funktionen}
 \label{sbsec:Funktionen}
-Es gibt zwei Arten von Funktionen:
+Es gibt zwei Arten von Funktionen, die aus der Applikation heraus aufgerufen werden können:
 \begin{itemize}
 \item RTE-Funktionen
 \item nicht RTE-Funktionen, diese sind nur lokal für eine Runnable nötig
 \end{itemize}
 \subsubsection{RTE-Funktionen}
 \label{sbbsec:RTE-Funktionen}
-Alle RTE-Funktionen sind im Dokument \DokAutosar definiert. Es sind nur diese Funktionsköpfe zu nutzen. Es darf keine individuellen Anpassungen geben. Sollte jemand eine Änderung an einer Funktion benötigen(für Applikationscode) ist erst ein \textit{Issue} auf \href{www.github.com}{github} zu schreiben. Eventuell wird dann eine andere RTE-Funktion zusätzlich verfasst oder eine Änderung vorgenommen. Wenn jemand RTE-Funktionen einfach so ändert, ist er für die Seiteneffekte verantwortlich!
+Alle RTE-Funktionen sind im Dokument \DokAutosar~definiert. Es sind nur diese Funktionsköpfe zu nutzen. Es darf keine individuellen Anpassungen geben. Sollte jemand eine Änderung an einer Funktion benötigen(für Applikationscode) ist erst ein \textit{Issue} auf \href{www.github.com}{github} zu schreiben. Eventuell wird dann eine andere RTE-Funktion zusätzlich verfasst oder eine Änderung vorgenommen. Wenn jemand RTE-Funktionen einfach so ändert, ist er für die Seiteneffekte verantwortlich!
 
 
 \subsubsection{nicht RTE-Funktionen}
@@ -134,9 +134,76 @@ Für die allermeisten Fälle in unserem Projekt reicht es Funktionen durch \lsti
 \item Bei der Deklaration auf die Konkrete Notation achten! siehe \href{http://www2.informatik.uni-halle.de/lehre/c/c_define.html}{Notation}
 \item keine terminierendes \lstinline|;| am Ende des \lstinline|#define|! Wenn sich die Berechnung über mehrere Zeilen zieht oder einen komplett abgeschlossenen Codeblock darstellt, müssen natürlich die entsprechenden \lstinline|;| vorhanden sein. Unter Umständen ist dann auch ein abschließendes \lstinline|;| nötig. Dies ist deutlich kenntlich zu machen und ordentlich zu dokumentieren!
 \item Ein \lstinline|#define| ist \underline{GLOBAL}. Bitte bei der Namensgebung dann darauf achten, das dieses \lstinline|#define| eindeutig ist. Wenn lokale Funktionen \lstinline|#define|t werden, dann den Namen so lange und eindeutig wählen, dass zu 100\% keine Seiteneffekte auftreten können!
+\item \lstinline|#define|s bitte \textbf{IMMER} mehrzeilig deklarieren. Dadurch werden die Makros erheblich leichter zu lesen!
+	Beispiel:
+	\begin{lstlisting}
+	//Falsch:
+	#define foo(value) (myfunc(value);0;)
+	//Richtig:
+	#define foo(value)\
+		myfunc(value);\
+		0;
+	\end{lstlisting}
+\item Da das Makro eine reine textuelle Übersetzung ist, ist der 'Rückgabewert', auch wenn es eigentlich keinen gibt, der Wert der ersten Anweisung im Funktiosblock! Beispiel wenn man über ein Makro den Wert 0 'zurückgeben' will:
+	\begin{lstlisting}
+	//Falsch:
+	#define mymak(value)\
+		expression1(value);\
+		0;
+		
+	//Richtig:
+	#define mymak(value)\
+		0;\
+		expression1(value);
+		
+	//im Code beim Aufruf des Codes
+	...
+	int error = mymak(2);
+	\end{lstlisting}
 \end{itemize}
 
+\subsection{Kommentare/Doxygen}
+Alle Funktionen sind zu dokumentieren(auch Runnables). Es ist sich an die bekannte \href{http://www.stack.nl/~dimitri/doxygen/}{Doxygen} zu halten. Beispiele können sich bereits bei den RTE-Funktionen genommen werden. Es sind mindestens folgende Attribute zu dokumentieren
+\begin{itemize}
+\item \lstinline|\brief| Beschreibung der Funktion, was sie macht
+\item \lstinline|@param| alle Parameter, für was sie gebraucht werden, ob sie verändert werden(Call-by-Reference) (optional, für jede Variable eigener Punkt)
+\item \lstinline|@return| Hier ist global im doxygen-file ein spezieller Errorcode definiert, sodass hier nichts anderes angegeben werden muss außer \lstinline|@Errorcode|
+\item \lstinline|@version| Die neuer Version. Angefangen bei $1.0$ und dann, je nach Veränderung innerhalb der Funktion, langsam($1.01$) oder schneller($1.1$) hochzählen. Gibt es eine grundlegende Änderung(weil z.B. die Funktion inklusive Übergabeparameter geändert werden muss) ist eine neue Version einzuführen($2.0$). Nach der Versionsnummer ist ausserdem eine Zusammenfassung der Änderungen zu vermerken(als Changelog)
+\item \lstinline|@author| Für jede neue Version die geschrieben wurde den Autor dieser Version angegeben
+\item \lstinline|@date| Das Datum der letzten Änderung
+\end{itemize}
+Außerdem gibt es noch eine Menge weiterer Tags, nützlich unter anderem:
+\begin{itemize}
+\item \lstinline|@todo| Aufgaben die noch durchgeführt werden müssen
+\item \lstinline|@warning|
+\item \lstinline|@attention|
+\end{itemize}
+Ausserdem sind alle diese Attribute noch pro file zu deklarieren(gilt nicht für files, in der sich nur eine Funktion befindet).\\
+Um alle files zu erfassen, muss (am besten direkt nach der einleitenden \lstinline|#ifndef ATTR #define ATTR|) noch ein zusätzliches \lstinline|@file FILENAME| befinden!
+
+Es braucht/muss/soll nicht jeder nach jeder Änderung die ganze Dokumentation neu erzeugen. Allerdings sollte Zeitnah eine neue Dokumentation eingecheckt werden, sodass auch die anderen immer einen leichten Zugriff auf die Funktionen haben. \href{http://www.stack.nl/~dimitri/doxygen/download.html}{Download Doxygen}.\\
+Tipp: Die meisten guten Editoren(geany,atom) unterstützen(von Haus aus oder per plugin) Unterstützung für Doxygen.
+
+\subsection{Applikationscode}
+Der Applikationscode ist in 'atomare' Strukturen zu zerteilen und entsprechend in Dateien aufzuteilen. Ein Beispiel/Vorlage befindet sich unter \lstinline|/Code/examples/Runnable|(TODO).
+Pro File hat nur eine Runnable vorhanden zu sein. Diese ist zu dokumentieren und NUR darf NUR durch die definierten \textit{RTE-Funktionen} mit der Aussenwelt kommunizieren. Diese Funktionsaufrufe können den Kontrollfluss unterbrechen!
 
 \section{Ordner- und Filestruktur}
+Hier folgt eine kurze Beschreibung welche Inhalte in welchen Ordner/Files zu finden sind:
+\begin{itemize}
+\item \lstinline|/Code|\\
+	hier liegt der ganze Applikations/RTE/Legosar-Runtime Code drin. 
+	\begin{itemize}
+	\item \lstinline|/src| src-files
+	\item \lstinline|/include| alle header-files die irgendwann im Projekt wichtig sind
+	\item \lstinline|/examples| Beispiel zu runnables, RTE-Funktionen etc.
+	\end{itemize}
+\item \lstinline|/Modell|
+\end{itemize}
+
+\section{Wichtige Konventionen/Vereinbarungen}
+\begin{itemize}
+\item 
+\end{itemize}
 
 \end{document}
