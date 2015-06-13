@@ -17,6 +17,8 @@ import shootingmachineemfmodel.Message;
 public interface PortsValidator {
 	boolean validate();
 
+	boolean validateHasMessagePorts(Message value);
+
 	boolean validateHasMessagePorts(EList<Message> value);
 
 }

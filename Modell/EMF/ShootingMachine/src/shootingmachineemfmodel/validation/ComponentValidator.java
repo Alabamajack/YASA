@@ -19,4 +19,6 @@ public interface ComponentValidator {
 
 	boolean validateHasHWPortsComponent(EList<HWPorts> value);
 
+	boolean validateHasRunnable(EList<shootingmachineemfmodel.Runnable> value);
+
 }

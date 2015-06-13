@@ -1,8 +1,7 @@
 #version=1
-ShootingMachine,0.1.0.qualifier,file:/C:/Users/Philipp/Documents/YASA/YASA/Modell/EMF/ShootingMachine/,4,false
-ShootingMachine.edit,1.0.0.qualifier,file:/C:/Users/Philipp/Documents/YASA/YASA/Modell/EMF/ShootingMachine.edit/,4,false
-ShootingMachine.editor,1.0.0.qualifier,file:/C:/Users/Philipp/Documents/YASA/YASA/Modell/EMF/ShootingMachine.editor/,4,false
-ShootingMachine.tests,1.0.0.qualifier,file:/C:/Users/Philipp/Documents/YASA/YASA/Modell/EMF/ShootingMachine.tests/,4,false
+ShootingMachine,0.1.0.qualifier,file:/C:/Users/Philipp/Documents/YASA/Modell/EMF/ShootingMachine/,4,false
+ShootingMachine.edit,1.0.0.qualifier,file:/C:/Users/Philipp/Documents/YASA/Modell/EMF/ShootingMachine.edit/,4,false
+ShootingMachine.editor,1.0.0.qualifier,file:/C:/Users/Philipp/Documents/YASA/Modell/EMF/ShootingMachine.editor/,4,false
 com.collabnet.subversion.merge,3.0.13,file:/C:/Users/Philipp/Documents/Studium/Vorlesungen/Sem%206/YASA/eclipseEMF/plugins/com.collabnet.subversion.merge_3.0.13.jar,4,false
 com.cthing.cmakeed.core,1.1.6,file:/C:/Users/Philipp/Documents/Studium/Vorlesungen/Sem%206/YASA/eclipseEMF/plugins/com.cthing.cmakeed.core_1.1.6.jar,4,false
 com.cthing.cmakeed.ui,1.1.6,file:/C:/Users/Philipp/Documents/Studium/Vorlesungen/Sem%206/YASA/eclipseEMF/plugins/com.cthing.cmakeed.ui_1.1.6.jar,4,false

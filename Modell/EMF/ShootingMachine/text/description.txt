@@ -15,24 +15,24 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
 
   Class Component -> Standardclass
     Reference hasHWPortsComponent : HWPorts<<0..*>>
+    Reference hasRunnable : Runnable<<1..*>>
 
   Class Brick -> Standardclass
     Reference hasTaskBrick : Task<<1..*>>
     Reference hasEventBrick : Event<<0..*>>
     Reference hasAlarmBrick : Alarm<<0..*>>
-    Reference hasHWPortsBrick : HWPorts<<0..*>>
-    Reference hasInterBrickCommunicationBrick : InterBrickCommunication<<1..1>>
+    Reference hasHWPortsBrick : HWPorts<<0..7>>
+    Reference hasInterBrickInBrick : InterBrickIn
+    Reference hasInterBrickOutBrick : InterBrickOut
 
   Class SA_Component -> Component
     Reference hasPortsSAC : Ports<<0..*>>
-    Reference hasRunnableSAC : Runnable<<0..*>>
 
   Class SW_Component -> Component
     Reference hasPortsSWC : Ports<<0..*>>
-    Reference hasRunnableSWC : Runnable<<0..*>>
 
   Class Ports -> Standardclass
-    Reference hasMessagePorts : Message<<0..*>>
+    Reference hasMessagePorts : Message<<1..1>>
 
   Class SenderPorts -> Ports
 
@@ -82,8 +82,6 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
     Attribute applicationcode : EString
 
   Class InterBrickCommunication -> Standardclass
-    Reference hasBrickInterBrickCommunication : Brick<<1..1>>
-    Reference hasMessageInterBrickCommunication : Message<<1..1>>
     Attribute messageID : EInt
 
   Class HWPorts -> Standardclass
@@ -105,3 +103,11 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
   Class Message -> Standardclass
     Attribute MessageHeader : EChar
     Attribute myMessage : EString
+
+  Class InterBrickIn -> InterBrickCommunication
+    Reference hasMessageInterBrickIn : Message<<1..1>>
+    Reference hasBrickInterBrickIn : Brick
+
+  Class InterBrickOut -> InterBrickCommunication
+    Reference hasMessageInterBrickOut : Message<<1..1>>
+    Reference hasBrickInterBrickIn : Brick

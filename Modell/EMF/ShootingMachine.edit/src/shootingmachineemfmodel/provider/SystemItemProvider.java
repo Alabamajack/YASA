@@ -175,7 +175,12 @@ public class SystemItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ShootingmachineemfmodelPackage.Literals.SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM,
-				 ShootingmachineemfmodelFactory.eINSTANCE.createInterBrickCommunication()));
+				 ShootingmachineemfmodelFactory.eINSTANCE.createInterBrickIn()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ShootingmachineemfmodelPackage.Literals.SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM,
+				 ShootingmachineemfmodelFactory.eINSTANCE.createInterBrickOut()));
 	}
 
 }

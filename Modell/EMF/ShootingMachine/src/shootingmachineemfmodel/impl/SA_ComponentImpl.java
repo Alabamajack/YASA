@@ -21,7 +21,6 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link shootingmachineemfmodel.impl.SA_ComponentImpl#getHasPortsSAC <em>Has Ports SAC</em>}</li>
- *   <li>{@link shootingmachineemfmodel.impl.SA_ComponentImpl#getHasRunnableSAC <em>Has Runnable SAC</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,16 +36,6 @@ public class SA_ComponentImpl extends ComponentImpl implements SA_Component {
 	 * @ordered
 	 */
 	protected EList<Ports> hasPortsSAC;
-
-	/**
-	 * The cached value of the '{@link #getHasRunnableSAC() <em>Has Runnable SAC</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getHasRunnableSAC()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<shootingmachineemfmodel.Runnable> hasRunnableSAC;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,25 +73,11 @@ public class SA_ComponentImpl extends ComponentImpl implements SA_Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<shootingmachineemfmodel.Runnable> getHasRunnableSAC() {
-		if (hasRunnableSAC == null) {
-			hasRunnableSAC = new EObjectContainmentEList<shootingmachineemfmodel.Runnable>(shootingmachineemfmodel.Runnable.class, this, ShootingmachineemfmodelPackage.SA_COMPONENT__HAS_RUNNABLE_SAC);
-		}
-		return hasRunnableSAC;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.SA_COMPONENT__HAS_PORTS_SAC:
 				return ((InternalEList<?>)getHasPortsSAC()).basicRemove(otherEnd, msgs);
-			case ShootingmachineemfmodelPackage.SA_COMPONENT__HAS_RUNNABLE_SAC:
-				return ((InternalEList<?>)getHasRunnableSAC()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -117,8 +92,6 @@ public class SA_ComponentImpl extends ComponentImpl implements SA_Component {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.SA_COMPONENT__HAS_PORTS_SAC:
 				return getHasPortsSAC();
-			case ShootingmachineemfmodelPackage.SA_COMPONENT__HAS_RUNNABLE_SAC:
-				return getHasRunnableSAC();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,10 +109,6 @@ public class SA_ComponentImpl extends ComponentImpl implements SA_Component {
 				getHasPortsSAC().clear();
 				getHasPortsSAC().addAll((Collection<? extends Ports>)newValue);
 				return;
-			case ShootingmachineemfmodelPackage.SA_COMPONENT__HAS_RUNNABLE_SAC:
-				getHasRunnableSAC().clear();
-				getHasRunnableSAC().addAll((Collection<? extends shootingmachineemfmodel.Runnable>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -155,9 +124,6 @@ public class SA_ComponentImpl extends ComponentImpl implements SA_Component {
 			case ShootingmachineemfmodelPackage.SA_COMPONENT__HAS_PORTS_SAC:
 				getHasPortsSAC().clear();
 				return;
-			case ShootingmachineemfmodelPackage.SA_COMPONENT__HAS_RUNNABLE_SAC:
-				getHasRunnableSAC().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -172,8 +138,6 @@ public class SA_ComponentImpl extends ComponentImpl implements SA_Component {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.SA_COMPONENT__HAS_PORTS_SAC:
 				return hasPortsSAC != null && !hasPortsSAC.isEmpty();
-			case ShootingmachineemfmodelPackage.SA_COMPONENT__HAS_RUNNABLE_SAC:
-				return hasRunnableSAC != null && !hasRunnableSAC.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
