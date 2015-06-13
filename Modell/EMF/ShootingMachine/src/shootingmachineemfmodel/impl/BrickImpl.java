@@ -15,7 +15,8 @@ import shootingmachineemfmodel.Alarm;
 import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.Event;
 import shootingmachineemfmodel.HWPorts;
-import shootingmachineemfmodel.InterBrickCommunication;
+import shootingmachineemfmodel.InterBrickIn;
+import shootingmachineemfmodel.InterBrickOut;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.Task;
 
@@ -30,7 +31,8 @@ import shootingmachineemfmodel.Task;
  *   <li>{@link shootingmachineemfmodel.impl.BrickImpl#getHasEventBrick <em>Has Event Brick</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.BrickImpl#getHasAlarmBrick <em>Has Alarm Brick</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.BrickImpl#getHasHWPortsBrick <em>Has HW Ports Brick</em>}</li>
- *   <li>{@link shootingmachineemfmodel.impl.BrickImpl#getHasInterBrickCommunicationBrick <em>Has Inter Brick Communication Brick</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.impl.BrickImpl#getHasInterBrickInBrick <em>Has Inter Brick In Brick</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.impl.BrickImpl#getHasInterBrickOutBrick <em>Has Inter Brick Out Brick</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,14 +80,24 @@ public class BrickImpl extends StandardclassImpl implements Brick {
 	protected EList<HWPorts> hasHWPortsBrick;
 
 	/**
-	 * The cached value of the '{@link #getHasInterBrickCommunicationBrick() <em>Has Inter Brick Communication Brick</em>}' reference.
+	 * The cached value of the '{@link #getHasInterBrickInBrick() <em>Has Inter Brick In Brick</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHasInterBrickCommunicationBrick()
+	 * @see #getHasInterBrickInBrick()
 	 * @generated
 	 * @ordered
 	 */
-	protected InterBrickCommunication hasInterBrickCommunicationBrick;
+	protected InterBrickIn hasInterBrickInBrick;
+
+	/**
+	 * The cached value of the '{@link #getHasInterBrickOutBrick() <em>Has Inter Brick Out Brick</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHasInterBrickOutBrick()
+	 * @generated
+	 * @ordered
+	 */
+	protected InterBrickOut hasInterBrickOutBrick;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,16 +171,16 @@ public class BrickImpl extends StandardclassImpl implements Brick {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterBrickCommunication getHasInterBrickCommunicationBrick() {
-		if (hasInterBrickCommunicationBrick != null && hasInterBrickCommunicationBrick.eIsProxy()) {
-			InternalEObject oldHasInterBrickCommunicationBrick = (InternalEObject)hasInterBrickCommunicationBrick;
-			hasInterBrickCommunicationBrick = (InterBrickCommunication)eResolveProxy(oldHasInterBrickCommunicationBrick);
-			if (hasInterBrickCommunicationBrick != oldHasInterBrickCommunicationBrick) {
+	public InterBrickIn getHasInterBrickInBrick() {
+		if (hasInterBrickInBrick != null && hasInterBrickInBrick.eIsProxy()) {
+			InternalEObject oldHasInterBrickInBrick = (InternalEObject)hasInterBrickInBrick;
+			hasInterBrickInBrick = (InterBrickIn)eResolveProxy(oldHasInterBrickInBrick);
+			if (hasInterBrickInBrick != oldHasInterBrickInBrick) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_COMMUNICATION_BRICK, oldHasInterBrickCommunicationBrick, hasInterBrickCommunicationBrick));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_IN_BRICK, oldHasInterBrickInBrick, hasInterBrickInBrick));
 			}
 		}
-		return hasInterBrickCommunicationBrick;
+		return hasInterBrickInBrick;
 	}
 
 	/**
@@ -176,8 +188,8 @@ public class BrickImpl extends StandardclassImpl implements Brick {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterBrickCommunication basicGetHasInterBrickCommunicationBrick() {
-		return hasInterBrickCommunicationBrick;
+	public InterBrickIn basicGetHasInterBrickInBrick() {
+		return hasInterBrickInBrick;
 	}
 
 	/**
@@ -185,11 +197,49 @@ public class BrickImpl extends StandardclassImpl implements Brick {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHasInterBrickCommunicationBrick(InterBrickCommunication newHasInterBrickCommunicationBrick) {
-		InterBrickCommunication oldHasInterBrickCommunicationBrick = hasInterBrickCommunicationBrick;
-		hasInterBrickCommunicationBrick = newHasInterBrickCommunicationBrick;
+	public void setHasInterBrickInBrick(InterBrickIn newHasInterBrickInBrick) {
+		InterBrickIn oldHasInterBrickInBrick = hasInterBrickInBrick;
+		hasInterBrickInBrick = newHasInterBrickInBrick;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_COMMUNICATION_BRICK, oldHasInterBrickCommunicationBrick, hasInterBrickCommunicationBrick));
+			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_IN_BRICK, oldHasInterBrickInBrick, hasInterBrickInBrick));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InterBrickOut getHasInterBrickOutBrick() {
+		if (hasInterBrickOutBrick != null && hasInterBrickOutBrick.eIsProxy()) {
+			InternalEObject oldHasInterBrickOutBrick = (InternalEObject)hasInterBrickOutBrick;
+			hasInterBrickOutBrick = (InterBrickOut)eResolveProxy(oldHasInterBrickOutBrick);
+			if (hasInterBrickOutBrick != oldHasInterBrickOutBrick) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_OUT_BRICK, oldHasInterBrickOutBrick, hasInterBrickOutBrick));
+			}
+		}
+		return hasInterBrickOutBrick;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InterBrickOut basicGetHasInterBrickOutBrick() {
+		return hasInterBrickOutBrick;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHasInterBrickOutBrick(InterBrickOut newHasInterBrickOutBrick) {
+		InterBrickOut oldHasInterBrickOutBrick = hasInterBrickOutBrick;
+		hasInterBrickOutBrick = newHasInterBrickOutBrick;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_OUT_BRICK, oldHasInterBrickOutBrick, hasInterBrickOutBrick));
 	}
 
 	/**
@@ -228,9 +278,12 @@ public class BrickImpl extends StandardclassImpl implements Brick {
 				return getHasAlarmBrick();
 			case ShootingmachineemfmodelPackage.BRICK__HAS_HW_PORTS_BRICK:
 				return getHasHWPortsBrick();
-			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_COMMUNICATION_BRICK:
-				if (resolve) return getHasInterBrickCommunicationBrick();
-				return basicGetHasInterBrickCommunicationBrick();
+			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_IN_BRICK:
+				if (resolve) return getHasInterBrickInBrick();
+				return basicGetHasInterBrickInBrick();
+			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_OUT_BRICK:
+				if (resolve) return getHasInterBrickOutBrick();
+				return basicGetHasInterBrickOutBrick();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -260,8 +313,11 @@ public class BrickImpl extends StandardclassImpl implements Brick {
 				getHasHWPortsBrick().clear();
 				getHasHWPortsBrick().addAll((Collection<? extends HWPorts>)newValue);
 				return;
-			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_COMMUNICATION_BRICK:
-				setHasInterBrickCommunicationBrick((InterBrickCommunication)newValue);
+			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_IN_BRICK:
+				setHasInterBrickInBrick((InterBrickIn)newValue);
+				return;
+			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_OUT_BRICK:
+				setHasInterBrickOutBrick((InterBrickOut)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -287,8 +343,11 @@ public class BrickImpl extends StandardclassImpl implements Brick {
 			case ShootingmachineemfmodelPackage.BRICK__HAS_HW_PORTS_BRICK:
 				getHasHWPortsBrick().clear();
 				return;
-			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_COMMUNICATION_BRICK:
-				setHasInterBrickCommunicationBrick((InterBrickCommunication)null);
+			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_IN_BRICK:
+				setHasInterBrickInBrick((InterBrickIn)null);
+				return;
+			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_OUT_BRICK:
+				setHasInterBrickOutBrick((InterBrickOut)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -310,8 +369,10 @@ public class BrickImpl extends StandardclassImpl implements Brick {
 				return hasAlarmBrick != null && !hasAlarmBrick.isEmpty();
 			case ShootingmachineemfmodelPackage.BRICK__HAS_HW_PORTS_BRICK:
 				return hasHWPortsBrick != null && !hasHWPortsBrick.isEmpty();
-			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_COMMUNICATION_BRICK:
-				return hasInterBrickCommunicationBrick != null;
+			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_IN_BRICK:
+				return hasInterBrickInBrick != null;
+			case ShootingmachineemfmodelPackage.BRICK__HAS_INTER_BRICK_OUT_BRICK:
+				return hasInterBrickOutBrick != null;
 		}
 		return super.eIsSet(featureID);
 	}

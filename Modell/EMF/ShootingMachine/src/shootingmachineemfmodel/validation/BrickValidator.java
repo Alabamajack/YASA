@@ -10,6 +10,8 @@ import shootingmachineemfmodel.Alarm;
 import shootingmachineemfmodel.Event;
 import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.InterBrickCommunication;
+import shootingmachineemfmodel.InterBrickIn;
+import shootingmachineemfmodel.InterBrickOut;
 import shootingmachineemfmodel.Task;
 
 /**
@@ -27,6 +29,10 @@ public interface BrickValidator {
 	boolean validateHasAlarmBrick(EList<Alarm> value);
 
 	boolean validateHasHWPortsBrick(EList<HWPorts> value);
+
+	boolean validateHasInterBrickInBrick(InterBrickIn value);
+
+	boolean validateHasInterBrickOutBrick(InterBrickOut value);
 
 	boolean validateHasInterBrickCommunicationBrick(InterBrickCommunication value);
 

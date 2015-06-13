@@ -75,7 +75,6 @@ public class SW_ComponentItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ShootingmachineemfmodelPackage.Literals.SW_COMPONENT__HAS_PORTS_SWC);
-			childrenFeatures.add(ShootingmachineemfmodelPackage.Literals.SW_COMPONENT__HAS_RUNNABLE_SWC);
 		}
 		return childrenFeatures;
 	}
@@ -131,7 +130,6 @@ public class SW_ComponentItemProvider
 
 		switch (notification.getFeatureID(SW_Component.class)) {
 			case ShootingmachineemfmodelPackage.SW_COMPONENT__HAS_PORTS_SWC:
-			case ShootingmachineemfmodelPackage.SW_COMPONENT__HAS_RUNNABLE_SWC:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -178,11 +176,6 @@ public class SW_ComponentItemProvider
 			(createChildParameter
 				(ShootingmachineemfmodelPackage.Literals.SW_COMPONENT__HAS_PORTS_SWC,
 				 ShootingmachineemfmodelFactory.eINSTANCE.createGetEvent()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ShootingmachineemfmodelPackage.Literals.SW_COMPONENT__HAS_RUNNABLE_SWC,
-				 ShootingmachineemfmodelFactory.eINSTANCE.createRunnable()));
 	}
 
 }

@@ -2,10 +2,10 @@
  */
 package shootingmachineemfmodel.impl;
 
-import java.util.Collection;
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Ports;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
@@ -25,14 +25,14 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  */
 public abstract class PortsImpl extends StandardclassImpl implements Ports {
 	/**
-	 * The cached value of the '{@link #getHasMessagePorts() <em>Has Message Ports</em>}' reference list.
+	 * The cached value of the '{@link #getHasMessagePorts() <em>Has Message Ports</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getHasMessagePorts()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Message> hasMessagePorts;
+	protected Message hasMessagePorts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -58,11 +58,37 @@ public abstract class PortsImpl extends StandardclassImpl implements Ports {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Message> getHasMessagePorts() {
-		if (hasMessagePorts == null) {
-			hasMessagePorts = new EObjectResolvingEList<Message>(Message.class, this, ShootingmachineemfmodelPackage.PORTS__HAS_MESSAGE_PORTS);
+	public Message getHasMessagePorts() {
+		if (hasMessagePorts != null && hasMessagePorts.eIsProxy()) {
+			InternalEObject oldHasMessagePorts = (InternalEObject)hasMessagePorts;
+			hasMessagePorts = (Message)eResolveProxy(oldHasMessagePorts);
+			if (hasMessagePorts != oldHasMessagePorts) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ShootingmachineemfmodelPackage.PORTS__HAS_MESSAGE_PORTS, oldHasMessagePorts, hasMessagePorts));
+			}
 		}
 		return hasMessagePorts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Message basicGetHasMessagePorts() {
+		return hasMessagePorts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHasMessagePorts(Message newHasMessagePorts) {
+		Message oldHasMessagePorts = hasMessagePorts;
+		hasMessagePorts = newHasMessagePorts;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.PORTS__HAS_MESSAGE_PORTS, oldHasMessagePorts, hasMessagePorts));
 	}
 
 	/**
@@ -74,7 +100,8 @@ public abstract class PortsImpl extends StandardclassImpl implements Ports {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.PORTS__HAS_MESSAGE_PORTS:
-				return getHasMessagePorts();
+				if (resolve) return getHasMessagePorts();
+				return basicGetHasMessagePorts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -89,8 +116,7 @@ public abstract class PortsImpl extends StandardclassImpl implements Ports {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.PORTS__HAS_MESSAGE_PORTS:
-				getHasMessagePorts().clear();
-				getHasMessagePorts().addAll((Collection<? extends Message>)newValue);
+				setHasMessagePorts((Message)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -105,7 +131,7 @@ public abstract class PortsImpl extends StandardclassImpl implements Ports {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.PORTS__HAS_MESSAGE_PORTS:
-				getHasMessagePorts().clear();
+				setHasMessagePorts((Message)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -120,7 +146,7 @@ public abstract class PortsImpl extends StandardclassImpl implements Ports {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.PORTS__HAS_MESSAGE_PORTS:
-				return hasMessagePorts != null && !hasMessagePorts.isEmpty();
+				return hasMessagePorts != null;
 		}
 		return super.eIsSet(featureID);
 	}

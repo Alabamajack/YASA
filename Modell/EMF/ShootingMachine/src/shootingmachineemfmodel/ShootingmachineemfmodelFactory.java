@@ -166,15 +166,6 @@ public interface ShootingmachineemfmodelFactory extends EFactory {
 	Runnable createRunnable();
 
 	/**
-	 * Returns a new object of class '<em>Inter Brick Communication</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Inter Brick Communication</em>'.
-	 * @generated
-	 */
-	InterBrickCommunication createInterBrickCommunication();
-
-	/**
 	 * Returns a new object of class '<em>HW Intern</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,6 +209,24 @@ public interface ShootingmachineemfmodelFactory extends EFactory {
 	 * @generated
 	 */
 	Message createMessage();
+
+	/**
+	 * Returns a new object of class '<em>Inter Brick In</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inter Brick In</em>'.
+	 * @generated
+	 */
+	InterBrickIn createInterBrickIn();
+
+	/**
+	 * Returns a new object of class '<em>Inter Brick Out</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inter Brick Out</em>'.
+	 * @generated
+	 */
+	InterBrickOut createInterBrickOut();
 
 	/**
 	 * Returns the package supported by this factory.

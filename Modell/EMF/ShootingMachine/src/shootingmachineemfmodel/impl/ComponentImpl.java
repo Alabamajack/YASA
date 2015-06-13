@@ -3,9 +3,13 @@
 package shootingmachineemfmodel.impl;
 
 import java.util.Collection;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import shootingmachineemfmodel.Component;
 import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
@@ -18,6 +22,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link shootingmachineemfmodel.impl.ComponentImpl#getHasHWPortsComponent <em>Has HW Ports Component</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.impl.ComponentImpl#getHasRunnable <em>Has Runnable</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,6 +38,16 @@ public abstract class ComponentImpl extends StandardclassImpl implements Compone
 	 * @ordered
 	 */
 	protected EList<HWPorts> hasHWPortsComponent;
+
+	/**
+	 * The cached value of the '{@link #getHasRunnable() <em>Has Runnable</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHasRunnable()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<shootingmachineemfmodel.Runnable> hasRunnable;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -70,11 +85,39 @@ public abstract class ComponentImpl extends StandardclassImpl implements Compone
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<shootingmachineemfmodel.Runnable> getHasRunnable() {
+		if (hasRunnable == null) {
+			hasRunnable = new EObjectContainmentEList<shootingmachineemfmodel.Runnable>(shootingmachineemfmodel.Runnable.class, this, ShootingmachineemfmodelPackage.COMPONENT__HAS_RUNNABLE);
+		}
+		return hasRunnable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ShootingmachineemfmodelPackage.COMPONENT__HAS_RUNNABLE:
+				return ((InternalEList<?>)getHasRunnable()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.COMPONENT__HAS_HW_PORTS_COMPONENT:
 				return getHasHWPortsComponent();
+			case ShootingmachineemfmodelPackage.COMPONENT__HAS_RUNNABLE:
+				return getHasRunnable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -92,6 +135,10 @@ public abstract class ComponentImpl extends StandardclassImpl implements Compone
 				getHasHWPortsComponent().clear();
 				getHasHWPortsComponent().addAll((Collection<? extends HWPorts>)newValue);
 				return;
+			case ShootingmachineemfmodelPackage.COMPONENT__HAS_RUNNABLE:
+				getHasRunnable().clear();
+				getHasRunnable().addAll((Collection<? extends shootingmachineemfmodel.Runnable>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -107,6 +154,9 @@ public abstract class ComponentImpl extends StandardclassImpl implements Compone
 			case ShootingmachineemfmodelPackage.COMPONENT__HAS_HW_PORTS_COMPONENT:
 				getHasHWPortsComponent().clear();
 				return;
+			case ShootingmachineemfmodelPackage.COMPONENT__HAS_RUNNABLE:
+				getHasRunnable().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -121,6 +171,8 @@ public abstract class ComponentImpl extends StandardclassImpl implements Compone
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.COMPONENT__HAS_HW_PORTS_COMPONENT:
 				return hasHWPortsComponent != null && !hasHWPortsComponent.isEmpty();
+			case ShootingmachineemfmodelPackage.COMPONENT__HAS_RUNNABLE:
+				return hasRunnable != null && !hasRunnable.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

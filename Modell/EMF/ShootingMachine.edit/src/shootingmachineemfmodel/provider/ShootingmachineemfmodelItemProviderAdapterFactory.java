@@ -440,29 +440,6 @@ public class ShootingmachineemfmodelItemProviderAdapterFactory extends Shootingm
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link shootingmachineemfmodel.InterBrickCommunication} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InterBrickCommunicationItemProvider interBrickCommunicationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link shootingmachineemfmodel.InterBrickCommunication}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createInterBrickCommunicationAdapter() {
-		if (interBrickCommunicationItemProvider == null) {
-			interBrickCommunicationItemProvider = new InterBrickCommunicationItemProvider(this);
-		}
-
-		return interBrickCommunicationItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link shootingmachineemfmodel.HWIntern} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -575,6 +552,52 @@ public class ShootingmachineemfmodelItemProviderAdapterFactory extends Shootingm
 		}
 
 		return messageItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link shootingmachineemfmodel.InterBrickIn} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InterBrickInItemProvider interBrickInItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link shootingmachineemfmodel.InterBrickIn}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInterBrickInAdapter() {
+		if (interBrickInItemProvider == null) {
+			interBrickInItemProvider = new InterBrickInItemProvider(this);
+		}
+
+		return interBrickInItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link shootingmachineemfmodel.InterBrickOut} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InterBrickOutItemProvider interBrickOutItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link shootingmachineemfmodel.InterBrickOut}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInterBrickOutAdapter() {
+		if (interBrickOutItemProvider == null) {
+			interBrickOutItemProvider = new InterBrickOutItemProvider(this);
+		}
+
+		return interBrickOutItemProvider;
 	}
 
 	/**
@@ -692,12 +715,13 @@ public class ShootingmachineemfmodelItemProviderAdapterFactory extends Shootingm
 		if (counterItemProvider != null) counterItemProvider.dispose();
 		if (connectionsItemProvider != null) connectionsItemProvider.dispose();
 		if (runnableItemProvider != null) runnableItemProvider.dispose();
-		if (interBrickCommunicationItemProvider != null) interBrickCommunicationItemProvider.dispose();
 		if (hwInternItemProvider != null) hwInternItemProvider.dispose();
 		if (hwExternItemProvider != null) hwExternItemProvider.dispose();
 		if (motorItemProvider != null) motorItemProvider.dispose();
 		if (displayItemProvider != null) displayItemProvider.dispose();
 		if (messageItemProvider != null) messageItemProvider.dispose();
+		if (interBrickInItemProvider != null) interBrickInItemProvider.dispose();
+		if (interBrickOutItemProvider != null) interBrickOutItemProvider.dispose();
 	}
 
 }

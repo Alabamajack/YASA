@@ -16,7 +16,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link shootingmachineemfmodel.Brick#getHasEventBrick <em>Has Event Brick</em>}</li>
  *   <li>{@link shootingmachineemfmodel.Brick#getHasAlarmBrick <em>Has Alarm Brick</em>}</li>
  *   <li>{@link shootingmachineemfmodel.Brick#getHasHWPortsBrick <em>Has HW Ports Brick</em>}</li>
- *   <li>{@link shootingmachineemfmodel.Brick#getHasInterBrickCommunicationBrick <em>Has Inter Brick Communication Brick</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.Brick#getHasInterBrickInBrick <em>Has Inter Brick In Brick</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.Brick#getHasInterBrickOutBrick <em>Has Inter Brick Out Brick</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,35 +85,61 @@ public interface Brick extends Standardclass {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Has HW Ports Brick</em>' containment reference list.
 	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getBrick_HasHWPortsBrick()
-	 * @model containment="true"
+	 * @model containment="true" upper="7"
 	 * @generated
 	 */
 	EList<HWPorts> getHasHWPortsBrick();
 
 	/**
-	 * Returns the value of the '<em><b>Has Inter Brick Communication Brick</b></em>' reference.
+	 * Returns the value of the '<em><b>Has Inter Brick In Brick</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Has Inter Brick Communication Brick</em>' reference isn't clear,
+	 * If the meaning of the '<em>Has Inter Brick In Brick</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Inter Brick Communication Brick</em>' reference.
-	 * @see #setHasInterBrickCommunicationBrick(InterBrickCommunication)
-	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getBrick_HasInterBrickCommunicationBrick()
-	 * @model required="true"
+	 * @return the value of the '<em>Has Inter Brick In Brick</em>' reference.
+	 * @see #setHasInterBrickInBrick(InterBrickIn)
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getBrick_HasInterBrickInBrick()
+	 * @model
 	 * @generated
 	 */
-	InterBrickCommunication getHasInterBrickCommunicationBrick();
+	InterBrickIn getHasInterBrickInBrick();
 
 	/**
-	 * Sets the value of the '{@link shootingmachineemfmodel.Brick#getHasInterBrickCommunicationBrick <em>Has Inter Brick Communication Brick</em>}' reference.
+	 * Sets the value of the '{@link shootingmachineemfmodel.Brick#getHasInterBrickInBrick <em>Has Inter Brick In Brick</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Inter Brick Communication Brick</em>' reference.
-	 * @see #getHasInterBrickCommunicationBrick()
+	 * @param value the new value of the '<em>Has Inter Brick In Brick</em>' reference.
+	 * @see #getHasInterBrickInBrick()
 	 * @generated
 	 */
-	void setHasInterBrickCommunicationBrick(InterBrickCommunication value);
+	void setHasInterBrickInBrick(InterBrickIn value);
+
+	/**
+	 * Returns the value of the '<em><b>Has Inter Brick Out Brick</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Has Inter Brick Out Brick</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Has Inter Brick Out Brick</em>' reference.
+	 * @see #setHasInterBrickOutBrick(InterBrickOut)
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getBrick_HasInterBrickOutBrick()
+	 * @model
+	 * @generated
+	 */
+	InterBrickOut getHasInterBrickOutBrick();
+
+	/**
+	 * Sets the value of the '{@link shootingmachineemfmodel.Brick#getHasInterBrickOutBrick <em>Has Inter Brick Out Brick</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Has Inter Brick Out Brick</em>' reference.
+	 * @see #getHasInterBrickOutBrick()
+	 * @generated
+	 */
+	void setHasInterBrickOutBrick(InterBrickOut value);
 
 } // Brick

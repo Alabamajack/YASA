@@ -3,13 +3,9 @@
 package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.InterBrickCommunication;
-import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
 /**
@@ -19,35 +15,13 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getHasBrickInterBrickCommunication <em>Has Brick Inter Brick Communication</em>}</li>
- *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getHasMessageInterBrickCommunication <em>Has Message Inter Brick Communication</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getMessageID <em>Message ID</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class InterBrickCommunicationImpl extends StandardclassImpl implements InterBrickCommunication {
-	/**
-	 * The cached value of the '{@link #getHasBrickInterBrickCommunication() <em>Has Brick Inter Brick Communication</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getHasBrickInterBrickCommunication()
-	 * @generated
-	 * @ordered
-	 */
-	protected Brick hasBrickInterBrickCommunication;
-
-	/**
-	 * The cached value of the '{@link #getHasMessageInterBrickCommunication() <em>Has Message Inter Brick Communication</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getHasMessageInterBrickCommunication()
-	 * @generated
-	 * @ordered
-	 */
-	protected Message hasMessageInterBrickCommunication;
-
+public abstract class InterBrickCommunicationImpl extends StandardclassImpl implements InterBrickCommunication {
 	/**
 	 * The default value of the '{@link #getMessageID() <em>Message ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -92,87 +66,6 @@ public class InterBrickCommunicationImpl extends StandardclassImpl implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Brick getHasBrickInterBrickCommunication() {
-		if (hasBrickInterBrickCommunication != null && hasBrickInterBrickCommunication.eIsProxy()) {
-			InternalEObject oldHasBrickInterBrickCommunication = (InternalEObject)hasBrickInterBrickCommunication;
-			hasBrickInterBrickCommunication = (Brick)eResolveProxy(oldHasBrickInterBrickCommunication);
-			if (hasBrickInterBrickCommunication != oldHasBrickInterBrickCommunication) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_BRICK_INTER_BRICK_COMMUNICATION, oldHasBrickInterBrickCommunication, hasBrickInterBrickCommunication));
-			}
-		}
-		return hasBrickInterBrickCommunication;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Brick basicGetHasBrickInterBrickCommunication() {
-		return hasBrickInterBrickCommunication;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setHasBrickInterBrickCommunication(Brick newHasBrickInterBrickCommunication) {
-		Brick oldHasBrickInterBrickCommunication = hasBrickInterBrickCommunication;
-		hasBrickInterBrickCommunication = newHasBrickInterBrickCommunication;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_BRICK_INTER_BRICK_COMMUNICATION, oldHasBrickInterBrickCommunication, hasBrickInterBrickCommunication));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Message getHasMessageInterBrickCommunication() {
-		return hasMessageInterBrickCommunication;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetHasMessageInterBrickCommunication(Message newHasMessageInterBrickCommunication, NotificationChain msgs) {
-		Message oldHasMessageInterBrickCommunication = hasMessageInterBrickCommunication;
-		hasMessageInterBrickCommunication = newHasMessageInterBrickCommunication;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION, oldHasMessageInterBrickCommunication, newHasMessageInterBrickCommunication);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setHasMessageInterBrickCommunication(Message newHasMessageInterBrickCommunication) {
-		if (newHasMessageInterBrickCommunication != hasMessageInterBrickCommunication) {
-			NotificationChain msgs = null;
-			if (hasMessageInterBrickCommunication != null)
-				msgs = ((InternalEObject)hasMessageInterBrickCommunication).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION, null, msgs);
-			if (newHasMessageInterBrickCommunication != null)
-				msgs = ((InternalEObject)newHasMessageInterBrickCommunication).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION, null, msgs);
-			msgs = basicSetHasMessageInterBrickCommunication(newHasMessageInterBrickCommunication, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION, newHasMessageInterBrickCommunication, newHasMessageInterBrickCommunication));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getMessageID() {
 		return messageID;
 	}
@@ -195,27 +88,8 @@ public class InterBrickCommunicationImpl extends StandardclassImpl implements In
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION:
-				return basicSetHasMessageInterBrickCommunication(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_BRICK_INTER_BRICK_COMMUNICATION:
-				if (resolve) return getHasBrickInterBrickCommunication();
-				return basicGetHasBrickInterBrickCommunication();
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION:
-				return getHasMessageInterBrickCommunication();
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__MESSAGE_ID:
 				return getMessageID();
 		}
@@ -230,12 +104,6 @@ public class InterBrickCommunicationImpl extends StandardclassImpl implements In
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_BRICK_INTER_BRICK_COMMUNICATION:
-				setHasBrickInterBrickCommunication((Brick)newValue);
-				return;
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION:
-				setHasMessageInterBrickCommunication((Message)newValue);
-				return;
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__MESSAGE_ID:
 				setMessageID((Integer)newValue);
 				return;
@@ -251,12 +119,6 @@ public class InterBrickCommunicationImpl extends StandardclassImpl implements In
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_BRICK_INTER_BRICK_COMMUNICATION:
-				setHasBrickInterBrickCommunication((Brick)null);
-				return;
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION:
-				setHasMessageInterBrickCommunication((Message)null);
-				return;
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__MESSAGE_ID:
 				setMessageID(MESSAGE_ID_EDEFAULT);
 				return;
@@ -272,10 +134,6 @@ public class InterBrickCommunicationImpl extends StandardclassImpl implements In
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_BRICK_INTER_BRICK_COMMUNICATION:
-				return hasBrickInterBrickCommunication != null;
-			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION:
-				return hasMessageInterBrickCommunication != null;
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__MESSAGE_ID:
 				return messageID != MESSAGE_ID_EDEFAULT;
 		}

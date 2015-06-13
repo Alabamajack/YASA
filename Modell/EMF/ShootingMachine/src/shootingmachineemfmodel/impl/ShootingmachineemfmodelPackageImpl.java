@@ -22,6 +22,8 @@ import shootingmachineemfmodel.HWIntern;
 import shootingmachineemfmodel.HWOutput;
 import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.InterBrickCommunication;
+import shootingmachineemfmodel.InterBrickIn;
+import shootingmachineemfmodel.InterBrickOut;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Motor;
 import shootingmachineemfmodel.Ports;
@@ -256,6 +258,20 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	private EClass messageEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass interBrickInEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass interBrickOutEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -384,6 +400,15 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getComponent_HasRunnable() {
+		return (EReference)componentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBrick() {
 		return brickEClass;
 	}
@@ -429,8 +454,17 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBrick_HasInterBrickCommunicationBrick() {
+	public EReference getBrick_HasInterBrickInBrick() {
 		return (EReference)brickEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBrick_HasInterBrickOutBrick() {
+		return (EReference)brickEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -456,15 +490,6 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSA_Component_HasRunnableSAC() {
-		return (EReference)sA_ComponentEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getSW_Component() {
 		return sW_ComponentEClass;
 	}
@@ -476,15 +501,6 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 */
 	public EReference getSW_Component_HasPortsSWC() {
 		return (EReference)sW_ComponentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSW_Component_HasRunnableSWC() {
-		return (EReference)sW_ComponentEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -807,26 +823,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterBrickCommunication_HasBrickInterBrickCommunication() {
-		return (EReference)interBrickCommunicationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getInterBrickCommunication_HasMessageInterBrickCommunication() {
-		return (EReference)interBrickCommunicationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getInterBrickCommunication_MessageID() {
-		return (EAttribute)interBrickCommunicationEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)interBrickCommunicationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -942,6 +940,60 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInterBrickIn() {
+		return interBrickInEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInterBrickIn_HasMessageInterBrickIn() {
+		return (EReference)interBrickInEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInterBrickIn_HasBrickInterBrickIn() {
+		return (EReference)interBrickInEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInterBrickOut() {
+		return interBrickOutEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInterBrickOut_HasMessageInterBrickOut() {
+		return (EReference)interBrickOutEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInterBrickOut_HasBrickInterBrickIn() {
+		return (EReference)interBrickOutEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ShootingmachineemfmodelFactory getShootingmachineemfmodelFactory() {
 		return (ShootingmachineemfmodelFactory)getEFactoryInstance();
 	}
@@ -973,21 +1025,21 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 
 		componentEClass = createEClass(COMPONENT);
 		createEReference(componentEClass, COMPONENT__HAS_HW_PORTS_COMPONENT);
+		createEReference(componentEClass, COMPONENT__HAS_RUNNABLE);
 
 		brickEClass = createEClass(BRICK);
 		createEReference(brickEClass, BRICK__HAS_TASK_BRICK);
 		createEReference(brickEClass, BRICK__HAS_EVENT_BRICK);
 		createEReference(brickEClass, BRICK__HAS_ALARM_BRICK);
 		createEReference(brickEClass, BRICK__HAS_HW_PORTS_BRICK);
-		createEReference(brickEClass, BRICK__HAS_INTER_BRICK_COMMUNICATION_BRICK);
+		createEReference(brickEClass, BRICK__HAS_INTER_BRICK_IN_BRICK);
+		createEReference(brickEClass, BRICK__HAS_INTER_BRICK_OUT_BRICK);
 
 		sA_ComponentEClass = createEClass(SA_COMPONENT);
 		createEReference(sA_ComponentEClass, SA_COMPONENT__HAS_PORTS_SAC);
-		createEReference(sA_ComponentEClass, SA_COMPONENT__HAS_RUNNABLE_SAC);
 
 		sW_ComponentEClass = createEClass(SW_COMPONENT);
 		createEReference(sW_ComponentEClass, SW_COMPONENT__HAS_PORTS_SWC);
-		createEReference(sW_ComponentEClass, SW_COMPONENT__HAS_RUNNABLE_SWC);
 
 		portsEClass = createEClass(PORTS);
 		createEReference(portsEClass, PORTS__HAS_MESSAGE_PORTS);
@@ -1040,8 +1092,6 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		createEAttribute(runnableEClass, RUNNABLE__APPLICATIONCODE);
 
 		interBrickCommunicationEClass = createEClass(INTER_BRICK_COMMUNICATION);
-		createEReference(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__HAS_BRICK_INTER_BRICK_COMMUNICATION);
-		createEReference(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__HAS_MESSAGE_INTER_BRICK_COMMUNICATION);
 		createEAttribute(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__MESSAGE_ID);
 
 		hwPortsEClass = createEClass(HW_PORTS);
@@ -1063,6 +1113,14 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		messageEClass = createEClass(MESSAGE);
 		createEAttribute(messageEClass, MESSAGE__MESSAGE_HEADER);
 		createEAttribute(messageEClass, MESSAGE__MY_MESSAGE);
+
+		interBrickInEClass = createEClass(INTER_BRICK_IN);
+		createEReference(interBrickInEClass, INTER_BRICK_IN__HAS_MESSAGE_INTER_BRICK_IN);
+		createEReference(interBrickInEClass, INTER_BRICK_IN__HAS_BRICK_INTER_BRICK_IN);
+
+		interBrickOutEClass = createEClass(INTER_BRICK_OUT);
+		createEReference(interBrickOutEClass, INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT);
+		createEReference(interBrickOutEClass, INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN);
 	}
 
 	/**
@@ -1122,6 +1180,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		motorEClass.getESuperTypes().add(this.getHWOutput());
 		displayEClass.getESuperTypes().add(this.getHWOutput());
 		messageEClass.getESuperTypes().add(this.getStandardclass());
+		interBrickInEClass.getESuperTypes().add(this.getInterBrickCommunication());
+		interBrickOutEClass.getESuperTypes().add(this.getInterBrickCommunication());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(systemEClass, shootingmachineemfmodel.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1132,24 +1192,24 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 
 		initEClass(componentEClass, Component.class, "Component", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComponent_HasHWPortsComponent(), this.getHWPorts(), null, "hasHWPortsComponent", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponent_HasRunnable(), this.getRunnable(), null, "hasRunnable", null, 1, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(brickEClass, Brick.class, "Brick", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBrick_HasTaskBrick(), this.getTask(), null, "hasTaskBrick", null, 1, -1, Brick.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBrick_HasEventBrick(), this.getEvent(), null, "hasEventBrick", null, 0, -1, Brick.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBrick_HasAlarmBrick(), this.getAlarm(), null, "hasAlarmBrick", null, 0, -1, Brick.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBrick_HasHWPortsBrick(), this.getHWPorts(), null, "hasHWPortsBrick", null, 0, -1, Brick.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBrick_HasInterBrickCommunicationBrick(), this.getInterBrickCommunication(), null, "hasInterBrickCommunicationBrick", null, 1, 1, Brick.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBrick_HasHWPortsBrick(), this.getHWPorts(), null, "hasHWPortsBrick", null, 0, 7, Brick.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBrick_HasInterBrickInBrick(), this.getInterBrickIn(), null, "hasInterBrickInBrick", null, 0, 1, Brick.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBrick_HasInterBrickOutBrick(), this.getInterBrickOut(), null, "hasInterBrickOutBrick", null, 0, 1, Brick.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sA_ComponentEClass, SA_Component.class, "SA_Component", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSA_Component_HasPortsSAC(), this.getPorts(), null, "hasPortsSAC", null, 0, -1, SA_Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSA_Component_HasRunnableSAC(), this.getRunnable(), null, "hasRunnableSAC", null, 0, -1, SA_Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sW_ComponentEClass, SW_Component.class, "SW_Component", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSW_Component_HasPortsSWC(), this.getPorts(), null, "hasPortsSWC", null, 0, -1, SW_Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSW_Component_HasRunnableSWC(), this.getRunnable(), null, "hasRunnableSWC", null, 0, -1, SW_Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(portsEClass, Ports.class, "Ports", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPorts_HasMessagePorts(), this.getMessage(), null, "hasMessagePorts", null, 0, -1, Ports.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPorts_HasMessagePorts(), this.getMessage(), null, "hasMessagePorts", null, 1, 1, Ports.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(senderPortsEClass, SenderPorts.class, "SenderPorts", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1198,9 +1258,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEClass(runnableEClass, shootingmachineemfmodel.Runnable.class, "Runnable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRunnable_Applicationcode(), ecorePackage.getEString(), "applicationcode", null, 0, 1, shootingmachineemfmodel.Runnable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(interBrickCommunicationEClass, InterBrickCommunication.class, "InterBrickCommunication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInterBrickCommunication_HasBrickInterBrickCommunication(), this.getBrick(), null, "hasBrickInterBrickCommunication", null, 1, 1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInterBrickCommunication_HasMessageInterBrickCommunication(), this.getMessage(), null, "hasMessageInterBrickCommunication", null, 1, 1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(interBrickCommunicationEClass, InterBrickCommunication.class, "InterBrickCommunication", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInterBrickCommunication_MessageID(), ecorePackage.getEInt(), "messageID", null, 0, 1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwPortsEClass, HWPorts.class, "HWPorts", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1222,6 +1280,14 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMessage_MessageHeader(), ecorePackage.getEChar(), "MessageHeader", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessage_MyMessage(), ecorePackage.getEString(), "myMessage", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(interBrickInEClass, InterBrickIn.class, "InterBrickIn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInterBrickIn_HasMessageInterBrickIn(), this.getMessage(), null, "hasMessageInterBrickIn", null, 1, 1, InterBrickIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInterBrickIn_HasBrickInterBrickIn(), this.getBrick(), null, "hasBrickInterBrickIn", null, 0, 1, InterBrickIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(interBrickOutEClass, InterBrickOut.class, "InterBrickOut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInterBrickOut_HasMessageInterBrickOut(), this.getMessage(), null, "hasMessageInterBrickOut", null, 1, 1, InterBrickOut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInterBrickOut_HasBrickInterBrickIn(), this.getBrick(), null, "hasBrickInterBrickIn", null, 0, 1, InterBrickOut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

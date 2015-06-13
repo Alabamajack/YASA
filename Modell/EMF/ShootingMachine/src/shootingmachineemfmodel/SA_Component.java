@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link shootingmachineemfmodel.SA_Component#getHasPortsSAC <em>Has Ports SAC</em>}</li>
- *   <li>{@link shootingmachineemfmodel.SA_Component#getHasRunnableSAC <em>Has Runnable SAC</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,21 +37,5 @@ public interface SA_Component extends Component {
 	 * @generated
 	 */
 	EList<Ports> getHasPortsSAC();
-
-	/**
-	 * Returns the value of the '<em><b>Has Runnable SAC</b></em>' containment reference list.
-	 * The list contents are of type {@link shootingmachineemfmodel.Runnable}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Has Runnable SAC</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Runnable SAC</em>' containment reference list.
-	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getSA_Component_HasRunnableSAC()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<shootingmachineemfmodel.Runnable> getHasRunnableSAC();
 
 } // SA_Component
