@@ -72,26 +72,26 @@ public class ShootingmachineemfmodelItemProviderAdapterFactory extends Shootingm
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link shootingmachineemfmodel.System} instances.
+	 * This keeps track of the one adapter used for all {@link shootingmachineemfmodel.ToplevelSystem} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SystemItemProvider systemItemProvider;
+	protected ToplevelSystemItemProvider toplevelSystemItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link shootingmachineemfmodel.System}.
+	 * This creates an adapter for a {@link shootingmachineemfmodel.ToplevelSystem}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSystemAdapter() {
-		if (systemItemProvider == null) {
-			systemItemProvider = new SystemItemProvider(this);
+	public Adapter createToplevelSystemAdapter() {
+		if (toplevelSystemItemProvider == null) {
+			toplevelSystemItemProvider = new ToplevelSystemItemProvider(this);
 		}
 
-		return systemItemProvider;
+		return toplevelSystemItemProvider;
 	}
 
 	/**
@@ -368,29 +368,6 @@ public class ShootingmachineemfmodelItemProviderAdapterFactory extends Shootingm
 		}
 
 		return alarmItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link shootingmachineemfmodel.Counter} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CounterItemProvider counterItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link shootingmachineemfmodel.Counter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCounterAdapter() {
-		if (counterItemProvider == null) {
-			counterItemProvider = new CounterItemProvider(this);
-		}
-
-		return counterItemProvider;
 	}
 
 	/**
@@ -699,7 +676,7 @@ public class ShootingmachineemfmodelItemProviderAdapterFactory extends Shootingm
 	 * @generated
 	 */
 	public void dispose() {
-		if (systemItemProvider != null) systemItemProvider.dispose();
+		if (toplevelSystemItemProvider != null) toplevelSystemItemProvider.dispose();
 		if (brickItemProvider != null) brickItemProvider.dispose();
 		if (sA_ComponentItemProvider != null) sA_ComponentItemProvider.dispose();
 		if (sW_ComponentItemProvider != null) sW_ComponentItemProvider.dispose();
@@ -712,7 +689,6 @@ public class ShootingmachineemfmodelItemProviderAdapterFactory extends Shootingm
 		if (taskItemProvider != null) taskItemProvider.dispose();
 		if (eventItemProvider != null) eventItemProvider.dispose();
 		if (alarmItemProvider != null) alarmItemProvider.dispose();
-		if (counterItemProvider != null) counterItemProvider.dispose();
 		if (connectionsItemProvider != null) connectionsItemProvider.dispose();
 		if (runnableItemProvider != null) runnableItemProvider.dispose();
 		if (hwInternItemProvider != null) hwInternItemProvider.dispose();

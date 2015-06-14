@@ -11,7 +11,6 @@ import shootingmachineemfmodel.Alarm;
 import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.Client;
 import shootingmachineemfmodel.Connections;
-import shootingmachineemfmodel.Counter;
 import shootingmachineemfmodel.Display;
 import shootingmachineemfmodel.Event;
 import shootingmachineemfmodel.GetEvent;
@@ -30,6 +29,7 @@ import shootingmachineemfmodel.Server;
 import shootingmachineemfmodel.ShootingmachineemfmodelFactory;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.Task;
+import shootingmachineemfmodel.ToplevelSystem;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,7 +75,7 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ShootingmachineemfmodelPackage.SYSTEM: return createSystem();
+			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM: return createToplevelSystem();
 			case ShootingmachineemfmodelPackage.BRICK: return createBrick();
 			case ShootingmachineemfmodelPackage.SA_COMPONENT: return createSA_Component();
 			case ShootingmachineemfmodelPackage.SW_COMPONENT: return createSW_Component();
@@ -88,7 +88,6 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 			case ShootingmachineemfmodelPackage.TASK: return createTask();
 			case ShootingmachineemfmodelPackage.EVENT: return createEvent();
 			case ShootingmachineemfmodelPackage.ALARM: return createAlarm();
-			case ShootingmachineemfmodelPackage.COUNTER: return createCounter();
 			case ShootingmachineemfmodelPackage.CONNECTIONS: return createConnections();
 			case ShootingmachineemfmodelPackage.RUNNABLE: return createRunnable();
 			case ShootingmachineemfmodelPackage.HW_INTERN: return createHWIntern();
@@ -108,9 +107,9 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public shootingmachineemfmodel.System createSystem() {
-		SystemImpl system = new SystemImpl();
-		return system;
+	public ToplevelSystem createToplevelSystem() {
+		ToplevelSystemImpl toplevelSystem = new ToplevelSystemImpl();
+		return toplevelSystem;
 	}
 
 	/**
@@ -231,16 +230,6 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 	public Alarm createAlarm() {
 		AlarmImpl alarm = new AlarmImpl();
 		return alarm;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Counter createCounter() {
-		CounterImpl counter = new CounterImpl();
-		return counter;
 	}
 
 	/**

@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="shootingmachineemfmodel.tests.ShootingmachineemfmodelExample"/>
+<fullyQualifiedTypeName name="org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl"/>
+<fullyQualifiedTypeName name="java.nio.file.Files"/>
+<fullyQualifiedTypeName name="shootingmachineemfmodel.Brick"/>
+<fullyQualifiedTypeName name="shootingmachineemfmodel.ToplevelSystem"/>
+<fullyQualifiedTypeName name="shootingmachineemfmodel.Standardclass"/>
+</qualifiedTypeNameHistroy>

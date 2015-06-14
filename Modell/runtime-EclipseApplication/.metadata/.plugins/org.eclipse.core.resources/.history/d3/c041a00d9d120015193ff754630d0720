@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shootingmachineemfmodel:ToplevelSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:shootingmachineemfmodel="http://shootingmachineemfmodel/1.0">
+  <hasBrick name="Brick1"/>
+  <hasBrick name="Brick2"/>
+</shootingmachineemfmodel:ToplevelSystem>
