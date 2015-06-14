@@ -1,0 +1,84 @@
+#include "implementation.oil"
+
+CPU ATMEL_AT91SAM7S256
+{
+	OS LEJOS_OSEK
+	{
+		STATUS = EXTENDED;
+		STARTUPHOOK = FALSE;
+		ERRORHOOK = FALSE;
+		SHUTDOWNHOOK = FALSE;
+		PRETASKHOOK = FALSE;
+		POSTTASKHOOK = FALSE;
+		USEGETSERVICEID = FALSE;
+		USEPARAMETERACCESS = FALSE;
+		USERESSCHEDULER = FALSE;
+	};
+
+	APPMODE LEGOSAR{};
+
+	TASK Main
+	{
+		AUTOSTART = FALSE;
+		PRIORITY = 0;
+		ACIVATION = 0;
+		SCHEDULE = FULL;
+		STACKSIZE = 512;
+		EVENT = evt_abort;
+	};
+
+	ALARM Alarm1
+	{
+		COUNTER = Alarm1;
+		ACTION = ACTIVATETASK
+		{
+			TASK = Main;
+		};
+		AUTOSTART = FALSE;
+	};
+
+	COUNTER Alarm1
+	{
+		MINCYCLE = 0;
+		MAXALLOWEDVALUE = 0;
+		TICKSPERBASE = 0;
+	};
+
+	TASK Schussanlage
+	{
+		AUTOSTART = FALSE;
+		PRIORITY = 0;
+		ACIVATION = 0;
+		SCHEDULE = FULL;
+		STACKSIZE = 512;
+		EVENT = evt_shoot;
+	};
+
+	ALARM Alarm2
+	{
+		COUNTER = Alarm2;
+		ACTION = ACTIVATETASK
+		{
+			TASK = Schussanlage;
+		};
+		AUTOSTART = FALSE;
+	};
+
+	COUNTER Alarm2
+	{
+		MINCYCLE = 0;
+		MAXALLOWEDVALUE = 0;
+		TICKSPERBASE = 0;
+	};
+
+	EVENT evt_shoot
+	{
+		MASK = AUTO;
+	};
+
+	EVENT evt_abort
+	{
+		MASK = AUTO;
+	};
+
+};

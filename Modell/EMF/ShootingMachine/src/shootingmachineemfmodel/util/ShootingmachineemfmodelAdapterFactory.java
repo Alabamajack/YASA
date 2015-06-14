@@ -11,7 +11,6 @@ import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.Client;
 import shootingmachineemfmodel.Component;
 import shootingmachineemfmodel.Connections;
-import shootingmachineemfmodel.Counter;
 import shootingmachineemfmodel.Display;
 import shootingmachineemfmodel.Event;
 import shootingmachineemfmodel.GetEvent;
@@ -37,6 +36,7 @@ import shootingmachineemfmodel.Server;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.Standardclass;
 import shootingmachineemfmodel.Task;
+import shootingmachineemfmodel.ToplevelSystem;
 
 /**
  * <!-- begin-user-doc -->
@@ -95,8 +95,8 @@ public class ShootingmachineemfmodelAdapterFactory extends AdapterFactoryImpl {
 	protected ShootingmachineemfmodelSwitch<Adapter> modelSwitch =
 		new ShootingmachineemfmodelSwitch<Adapter>() {
 			@Override
-			public Adapter caseSystem(shootingmachineemfmodel.System object) {
-				return createSystemAdapter();
+			public Adapter caseToplevelSystem(ToplevelSystem object) {
+				return createToplevelSystemAdapter();
 			}
 			@Override
 			public Adapter caseComponent(Component object) {
@@ -165,10 +165,6 @@ public class ShootingmachineemfmodelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAlarm(Alarm object) {
 				return createAlarmAdapter();
-			}
-			@Override
-			public Adapter caseCounter(Counter object) {
-				return createCounterAdapter();
 			}
 			@Override
 			public Adapter caseConnections(Connections object) {
@@ -243,16 +239,16 @@ public class ShootingmachineemfmodelAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link shootingmachineemfmodel.System <em>System</em>}'.
+	 * Creates a new adapter for an object of class '{@link shootingmachineemfmodel.ToplevelSystem <em>Toplevel System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see shootingmachineemfmodel.System
+	 * @see shootingmachineemfmodel.ToplevelSystem
 	 * @generated
 	 */
-	public Adapter createSystemAdapter() {
+	public Adapter createToplevelSystemAdapter() {
 		return null;
 	}
 
@@ -491,20 +487,6 @@ public class ShootingmachineemfmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAlarmAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link shootingmachineemfmodel.Counter <em>Counter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see shootingmachineemfmodel.Counter
-	 * @generated
-	 */
-	public Adapter createCounterAdapter() {
 		return null;
 	}
 

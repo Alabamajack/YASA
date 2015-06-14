@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="shootingmachineemfmodel" nsURI="http://shootingmachineemfmodel/1.0"
     nsPrefix="shootingmachineemfmodel">
-  <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//Standardclass">
+  <eClassifiers xsi:type="ecore:EClass" name="ToplevelSystem" eSuperTypes="#//Standardclass">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasComponent" lowerBound="1"
         upperBound="-1" eType="#//Component" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasBrick" lowerBound="1"
@@ -67,8 +67,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//Standardclass"/>
   <eClassifiers xsi:type="ecore:EClass" name="Alarm" eSuperTypes="#//Standardclass">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hasCounter" lowerBound="1"
-        eType="#//Counter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="MINCYCLE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="MAXALLOWEDVALUE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="TICKSPERBASE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -76,7 +74,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ALARMTIME" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="CYCLETIME" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Counter" eSuperTypes="#//Standardclass"/>
   <eClassifiers xsi:type="ecore:EClass" name="Connections" eSuperTypes="#//Standardclass">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasReceiverPorts" lowerBound="1"
         upperBound="-1" eType="#//ReceiverPorts"/>

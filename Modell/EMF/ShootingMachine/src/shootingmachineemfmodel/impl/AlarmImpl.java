@@ -3,15 +3,9 @@
 package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import shootingmachineemfmodel.Alarm;
-import shootingmachineemfmodel.Counter;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
 /**
@@ -21,7 +15,6 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link shootingmachineemfmodel.impl.AlarmImpl#getHasCounter <em>Has Counter</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.AlarmImpl#getMINCYCLE <em>MINCYCLE</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.AlarmImpl#getMAXALLOWEDVALUE <em>MAXALLOWEDVALUE</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.AlarmImpl#getTICKSPERBASE <em>TICKSPERBASE</em>}</li>
@@ -34,16 +27,6 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * @generated
  */
 public class AlarmImpl extends StandardclassImpl implements Alarm {
-	/**
-	 * The cached value of the '{@link #getHasCounter() <em>Has Counter</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getHasCounter()
-	 * @generated
-	 * @ordered
-	 */
-	protected Counter hasCounter;
-
 	/**
 	 * The default value of the '{@link #getMINCYCLE() <em>MINCYCLE</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -181,49 +164,6 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Counter getHasCounter() {
-		return hasCounter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetHasCounter(Counter newHasCounter, NotificationChain msgs) {
-		Counter oldHasCounter = hasCounter;
-		hasCounter = newHasCounter;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.ALARM__HAS_COUNTER, oldHasCounter, newHasCounter);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setHasCounter(Counter newHasCounter) {
-		if (newHasCounter != hasCounter) {
-			NotificationChain msgs = null;
-			if (hasCounter != null)
-				msgs = ((InternalEObject)hasCounter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ShootingmachineemfmodelPackage.ALARM__HAS_COUNTER, null, msgs);
-			if (newHasCounter != null)
-				msgs = ((InternalEObject)newHasCounter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ShootingmachineemfmodelPackage.ALARM__HAS_COUNTER, null, msgs);
-			msgs = basicSetHasCounter(newHasCounter, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.ALARM__HAS_COUNTER, newHasCounter, newHasCounter));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getMINCYCLE() {
 		return mincycle;
 	}
@@ -351,24 +291,8 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ShootingmachineemfmodelPackage.ALARM__HAS_COUNTER:
-				return basicSetHasCounter(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.ALARM__HAS_COUNTER:
-				return getHasCounter();
 			case ShootingmachineemfmodelPackage.ALARM__MINCYCLE:
 				return getMINCYCLE();
 			case ShootingmachineemfmodelPackage.ALARM__MAXALLOWEDVALUE:
@@ -393,9 +317,6 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.ALARM__HAS_COUNTER:
-				setHasCounter((Counter)newValue);
-				return;
 			case ShootingmachineemfmodelPackage.ALARM__MINCYCLE:
 				setMINCYCLE((Integer)newValue);
 				return;
@@ -426,9 +347,6 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.ALARM__HAS_COUNTER:
-				setHasCounter((Counter)null);
-				return;
 			case ShootingmachineemfmodelPackage.ALARM__MINCYCLE:
 				setMINCYCLE(MINCYCLE_EDEFAULT);
 				return;
@@ -459,8 +377,6 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.ALARM__HAS_COUNTER:
-				return hasCounter != null;
 			case ShootingmachineemfmodelPackage.ALARM__MINCYCLE:
 				return mincycle != MINCYCLE_EDEFAULT;
 			case ShootingmachineemfmodelPackage.ALARM__MAXALLOWEDVALUE:

@@ -22,13 +22,13 @@ public interface ShootingmachineemfmodelFactory extends EFactory {
 	ShootingmachineemfmodelFactory eINSTANCE = shootingmachineemfmodel.impl.ShootingmachineemfmodelFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>System</em>'.
+	 * Returns a new object of class '<em>Toplevel System</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>System</em>'.
+	 * @return a new object of class '<em>Toplevel System</em>'.
 	 * @generated
 	 */
-	System createSystem();
+	ToplevelSystem createToplevelSystem();
 
 	/**
 	 * Returns a new object of class '<em>Brick</em>'.
@@ -137,15 +137,6 @@ public interface ShootingmachineemfmodelFactory extends EFactory {
 	 * @generated
 	 */
 	Alarm createAlarm();
-
-	/**
-	 * Returns a new object of class '<em>Counter</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Counter</em>'.
-	 * @generated
-	 */
-	Counter createCounter();
 
 	/**
 	 * Returns a new object of class '<em>Connections</em>'.

@@ -10,7 +10,6 @@ import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.Client;
 import shootingmachineemfmodel.Component;
 import shootingmachineemfmodel.Connections;
-import shootingmachineemfmodel.Counter;
 import shootingmachineemfmodel.Display;
 import shootingmachineemfmodel.Event;
 import shootingmachineemfmodel.GetEvent;
@@ -36,6 +35,7 @@ import shootingmachineemfmodel.Server;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.Standardclass;
 import shootingmachineemfmodel.Task;
+import shootingmachineemfmodel.ToplevelSystem;
 
 /**
  * <!-- begin-user-doc -->
@@ -94,10 +94,10 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ShootingmachineemfmodelPackage.SYSTEM: {
-				shootingmachineemfmodel.System system = (shootingmachineemfmodel.System)theEObject;
-				T result = caseSystem(system);
-				if (result == null) result = caseStandardclass(system);
+			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM: {
+				ToplevelSystem toplevelSystem = (ToplevelSystem)theEObject;
+				T result = caseToplevelSystem(toplevelSystem);
+				if (result == null) result = caseStandardclass(toplevelSystem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -235,13 +235,6 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ShootingmachineemfmodelPackage.COUNTER: {
-				Counter counter = (Counter)theEObject;
-				T result = caseCounter(counter);
-				if (result == null) result = caseStandardclass(counter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ShootingmachineemfmodelPackage.CONNECTIONS: {
 				Connections connections = (Connections)theEObject;
 				T result = caseConnections(connections);
@@ -350,17 +343,17 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>System</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Toplevel System</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>System</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Toplevel System</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSystem(shootingmachineemfmodel.System object) {
+	public T caseToplevelSystem(ToplevelSystem object) {
 		return null;
 	}
 
@@ -616,21 +609,6 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAlarm(Alarm object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Counter</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Counter</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCounter(Counter object) {
 		return null;
 	}
 

@@ -12,7 +12,6 @@ import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.Client;
 import shootingmachineemfmodel.Component;
 import shootingmachineemfmodel.Connections;
-import shootingmachineemfmodel.Counter;
 import shootingmachineemfmodel.Display;
 import shootingmachineemfmodel.Event;
 import shootingmachineemfmodel.GetEvent;
@@ -39,6 +38,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelFactory;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.Standardclass;
 import shootingmachineemfmodel.Task;
+import shootingmachineemfmodel.ToplevelSystem;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,7 +52,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass systemEClass = null;
+	private EClass toplevelSystemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,13 +172,6 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	private EClass alarmEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass counterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -337,8 +330,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSystem() {
-		return systemEClass;
+	public EClass getToplevelSystem() {
+		return toplevelSystemEClass;
 	}
 
 	/**
@@ -346,8 +339,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystem_HasComponent() {
-		return (EReference)systemEClass.getEStructuralFeatures().get(0);
+	public EReference getToplevelSystem_HasComponent() {
+		return (EReference)toplevelSystemEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -355,8 +348,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystem_HasBrick() {
-		return (EReference)systemEClass.getEStructuralFeatures().get(1);
+	public EReference getToplevelSystem_HasBrick() {
+		return (EReference)toplevelSystemEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -364,8 +357,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystem_HasConnections() {
-		return (EReference)systemEClass.getEStructuralFeatures().get(2);
+	public EReference getToplevelSystem_HasConnections() {
+		return (EReference)toplevelSystemEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -373,8 +366,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSystem_HasInterBrickCommunicationSystem() {
-		return (EReference)systemEClass.getEStructuralFeatures().get(3);
+	public EReference getToplevelSystem_HasInterBrickCommunicationSystem() {
+		return (EReference)toplevelSystemEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -697,17 +690,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAlarm_HasCounter() {
-		return (EReference)alarmEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getAlarm_MINCYCLE() {
-		return (EAttribute)alarmEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -716,7 +700,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EAttribute getAlarm_MAXALLOWEDVALUE() {
-		return (EAttribute)alarmEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -725,7 +709,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EAttribute getAlarm_TICKSPERBASE() {
-		return (EAttribute)alarmEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -734,7 +718,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EAttribute getAlarm_AUTOSTART() {
-		return (EAttribute)alarmEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -743,7 +727,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EAttribute getAlarm_ALARMTIME() {
-		return (EAttribute)alarmEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -752,16 +736,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * @generated
 	 */
 	public EAttribute getAlarm_CYCLETIME() {
-		return (EAttribute)alarmEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCounter() {
-		return counterEClass;
+		return (EAttribute)alarmEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1017,11 +992,11 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		isCreated = true;
 
 		// Create classes and their features
-		systemEClass = createEClass(SYSTEM);
-		createEReference(systemEClass, SYSTEM__HAS_COMPONENT);
-		createEReference(systemEClass, SYSTEM__HAS_BRICK);
-		createEReference(systemEClass, SYSTEM__HAS_CONNECTIONS);
-		createEReference(systemEClass, SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM);
+		toplevelSystemEClass = createEClass(TOPLEVEL_SYSTEM);
+		createEReference(toplevelSystemEClass, TOPLEVEL_SYSTEM__HAS_COMPONENT);
+		createEReference(toplevelSystemEClass, TOPLEVEL_SYSTEM__HAS_BRICK);
+		createEReference(toplevelSystemEClass, TOPLEVEL_SYSTEM__HAS_CONNECTIONS);
+		createEReference(toplevelSystemEClass, TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM);
 
 		componentEClass = createEClass(COMPONENT);
 		createEReference(componentEClass, COMPONENT__HAS_HW_PORTS_COMPONENT);
@@ -1074,15 +1049,12 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		eventEClass = createEClass(EVENT);
 
 		alarmEClass = createEClass(ALARM);
-		createEReference(alarmEClass, ALARM__HAS_COUNTER);
 		createEAttribute(alarmEClass, ALARM__MINCYCLE);
 		createEAttribute(alarmEClass, ALARM__MAXALLOWEDVALUE);
 		createEAttribute(alarmEClass, ALARM__TICKSPERBASE);
 		createEAttribute(alarmEClass, ALARM__AUTOSTART);
 		createEAttribute(alarmEClass, ALARM__ALARMTIME);
 		createEAttribute(alarmEClass, ALARM__CYCLETIME);
-
-		counterEClass = createEClass(COUNTER);
 
 		connectionsEClass = createEClass(CONNECTIONS);
 		createEReference(connectionsEClass, CONNECTIONS__HAS_RECEIVER_PORTS);
@@ -1151,7 +1123,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		systemEClass.getESuperTypes().add(this.getStandardclass());
+		toplevelSystemEClass.getESuperTypes().add(this.getStandardclass());
 		componentEClass.getESuperTypes().add(this.getStandardclass());
 		brickEClass.getESuperTypes().add(this.getStandardclass());
 		sA_ComponentEClass.getESuperTypes().add(this.getComponent());
@@ -1168,7 +1140,6 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		taskEClass.getESuperTypes().add(this.getStandardclass());
 		eventEClass.getESuperTypes().add(this.getStandardclass());
 		alarmEClass.getESuperTypes().add(this.getStandardclass());
-		counterEClass.getESuperTypes().add(this.getStandardclass());
 		connectionsEClass.getESuperTypes().add(this.getStandardclass());
 		runnableEClass.getESuperTypes().add(this.getStandardclass());
 		interBrickCommunicationEClass.getESuperTypes().add(this.getStandardclass());
@@ -1184,11 +1155,11 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		interBrickOutEClass.getESuperTypes().add(this.getInterBrickCommunication());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(systemEClass, shootingmachineemfmodel.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSystem_HasComponent(), this.getComponent(), null, "hasComponent", null, 1, -1, shootingmachineemfmodel.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSystem_HasBrick(), this.getBrick(), null, "hasBrick", null, 1, -1, shootingmachineemfmodel.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSystem_HasConnections(), this.getConnections(), null, "hasConnections", null, 0, -1, shootingmachineemfmodel.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSystem_HasInterBrickCommunicationSystem(), this.getInterBrickCommunication(), null, "hasInterBrickCommunicationSystem", null, 0, -1, shootingmachineemfmodel.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(toplevelSystemEClass, ToplevelSystem.class, "ToplevelSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getToplevelSystem_HasComponent(), this.getComponent(), null, "hasComponent", null, 1, -1, ToplevelSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getToplevelSystem_HasBrick(), this.getBrick(), null, "hasBrick", null, 1, -1, ToplevelSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getToplevelSystem_HasConnections(), this.getConnections(), null, "hasConnections", null, 0, -1, ToplevelSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getToplevelSystem_HasInterBrickCommunicationSystem(), this.getInterBrickCommunication(), null, "hasInterBrickCommunicationSystem", null, 0, -1, ToplevelSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentEClass, Component.class, "Component", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComponent_HasHWPortsComponent(), this.getHWPorts(), null, "hasHWPortsComponent", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1241,15 +1212,12 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(alarmEClass, Alarm.class, "Alarm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAlarm_HasCounter(), this.getCounter(), null, "hasCounter", null, 1, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAlarm_MINCYCLE(), ecorePackage.getEInt(), "MINCYCLE", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAlarm_MAXALLOWEDVALUE(), ecorePackage.getEInt(), "MAXALLOWEDVALUE", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAlarm_TICKSPERBASE(), ecorePackage.getEInt(), "TICKSPERBASE", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAlarm_AUTOSTART(), ecorePackage.getEBoolean(), "AUTOSTART", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAlarm_ALARMTIME(), ecorePackage.getEInt(), "ALARMTIME", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAlarm_CYCLETIME(), ecorePackage.getEInt(), "CYCLETIME", null, 0, 1, Alarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(counterEClass, Counter.class, "Counter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(connectionsEClass, Connections.class, "Connections", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConnections_HasReceiverPorts(), this.getReceiverPorts(), null, "hasReceiverPorts", null, 1, -1, Connections.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
