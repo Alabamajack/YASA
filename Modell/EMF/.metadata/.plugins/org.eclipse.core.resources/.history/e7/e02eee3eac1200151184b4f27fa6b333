@@ -148,21 +148,21 @@ public class ShootingmachineemfmodelExample {
             		bw.write(Task);
 
             		//for Schleife für ALARME
-            		for(int k = 0; k < mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().size(); k++)
+            		for(int k = 0; k < mySystem.getHasBrick().get(i).getHasAlarmBrick().size(); k++)
                 	{
-                		String Alarm = "\tALARM " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + "\n"
+                		String Alarm = "\tALARM " + mySystem.getHasBrick().get(i).getHasAlarmBrick().get(k).getName() + "\n"
                 				+ "\t{\n"
-                				+ "\t\tCOUNTER = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + ";\n"
+                				+ "\t\tCOUNTER = " + mySystem.getHasBrick().get(i).getHasAlarmBrick().get(k).getName() + ";\n"
                 				+ "\t\tACTION = ACTIVATETASK\n"
                 				+ "\t\t{\n"
                 				+ "\t\t\tTASK = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getName() + ";\n"
                 				+ "\t\t};\n";
-                		if(mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).isAUTOSTART() == true)
+                		if(mySystem.getHasBrick().get(i).getHasAlarmBrick().get(k).isAUTOSTART() == true)
                 		{
                 			Alarm = Alarm + "\t\tAUTOSTART = TRUE\n"
                 					+ "\t\t{\n"
-                					+ "\t\t\tALARMTIME = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getALARMTIME() + ";\n"
-                					+ "\t\t\tCYCLETIME = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getCYCLETIME() + ";\n"
+                					+ "\t\t\tALARMTIME = " + mySystem.getHasBrick().get(i).getHasAlarmBrick().get(k).getALARMTIME() + ";\n"
+                					+ "\t\t\tCYCLETIME = " + mySystem.getHasBrick().get(i).getHasAlarmBrick().get(k).getCYCLETIME() + ";\n"
                 					+ "\t\t\tAPPMODE = LEGOSAR;\n"
                 					+ "\t\t};\n";
                 		}
@@ -172,11 +172,11 @@ public class ShootingmachineemfmodelExample {
                 		}
                 		Alarm = Alarm + "\t};\n\n";
 
-                		String Counter = "\tCOUNTER " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + "\n"
+                		String Counter = "\tCOUNTER " + mySystem.getHasBrick().get(i).getHasAlarmBrick().get(k).getName() + "\n"
                 				+ "\t{\n"
-                				+ "\t\tMINCYCLE = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getMINCYCLE() + ";\n"
-                				+ "\t\tMAXALLOWEDVALUE = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getMAXALLOWEDVALUE() + ";\n"
-                				+ "\t\tTICKSPERBASE = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getTICKSPERBASE() + ";\n"
+                				+ "\t\tMINCYCLE = " + mySystem.getHasBrick().get(i).getHasAlarmBrick().get(k).getMINCYCLE() + ";\n"
+                				+ "\t\tMAXALLOWEDVALUE = " + mySystem.getHasBrick().get(i).getHasAlarmBrick().get(k).getMAXALLOWEDVALUE() + ";\n"
+                				+ "\t\tTICKSPERBASE = " + mySystem.getHasBrick().get(i).getHasAlarmBrick().get(k).getTICKSPERBASE() + ";\n"
                 				+ "\t};\n\n";
 
                 		bw.write(Alarm);
