@@ -64,6 +64,16 @@ public class ShootingmachineemfmodelExample {
         	ToplevelSystem mySystem = (ToplevelSystem)resource.getContents().get(0);
 
 
+        	//Array fuer Namen der Bricks definieren
+            String[] Bricks = new String[mySystem.getHasBrick().size()];
+
+//            Brickcount = 0;
+//            for(shootingmachineemfmodel.Brick B : mySystem.getHasBrick())
+//            {
+//            	Bricks[Brickcount] = B.getName();
+//            	Brickcount ++;
+//            }
+
             //For Schleife in welcher die einzelnen Dateien und Ordner erstellt werden
             for(int i = 0; i<mySystem.getHasBrick().size(); i++)
             {
@@ -114,7 +124,6 @@ public class ShootingmachineemfmodelExample {
             	{
             		String Task = "\tTASK " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getName() + "\n"
             				+ "\t{\n";
-            		//Wenn AUTOSTART true ist:
             		if (mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).isAUTOSTART() == true)
             		{
             			Task = Task + "\t\tAUTOSTART = TRUE\n"
@@ -122,7 +131,6 @@ public class ShootingmachineemfmodelExample {
         						+ "\t\t\tAPPMODE = LEGOSAR;\n"
         						+ "\t\t};\n";
             		}
-            		//AUTOSTART false
             		else
             		{
             			Task = Task + "\t\tAUTOSTART = FALSE;\n";
@@ -131,7 +139,6 @@ public class ShootingmachineemfmodelExample {
             				+ "\t\tACIVATION = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getACTIVATION() + ";\n"
             				+ "\t\tSCHEDULE = FULL;\n"
             				+ "\t\tSTACKSIZE = 512;\n";
-            		//EVENTS die zu den TASKS gehoeren
             		for(int k = 0; k < mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasEvent().size(); k++)
             		{
             			Task = Task + "\t\tEVENT = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasEvent().get(k).getName() + ";\n";
@@ -150,7 +157,6 @@ public class ShootingmachineemfmodelExample {
                 				+ "\t\t{\n"
                 				+ "\t\t\tTASK = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getName() + ";\n"
                 				+ "\t\t};\n";
-                		//AUTOSTART ist true
                 		if(mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).isAUTOSTART() == true)
                 		{
                 			Alarm = Alarm + "\t\tAUTOSTART = TRUE\n"
@@ -160,15 +166,13 @@ public class ShootingmachineemfmodelExample {
                 					+ "\t\t\tAPPMODE = LEGOSAR;\n"
                 					+ "\t\t};\n";
                 		}
-                		//AUTOSTART ist false
                 		else
                 		{
                 			Alarm = Alarm + "\t\tAUTOSTART = FALSE;\n";
                 		}
                 		Alarm = Alarm + "\t};\n\n";
 
-                		//pro ALARM 1 Counter erstellen
-                		String Counter = "\tCOUNTER C_" + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + "\n"
+                		String Counter = "\tCOUNTER " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + "\n"
                 				+ "\t{\n"
                 				+ "\t\tMINCYCLE = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getMINCYCLE() + ";\n"
                 				+ "\t\tMAXALLOWEDVALUE = " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getMAXALLOWEDVALUE() + ";\n"
@@ -181,7 +185,6 @@ public class ShootingmachineemfmodelExample {
 
             	}
 
-            	//for Schleife fuer EVENTS
             	for (int j = 0; j < mySystem.getHasBrick().get(i).getHasEventBrick().size(); j++)
             	{
             		String Event = "\tEVENT " + mySystem.getHasBrick().get(i).getHasEventBrick().get(j).getName() + "\n"
@@ -191,6 +194,8 @@ public class ShootingmachineemfmodelExample {
             		bw.write(Event);
             	}
             	bw.write("};");
+
+
 
 
             	bw.close(); //Datei schließen
