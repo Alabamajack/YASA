@@ -198,12 +198,57 @@ Hier folgt eine kurze Beschreibung welche Inhalte in welchen Ordner/Files zu fin
 	\item \lstinline|/include| alle header-files die irgendwann im Projekt wichtig sind
 	\item \lstinline|/examples| Beispiel zu runnables, RTE-Funktionen etc.
 	\end{itemize}
-\item \lstinline|/Modell|
+\item \lstinline|/Modell| Alle Dateien zum Modell(EMF und als UML-Datei	)
+	\begin{itemize}
+	\item \lstinline|EMF| Dateien für Eclipse EMF inklusiver Test/Edit/Editor
+	\item \lstinline|runtime-EclipseApplication|
+	\end{itemize}
+\item \lstinline|/generated| generierter Src-Code: Pro konfiguriertem Brick gibt es einen Ordner, indem alle src-files, oil-files und binary-files für diesen Brick drinliegen. Außerdem gibt es noch global in diesem Ordner einzelne Dateien, die benötigt werden(Shell-Skripte etc.).
 \end{itemize}
 
 \section{Wichtige Konventionen/Vereinbarungen}
 \begin{itemize}
 \item 
 \end{itemize}
+
+\section{Ablauf für Kommunikation}
+\subsection{Server-Client}
+\subsubsection{Ablauf Applikationsprogrammierer}
+Der Applikationprogrammierer ruft nur die entsprechende RTE Funktion auf.(Server-Client hat das Verhalten eines Funktionsaufruf).
+(als !DEFINE!)
+\subsubsection{Ablauf Generierung}
+\paragraph{Fall 1: 2 Ports liegen auf gleichem Brick}
+nichts besonderes zu beachten
+\paragraph{Fall 2: 2 Ports liegen auf unterschiedlichem Brick}
+\begin{enumerate}[1.]
+\item Commservice aufrufen, der dann die Nachricht wie folgt verschickt:
+	\begin{enumerate}[.1]
+	\item Funktionsname als string
+	\item Terminierungszeichen ',', nach dem letzten Parameter kommen zwei ',,' 
+	\item alle Parameter wieder getrennt durch Terminierungszeichen
+	\item der Rückgabewert der Funktion wird getrennt nicht als string als letzter Parameter übergeben
+	\end{enumerate}
+\item WaitEvent auf ein Event das gesetzt wird, wenn der Rückgabewert vom anderen Brick kommt
+\item Der Rückgabewert wird gelesen und an die Addresse geschickt
+\end{enumerate}
+Sicht anderer Brick:
+\begin{enumerate}
+\item In der Codegenerierung:
+	\begin{enumerate}[.1]
+	\item Task erstellen, Taskname: T\_Funktionsname, der gleich nach Einstieg auf Event wartet(WaitEvent)
+		\label{Task_Wait_Event}
+	\item Funktionsaufruf generieren mit Funktionsname(wobei Funktion an sich, eigener Teil des Applikationscodes ist)
+	\end{enumerate}
+\item im Commservice:
+	\begin{enumerate}[.1]
+	\item empfängt Nachricht
+	\item über ID zuordnung das jetzt Funktion aufgerufen werden muss
+	\item Name extrahieren aus string und in var speichern
+	\item Alle Parameter extrahieren und in Array speichern, dessen größe während der Codegenerierung festgelegt wurde(abhängig von anzahl an Parametern)
+	\item Event setzten das in \ref{Task_Wait_Event} gesetzt wurde	
+	\end{enumerate}
+\end{enumerate}
+
+
 
 \end{document}
