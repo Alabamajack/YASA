@@ -92,7 +92,7 @@ public class ShootingmachineemfmodelExample {
             	//Datei erstellen, wenn noch nicht vorhanden
             	if (!OilFile.exists()) {
     				OilFile.createNewFile();
-    				System.out.print("\tDatei " + Brickname + ".oil erstellt\n");
+    				System.out.print("Datei " + Brickname + ".oil erstellt\n");
     			}
 
             	//BufferedWriter
@@ -142,7 +142,7 @@ public class ShootingmachineemfmodelExample {
             				+ "\t\tSCHEDULE = FULL;\n"
             				+ "\t\tSTACKSIZE = 512;\n";
 
-            		System.out.print("\t\tTASK " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
+            		System.out.print("TASK " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
 
             		//EVENTS die zu den TASKS gehoeren
             		for(int k = 0; k < mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasEvent().size(); k++)
@@ -190,9 +190,6 @@ public class ShootingmachineemfmodelExample {
 
                 		bw.write(Alarm);
                 		bw.write(Counter);
-
-                		System.out.print("\t\tALARM " + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + " und COUNTER C_" + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
-
                 	}
 
             	}
@@ -205,9 +202,6 @@ public class ShootingmachineemfmodelExample {
             				+ "\t\tMASK = AUTO;\n"
             				+ "\t};\n\n";
             		bw.write(Event);
-
-            		System.out.print("\t\tEVENT " + mySystem.getHasBrick().get(i).getHasEventBrick().get(j).getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
-
             	}
             	bw.write("};");
 
