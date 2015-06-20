@@ -1,0 +1,76 @@
+\hypertarget{_y_a_s_a__global__variables_8h}{\section{Code/include/\-Y\-A\-S\-A\-\_\-global\-\_\-variables.h File Reference}
+\label{_y_a_s_a__global__variables_8h}\index{Code/include/\-Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h@{Code/include/\-Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}}
+}
+{\ttfamily \#include \char`\"{}Y\-A\-S\-A\-\_\-generated\-\_\-variables.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_y_a_s_a__global__variables_8h_abe76d220ac694c7ea31c14624a5b9b51}{B\-T\-\_\-\-S\-L\-A\-V\-E\-\_\-\-A\-D\-D\-R\-E\-S\-S}
+\begin{DoxyCompactList}\small\item\em Addresse des B\-T-\/\-Slave\-: einzelne Werte müssen in hexcode und duch Kommas getrennt angegeben werden; Bsp\-: 0x00,0x10,0x\-F\-F... \end{DoxyCompactList}\item 
+\#define \hyperlink{_y_a_s_a__global__variables_8h_a5841692eb6fdf4f8316f9d2e5abbcfdb}{B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E}~127
+\begin{DoxyCompactList}\small\item\em die maximale Packetlänge, die über B\-T übertragen werden kann(festgelegt durch uns, dadurch alles statischer) \end{DoxyCompactList}\item 
+\#define \hyperlink{_y_a_s_a__global__variables_8h_a906247e814b79bea7083939bec08d878}{M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-H\-T}
+\begin{DoxyCompactList}\small\item\em die maximale Länge einer Nachricht, die verschickt werden kann(ohne Overhead produziert durch die verschiedenen Schichten, also direkt nutzbar von Appliaktion)  muss noch ausgerechnet werden \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+U8 \hyperlink{_y_a_s_a__global__variables_8h_a1eda95f9a313a502c9712d1ea8069a6f}{B\-T\-\_\-transmit\-\_\-package} \mbox{[}\hyperlink{_y_a_s_a__global__variables_8h_a5841692eb6fdf4f8316f9d2e5abbcfdb}{B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E}\mbox{]}
+\begin{DoxyCompactList}\small\item\em \#define {\bfseries D\-E\-B\-U\-G} \end{DoxyCompactList}\item 
+U8 \hyperlink{_y_a_s_a__global__variables_8h_ae48b89de4085468e95be3bc751d99d59}{B\-T\-\_\-receive\-\_\-package} \mbox{[}\hyperlink{_y_a_s_a__global__variables_8h_a5841692eb6fdf4f8316f9d2e5abbcfdb}{B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer-\/\-Speicher für Nachrichten, die über B\-T empfangen wurden. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Hier stehen alle global definierten, statischen Variablen und defines drin
+
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2015-\/06-\/19 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Authors}
+Florian Laufenböck, Phillip Eidenschink, Tobias Schwindl 
+\end{DoxyAuthor}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_y_a_s_a__global__variables_8h_a5841692eb6fdf4f8316f9d2e5abbcfdb}{\index{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h@{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}!B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E@{B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E}}
+\index{B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E@{B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E}!YASA_global_variables.h@{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}}
+\subsubsection[{B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E~127}}\label{_y_a_s_a__global__variables_8h_a5841692eb6fdf4f8316f9d2e5abbcfdb}
+
+
+die maximale Packetlänge, die über B\-T übertragen werden kann(festgelegt durch uns, dadurch alles statischer) 
+
+\hypertarget{_y_a_s_a__global__variables_8h_abe76d220ac694c7ea31c14624a5b9b51}{\index{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h@{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}!B\-T\-\_\-\-S\-L\-A\-V\-E\-\_\-\-A\-D\-D\-R\-E\-S\-S@{B\-T\-\_\-\-S\-L\-A\-V\-E\-\_\-\-A\-D\-D\-R\-E\-S\-S}}
+\index{B\-T\-\_\-\-S\-L\-A\-V\-E\-\_\-\-A\-D\-D\-R\-E\-S\-S@{B\-T\-\_\-\-S\-L\-A\-V\-E\-\_\-\-A\-D\-D\-R\-E\-S\-S}!YASA_global_variables.h@{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}}
+\subsubsection[{B\-T\-\_\-\-S\-L\-A\-V\-E\-\_\-\-A\-D\-D\-R\-E\-S\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-T\-\_\-\-S\-L\-A\-V\-E\-\_\-\-A\-D\-D\-R\-E\-S\-S}}\label{_y_a_s_a__global__variables_8h_abe76d220ac694c7ea31c14624a5b9b51}
+
+
+Addresse des B\-T-\/\-Slave\-: einzelne Werte müssen in hexcode und duch Kommas getrennt angegeben werden; Bsp\-: 0x00,0x10,0x\-F\-F... 
+
+includes Defines \hypertarget{_y_a_s_a__global__variables_8h_a906247e814b79bea7083939bec08d878}{\index{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h@{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}!M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-H\-T@{M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-H\-T}}
+\index{M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-H\-T@{M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-H\-T}!YASA_global_variables.h@{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}}
+\subsubsection[{M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-H\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-M\-E\-S\-S\-A\-G\-E\-\_\-\-L\-E\-N\-G\-H\-T}}\label{_y_a_s_a__global__variables_8h_a906247e814b79bea7083939bec08d878}
+
+
+die maximale Länge einer Nachricht, die verschickt werden kann(ohne Overhead produziert durch die verschiedenen Schichten, also direkt nutzbar von Appliaktion)  muss noch ausgerechnet werden 
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{_y_a_s_a__global__variables_8h_ae48b89de4085468e95be3bc751d99d59}{\index{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h@{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}!B\-T\-\_\-receive\-\_\-package@{B\-T\-\_\-receive\-\_\-package}}
+\index{B\-T\-\_\-receive\-\_\-package@{B\-T\-\_\-receive\-\_\-package}!YASA_global_variables.h@{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}}
+\subsubsection[{B\-T\-\_\-receive\-\_\-package}]{\setlength{\rightskip}{0pt plus 5cm}U8 B\-T\-\_\-receive\-\_\-package\mbox{[}{\bf B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E}\mbox{]}}}\label{_y_a_s_a__global__variables_8h_ae48b89de4085468e95be3bc751d99d59}
+
+
+Buffer-\/\-Speicher für Nachrichten, die über B\-T empfangen wurden. 
+
+\hypertarget{_y_a_s_a__global__variables_8h_a1eda95f9a313a502c9712d1ea8069a6f}{\index{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h@{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}!B\-T\-\_\-transmit\-\_\-package@{B\-T\-\_\-transmit\-\_\-package}}
+\index{B\-T\-\_\-transmit\-\_\-package@{B\-T\-\_\-transmit\-\_\-package}!YASA_global_variables.h@{Y\-A\-S\-A\-\_\-global\-\_\-variables.\-h}}
+\subsubsection[{B\-T\-\_\-transmit\-\_\-package}]{\setlength{\rightskip}{0pt plus 5cm}U8 B\-T\-\_\-transmit\-\_\-package\mbox{[}{\bf B\-T\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-S\-I\-Z\-E}\mbox{]}}}\label{_y_a_s_a__global__variables_8h_a1eda95f9a313a502c9712d1ea8069a6f}
+
+
+\#define {\bfseries D\-E\-B\-U\-G} 
+
+types Buffer-\/\-Speicher für Nachrichten, die über B\-T verschickt werden sollen 

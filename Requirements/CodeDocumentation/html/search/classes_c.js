@@ -57,7 +57,5 @@ var searchData=
   ['sw_5fcomponentvalidator',['SW_ComponentValidator',['../interfaceshootingmachineemfmodel_1_1validation_1_1_s_w___component_validator.html',1,'shootingmachineemfmodel::validation']]],
   ['system',['System',['../interfaceshootingmachineemfmodel_1_1_system.html',1,'shootingmachineemfmodel']]],
   ['systemimpl',['SystemImpl',['../classshootingmachineemfmodel_1_1impl_1_1_system_impl.html',1,'shootingmachineemfmodel::impl']]],
-  ['systemitemprovider',['SystemItemProvider',['../classshootingmachineemfmodel_1_1provider_1_1_system_item_provider.html',1,'shootingmachineemfmodel::provider']]],
-  ['systemtest',['SystemTest',['../classshootingmachineemfmodel_1_1tests_1_1_system_test.html',1,'shootingmachineemfmodel::tests']]],
   ['systemvalidator',['SystemValidator',['../interfaceshootingmachineemfmodel_1_1validation_1_1_system_validator.html',1,'shootingmachineemfmodel::validation']]]
 ];

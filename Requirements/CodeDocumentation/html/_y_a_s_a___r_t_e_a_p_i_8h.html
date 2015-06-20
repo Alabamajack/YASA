@@ -113,9 +113,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a057cc557e1f9c9a46c9e0a815f971830"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a057cc557e1f9c9a46c9e0a815f971830">RTE_StopSensor_SetValue_Event_Out</a> ()</td></tr>
 <tr class="memdesc:a057cc557e1f9c9a46c9e0a815f971830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setzt Event für SW-Komponente Schussanlage Setzt ein Event wenn die Schussanlage gestoppt werden soll Dieses "Event" ist entweder ein wirkliches Event(konfiguriert), oder aber eine Nachricht an einen anderen Brick.  <a href="#a057cc557e1f9c9a46c9e0a815f971830">More...</a><br/></td></tr>
 <tr class="separator:a057cc557e1f9c9a46c9e0a815f971830"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb336eca805711d79288c158e9c64508"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#abb336eca805711d79288c158e9c64508">RTE_SchussMotor_GetOrder_Receiver_In</a> (const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *message)</td></tr>
-<tr class="memdesc:abb336eca805711d79288c158e9c64508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receiver Port für Signale von der Schussanlage.  <a href="#abb336eca805711d79288c158e9c64508">More...</a><br/></td></tr>
-<tr class="separator:abb336eca805711d79288c158e9c64508"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a436c4bca74f77c7cee049e93a6bb21bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a436c4bca74f77c7cee049e93a6bb21bf">RTE_SchussMotor_SetOutputValue_OSPort_Out</a> (const uint32_t *degree)</td></tr>
 <tr class="memdesc:a436c4bca74f77c7cee049e93a6bb21bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstraktion um auf die Output-Hardware zuzugreifen. hier: Zugriff auf Motor.  <a href="#a436c4bca74f77c7cee049e93a6bb21bf">More...</a><br/></td></tr>
 <tr class="separator:a436c4bca74f77c7cee049e93a6bb21bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,40 +120,40 @@ Functions</h2></td></tr>
 <tr class="memdesc:ad00dd74da6ec20e0687fcd23c98e542b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aufruf einer Funktion, die Ausgaben macht.  <a href="#ad00dd74da6ec20e0687fcd23c98e542b">More...</a><br/></td></tr>
 <tr class="separator:ad00dd74da6ec20e0687fcd23c98e542b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b3796d3662c11a4f9f39654d140e71e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a4b3796d3662c11a4f9f39654d140e71e">RTE_Output_GetValue_Event_In</a> ()</td></tr>
-<tr class="memdesc:a4b3796d3662c11a4f9f39654d140e71e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wartet auf ein konfiguriertes Event.  <a href="#a4b3796d3662c11a4f9f39654d140e71e">More...</a><br/></td></tr>
+<tr class="memdesc:a4b3796d3662c11a4f9f39654d140e71e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wartet auf ein konfiguriertes Event blockiert den Ablauf des aufrufenden Task solange, bis Event eingetroffen ist.  <a href="#a4b3796d3662c11a4f9f39654d140e71e">More...</a><br/></td></tr>
 <tr class="separator:a4b3796d3662c11a4f9f39654d140e71e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f52e7ab6687cd0aabe0fd84a3bca039"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a4f52e7ab6687cd0aabe0fd84a3bca039">RTE_Output_GetValue_Server_In</a> (<a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *message)</td></tr>
-<tr class="memdesc:a4f52e7ab6687cd0aabe0fd84a3bca039"><td class="mdescLeft">&#160;</td><td class="mdescRight">holt sich die Nachricht, die auf dem Display angezeigt werden soll  <a href="#a4f52e7ab6687cd0aabe0fd84a3bca039">More...</a><br/></td></tr>
-<tr class="separator:a4f52e7ab6687cd0aabe0fd84a3bca039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a382c5a884e2dc364d61e71b5b64616f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a382c5a884e2dc364d61e71b5b64616f2">RTE_Output_GetValue_Receiver_In</a> (char *message)</td></tr>
+<tr class="memdesc:a382c5a884e2dc364d61e71b5b64616f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">holt sich die Nachricht, die auf dem Display angezeigt werden soll, blockiert solange den weiteren Ablauf des Task, bis die Nachricht da ist  <a href="#a382c5a884e2dc364d61e71b5b64616f2">More...</a><br/></td></tr>
+<tr class="separator:a382c5a884e2dc364d61e71b5b64616f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4d201a5131a1c503222971d87402c48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#ab4d201a5131a1c503222971d87402c48">RTE_StartTrigger_SetValue_Event_Out</a> ()</td></tr>
 <tr class="memdesc:ab4d201a5131a1c503222971d87402c48"><td class="mdescLeft">&#160;</td><td class="mdescRight">setzt ein Event, das symbolisiert ob gestartet werden soll  <a href="#ab4d201a5131a1c503222971d87402c48">More...</a><br/></td></tr>
 <tr class="separator:ab4d201a5131a1c503222971d87402c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3ba52d6a26e9453d2858b5ba17878c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#af3ba52d6a26e9453d2858b5ba17878c8">RTE_StartTrigger_GetSensorValue_OSPort_In</a> (uint8_t *value)</td></tr>
 <tr class="memdesc:af3ba52d6a26e9453d2858b5ba17878c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kommuniziert mit aussen und gibt an ob von aussen getriggert worden ist oder nicht. Einfachster Fall ist ein Taster, komplizierterer Fall ist z.B. ein Ultraschallsensor dessen Output aber auch auf einen diskreten Wert runtergebrochen werden muss.  <a href="#af3ba52d6a26e9453d2858b5ba17878c8">More...</a><br/></td></tr>
 <tr class="separator:af3ba52d6a26e9453d2858b5ba17878c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02322a62903497851e596f3d39e3ca7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a02322a62903497851e596f3d39e3ca7f">RTE_Schussanlage_GetValue_Event_In</a> ()</td></tr>
-<tr class="memdesc:a02322a62903497851e596f3d39e3ca7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wartet auf ein konfiguriertes Event.  <a href="#a02322a62903497851e596f3d39e3ca7f">More...</a><br/></td></tr>
-<tr class="separator:a02322a62903497851e596f3d39e3ca7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab04087938919c2afceea75a4f2cd4621"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#ab04087938919c2afceea75a4f2cd4621">RTE_Schussanlage_GetOrder_Receiver_In</a> (const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *message)</td></tr>
-<tr class="memdesc:ab04087938919c2afceea75a4f2cd4621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nimmt eine Nachricht von der SW-Komponente Trigger entgegen. Dort wird verarbeitet ob gestartet werden soll oder nicht.  <a href="#ab04087938919c2afceea75a4f2cd4621">More...</a><br/></td></tr>
-<tr class="separator:ab04087938919c2afceea75a4f2cd4621"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85005e3ae556bea61477669333ac1275"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a85005e3ae556bea61477669333ac1275">RTE_Schussanlage_SendMessage_Client_Out</a> (const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *message)</td></tr>
-<tr class="memdesc:a85005e3ae556bea61477669333ac1275"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setzt eine Nachricht für den Multicast-Betrieb. Beinhaltet bereits die gesamte Nachricht!  <a href="#a85005e3ae556bea61477669333ac1275">More...</a><br/></td></tr>
-<tr class="separator:a85005e3ae556bea61477669333ac1275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d2dac6954c8abf7c0236710096431bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a4d2dac6954c8abf7c0236710096431bf">RTE_Schussanlage_GetValue_Event_In</a> (uint8_t *eventvalue)</td></tr>
+<tr class="memdesc:a4d2dac6954c8abf7c0236710096431bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wartet auf ein konfiguriertes Event Funktionsaufruf ist nicht blockierend, da aus dem Komponentendiagramm hervorgeht, das dies hier nicht sinnvoll ist. entspricht einem GetEvent.  <a href="#a4d2dac6954c8abf7c0236710096431bf">More...</a><br/></td></tr>
+<tr class="separator:a4d2dac6954c8abf7c0236710096431bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf0aa7911143ab166f4c6c469824fafa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#aaf0aa7911143ab166f4c6c469824fafa">RTE_Schussanlage_GetOrder_Server_In</a> ()</td></tr>
+<tr class="memdesc:aaf0aa7911143ab166f4c6c469824fafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO.  <a href="#aaf0aa7911143ab166f4c6c469824fafa">More...</a><br/></td></tr>
+<tr class="separator:aaf0aa7911143ab166f4c6c469824fafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35c4166848acd89a0d0d4dc94dc7e841"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a35c4166848acd89a0d0d4dc94dc7e841">RTE_Schussanlage_SendMessage_Sender_Out</a> ()</td></tr>
+<tr class="memdesc:a35c4166848acd89a0d0d4dc94dc7e841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setzt eine Nachricht für den Multicast-Betrieb. Beinhaltet bereits die gesamte Nachricht!  <a href="#a35c4166848acd89a0d0d4dc94dc7e841">More...</a><br/></td></tr>
+<tr class="separator:a35c4166848acd89a0d0d4dc94dc7e841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac544e1f4442d1828e632df31a0cfa3b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#ac544e1f4442d1828e632df31a0cfa3b4">RTE_Schussanlage_SetValue_Event_Out</a> ()</td></tr>
 <tr class="memdesc:ac544e1f4442d1828e632df31a0cfa3b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">setzt Event um der SAK Output zu signalisieren, dass sich der interne Zustand geändert hat und jetzt was ausgegeben werden kann  <a href="#ac544e1f4442d1828e632df31a0cfa3b4">More...</a><br/></td></tr>
 <tr class="separator:ac544e1f4442d1828e632df31a0cfa3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30989ebe24f1860b3c1ec697395c21ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a30989ebe24f1860b3c1ec697395c21ea">RTE_Schussanlage_SetOrder_Sender_Out</a> (const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *message)</td></tr>
-<tr class="memdesc:a30989ebe24f1860b3c1ec697395c21ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">setzt einen Befehl der von SchussMotor ausgeführt werden soll  <a href="#a30989ebe24f1860b3c1ec697395c21ea">More...</a><br/></td></tr>
-<tr class="separator:a30989ebe24f1860b3c1ec697395c21ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acaa6e2529992707c374b0743fd8f4951"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#acaa6e2529992707c374b0743fd8f4951">RTE_Trigger_SetOrder_Sender_Out</a> (const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *message)</td></tr>
-<tr class="memdesc:acaa6e2529992707c374b0743fd8f4951"><td class="mdescLeft">&#160;</td><td class="mdescRight">setzt einen Befehl um die Zustand der Kommunikation mit aussen anzuzeigen  <a href="#acaa6e2529992707c374b0743fd8f4951">More...</a><br/></td></tr>
-<tr class="separator:acaa6e2529992707c374b0743fd8f4951"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44badf70548d98836720d9d61fd2e550"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a44badf70548d98836720d9d61fd2e550">RTE_Trigger_GetMessage_Server_In</a> (const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *message)</td></tr>
-<tr class="memdesc:a44badf70548d98836720d9d61fd2e550"><td class="mdescLeft">&#160;</td><td class="mdescRight">bekommt eine Nachricht, in der bestimmte Informationen über den Zustand der Schussanlage drinstehen  <a href="#a44badf70548d98836720d9d61fd2e550">More...</a><br/></td></tr>
-<tr class="separator:a44badf70548d98836720d9d61fd2e550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdbf3a7ad3a798d7c9597e90aa39ba05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#abdbf3a7ad3a798d7c9597e90aa39ba05">RTE_Schussanlage_SetOrder_Client_Out</a> (const uint8_t *schuesse, uint32_t *return_val)</td></tr>
+<tr class="memdesc:abdbf3a7ad3a798d7c9597e90aa39ba05"><td class="mdescLeft">&#160;</td><td class="mdescRight">wie viele Schüsse sollen von SchussMotor ausgeführt werden stellt gleichzeitig die Funktion für die SAK SchussMotor da  <a href="#abdbf3a7ad3a798d7c9597e90aa39ba05">More...</a><br/></td></tr>
+<tr class="separator:abdbf3a7ad3a798d7c9597e90aa39ba05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91c489b5753171b7cfa32718e4d05b1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a91c489b5753171b7cfa32718e4d05b1d">RTE_Trigger_SetOrder_Client_Out</a> ()</td></tr>
+<tr class="memdesc:a91c489b5753171b7cfa32718e4d05b1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">setzt einen Befehl um die Zustand der Kommunikation mit aussen anzuzeigen  <a href="#a91c489b5753171b7cfa32718e4d05b1d">More...</a><br/></td></tr>
+<tr class="separator:a91c489b5753171b7cfa32718e4d05b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36802657cfbad42518b0993ec91a4de0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#a36802657cfbad42518b0993ec91a4de0">RTE_Trigger_GetMessage_Receiver_In</a> ()</td></tr>
+<tr class="memdesc:a36802657cfbad42518b0993ec91a4de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">bekommt eine Nachricht, in der bestimmte Informationen über den Zustand der Schussanlage drinstehen  <a href="#a36802657cfbad42518b0993ec91a4de0">More...</a><br/></td></tr>
+<tr class="separator:a36802657cfbad42518b0993ec91a4de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3c020a95ebf3f86df83f087a9620ff5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_y_a_s_a___r_t_e_a_p_i_8h.html#aa3c020a95ebf3f86df83f087a9620ff5">RTE_Trigger_GetValue_Event_In</a> ()</td></tr>
-<tr class="memdesc:aa3c020a95ebf3f86df83f087a9620ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status des Events abfragen, welches symbolisiert, dass der Trigger gestartet wurde.  <a href="#aa3c020a95ebf3f86df83f087a9620ff5">More...</a><br/></td></tr>
+<tr class="memdesc:aa3c020a95ebf3f86df83f087a9620ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Status des Events abfragen, welches symbolisiert, dass der Trigger gestartet wurde blockiert die weitere Ausführung solange, bis das Event eingetroffen ist.  <a href="#aa3c020a95ebf3f86df83f087a9620ff5">More...</a><br/></td></tr>
 <tr class="separator:aa3c020a95ebf3f86df83f087a9620ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -199,7 +196,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Wartet auf ein konfiguriertes Event. </p>
+<p>Wartet auf ein konfiguriertes Event blockiert den Ablauf des aufrufenden Task solange, bis Event eingetroffen ist. </p>
 <dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 Initiale Version </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Florian Laufenböck </dd></dl>
@@ -207,7 +204,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4f52e7ab6687cd0aabe0fd84a3bca039"></a>
+<a class="anchor" id="a382c5a884e2dc364d61e71b5b64616f2"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -215,9 +212,9 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Output_GetValue_Server_In </td>
+          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Output_GetValue_Receiver_In </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>message</em></td><td>)</td>
           <td></td>
         </tr>
@@ -229,13 +226,14 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>holt sich die Nachricht, die auf dem Display angezeigt werden soll </p>
+<p>holt sich die Nachricht, die auf dem Display angezeigt werden soll, blockiert solange den weiteren Ablauf des Task, bis die Nachricht da ist </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>Nachricht die angezeigt werden soll </td></tr>
+    <tr><td class="paramname">message</td><td>Nachricht die angezeigt werden soll, mit der maximalen Nachrichtenlänge </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="_y_a_s_a__global__variables_8h.html#a906247e814b79bea7083939bec08d878" title="die maximale Länge einer Nachricht, die verschickt werden kann(ohne Overhead produziert durch die ver...">MAX_MESSAGE_LENGHT</a> </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 Initiale Version </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Florian Laufenböck </dd></dl>
@@ -266,14 +264,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Aufruf einer Funktion, die Ausgaben macht. </p>
-<p>Funktionen für die SA-Komponente Output </p>
+<p>SAK Output </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>Nachricht die Ausgegeben werden soll. Dabei ist dies keine </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda" title="unser Standarddatentyp für Nachrichten ">YASA_message</a> mehr, sondern nur noch die "nackte" Nachricht, die Interpretation der Nachricht erfolt in der aufrufenden SAK Output </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd>YASA_message mehr, sondern nur noch die "nackte" Nachricht, die Interpretation der Nachricht erfolt in der aufrufenden SAK Output </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 Initiale Version </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Florian Laufenböck </dd></dl>
@@ -281,7 +279,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab04087938919c2afceea75a4f2cd4621"></a>
+<a class="anchor" id="aaf0aa7911143ab166f4c6c469824fafa"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -289,45 +287,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Schussanlage_GetOrder_Receiver_In </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *&#160;</td>
-          <td class="paramname"><em>message</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Nimmt eine Nachricht von der SW-Komponente Trigger entgegen. Dort wird verarbeitet ob gestartet werden soll oder nicht. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">message</td><td>enthält ganzzahl, wobei die Interpretation noch anzugeben ist</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert)</dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0 Initiale Version</dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Florian Laufenböck</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2015-06-10</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Interpretation von order festlegen <dl class="section see"><dt>See Also</dt><dd>RTE_Trigger_SetOrder_Sender_Out(const uint8_t *order); </dd></dl>
-</dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a02322a62903497851e596f3d39e3ca7f"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Schussanlage_GetValue_Event_In </td>
+          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Schussanlage_GetOrder_Server_In </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -340,16 +300,16 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Wartet auf ein konfiguriertes Event. </p>
-<p>Funktionen für die SW-Komponente Schussanlage </p>
-<dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert) </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0 Initale Version </dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Florian Laufenböck </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2015-06-09 </dd></dl>
+<p>TODO. </p>
+<dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert)</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 Initiale Version</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Florian Laufenböck</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2015-06-10</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>über Port nachdenken, wirklich so sinnvoll </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a85005e3ae556bea61477669333ac1275"></a>
+<a class="anchor" id="a4d2dac6954c8abf7c0236710096431bf"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -357,10 +317,46 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Schussanlage_SendMessage_Client_Out </td>
+          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Schussanlage_GetValue_Event_In </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *&#160;</td>
-          <td class="paramname"><em>message</em></td><td>)</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>eventvalue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wartet auf ein konfiguriertes Event Funktionsaufruf ist nicht blockierend, da aus dem Komponentendiagramm hervorgeht, das dies hier nicht sinnvoll ist. entspricht einem GetEvent. </p>
+<p>SWK Schussanlage </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eventvalue</td><td>0 wenn Event nicht gesetzt, !0 wenn Event gesetzt</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 Initale Version </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Florian Laufenböck </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2015-06-09 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a35c4166848acd89a0d0d4dc94dc7e841"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Schussanlage_SendMessage_Sender_Out </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -381,11 +377,12 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert)</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 Initale Version</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Florian Laufenböck</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2015-06-10 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2015-06-10</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Nachdenken ob Dreiecksbeziehung so richtig und sinnvoll/funtkioniert </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a30989ebe24f1860b3c1ec697395c21ea"></a>
+<a class="anchor" id="abdbf3a7ad3a798d7c9597e90aa39ba05"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -393,11 +390,21 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Schussanlage_SetOrder_Sender_Out </td>
+          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Schussanlage_SetOrder_Client_Out </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *&#160;</td>
-          <td class="paramname"><em>message</em></td><td>)</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>schuesse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>return_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -407,17 +414,22 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>setzt einen Befehl der von SchussMotor ausgeführt werden soll </p>
+<p>wie viele Schüsse sollen von SchussMotor ausgeführt werden stellt gleichzeitig die Funktion für die SAK SchussMotor da </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>enthält ganzzahl die den Befehl angibt</td></tr>
+    <tr><td class="paramname">schuesse</td><td>ganzzahl wie viele Schüsse abgegeben werden sollen </td></tr>
+    <tr><td class="paramname">return_val</td><td>eigentlicher Rückgabewert der aufrufenden Funktion</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert)</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 Initale Version</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Florian Laufenböck</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2015-06-10 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2015-06-10</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>da Funktionsaufruf natürlich blockierend</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>du</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2015-06-20 </dd></dl>
 
 </div>
 </div>
@@ -450,48 +462,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="abb336eca805711d79288c158e9c64508"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_SchussMotor_GetOrder_Receiver_In </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *&#160;</td>
-          <td class="paramname"><em>message</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Receiver Port für Signale von der Schussanlage. </p>
-<p>Funktionen für die SA-Komponente SchussMotor </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">message</td><td>enhält die Anzahl, wie oft die Aktion ausgeführt werden soll, constant(hier: wie oft geschossen werden soll, bis abgebrochen werden kann)</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert)</dd></dl>
-<dl class="section attention"><dt>Attention</dt><dd>Die restlichen Variablen die für das schiessen wichtig sind werden global definiert. Diese Definitionen sind dann zu verwenden </dd>
-<dd>
-Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis zum Ende ausgeführt wird. Sollte also 5 übergeben werden, werden diese 5 Schüsse ausgeführt, egal ob bei 1 unterbrochen werden soll!</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>globale Variablen für den Motor definieren</dd></dl>
-<dl class="section see"><dt>See Also</dt><dd>RTE_Schussanlage_SetOrder_Sender_Out(const uint8_t *order);</dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Florian Laufenböck </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2015-06-07 </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="a436c4bca74f77c7cee049e93a6bb21bf"></a>
 <div class="memitem">
 <div class="memproto">
@@ -515,6 +485,7 @@ Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis
 </div><div class="memdoc">
 
 <p>Abstraktion um auf die Output-Hardware zuzugreifen. hier: Zugriff auf Motor. </p>
+<p>SAK SchussMotor </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">degree</td><td>Anzahl der Umdrehungen die der Motor machen soll</td></tr>
@@ -587,7 +558,7 @@ Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis
 </div><div class="memdoc">
 
 <p>setzt ein Event, das symbolisiert ob gestartet werden soll </p>
-<p>Funktionen für die SA-Komponente StartTrigger </p>
+<p>SAK Trigger </p>
 <dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 Initiale Version </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Florian Laufenböck </dd></dl>
@@ -661,7 +632,7 @@ Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis
 
 </div>
 </div>
-<a class="anchor" id="a44badf70548d98836720d9d61fd2e550"></a>
+<a class="anchor" id="a36802657cfbad42518b0993ec91a4de0"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -669,10 +640,9 @@ Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Trigger_GetMessage_Server_In </td>
+          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Trigger_GetMessage_Receiver_In </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *&#160;</td>
-          <td class="paramname"><em>message</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -684,17 +654,11 @@ Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis
 </div><div class="memdoc">
 
 <p>bekommt eine Nachricht, in der bestimmte Informationen über den Zustand der Schussanlage drinstehen </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">message</td><td>Nachricht</td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert)</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 Initale Version</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Florian Laufenböck</dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2015-06-10</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Nachrichten definieren, um Kommunikation sicherzustellen </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Nachdenken ob diese Beziehung überhaupt sinnvoll ist </dd></dl>
 
 </div>
 </div>
@@ -719,7 +683,7 @@ Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis
 </table>
 </div><div class="memdoc">
 
-<p>Status des Events abfragen, welches symbolisiert, dass der Trigger gestartet wurde. </p>
+<p>Status des Events abfragen, welches symbolisiert, dass der Trigger gestartet wurde blockiert die weitere Ausführung solange, bis das Event eingetroffen ist. </p>
 <dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert)</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 Initale Version</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Florian Laufenböck</dd></dl>
@@ -727,7 +691,7 @@ Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis
 
 </div>
 </div>
-<a class="anchor" id="acaa6e2529992707c374b0743fd8f4951"></a>
+<a class="anchor" id="a91c489b5753171b7cfa32718e4d05b1d"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -735,10 +699,9 @@ Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Trigger_SetOrder_Sender_Out </td>
+          <td class="memname"><a class="el" href="_y_a_s_a__types_8h.html#ae10e86ea67357e654a764da2baa765a1">std_return</a> RTE_Trigger_SetOrder_Client_Out </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="_y_a_s_a__types_8h.html#a195ef78acb1edefc968c447d077e6dda">YASA_message</a> *&#160;</td>
-          <td class="paramname"><em>message</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -760,14 +723,15 @@ Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis
 <dl class="section return"><dt>Returns</dt><dd>Errorcode, 0 := alles OK, !0 := Fehlercode(aktuell undefiniert)</dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 Initale Version</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Florian Laufenböck</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2015-06-10 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2015-06-10</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Nachdenken ob dieser Port überhaupt sinnvoll so ist </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 10 2015 18:31:05 for YASA Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 20 2015 09:42:32 for YASA Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

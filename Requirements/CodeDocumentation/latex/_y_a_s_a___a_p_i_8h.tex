@@ -1,0 +1,48 @@
+\hypertarget{_y_a_s_a___a_p_i_8h}{\section{Code/include/\-Y\-A\-S\-A\-\_\-\-A\-P\-I.h File Reference}
+\label{_y_a_s_a___a_p_i_8h}\index{Code/include/\-Y\-A\-S\-A\-\_\-\-A\-P\-I.\-h@{Code/include/\-Y\-A\-S\-A\-\_\-\-A\-P\-I.\-h}}
+}
+{\ttfamily \#include \char`\"{}Y\-A\-S\-A\-\_\-\-R\-T\-E\-A\-P\-I.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_y_a_s_a___a_p_i_8h_aa75f9fb282c10417e8e67eb09c77b805}{Schussanlage\-\_\-\-Set\-Order\-\_\-\-Client\-\_\-\-Out}(schuesse, ret\-\_\-val)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_y_a_s_a___a_p_i_8h_aa75f9fb282c10417e8e67eb09c77b805}{\index{Y\-A\-S\-A\-\_\-\-A\-P\-I.\-h@{Y\-A\-S\-A\-\_\-\-A\-P\-I.\-h}!Schussanlage\-\_\-\-Set\-Order\-\_\-\-Client\-\_\-\-Out@{Schussanlage\-\_\-\-Set\-Order\-\_\-\-Client\-\_\-\-Out}}
+\index{Schussanlage\-\_\-\-Set\-Order\-\_\-\-Client\-\_\-\-Out@{Schussanlage\-\_\-\-Set\-Order\-\_\-\-Client\-\_\-\-Out}!YASA_API.h@{Y\-A\-S\-A\-\_\-\-A\-P\-I.\-h}}
+\subsubsection[{Schussanlage\-\_\-\-Set\-Order\-\_\-\-Client\-\_\-\-Out}]{\setlength{\rightskip}{0pt plus 5cm}\#define Schussanlage\-\_\-\-Set\-Order\-\_\-\-Client\-\_\-\-Out(
+\begin{DoxyParamCaption}
+\item[{}]{schuesse, }
+\item[{}]{ret\-\_\-val}
+\end{DoxyParamCaption}
+)}}\label{_y_a_s_a___a_p_i_8h_aa75f9fb282c10417e8e67eb09c77b805}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+0;\(\backslash\)
+        ret\_val = 0;\hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a436c4bca74f77c7cee049e93a6bb21bf}{\(\backslash\)}
+\hyperlink{_y_a_s_a___r_t_e_a_p_i_8h_a436c4bca74f77c7cee049e93a6bb21bf}{        RTE\_SchussMotor\_SetOutputValue\_OSPort\_Out}(schuesse
+       * 360);
+\end{DoxyCode}
+includes Funktion die die S\-A\-K Schuss\-Motor darstellt(spezialfall das Server-\/\-Client)
+
+
+\begin{DoxyParams}{Parameters}
+{\em schuesse} & anzahl der schüsse die abgegeben werden sollen \\
+\hline
+{\em ret\-\_\-val} & return Wert\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ da kein Fehler auftreten kann
+\end{DoxyReturn}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyAuthor}{Author}
+Florian Laufenböck
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2015-\/06-\/20 
+\end{DoxyDate}

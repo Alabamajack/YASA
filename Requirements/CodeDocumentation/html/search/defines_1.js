@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yasa_5frteapi',['YASA_RTEAPI',['../_y_a_s_a___r_t_e_a_p_i_8h.html#a92c1912c74cdd2f1f5383ada0a5878d5',1,'YASA_RTEAPI.h']]]
+  ['max_5fmessage_5flenght',['MAX_MESSAGE_LENGHT',['../_y_a_s_a__global__variables_8h.html#a906247e814b79bea7083939bec08d878',1,'YASA_global_variables.h']]]
 ];

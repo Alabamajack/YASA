@@ -13,8 +13,8 @@ var indexSectionsWithContent =
   3: "abcdeghimprsty",
   4: "abcdefghimnprstuv",
   5: "abcdefghilmnprstuvw",
-  6: "sy",
-  7: "dy",
+  6: "s",
+  7: "bmsy",
   8: "dty"
 };
 
