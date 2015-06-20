@@ -1,3 +1,13 @@
+	EVENT evt_shoot
+	{
+		MASK = AUTO;
+	};
+
+	EVENT evt_abort
+	{
+		MASK = AUTO;
+	};
+
 #include "implementation.oil"
 
 CPU ATMEL_AT91SAM7S256
@@ -69,16 +79,6 @@ CPU ATMEL_AT91SAM7S256
 		MINCYCLE = 0;
 		MAXALLOWEDVALUE = 0;
 		TICKSPERBASE = 0;
-	};
-
-	EVENT evt_shoot
-	{
-		MASK = AUTO;
-	};
-
-	EVENT evt_abort
-	{
-		MASK = AUTO;
 	};
 
 };

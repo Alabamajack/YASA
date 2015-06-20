@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<shootingmachineemfmodel:ToplevelSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:shootingmachineemfmodel="http://shootingmachineemfmodel/1.0">
+<shootingmachineemfmodel:ToplevelSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:shootingmachineemfmodel="http://shootingmachineemfmodel/1.0">
+  <hasComponent xsi:type="shootingmachineemfmodel:SW_Component">
+    <hasRunnable name="runnable1" applicationcode="C:\Users\Philipp\Documents\YASA\Modell\EMF\ShootingMachine.tests\runnables\runnable1.c"/>
+  </hasComponent>
   <hasBrick name="Brick1"/>
   <hasBrick name="Brick2">
-    <hasTaskBrick name="Main" hasEvent="//@hasBrick.1/@hasEventBrick.1" hasAlarm="//@hasBrick.1/@hasAlarmBrick.0"/>
+    <hasTaskBrick name="Main" hasEvent="//@hasBrick.1/@hasEventBrick.1" hasAlarm="//@hasBrick.1/@hasAlarmBrick.0" hasRunnable="//@hasComponent.0/@hasRunnable.0"/>
     <hasTaskBrick name="Schussanlage" hasEvent="//@hasBrick.1/@hasEventBrick.0" hasAlarm="//@hasBrick.1/@hasAlarmBrick.1"/>
     <hasEventBrick name="evt_shoot"/>
     <hasEventBrick name="evt_abort"/>
