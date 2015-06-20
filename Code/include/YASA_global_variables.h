@@ -1,0 +1,40 @@
+#ifndef YASA_GLOBAL_VARIABLES
+#define YASA_GLOBAL_VARIABLES
+/** @file YASA_global_variables.h
+ *
+ * Hier stehen alle global definierten, statischen Variablen und defines drin
+ *
+ * @version 1.0
+ * @date 2015-06-19
+ * @authors Florian Laufenböck, Phillip Eidenschink, Tobias Schwindl
+ */
+
+///
+///includes
+///
+#include "YASA_generated_variables.h"
+
+///
+///Defines
+///
+
+/** \brief Addresse des BT-Slave: einzelne Werte müssen in hexcode und duch Kommas getrennt angegeben werden; Bsp: 0x00,0x10,0xFF... */
+#define BT_SLAVE_ADDRESS
+
+/** \brief die maximale Packetlänge, die über BT übertragen werden kann(festgelegt durch uns, dadurch alles statischer) */
+#define BT_PACKAGE_SIZE 127
+
+/** \brief die maximale Länge einer Nachricht, die verschickt werden kann(ohne Overhead produziert durch die verschiedenen Schichten, also direkt nutzbar von Appliaktion)
+ * @TODO muss noch ausgerechnet werden */
+#define MAX_MESSAGE_LENGHT
+
+///#define __DEBUG__
+
+///types
+
+/** \brief Buffer-Speicher für Nachrichten, die über BT verschickt werden sollen */
+U8 BT_transmit_package[BT_PACKAGE_SIZE];
+/** \brief Buffer-Speicher für Nachrichten, die über BT empfangen wurden */
+U8 BT_receive_package[BT_PACKAGE_SIZE];
+
+#endif YASA_GLOBAL_VARIABLES

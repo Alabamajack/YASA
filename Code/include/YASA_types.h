@@ -22,23 +22,4 @@
   */
 typedef uint32_t std_return;
 
-/**
- * nur ein Dummy für den eigentlichen Nachrichtendatentyp
- *
- * @todo remove
- */
-#define DUMMYMESSAGE
-
-/**
- * \brief unser Standarddatentyp für Nachrichten
- *
- * @version 0.1 Initale Version
- * @author Florian Laufenböck
- * @date 2015-06-10
- *
- * @attention kann noch nicht verwendet werden, definiert nur einen DUMMY
- * @todo Typ richtig definieren
- */
-typedef DUMMYMESSAGE YASA_message;
-
  #endif /* YASA_types */
