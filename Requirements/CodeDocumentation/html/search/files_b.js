@@ -55,7 +55,5 @@ var searchData=
   ['sw_5fcomponentvalidator_2ejava',['SW_ComponentValidator.java',['../_s_w___component_validator_8java.html',1,'']]],
   ['system_2ejava',['System.java',['../_system_8java.html',1,'']]],
   ['systemimpl_2ejava',['SystemImpl.java',['../_system_impl_8java.html',1,'']]],
-  ['systemitemprovider_2ejava',['SystemItemProvider.java',['../_system_item_provider_8java.html',1,'']]],
-  ['systemtest_2ejava',['SystemTest.java',['../_system_test_8java.html',1,'']]],
   ['systemvalidator_2ejava',['SystemValidator.java',['../_system_validator_8java.html',1,'']]]
 ];

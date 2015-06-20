@@ -17,7 +17,5 @@ var searchData=
   ['connectionsvalidator_2ejava',['ConnectionsValidator.java',['../_connections_validator_8java.html',1,'']]],
   ['counter_2ejava',['Counter.java',['../_counter_8java.html',1,'']]],
   ['counterimpl_2ejava',['CounterImpl.java',['../_counter_impl_8java.html',1,'']]],
-  ['counteritemprovider_2ejava',['CounterItemProvider.java',['../_counter_item_provider_8java.html',1,'']]],
-  ['countertest_2ejava',['CounterTest.java',['../_counter_test_8java.html',1,'']]],
   ['countervalidator_2ejava',['CounterValidator.java',['../_counter_validator_8java.html',1,'']]]
 ];

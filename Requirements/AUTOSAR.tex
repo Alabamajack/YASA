@@ -294,9 +294,23 @@ Folgende IDs sind für unsere Applikation vergeben:\\~\\
 	\end{tabular}
 
 \chapter{Konventionen/Definitionen}
+hier werden alle Events,Tasks, Definitionen beschrieben, die immer implizit erfolgen
 \section{Tasks}
-\subsection{impliziter Task}
-Pro Brick gibt es einen impliziten Task, der immer bei der Codegenerierung mithineingeneriert wird. Dieser Task ist für die Nachrichtenabholung, die per Bluetooth eintreffen, zuständig. Dieser Task hat nur eine Runnable. In der Runnable ist nichts zu tun, ausser auf Nachrichten zu warten und wenn eine Nachricht eintritt den Communicationservice aufzurufen/zu informieren.
+\begin{itemize}
+\item \lstinline|BT_IMPLIZIT_MASTER| Task der den Master im Bluetooth Verbund darstellt, den Verbindungsaufbau implementiert und senden und empfangen implementiert - Communication Driver
+\item \lstinline|BT_IMPLIZIT_SLAVE| Task der den Slave im Bluetooth Verbund - Communication Driver
+\item \lstinline|TASK_BT_INTERFACE| Task der die zu sendende/empfangende Nachricht erhält, das ganze parst(entweder zu string um zu versenden oder zurück wenn empfangen wurde) und eine ID hinzufügt
+\end{itemize}
+\section{globale Variablen}
+\section{Events} 
+für jede RTE-Funktion gibt es ein generiertes, von der Konfiguration abhängiges \lstinline|#define|. Der Namensaufbau ist definiert durch
+\lstinline|Funktionsname_(ONEBRICK,TWOBRICK,THREEBRICK)|. Dabei muss in der Konfiguration das jeweilige Makro gesetzt werden, wobei
+\begin{itemize}
+\item \lstinline|ONEBRICK| die Verbindung der beteiligten Bricks liegt auf einem Brick
+\item \lstinline|TWOBRICK| die Verbindung der beteiligten Bricks liegen auf unterschiedlichen Bricks
+\item \lstinline|THREEBRICK| mind. eine Verbindung liegt auf einem Brick und mind. eine Verbindung liegt auf einem anderen Brick(geht natürlich nur bei Multicast).
+\end{itemize}
+
 
 \end{document}
 

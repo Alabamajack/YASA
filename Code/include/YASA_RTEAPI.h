@@ -51,29 +51,8 @@ inline std_return RTE_StopSensor_SetValue_Event_Out();
 
 
 ///
-///Funktionen für die SA-Komponente SchussMotor
+///SAK SchussMotor
 ///
-
-/**
- * \brief Receiver Port für Signale von der Schussanlage
- *
- * @param message  enhält die Anzahl, wie oft die Aktion ausgeführt werden soll, constant(hier: wie oft geschossen werden soll, bis abgebrochen werden kann)
- *
- * @return @Errorcode
- *
- * @attention Die restlichen Variablen die für das schiessen wichtig sind werden global definiert. Diese Definitionen sind dann zu verwenden
- * @attention Beim Funktionsaufruf ist darauf zu achten, dass die übergebene Anzahl IMMER bis zum Ende ausgeführt wird. Sollte also 5 übergeben werden, werden diese 5 Schüsse
- * 				ausgeführt, egal ob bei 1 unterbrochen werden soll!
- *
- * @todo globale Variablen für den Motor definieren
- *
- * @see RTE_Schussanlage_SetOrder_Sender_Out(const uint8_t *order);
- *
- * @version 1.0
- * @author Florian Laufenböck
- * @date 2015-06-07
- */
-inline std_return RTE_SchussMotor_GetOrder_Receiver_In(const YASA_message *message);
 
 /**
  * \brief Abstraktion um auf die Output-Hardware zuzugreifen. hier: Zugriff auf Motor
@@ -92,7 +71,7 @@ inline std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(const uint32_t *degr
 
 
 ///
-///Funktionen für die SA-Komponente Output
+///SAK Output
 ///
 
 /**
@@ -108,6 +87,7 @@ inline std_return RTE_Output_SetOutput_OSPort_Out(const uint8_t *message);
 
 /**
  * \brief Wartet auf ein konfiguriertes Event
+ * blockiert den Ablauf des aufrufenden Task solange, bis Event eingetroffen ist
  * @return  @Errorcode
  * @version 1.0 Initiale Version
  * @author Florian Laufenböck
@@ -117,18 +97,19 @@ inline std_return RTE_Output_SetOutput_OSPort_Out(const uint8_t *message);
 inline std_return RTE_Output_GetValue_Event_In();
 
 /**
- * \brief holt sich die Nachricht, die auf dem Display angezeigt werden soll
- * @param   message    Nachricht die angezeigt werden soll
+ * \brief holt sich die Nachricht, die auf dem Display angezeigt werden soll, blockiert solange den weiteren Ablauf des Task, bis die Nachricht da ist
+ * @param   message    Nachricht die angezeigt werden soll, mit der maximalen Nachrichtenlänge
+ * @see MAX_MESSAGE_LENGHT
  * @return             @Errorcode
  * @version 1.0 Initiale Version
  * @author Florian Laufenböck
  * @date    2015-06-08
  */
-inline std_return RTE_Output_GetValue_Server_In(YASA_message *message);
+inline std_return RTE_Output_GetValue_Receiver_In(char *message);
 
 
 ///
-///Funktionen für die SA-Komponente StartTrigger
+///SAK Trigger
 ///
 
 /**
@@ -154,23 +135,24 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t *value);
 
 
 ///
-///Funktionen für die SW-Komponente Schussanlage
+///SWK Schussanlage
 ///
 
 /**
  * \brief Wartet auf ein konfiguriertes Event
+ * Funktionsaufruf ist nicht blockierend, da aus dem Komponentendiagramm hervorgeht, das dies hier nicht sinnvoll ist.
+ * entspricht einem GetEvent
+ * @param eventvalue 0 wenn Event nicht gesetzt, !0 wenn Event gesetzt
+ *
  * @return  @Errorcode
  * @version 1.0 Initale Version
  * @author Florian Laufenböck
  * @date    2015-06-09
  */
-inline std_return RTE_Schussanlage_GetValue_Event_In();
+inline std_return RTE_Schussanlage_GetValue_Event_In(uint8_t *eventvalue);
 
 /**
- * \brief Nimmt eine Nachricht von der SW-Komponente Trigger entgegen. Dort wird verarbeitet ob gestartet werden soll oder nicht.
- *
- *
- * @param   message    enthält ganzzahl, wobei die Interpretation noch anzugeben ist
+ * \brief TODO
  *
  * @return             @Errorcode
  *
@@ -180,10 +162,9 @@ inline std_return RTE_Schussanlage_GetValue_Event_In();
  *
  * @date    2015-06-10
  *
- * @todo Interpretation von order festlegen
- * @see RTE_Trigger_SetOrder_Sender_Out(const uint8_t *order);
+ * @todo über Port nachdenken, wirklich so sinnvoll
  */
-inline std_return RTE_Schussanlage_GetOrder_Receiver_In(const YASA_message *message);
+inline std_return RTE_Schussanlage_GetOrder_Server_In();
 
 /**
  * \brief Setzt eine Nachricht für den Multicast-Betrieb. Beinhaltet bereits die gesamte Nachricht!
@@ -197,8 +178,10 @@ inline std_return RTE_Schussanlage_GetOrder_Receiver_In(const YASA_message *mess
  * @author Florian Laufenböck
  *
  * @date    2015-06-10
+ *
+ * @todo Nachdenken ob Dreiecksbeziehung so richtig und sinnvoll/funtkioniert
  */
-inline std_return RTE_Schussanlage_SendMessage_Client_Out(const YASA_message *message);
+inline std_return RTE_Schussanlage_SendMessage_Sender_Out();
 
 /**
  * \brief setzt Event um der SAK Output zu signalisieren, dass sich der interne Zustand geändert hat und jetzt was ausgegeben werden kann
@@ -214,9 +197,11 @@ inline std_return RTE_Schussanlage_SendMessage_Client_Out(const YASA_message *me
 inline std_return RTE_Schussanlage_SetValue_Event_Out();
 
 /**
- * \brief setzt einen Befehl der von SchussMotor ausgeführt werden soll
+ * \brief wie viele Schüsse sollen von SchussMotor ausgeführt werden
+ * stellt gleichzeitig die Funktion für die SAK SchussMotor da
  *
- * @param   message    enthält ganzzahl die den Befehl angibt
+ * @param   schuesse   ganzzahl wie viele Schüsse abgegeben werden sollen
+ * @param   return_val eigentlicher Rückgabewert der aufrufenden Funktion
  *
  * @return             @Errorcode
  *
@@ -225,8 +210,10 @@ inline std_return RTE_Schussanlage_SetValue_Event_Out();
  * @author Florian Laufenböck
  *
  * @date    2015-06-10
+ *
+ * @attention da Funktionsaufruf natürlich blockierend
  */
-inline std_return RTE_Schussanlage_SetOrder_Sender_Out(const YASA_message *message);
+inline std_return RTE_Schussanlage_SetOrder_Client_Out(const uint8_t *schuesse, uint32_t *return_val);
 
 
 ///
@@ -245,13 +232,13 @@ inline std_return RTE_Schussanlage_SetOrder_Sender_Out(const YASA_message *messa
  * @author Florian Laufenböck
  *
  * @date    2015-06-10
+ *
+ * @todo Nachdenken ob dieser Port überhaupt sinnvoll so ist
  */
-inline std_return RTE_Trigger_SetOrder_Sender_Out(const YASA_message *message);
+inline std_return RTE_Trigger_SetOrder_Client_Out();
 
 /**
  * \brief bekommt eine Nachricht, in der bestimmte Informationen über den Zustand der Schussanlage drinstehen
- *
- * @param   message    Nachricht
  *
  * @return             @Errorcode
  *
@@ -261,12 +248,13 @@ inline std_return RTE_Trigger_SetOrder_Sender_Out(const YASA_message *message);
  *
  * @date    2015-06-10
  *
- * @todo Nachrichten definieren, um Kommunikation sicherzustellen
+ * @todo Nachdenken ob diese Beziehung überhaupt sinnvoll ist
  */
-inline std_return RTE_Trigger_GetMessage_Server_In(const YASA_message *message);
+inline std_return RTE_Trigger_GetMessage_Receiver_In();
 
 /**
  * \brief Status des Events abfragen, welches symbolisiert, dass der Trigger gestartet wurde
+ * blockiert die weitere Ausführung solange, bis das Event eingetroffen ist
  *
  * @return  @Errorcode
  *

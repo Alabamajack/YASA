@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['declaretask',['DeclareTask',['../_b_t___i_m_p_l_i_z_i_t___m_a_s_t_e_r_8c.html#aeb6bc6535e6596d3c89cf6c1f1dea05e',1,'DeclareTask(BT_IMPLIZIT_MASTER):&#160;BT_IMPLIZIT_MASTER.c'],['../_b_t___i_m_p_l_i_z_i_t___s_l_a_v_e_8c.html#af10edb0295aebf59c2598f23f60c8150',1,'DeclareTask(BT_IMPLIZIT_SLAVE):&#160;BT_IMPLIZIT_SLAVE.c']]],
   ['defaultcase',['defaultCase',['../classshootingmachineemfmodel_1_1util_1_1_shootingmachineemfmodel_switch_3_01_t_01_4.html#a24899cc299de8c63154bb862c52bbefb',1,'shootingmachineemfmodel::util::ShootingmachineemfmodelSwitch&lt; T &gt;']]],
   ['depopulatemanager',['depopulateManager',['../classshootingmachineemfmodel_1_1presentation_1_1_shootingmachineemfmodel_action_bar_contributor.html#ab7e41697c1ac22641dc1496df106df76',1,'shootingmachineemfmodel::presentation::ShootingmachineemfmodelActionBarContributor']]],
   ['displayimpl',['DisplayImpl',['../classshootingmachineemfmodel_1_1impl_1_1_display_impl.html#a9ca34a3e9107a845792748673182c62a',1,'shootingmachineemfmodel::impl::DisplayImpl']]],

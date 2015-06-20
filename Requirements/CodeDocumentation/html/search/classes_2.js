@@ -17,7 +17,5 @@ var searchData=
   ['connectionsvalidator',['ConnectionsValidator',['../interfaceshootingmachineemfmodel_1_1validation_1_1_connections_validator.html',1,'shootingmachineemfmodel::validation']]],
   ['counter',['Counter',['../interfaceshootingmachineemfmodel_1_1_counter.html',1,'shootingmachineemfmodel']]],
   ['counterimpl',['CounterImpl',['../classshootingmachineemfmodel_1_1impl_1_1_counter_impl.html',1,'shootingmachineemfmodel::impl']]],
-  ['counteritemprovider',['CounterItemProvider',['../classshootingmachineemfmodel_1_1provider_1_1_counter_item_provider.html',1,'shootingmachineemfmodel::provider']]],
-  ['countertest',['CounterTest',['../classshootingmachineemfmodel_1_1tests_1_1_counter_test.html',1,'shootingmachineemfmodel::tests']]],
   ['countervalidator',['CounterValidator',['../interfaceshootingmachineemfmodel_1_1validation_1_1_counter_validator.html',1,'shootingmachineemfmodel::validation']]]
 ];

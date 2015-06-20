@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['declaretask',['DeclareTask',['../_b_t___i_m_p_l_i_z_i_t___m_a_s_t_e_r_8c.html#aeb6bc6535e6596d3c89cf6c1f1dea05e',1,'DeclareTask(BT_IMPLIZIT_MASTER):&#160;BT_IMPLIZIT_MASTER.c'],['../_b_t___i_m_p_l_i_z_i_t___s_l_a_v_e_8c.html#af10edb0295aebf59c2598f23f60c8150',1,'DeclareTask(BT_IMPLIZIT_SLAVE):&#160;BT_IMPLIZIT_SLAVE.c']]],
   ['defaultcase',['defaultCase',['../classshootingmachineemfmodel_1_1util_1_1_shootingmachineemfmodel_switch_3_01_t_01_4.html#a24899cc299de8c63154bb862c52bbefb',1,'shootingmachineemfmodel::util::ShootingmachineemfmodelSwitch&lt; T &gt;']]],
   ['depopulatemanager',['depopulateManager',['../classshootingmachineemfmodel_1_1presentation_1_1_shootingmachineemfmodel_action_bar_contributor.html#ab7e41697c1ac22641dc1496df106df76',1,'shootingmachineemfmodel::presentation::ShootingmachineemfmodelActionBarContributor']]],
   ['deprecated_20list',['Deprecated List',['../deprecated.html',1,'']]],
@@ -24,6 +25,5 @@ var searchData=
   ['dispose',['dispose',['../classshootingmachineemfmodel_1_1provider_1_1_shootingmachineemfmodel_item_provider_adapter_factory.html#a06b61872a84d6ead2957a8fb3ab61c01',1,'shootingmachineemfmodel.provider.ShootingmachineemfmodelItemProviderAdapterFactory.dispose()'],['../classshootingmachineemfmodel_1_1presentation_1_1_shootingmachineemfmodel_editor.html#abcd2d5218fb02ab86adf3279aedc8248',1,'shootingmachineemfmodel.presentation.ShootingmachineemfmodelEditor.dispose()']]],
   ['dosave',['doSave',['../classshootingmachineemfmodel_1_1presentation_1_1_shootingmachineemfmodel_editor.html#a5c4817f88f4fbf12c72ef2a0aac06f84',1,'shootingmachineemfmodel::presentation::ShootingmachineemfmodelEditor']]],
   ['dosaveas',['doSaveAs',['../classshootingmachineemfmodel_1_1presentation_1_1_shootingmachineemfmodel_editor.html#a31e229dc1eafc259cad64918da13eb7c',1,'shootingmachineemfmodel.presentation.ShootingmachineemfmodelEditor.doSaveAs()'],['../classshootingmachineemfmodel_1_1presentation_1_1_shootingmachineemfmodel_editor.html#aa3c6b6709dd8cae9cd4b5cd5a48d5fea',1,'shootingmachineemfmodel.presentation.ShootingmachineemfmodelEditor.doSaveAs(URI uri, IEditorInput editorInput)']]],
-  ['doswitch',['doSwitch',['../classshootingmachineemfmodel_1_1util_1_1_shootingmachineemfmodel_switch_3_01_t_01_4.html#a23186dd5b028dc2f72c38da4a98d587e',1,'shootingmachineemfmodel::util::ShootingmachineemfmodelSwitch&lt; T &gt;']]],
-  ['dummymessage',['DUMMYMESSAGE',['../_y_a_s_a__types_8h.html#a32998811e852c17f709510545817cfde',1,'YASA_types.h']]]
+  ['doswitch',['doSwitch',['../classshootingmachineemfmodel_1_1util_1_1_shootingmachineemfmodel_switch_3_01_t_01_4.html#a23186dd5b028dc2f72c38da4a98d587e',1,'shootingmachineemfmodel::util::ShootingmachineemfmodelSwitch&lt; T &gt;']]]
 ];
