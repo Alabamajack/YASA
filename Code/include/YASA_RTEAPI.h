@@ -18,6 +18,11 @@
 #include "YASA_types.h"
 
 
+extern Output_Message;
+
+extern COMSERVICE_transmit_package;
+extern COMSERVICE_receive_package;
+
 ///
 ///SAK StopSensor
 ///
@@ -169,7 +174,7 @@ inline std_return RTE_Schussanlage_GetOrder_Server_In();
 /**
  * \brief Setzt eine Nachricht für den Multicast-Betrieb. Beinhaltet bereits die gesamte Nachricht!
  *
- * @param   message    Nachricht die per Multicast nach aussen gesendet werden soll
+ * @param   message    Nachricht die per aussen gesendet werden soll
  *
  * @return             @Errorcode
  *
@@ -181,7 +186,7 @@ inline std_return RTE_Schussanlage_GetOrder_Server_In();
  *
  * @todo Nachdenken ob Dreiecksbeziehung so richtig und sinnvoll/funtkioniert
  */
-inline std_return RTE_Schussanlage_SendMessage_Sender_Out();
+inline std_return RTE_Schussanlage_SendMessage_Sender_Out(const char* message);
 
 /**
  * \brief setzt Event um der SAK Output zu signalisieren, dass sich der interne Zustand geändert hat und jetzt was ausgegeben werden kann
