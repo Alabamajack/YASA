@@ -2,16 +2,16 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="eingelesen" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="copyFiletoString"/>
 			<item value="eingelesen"/>
 			<item value="if(mySystem.getHas"/>
 			<item value="PortRunnable"/>
-			<item value="copyFiletoString"/>
 			<item value="file"/>
 			<item value="XML"/>
 			<item value="XMI"/>

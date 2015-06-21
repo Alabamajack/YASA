@@ -2,6 +2,8 @@
  */
 package shootingmachineemfmodel;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -12,6 +14,8 @@ package shootingmachineemfmodel;
  * The following features are supported:
  * <ul>
  *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getMessageID <em>Message ID</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasIBCOut <em>Has IBC Out</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasIBCIn <em>Has IBC In</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,5 +49,37 @@ public interface InterBrickCommunication extends Standardclass {
 	 * @generated
 	 */
 	void setMessageID(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Has IBC Out</b></em>' reference list.
+	 * The list contents are of type {@link shootingmachineemfmodel.Brick}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Has IBC Out</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Has IBC Out</em>' reference list.
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getInterBrickCommunication_HasIBCOut()
+	 * @model
+	 * @generated
+	 */
+	EList<Brick> getHasIBCOut();
+
+	/**
+	 * Returns the value of the '<em><b>Has IBC In</b></em>' reference list.
+	 * The list contents are of type {@link shootingmachineemfmodel.Brick}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Has IBC In</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Has IBC In</em>' reference list.
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getInterBrickCommunication_HasIBCIn()
+	 * @model
+	 * @generated
+	 */
+	EList<Brick> getHasIBCIn();
 
 } // InterBrickCommunication

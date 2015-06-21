@@ -7,16 +7,20 @@ DeclareTask(SchussanlagenTask);
 
 
 
-\\Schussanlage_Runnable
+//Schussanlage_Runnable
 void Schussanlage_Runnable()
 {
-das ist mein runnable code
+Bla Bla runnable
+pi pa po
+	lalelu
 
 }
 
 TASK(SchussanlagenTask)
 {
-Schussanlage_Runnable();
-TerminateTask();
+	while(1)
+	{
+		Schussanlage_Runnable();
+	}
+	TerminateTask();
 }
-

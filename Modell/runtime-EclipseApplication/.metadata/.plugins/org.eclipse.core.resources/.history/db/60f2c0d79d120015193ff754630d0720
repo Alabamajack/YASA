@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<shootingmachineemfmodel:ToplevelSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:shootingmachineemfmodel="http://shootingmachineemfmodel/1.0">
-  <hasBrick name="Brick1"/>
-  <hasBrick name="Brick2">
-    <hasTaskBrick name="Main" hasEvent="//@hasBrick.1/@hasEventBrick.0" ACTIVATION="1"/>
-    <hasEventBrick name="evt_disp"/>
-  </hasBrick>
-</shootingmachineemfmodel:ToplevelSystem>

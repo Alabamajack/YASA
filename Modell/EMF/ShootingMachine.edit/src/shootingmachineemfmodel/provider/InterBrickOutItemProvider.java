@@ -56,7 +56,6 @@ public class InterBrickOutItemProvider
 			super.getPropertyDescriptors(object);
 
 			addHasMessageInterBrickOutPropertyDescriptor(object);
-			addHasBrickInterBrickInPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -75,28 +74,6 @@ public class InterBrickOutItemProvider
 				 getString("_UI_InterBrickOut_hasMessageInterBrickOut_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_InterBrickOut_hasMessageInterBrickOut_feature", "_UI_InterBrickOut_type"),
 				 ShootingmachineemfmodelPackage.Literals.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Has Brick Inter Brick In feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addHasBrickInterBrickInPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InterBrickOut_hasBrickInterBrickIn_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InterBrickOut_hasBrickInterBrickIn_feature", "_UI_InterBrickOut_type"),
-				 ShootingmachineemfmodelPackage.Literals.INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN,
 				 true,
 				 false,
 				 true,

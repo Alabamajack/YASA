@@ -16,8 +16,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link shootingmachineemfmodel.Brick#getHasEventBrick <em>Has Event Brick</em>}</li>
  *   <li>{@link shootingmachineemfmodel.Brick#getHasAlarmBrick <em>Has Alarm Brick</em>}</li>
  *   <li>{@link shootingmachineemfmodel.Brick#getHasHWPortsBrick <em>Has HW Ports Brick</em>}</li>
- *   <li>{@link shootingmachineemfmodel.Brick#getHasInterBrickInBrick <em>Has Inter Brick In Brick</em>}</li>
- *   <li>{@link shootingmachineemfmodel.Brick#getHasInterBrickOutBrick <em>Has Inter Brick Out Brick</em>}</li>
  * </ul>
  * </p>
  *
@@ -89,57 +87,5 @@ public interface Brick extends Standardclass {
 	 * @generated
 	 */
 	EList<HWPorts> getHasHWPortsBrick();
-
-	/**
-	 * Returns the value of the '<em><b>Has Inter Brick In Brick</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Has Inter Brick In Brick</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Inter Brick In Brick</em>' reference.
-	 * @see #setHasInterBrickInBrick(InterBrickIn)
-	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getBrick_HasInterBrickInBrick()
-	 * @model
-	 * @generated
-	 */
-	InterBrickIn getHasInterBrickInBrick();
-
-	/**
-	 * Sets the value of the '{@link shootingmachineemfmodel.Brick#getHasInterBrickInBrick <em>Has Inter Brick In Brick</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Inter Brick In Brick</em>' reference.
-	 * @see #getHasInterBrickInBrick()
-	 * @generated
-	 */
-	void setHasInterBrickInBrick(InterBrickIn value);
-
-	/**
-	 * Returns the value of the '<em><b>Has Inter Brick Out Brick</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Has Inter Brick Out Brick</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Inter Brick Out Brick</em>' reference.
-	 * @see #setHasInterBrickOutBrick(InterBrickOut)
-	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getBrick_HasInterBrickOutBrick()
-	 * @model
-	 * @generated
-	 */
-	InterBrickOut getHasInterBrickOutBrick();
-
-	/**
-	 * Sets the value of the '{@link shootingmachineemfmodel.Brick#getHasInterBrickOutBrick <em>Has Inter Brick Out Brick</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Inter Brick Out Brick</em>' reference.
-	 * @see #getHasInterBrickOutBrick()
-	 * @generated
-	 */
-	void setHasInterBrickOutBrick(InterBrickOut value);
 
 } // Brick

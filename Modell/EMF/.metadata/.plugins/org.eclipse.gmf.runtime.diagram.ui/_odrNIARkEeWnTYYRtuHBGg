@@ -1,6 +1,6 @@
-#Sun Jun 21 14:51:49 CEST 2015
-viewport.x=-77
-zoom=0.5
+#Sun Jun 21 21:39:59 CEST 2015
+viewport.x=676
+zoom=0.75
 print.margin.right=0.5
 rulergrid.rulerunit=1
 rulergrid.snaptogrid=true
@@ -16,4 +16,4 @@ rulergrid.gridlevel=true
 print.margin.top=0.5
 print.useMillim=true
 print.usePortrait=true
-viewport.y=-128
+viewport.y=-93
