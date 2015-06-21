@@ -25,9 +25,6 @@
         eType="#//Alarm" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasHWPortsBrick" upperBound="7"
         eType="#//HWPorts" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hasInterBrickInBrick" eType="#//InterBrickIn"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hasInterBrickOutBrick"
-        eType="#//InterBrickOut"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SA_Component" eSuperTypes="#//Component"/>
   <eClassifiers xsi:type="ecore:EClass" name="SW_Component" eSuperTypes="#//Component"/>
@@ -81,6 +78,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="InterBrickCommunication" abstract="true"
       eSuperTypes="#//Standardclass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasIBCOut" upperBound="-1"
+        eType="#//Brick"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasIBCIn" upperBound="-1"
+        eType="#//Brick"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HWPorts" abstract="true" eSuperTypes="#//Standardclass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Portnumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -100,11 +101,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="InterBrickIn" eSuperTypes="#//InterBrickCommunication">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasMessageInterBrickIn"
         lowerBound="1" eType="#//Message"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hasBrickInterBrickIn" eType="#//Brick"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InterBrickOut" eSuperTypes="#//InterBrickCommunication">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasMessageInterBrickOut"
         lowerBound="1" eType="#//Message"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hasBrickInterBrickIn" eType="#//Brick"/>
   </eClassifiers>
 </ecore:EPackage>

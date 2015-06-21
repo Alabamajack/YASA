@@ -4,6 +4,9 @@
  */
 package shootingmachineemfmodel.validation;
 
+import org.eclipse.emf.common.util.EList;
+import shootingmachineemfmodel.Brick;
+
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.InterBrickCommunication}.
@@ -15,4 +18,8 @@ public interface InterBrickCommunicationValidator {
 	boolean validate();
 
 	boolean validateMessageID(int value);
+
+	boolean validateHasIBCOut(EList<Brick> value);
+
+	boolean validateHasIBCIn(EList<Brick> value);
 }

@@ -6,7 +6,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.InterBrickOut;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
@@ -19,7 +18,6 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link shootingmachineemfmodel.impl.InterBrickOutImpl#getHasMessageInterBrickOut <em>Has Message Inter Brick Out</em>}</li>
- *   <li>{@link shootingmachineemfmodel.impl.InterBrickOutImpl#getHasBrickInterBrickIn <em>Has Brick Inter Brick In</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,16 +33,6 @@ public class InterBrickOutImpl extends InterBrickCommunicationImpl implements In
 	 * @ordered
 	 */
 	protected Message hasMessageInterBrickOut;
-
-	/**
-	 * The cached value of the '{@link #getHasBrickInterBrickIn() <em>Has Brick Inter Brick In</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getHasBrickInterBrickIn()
-	 * @generated
-	 * @ordered
-	 */
-	protected Brick hasBrickInterBrickIn;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,53 +96,12 @@ public class InterBrickOutImpl extends InterBrickCommunicationImpl implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Brick getHasBrickInterBrickIn() {
-		if (hasBrickInterBrickIn != null && hasBrickInterBrickIn.eIsProxy()) {
-			InternalEObject oldHasBrickInterBrickIn = (InternalEObject)hasBrickInterBrickIn;
-			hasBrickInterBrickIn = (Brick)eResolveProxy(oldHasBrickInterBrickIn);
-			if (hasBrickInterBrickIn != oldHasBrickInterBrickIn) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN, oldHasBrickInterBrickIn, hasBrickInterBrickIn));
-			}
-		}
-		return hasBrickInterBrickIn;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Brick basicGetHasBrickInterBrickIn() {
-		return hasBrickInterBrickIn;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setHasBrickInterBrickIn(Brick newHasBrickInterBrickIn) {
-		Brick oldHasBrickInterBrickIn = hasBrickInterBrickIn;
-		hasBrickInterBrickIn = newHasBrickInterBrickIn;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN, oldHasBrickInterBrickIn, hasBrickInterBrickIn));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT:
 				if (resolve) return getHasMessageInterBrickOut();
 				return basicGetHasMessageInterBrickOut();
-			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN:
-				if (resolve) return getHasBrickInterBrickIn();
-				return basicGetHasBrickInterBrickIn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -169,9 +116,6 @@ public class InterBrickOutImpl extends InterBrickCommunicationImpl implements In
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT:
 				setHasMessageInterBrickOut((Message)newValue);
-				return;
-			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN:
-				setHasBrickInterBrickIn((Brick)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -188,9 +132,6 @@ public class InterBrickOutImpl extends InterBrickCommunicationImpl implements In
 			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT:
 				setHasMessageInterBrickOut((Message)null);
 				return;
-			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN:
-				setHasBrickInterBrickIn((Brick)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -205,8 +146,6 @@ public class InterBrickOutImpl extends InterBrickCommunicationImpl implements In
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT:
 				return hasMessageInterBrickOut != null;
-			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN:
-				return hasBrickInterBrickIn != null;
 		}
 		return super.eIsSet(featureID);
 	}

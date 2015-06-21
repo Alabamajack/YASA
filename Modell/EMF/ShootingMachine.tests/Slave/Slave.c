@@ -7,16 +7,20 @@ DeclareTask(Output_Task);
 
 
 
-\\Output_runnable
+//Output_runnable
 void Output_runnable()
 {
-das ist mein runnable code
+Bla Bla runnable
+pi pa po
+	lalelu
 
 }
 
 TASK(Output_Task)
 {
-Output_runnable();
-TerminateTask();
+	while(1)
+	{
+		Output_runnable();
+	}
+	TerminateTask();
 }
-

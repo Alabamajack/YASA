@@ -58,6 +58,8 @@ public class InterBrickCommunicationItemProvider
 			super.getPropertyDescriptors(object);
 
 			addMessageIDPropertyDescriptor(object);
+			addHasIBCOutPropertyDescriptor(object);
+			addHasIBCInPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -80,6 +82,50 @@ public class InterBrickCommunicationItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Has IBC Out feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHasIBCOutPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InterBrickCommunication_hasIBCOut_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InterBrickCommunication_hasIBCOut_feature", "_UI_InterBrickCommunication_type"),
+				 ShootingmachineemfmodelPackage.Literals.INTER_BRICK_COMMUNICATION__HAS_IBC_OUT,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Has IBC In feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHasIBCInPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InterBrickCommunication_hasIBCIn_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InterBrickCommunication_hasIBCIn_feature", "_UI_InterBrickCommunication_type"),
+				 ShootingmachineemfmodelPackage.Literals.INTER_BRICK_COMMUNICATION__HAS_IBC_IN,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

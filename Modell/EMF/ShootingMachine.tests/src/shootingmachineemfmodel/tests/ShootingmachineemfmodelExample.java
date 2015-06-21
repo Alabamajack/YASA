@@ -3,21 +3,14 @@
 package shootingmachineemfmodel.tests;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-
-import shootingmachineemfmodel.ShootingmachineemfmodelFactory;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.ToplevelSystem;
 //import shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl;
@@ -29,13 +22,7 @@ import shootingmachineemfmodel.ToplevelSystem;
  * @generated
  */
 public class ShootingmachineemfmodelExample {
-    /**
-     * <!-- begin-user-doc -->
-     * Load all the argument file paths or URIs as instances of the model.
-     * <!-- end-user-doc -->
-     * @param args the file paths or URIs.
-     * @generated
-     */
+
     //Funktion um Runnablecode aus angegebenem Pfad einlesen und als String zurueckgeben
     public static String copyFiletoString(String input)
     {
@@ -43,7 +30,10 @@ public class ShootingmachineemfmodelExample {
         File file = new File(input);
 
         if (!file.canRead() || !file.isFile())
-            System.exit(0);
+        {
+        	System.out.print("Error: Datei " + input + " konnte nicht gefunden werden!!\n");
+        	System.exit(0);
+        }
 
             BufferedReader in = null;
         try
@@ -290,7 +280,7 @@ public class ShootingmachineemfmodelExample {
         {
             for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
             {
-                String cFileRunnable = "\\\\" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "\n"
+                String cFileRunnable = "//" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "\n"
                 		+ "void " + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "()\n"
                         + "{\n"
                         + copyFiletoString(mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getApplicationcode())
@@ -303,7 +293,9 @@ public class ShootingmachineemfmodelExample {
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
         	String cFileTask = "TASK(" +  mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ")\n"
-        			+ "{\n";
+        			+ "{\n"
+        			+ "\twhile(1)\n"
+        			+ "\t{\n";
         			//Hier werden voruebergehend einfach alle runnables des Tasks nacheinander aufgerufen
         			/*
         			 *
@@ -316,10 +308,11 @@ public class ShootingmachineemfmodelExample {
         			 */
         	for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
             {
-        		cFileTask = cFileTask + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "();\n";
+        		cFileTask = cFileTask + "\t\t" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "();\n";
             }
-        	cFileTask = cFileTask + "TerminateTask();\n"
-        			+ "}\n\n";
+        	cFileTask = cFileTask +  "\t}\n"
+        			+ "\tTerminateTask();\n"
+        			+ "}\n";
         	cFileBuffer.write(cFileTask);
         }
         cFileBuffer.close();
@@ -497,19 +490,19 @@ public class ShootingmachineemfmodelExample {
     }
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * Prints diagnostics with indentation.
      * <!-- end-user-doc -->
-     * @param diagnostic the diagnostic to print.
-     * @param indent the indentation for printing.
-     * @generated
-     */
+	 * @param diagnostic the diagnostic to print.
+	 * @param indent the indentation for printing.
+	 * @generated
+	 */
     protected static void printDiagnostic(Diagnostic diagnostic, String indent) {
-        System.out.print(indent);
-        System.out.println(diagnostic.getMessage());
-        for (Diagnostic child : diagnostic.getChildren()) {
-            printDiagnostic(child, indent + "  ");
-        }
-    }
+		System.out.print(indent);
+		System.out.println(diagnostic.getMessage());
+		for (Diagnostic child : diagnostic.getChildren()) {
+			printDiagnostic(child, indent + "  ");
+		}
+	}
 
 } //ShootingmachineemfmodelExample

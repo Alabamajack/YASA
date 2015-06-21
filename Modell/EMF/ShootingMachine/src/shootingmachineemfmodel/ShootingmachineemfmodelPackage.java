@@ -268,31 +268,13 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int BRICK__HAS_HW_PORTS_BRICK = STANDARDCLASS_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Has Inter Brick In Brick</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BRICK__HAS_INTER_BRICK_IN_BRICK = STANDARDCLASS_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Has Inter Brick Out Brick</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BRICK__HAS_INTER_BRICK_OUT_BRICK = STANDARDCLASS_FEATURE_COUNT + 5;
-
-	/**
 	 * The number of structural features of the '<em>Brick</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BRICK_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 6;
+	int BRICK_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Brick</em>' class.
@@ -1122,13 +1104,31 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int INTER_BRICK_COMMUNICATION__MESSAGE_ID = STANDARDCLASS_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Has IBC Out</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_BRICK_COMMUNICATION__HAS_IBC_OUT = STANDARDCLASS_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Has IBC In</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_BRICK_COMMUNICATION__HAS_IBC_IN = STANDARDCLASS_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Inter Brick Communication</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTER_BRICK_COMMUNICATION_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 1;
+	int INTER_BRICK_COMMUNICATION_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Inter Brick Communication</em>' class.
@@ -1554,6 +1554,24 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int INTER_BRICK_IN__MESSAGE_ID = INTER_BRICK_COMMUNICATION__MESSAGE_ID;
 
 	/**
+	 * The feature id for the '<em><b>Has IBC Out</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_BRICK_IN__HAS_IBC_OUT = INTER_BRICK_COMMUNICATION__HAS_IBC_OUT;
+
+	/**
+	 * The feature id for the '<em><b>Has IBC In</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_BRICK_IN__HAS_IBC_IN = INTER_BRICK_COMMUNICATION__HAS_IBC_IN;
+
+	/**
 	 * The feature id for the '<em><b>Has Message Inter Brick In</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1563,22 +1581,13 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int INTER_BRICK_IN__HAS_MESSAGE_INTER_BRICK_IN = INTER_BRICK_COMMUNICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Has Brick Inter Brick In</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTER_BRICK_IN__HAS_BRICK_INTER_BRICK_IN = INTER_BRICK_COMMUNICATION_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Inter Brick In</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTER_BRICK_IN_FEATURE_COUNT = INTER_BRICK_COMMUNICATION_FEATURE_COUNT + 2;
+	int INTER_BRICK_IN_FEATURE_COUNT = INTER_BRICK_COMMUNICATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Inter Brick In</em>' class.
@@ -1618,6 +1627,24 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int INTER_BRICK_OUT__MESSAGE_ID = INTER_BRICK_COMMUNICATION__MESSAGE_ID;
 
 	/**
+	 * The feature id for the '<em><b>Has IBC Out</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_BRICK_OUT__HAS_IBC_OUT = INTER_BRICK_COMMUNICATION__HAS_IBC_OUT;
+
+	/**
+	 * The feature id for the '<em><b>Has IBC In</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_BRICK_OUT__HAS_IBC_IN = INTER_BRICK_COMMUNICATION__HAS_IBC_IN;
+
+	/**
 	 * The feature id for the '<em><b>Has Message Inter Brick Out</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1627,22 +1654,13 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT = INTER_BRICK_COMMUNICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Has Brick Inter Brick In</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN = INTER_BRICK_COMMUNICATION_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Inter Brick Out</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTER_BRICK_OUT_FEATURE_COUNT = INTER_BRICK_COMMUNICATION_FEATURE_COUNT + 2;
+	int INTER_BRICK_OUT_FEATURE_COUNT = INTER_BRICK_COMMUNICATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Inter Brick Out</em>' class.
@@ -1782,28 +1800,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getBrick_HasHWPortsBrick();
-
-	/**
-	 * Returns the meta object for the reference '{@link shootingmachineemfmodel.Brick#getHasInterBrickInBrick <em>Has Inter Brick In Brick</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Has Inter Brick In Brick</em>'.
-	 * @see shootingmachineemfmodel.Brick#getHasInterBrickInBrick()
-	 * @see #getBrick()
-	 * @generated
-	 */
-	EReference getBrick_HasInterBrickInBrick();
-
-	/**
-	 * Returns the meta object for the reference '{@link shootingmachineemfmodel.Brick#getHasInterBrickOutBrick <em>Has Inter Brick Out Brick</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Has Inter Brick Out Brick</em>'.
-	 * @see shootingmachineemfmodel.Brick#getHasInterBrickOutBrick()
-	 * @see #getBrick()
-	 * @generated
-	 */
-	EReference getBrick_HasInterBrickOutBrick();
 
 	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.SA_Component <em>SA Component</em>}'.
@@ -2206,6 +2202,28 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EAttribute getInterBrickCommunication_MessageID();
 
 	/**
+	 * Returns the meta object for the reference list '{@link shootingmachineemfmodel.InterBrickCommunication#getHasIBCOut <em>Has IBC Out</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Has IBC Out</em>'.
+	 * @see shootingmachineemfmodel.InterBrickCommunication#getHasIBCOut()
+	 * @see #getInterBrickCommunication()
+	 * @generated
+	 */
+	EReference getInterBrickCommunication_HasIBCOut();
+
+	/**
+	 * Returns the meta object for the reference list '{@link shootingmachineemfmodel.InterBrickCommunication#getHasIBCIn <em>Has IBC In</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Has IBC In</em>'.
+	 * @see shootingmachineemfmodel.InterBrickCommunication#getHasIBCIn()
+	 * @see #getInterBrickCommunication()
+	 * @generated
+	 */
+	EReference getInterBrickCommunication_HasIBCIn();
+
+	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.HWPorts <em>HW Ports</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2351,17 +2369,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EReference getInterBrickIn_HasMessageInterBrickIn();
 
 	/**
-	 * Returns the meta object for the reference '{@link shootingmachineemfmodel.InterBrickIn#getHasBrickInterBrickIn <em>Has Brick Inter Brick In</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Has Brick Inter Brick In</em>'.
-	 * @see shootingmachineemfmodel.InterBrickIn#getHasBrickInterBrickIn()
-	 * @see #getInterBrickIn()
-	 * @generated
-	 */
-	EReference getInterBrickIn_HasBrickInterBrickIn();
-
-	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.InterBrickOut <em>Inter Brick Out</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2381,17 +2388,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInterBrickOut_HasMessageInterBrickOut();
-
-	/**
-	 * Returns the meta object for the reference '{@link shootingmachineemfmodel.InterBrickOut#getHasBrickInterBrickIn <em>Has Brick Inter Brick In</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Has Brick Inter Brick In</em>'.
-	 * @see shootingmachineemfmodel.InterBrickOut#getHasBrickInterBrickIn()
-	 * @see #getInterBrickOut()
-	 * @generated
-	 */
-	EReference getInterBrickOut_HasBrickInterBrickIn();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2517,22 +2513,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BRICK__HAS_HW_PORTS_BRICK = eINSTANCE.getBrick_HasHWPortsBrick();
-
-		/**
-		 * The meta object literal for the '<em><b>Has Inter Brick In Brick</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BRICK__HAS_INTER_BRICK_IN_BRICK = eINSTANCE.getBrick_HasInterBrickInBrick();
-
-		/**
-		 * The meta object literal for the '<em><b>Has Inter Brick Out Brick</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BRICK__HAS_INTER_BRICK_OUT_BRICK = eINSTANCE.getBrick_HasInterBrickOutBrick();
 
 		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.SA_ComponentImpl <em>SA Component</em>}' class.
@@ -2875,6 +2855,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EAttribute INTER_BRICK_COMMUNICATION__MESSAGE_ID = eINSTANCE.getInterBrickCommunication_MessageID();
 
 		/**
+		 * The meta object literal for the '<em><b>Has IBC Out</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTER_BRICK_COMMUNICATION__HAS_IBC_OUT = eINSTANCE.getInterBrickCommunication_HasIBCOut();
+
+		/**
+		 * The meta object literal for the '<em><b>Has IBC In</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTER_BRICK_COMMUNICATION__HAS_IBC_IN = eINSTANCE.getInterBrickCommunication_HasIBCIn();
+
+		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.HWPortsImpl <em>HW Ports</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3005,14 +3001,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EReference INTER_BRICK_IN__HAS_MESSAGE_INTER_BRICK_IN = eINSTANCE.getInterBrickIn_HasMessageInterBrickIn();
 
 		/**
-		 * The meta object literal for the '<em><b>Has Brick Inter Brick In</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INTER_BRICK_IN__HAS_BRICK_INTER_BRICK_IN = eINSTANCE.getInterBrickIn_HasBrickInterBrickIn();
-
-		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.InterBrickOutImpl <em>Inter Brick Out</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3029,14 +3017,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT = eINSTANCE.getInterBrickOut_HasMessageInterBrickOut();
-
-		/**
-		 * The meta object literal for the '<em><b>Has Brick Inter Brick In</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN = eINSTANCE.getInterBrickOut_HasBrickInterBrickIn();
 
 	}
 

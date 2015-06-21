@@ -21,8 +21,6 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
     Reference hasEventBrick : Event<<0..*>>
     Reference hasAlarmBrick : Alarm<<0..*>>
     Reference hasHWPortsBrick : HWPorts<<0..7>>
-    Reference hasInterBrickInBrick : InterBrickIn
-    Reference hasInterBrickOutBrick : InterBrickOut
 
   Class SA_Component -> Component
 
@@ -79,6 +77,8 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
 
   Class InterBrickCommunication -> Standardclass
     Attribute messageID : EInt
+    Reference hasIBCOut : Brick<<0..*>>
+    Reference hasIBCIn : Brick<<0..*>>
 
   Class HWPorts -> Standardclass
     Attribute Portnumber : EInt
@@ -102,8 +102,6 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
 
   Class InterBrickIn -> InterBrickCommunication
     Reference hasMessageInterBrickIn : Message<<1..1>>
-    Reference hasBrickInterBrickIn : Brick
 
   Class InterBrickOut -> InterBrickCommunication
     Reference hasMessageInterBrickOut : Message<<1..1>>
-    Reference hasBrickInterBrickIn : Brick

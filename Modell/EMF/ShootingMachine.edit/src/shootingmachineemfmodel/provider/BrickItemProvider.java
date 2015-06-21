@@ -11,7 +11,6 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -59,54 +58,8 @@ public class BrickItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addHasInterBrickInBrickPropertyDescriptor(object);
-			addHasInterBrickOutBrickPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Has Inter Brick In Brick feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addHasInterBrickInBrickPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Brick_hasInterBrickInBrick_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Brick_hasInterBrickInBrick_feature", "_UI_Brick_type"),
-				 ShootingmachineemfmodelPackage.Literals.BRICK__HAS_INTER_BRICK_IN_BRICK,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Has Inter Brick Out Brick feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addHasInterBrickOutBrickPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Brick_hasInterBrickOutBrick_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Brick_hasInterBrickOutBrick_feature", "_UI_Brick_type"),
-				 ShootingmachineemfmodelPackage.Literals.BRICK__HAS_INTER_BRICK_OUT_BRICK,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
