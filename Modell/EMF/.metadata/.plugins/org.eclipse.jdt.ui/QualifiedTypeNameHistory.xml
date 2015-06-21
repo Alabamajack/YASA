@@ -7,4 +7,7 @@
 <fullyQualifiedTypeName name="shootingmachineemfmodel.ToplevelSystem"/>
 <fullyQualifiedTypeName name="shootingmachineemfmodel.Standardclass"/>
 <fullyQualifiedTypeName name="shootingmachineemfmodel.Brick"/>
+<fullyQualifiedTypeName name="shootingmachineemfmodel.Task"/>
+<fullyQualifiedTypeName name="shootingmachineemfmodel.Event"/>
+<fullyQualifiedTypeName name="shootingmachineemfmodel.Connections"/>
 </qualifiedTypeNameHistroy>
