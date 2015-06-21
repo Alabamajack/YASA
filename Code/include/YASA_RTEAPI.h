@@ -110,7 +110,7 @@ inline std_return RTE_Output_GetValue_Event_In();
  * @author Florian Laufenböck
  * @date    2015-06-08
  */
-inline std_return RTE_Output_GetValue_Receiver_In(char *message);
+inline std_return RTE_Output_GetValue_Receiver_In(char*);
 
 
 ///
@@ -186,7 +186,7 @@ inline std_return RTE_Schussanlage_GetOrder_Server_In();
  *
  * @todo Nachdenken ob Dreiecksbeziehung so richtig und sinnvoll/funtkioniert
  */
-inline std_return RTE_Schussanlage_SendMessage_Sender_Out(const char* message);
+inline std_return RTE_Schussanlage_SendMessage_Sender_Out(const char*);
 
 /**
  * \brief setzt Event um der SAK Output zu signalisieren, dass sich der interne Zustand geändert hat und jetzt was ausgegeben werden kann
@@ -255,7 +255,7 @@ inline std_return RTE_Trigger_SetOrder_Client_Out();
  *
  * @todo Nachdenken ob diese Beziehung überhaupt sinnvoll ist
  */
-inline std_return RTE_Trigger_GetMessage_Receiver_In();
+inline std_return RTE_Trigger_GetValue_Receiver_In();
 
 /**
  * \brief Status des Events abfragen, welches symbolisiert, dass der Trigger gestartet wurde
