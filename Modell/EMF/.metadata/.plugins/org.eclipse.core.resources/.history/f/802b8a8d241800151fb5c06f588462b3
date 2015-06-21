@@ -110,7 +110,6 @@ public class ShootingmachineemfmodelExample {
 
         Map<String, String> RunnablesToTask = new HashMap<String, String>();
         Map<String, String> EventPort = new HashMap<String, String>();
-        Map<String, String> PortRunnable = new HashMap<String, String>();
 
         try {
             // Demand load resource for this file.
@@ -267,6 +266,7 @@ public class ShootingmachineemfmodelExample {
                     System.out.print("\t\tEVENT " + mySystem.getHasBrick().get(i).getHasEventBrick().get(j).getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
 
                 }
+                //implizit Events erstellen für jeden Input-Port
                 for (int j = 0; j < mySystem.getHasConnections().size(); j++)
                 {
                 	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
