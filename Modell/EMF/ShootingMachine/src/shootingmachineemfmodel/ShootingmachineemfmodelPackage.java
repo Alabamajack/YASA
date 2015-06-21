@@ -57,46 +57,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	ShootingmachineemfmodelPackage eINSTANCE = shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.ComponentImpl <em>Component</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.ComponentImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getComponent()
-	 * @generated
-	 */
-	int COMPONENT = 1;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.BrickImpl <em>Brick</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.BrickImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getBrick()
-	 * @generated
-	 */
-	int BRICK = 2;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.SA_ComponentImpl <em>SA Component</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.SA_ComponentImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getSA_Component()
-	 * @generated
-	 */
-	int SA_COMPONENT = 3;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.SW_ComponentImpl <em>SW Component</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.SW_ComponentImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getSW_Component()
-	 * @generated
-	 */
-	int SW_COMPONENT = 4;
-
-	/**
 	 * The meta object id for the '{@link shootingmachineemfmodel.impl.StandardclassImpl <em>Standardclass</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -105,106 +65,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	int STANDARDCLASS = 14;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.TaskImpl <em>Task</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.TaskImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getTask()
-	 * @generated
-	 */
-	int TASK = 15;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.PortsImpl <em>Ports</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.PortsImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getPorts()
-	 * @generated
-	 */
-	int PORTS = 5;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.SenderPortsImpl <em>Sender Ports</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.SenderPortsImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getSenderPorts()
-	 * @generated
-	 */
-	int SENDER_PORTS = 6;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.ReceiverPortsImpl <em>Receiver Ports</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.ReceiverPortsImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getReceiverPorts()
-	 * @generated
-	 */
-	int RECEIVER_PORTS = 7;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.SenderImpl <em>Sender</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.SenderImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getSender()
-	 * @generated
-	 */
-	int SENDER = 8;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.ClientImpl <em>Client</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.ClientImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getClient()
-	 * @generated
-	 */
-	int CLIENT = 9;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.SendEventImpl <em>Send Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.SendEventImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getSendEvent()
-	 * @generated
-	 */
-	int SEND_EVENT = 10;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.ReceiverImpl <em>Receiver</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.ReceiverImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getReceiver()
-	 * @generated
-	 */
-	int RECEIVER = 11;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.ServerImpl <em>Server</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.ServerImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getServer()
-	 * @generated
-	 */
-	int SERVER = 12;
-
-	/**
-	 * The meta object id for the '{@link shootingmachineemfmodel.impl.GetEventImpl <em>Get Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see shootingmachineemfmodel.impl.GetEventImpl
-	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getGetEvent()
-	 * @generated
-	 */
-	int GET_EVENT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -280,22 +140,13 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int TOPLEVEL_SYSTEM__HAS_CONNECTIONS = STANDARDCLASS_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Has Inter Brick Communication System</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM = STANDARDCLASS_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>Toplevel System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOPLEVEL_SYSTEM_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 4;
+	int TOPLEVEL_SYSTEM_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Toplevel System</em>' class.
@@ -305,6 +156,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int TOPLEVEL_SYSTEM_OPERATION_COUNT = STANDARDCLASS_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.ComponentImpl <em>Component</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.ComponentImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getComponent()
+	 * @generated
+	 */
+	int COMPONENT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -350,6 +211,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_OPERATION_COUNT = STANDARDCLASS_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.BrickImpl <em>Brick</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.BrickImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getBrick()
+	 * @generated
+	 */
+	int BRICK = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -433,6 +304,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int BRICK_OPERATION_COUNT = STANDARDCLASS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.SA_ComponentImpl <em>SA Component</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.SA_ComponentImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getSA_Component()
+	 * @generated
+	 */
+	int SA_COMPONENT = 3;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -460,22 +341,13 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int SA_COMPONENT__HAS_RUNNABLE = COMPONENT__HAS_RUNNABLE;
 
 	/**
-	 * The feature id for the '<em><b>Has Ports SAC</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SA_COMPONENT__HAS_PORTS_SAC = COMPONENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>SA Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SA_COMPONENT_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 1;
+	int SA_COMPONENT_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>SA Component</em>' class.
@@ -485,6 +357,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SA_COMPONENT_OPERATION_COUNT = COMPONENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.SW_ComponentImpl <em>SW Component</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.SW_ComponentImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getSW_Component()
+	 * @generated
+	 */
+	int SW_COMPONENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -514,22 +396,13 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int SW_COMPONENT__HAS_RUNNABLE = COMPONENT__HAS_RUNNABLE;
 
 	/**
-	 * The feature id for the '<em><b>Has Ports SWC</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SW_COMPONENT__HAS_PORTS_SWC = COMPONENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>SW Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SW_COMPONENT_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 1;
+	int SW_COMPONENT_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>SW Component</em>' class.
@@ -541,6 +414,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int SW_COMPONENT_OPERATION_COUNT = COMPONENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.PortsImpl <em>Ports</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.PortsImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getPorts()
+	 * @generated
+	 */
+	int PORTS = 5;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -550,22 +433,13 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int PORTS__NAME = STANDARDCLASS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Has Message Ports</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PORTS__HAS_MESSAGE_PORTS = STANDARDCLASS_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Ports</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PORTS_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 1;
+	int PORTS_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Ports</em>' class.
@@ -577,6 +451,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int PORTS_OPERATION_COUNT = STANDARDCLASS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.SenderPortsImpl <em>Sender Ports</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.SenderPortsImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getSenderPorts()
+	 * @generated
+	 */
+	int SENDER_PORTS = 6;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -584,15 +468,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SENDER_PORTS__NAME = PORTS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Has Message Ports</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SENDER_PORTS__HAS_MESSAGE_PORTS = PORTS__HAS_MESSAGE_PORTS;
 
 	/**
 	 * The number of structural features of the '<em>Sender Ports</em>' class.
@@ -613,6 +488,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int SENDER_PORTS_OPERATION_COUNT = PORTS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.ReceiverPortsImpl <em>Receiver Ports</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.ReceiverPortsImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getReceiverPorts()
+	 * @generated
+	 */
+	int RECEIVER_PORTS = 7;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -620,15 +505,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int RECEIVER_PORTS__NAME = PORTS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Has Message Ports</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEIVER_PORTS__HAS_MESSAGE_PORTS = PORTS__HAS_MESSAGE_PORTS;
 
 	/**
 	 * The number of structural features of the '<em>Receiver Ports</em>' class.
@@ -649,6 +525,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int RECEIVER_PORTS_OPERATION_COUNT = PORTS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.SenderImpl <em>Sender</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.SenderImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getSender()
+	 * @generated
+	 */
+	int SENDER = 8;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -656,15 +542,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SENDER__NAME = SENDER_PORTS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Has Message Ports</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SENDER__HAS_MESSAGE_PORTS = SENDER_PORTS__HAS_MESSAGE_PORTS;
 
 	/**
 	 * The number of structural features of the '<em>Sender</em>' class.
@@ -685,6 +562,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int SENDER_OPERATION_COUNT = SENDER_PORTS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.ClientImpl <em>Client</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.ClientImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getClient()
+	 * @generated
+	 */
+	int CLIENT = 9;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -692,15 +579,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLIENT__NAME = SENDER_PORTS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Has Message Ports</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLIENT__HAS_MESSAGE_PORTS = SENDER_PORTS__HAS_MESSAGE_PORTS;
 
 	/**
 	 * The number of structural features of the '<em>Client</em>' class.
@@ -721,6 +599,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int CLIENT_OPERATION_COUNT = SENDER_PORTS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.SendEventImpl <em>Send Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.SendEventImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getSendEvent()
+	 * @generated
+	 */
+	int SEND_EVENT = 10;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -728,15 +616,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEND_EVENT__NAME = SENDER_PORTS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Has Message Ports</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEND_EVENT__HAS_MESSAGE_PORTS = SENDER_PORTS__HAS_MESSAGE_PORTS;
 
 	/**
 	 * The number of structural features of the '<em>Send Event</em>' class.
@@ -757,6 +636,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int SEND_EVENT_OPERATION_COUNT = SENDER_PORTS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.ReceiverImpl <em>Receiver</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.ReceiverImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getReceiver()
+	 * @generated
+	 */
+	int RECEIVER = 11;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -764,15 +653,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int RECEIVER__NAME = RECEIVER_PORTS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Has Message Ports</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEIVER__HAS_MESSAGE_PORTS = RECEIVER_PORTS__HAS_MESSAGE_PORTS;
 
 	/**
 	 * The number of structural features of the '<em>Receiver</em>' class.
@@ -793,6 +673,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int RECEIVER_OPERATION_COUNT = RECEIVER_PORTS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.ServerImpl <em>Server</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.ServerImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getServer()
+	 * @generated
+	 */
+	int SERVER = 12;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -800,15 +690,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SERVER__NAME = RECEIVER_PORTS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Has Message Ports</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVER__HAS_MESSAGE_PORTS = RECEIVER_PORTS__HAS_MESSAGE_PORTS;
 
 	/**
 	 * The number of structural features of the '<em>Server</em>' class.
@@ -829,6 +710,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int SERVER_OPERATION_COUNT = RECEIVER_PORTS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.GetEventImpl <em>Get Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.GetEventImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getGetEvent()
+	 * @generated
+	 */
+	int GET_EVENT = 13;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -836,15 +727,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int GET_EVENT__NAME = RECEIVER_PORTS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Has Message Ports</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET_EVENT__HAS_MESSAGE_PORTS = RECEIVER_PORTS__HAS_MESSAGE_PORTS;
 
 	/**
 	 * The number of structural features of the '<em>Get Event</em>' class.
@@ -863,6 +745,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int GET_EVENT_OPERATION_COUNT = RECEIVER_PORTS_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.TaskImpl <em>Task</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.TaskImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getTask()
+	 * @generated
+	 */
+	int TASK = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1111,13 +1003,31 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int CONNECTIONS__HAS_SENDER_PORTS = STANDARDCLASS_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Has Inter Brick Communication System</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM = STANDARDCLASS_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Has Message</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTIONS__HAS_MESSAGE = STANDARDCLASS_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Connections</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTIONS_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 2;
+	int CONNECTIONS_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Connections</em>' class.
@@ -1157,13 +1067,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int RUNNABLE__APPLICATIONCODE = STANDARDCLASS_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Has SW Ports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNNABLE__HAS_SW_PORTS = STANDARDCLASS_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Runnable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RUNNABLE_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 1;
+	int RUNNABLE_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Runnable</em>' class.
@@ -1699,7 +1618,7 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int INTER_BRICK_OUT__MESSAGE_ID = INTER_BRICK_COMMUNICATION__MESSAGE_ID;
 
 	/**
-	 * The feature id for the '<em><b>Has Message Inter Brick Out</b></em>' containment reference.
+	 * The feature id for the '<em><b>Has Message Inter Brick Out</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1733,6 +1652,7 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTER_BRICK_OUT_OPERATION_COUNT = INTER_BRICK_COMMUNICATION_OPERATION_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.ToplevelSystem <em>Toplevel System</em>}'.
@@ -1776,17 +1696,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getToplevelSystem_HasConnections();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link shootingmachineemfmodel.ToplevelSystem#getHasInterBrickCommunicationSystem <em>Has Inter Brick Communication System</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Has Inter Brick Communication System</em>'.
-	 * @see shootingmachineemfmodel.ToplevelSystem#getHasInterBrickCommunicationSystem()
-	 * @see #getToplevelSystem()
-	 * @generated
-	 */
-	EReference getToplevelSystem_HasInterBrickCommunicationSystem();
 
 	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.Component <em>Component</em>}'.
@@ -1907,17 +1816,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EClass getSA_Component();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link shootingmachineemfmodel.SA_Component#getHasPortsSAC <em>Has Ports SAC</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Has Ports SAC</em>'.
-	 * @see shootingmachineemfmodel.SA_Component#getHasPortsSAC()
-	 * @see #getSA_Component()
-	 * @generated
-	 */
-	EReference getSA_Component_HasPortsSAC();
-
-	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.SW_Component <em>SW Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1928,17 +1826,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EClass getSW_Component();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link shootingmachineemfmodel.SW_Component#getHasPortsSWC <em>Has Ports SWC</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Has Ports SWC</em>'.
-	 * @see shootingmachineemfmodel.SW_Component#getHasPortsSWC()
-	 * @see #getSW_Component()
-	 * @generated
-	 */
-	EReference getSW_Component_HasPortsSWC();
-
-	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.Ports <em>Ports</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1947,17 +1834,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPorts();
-
-	/**
-	 * Returns the meta object for the reference '{@link shootingmachineemfmodel.Ports#getHasMessagePorts <em>Has Message Ports</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Has Message Ports</em>'.
-	 * @see shootingmachineemfmodel.Ports#getHasMessagePorts()
-	 * @see #getPorts()
-	 * @generated
-	 */
-	EReference getPorts_HasMessagePorts();
 
 	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.SenderPorts <em>Sender Ports</em>}'.
@@ -2255,6 +2131,28 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EReference getConnections_HasSenderPorts();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link shootingmachineemfmodel.Connections#getHasInterBrickCommunicationSystem <em>Has Inter Brick Communication System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Has Inter Brick Communication System</em>'.
+	 * @see shootingmachineemfmodel.Connections#getHasInterBrickCommunicationSystem()
+	 * @see #getConnections()
+	 * @generated
+	 */
+	EReference getConnections_HasInterBrickCommunicationSystem();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link shootingmachineemfmodel.Connections#getHasMessage <em>Has Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Has Message</em>'.
+	 * @see shootingmachineemfmodel.Connections#getHasMessage()
+	 * @see #getConnections()
+	 * @generated
+	 */
+	EReference getConnections_HasMessage();
+
+	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.Runnable <em>Runnable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2274,6 +2172,17 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getRunnable_Applicationcode();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link shootingmachineemfmodel.Runnable#getHasSWPorts <em>Has SW Ports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Has SW Ports</em>'.
+	 * @see shootingmachineemfmodel.Runnable#getHasSWPorts()
+	 * @see #getRunnable()
+	 * @generated
+	 */
+	EReference getRunnable_HasSWPorts();
 
 	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.InterBrickCommunication <em>Inter Brick Communication</em>}'.
@@ -2463,10 +2372,10 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EClass getInterBrickOut();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link shootingmachineemfmodel.InterBrickOut#getHasMessageInterBrickOut <em>Has Message Inter Brick Out</em>}'.
+	 * Returns the meta object for the reference '{@link shootingmachineemfmodel.InterBrickOut#getHasMessageInterBrickOut <em>Has Message Inter Brick Out</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Has Message Inter Brick Out</em>'.
+	 * @return the meta object for the reference '<em>Has Message Inter Brick Out</em>'.
 	 * @see shootingmachineemfmodel.InterBrickOut#getHasMessageInterBrickOut()
 	 * @see #getInterBrickOut()
 	 * @generated
@@ -2540,14 +2449,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TOPLEVEL_SYSTEM__HAS_CONNECTIONS = eINSTANCE.getToplevelSystem_HasConnections();
-
-		/**
-		 * The meta object literal for the '<em><b>Has Inter Brick Communication System</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM = eINSTANCE.getToplevelSystem_HasInterBrickCommunicationSystem();
 
 		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.ComponentImpl <em>Component</em>}' class.
@@ -2644,14 +2545,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EClass SA_COMPONENT = eINSTANCE.getSA_Component();
 
 		/**
-		 * The meta object literal for the '<em><b>Has Ports SAC</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SA_COMPONENT__HAS_PORTS_SAC = eINSTANCE.getSA_Component_HasPortsSAC();
-
-		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.SW_ComponentImpl <em>SW Component</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2662,14 +2555,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EClass SW_COMPONENT = eINSTANCE.getSW_Component();
 
 		/**
-		 * The meta object literal for the '<em><b>Has Ports SWC</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SW_COMPONENT__HAS_PORTS_SWC = eINSTANCE.getSW_Component_HasPortsSWC();
-
-		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.PortsImpl <em>Ports</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2678,14 +2563,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PORTS = eINSTANCE.getPorts();
-
-		/**
-		 * The meta object literal for the '<em><b>Has Message Ports</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PORTS__HAS_MESSAGE_PORTS = eINSTANCE.getPorts_HasMessagePorts();
 
 		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.SenderPortsImpl <em>Sender Ports</em>}' class.
@@ -2938,6 +2815,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EReference CONNECTIONS__HAS_SENDER_PORTS = eINSTANCE.getConnections_HasSenderPorts();
 
 		/**
+		 * The meta object literal for the '<em><b>Has Inter Brick Communication System</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM = eINSTANCE.getConnections_HasInterBrickCommunicationSystem();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Message</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTIONS__HAS_MESSAGE = eINSTANCE.getConnections_HasMessage();
+
+		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.RunnableImpl <em>Runnable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2954,6 +2847,14 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RUNNABLE__APPLICATIONCODE = eINSTANCE.getRunnable_Applicationcode();
+
+		/**
+		 * The meta object literal for the '<em><b>Has SW Ports</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RUNNABLE__HAS_SW_PORTS = eINSTANCE.getRunnable_HasSWPorts();
 
 		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl <em>Inter Brick Communication</em>}' class.
@@ -3122,7 +3023,7 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EClass INTER_BRICK_OUT = eINSTANCE.getInterBrickOut();
 
 		/**
-		 * The meta object literal for the '<em><b>Has Message Inter Brick Out</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Has Message Inter Brick Out</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

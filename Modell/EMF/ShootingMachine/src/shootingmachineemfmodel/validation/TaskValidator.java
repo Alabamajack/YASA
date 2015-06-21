@@ -8,7 +8,6 @@ import org.eclipse.emf.common.util.EList;
 
 import shootingmachineemfmodel.Alarm;
 import shootingmachineemfmodel.Event;
-import shootingmachineemfmodel.Runnable;
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.Task}.
@@ -20,16 +19,9 @@ public interface TaskValidator {
 	boolean validate();
 
 	boolean validateHasEvent(EList<Event> value);
-
 	boolean validateHasAlarm(EList<Alarm> value);
-
-	boolean validateHasEvent(Event value);
-	boolean validateHasRunnable(EList<Runnable> value);
+	boolean validateHasRunnable(EList<shootingmachineemfmodel.Runnable> value);
 	boolean validateAUTOSTART(boolean value);
-
 	boolean validatePRIORITY(int value);
-
 	boolean validateACTIVATION(int value);
-
-	boolean validateHasAlarm(Alarm value);
 }

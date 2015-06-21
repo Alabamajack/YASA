@@ -5,7 +5,7 @@
 package shootingmachineemfmodel.validation;
 
 import org.eclipse.emf.common.util.EList;
-import shootingmachineemfmodel.Task;
+import shootingmachineemfmodel.Ports;
 
 
 /**
@@ -19,8 +19,5 @@ public interface RunnableValidator {
 
 	boolean validateApplicationcode(String value);
 
-	boolean validateName(String value);
-
-	boolean validateHasRunnable(EList<Task> value);
-
+	boolean validateHasSWPorts(EList<Ports> value);
 }

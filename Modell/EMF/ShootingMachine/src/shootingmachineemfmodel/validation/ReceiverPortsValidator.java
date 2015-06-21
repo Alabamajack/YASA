@@ -4,7 +4,6 @@
  */
 package shootingmachineemfmodel.validation;
 
-import shootingmachineemfmodel.Ports;
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.ReceiverPorts}.
@@ -15,5 +14,4 @@ import shootingmachineemfmodel.Ports;
 public interface ReceiverPortsValidator {
 	boolean validate();
 
-	boolean validateHasReceiverPorts(Ports value);
 }

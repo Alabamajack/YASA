@@ -3,21 +3,15 @@
 package shootingmachineemfmodel.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.Component;
 import shootingmachineemfmodel.Connections;
-import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.ToplevelSystem;
 
@@ -31,7 +25,6 @@ import shootingmachineemfmodel.ToplevelSystem;
  *   <li>{@link shootingmachineemfmodel.impl.ToplevelSystemImpl#getHasComponent <em>Has Component</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.ToplevelSystemImpl#getHasBrick <em>Has Brick</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.ToplevelSystemImpl#getHasConnections <em>Has Connections</em>}</li>
- *   <li>{@link shootingmachineemfmodel.impl.ToplevelSystemImpl#getHasInterBrickCommunicationSystem <em>Has Inter Brick Communication System</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,16 +60,6 @@ public class ToplevelSystemImpl extends StandardclassImpl implements ToplevelSys
 	 * @ordered
 	 */
 	protected EList<Connections> hasConnections;
-
-	/**
-	 * The cached value of the '{@link #getHasInterBrickCommunicationSystem() <em>Has Inter Brick Communication System</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getHasInterBrickCommunicationSystem()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<InterBrickCommunication> hasInterBrickCommunicationSystem;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,18 +121,6 @@ public class ToplevelSystemImpl extends StandardclassImpl implements ToplevelSys
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<InterBrickCommunication> getHasInterBrickCommunicationSystem() {
-		if (hasInterBrickCommunicationSystem == null) {
-			hasInterBrickCommunicationSystem = new EObjectContainmentEList<InterBrickCommunication>(InterBrickCommunication.class, this, ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM);
-		}
-		return hasInterBrickCommunicationSystem;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -159,8 +130,6 @@ public class ToplevelSystemImpl extends StandardclassImpl implements ToplevelSys
 				return ((InternalEList<?>)getHasBrick()).basicRemove(otherEnd, msgs);
 			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_CONNECTIONS:
 				return ((InternalEList<?>)getHasConnections()).basicRemove(otherEnd, msgs);
-			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM:
-				return ((InternalEList<?>)getHasInterBrickCommunicationSystem()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -179,8 +148,6 @@ public class ToplevelSystemImpl extends StandardclassImpl implements ToplevelSys
 				return getHasBrick();
 			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_CONNECTIONS:
 				return getHasConnections();
-			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM:
-				return getHasInterBrickCommunicationSystem();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -206,10 +173,6 @@ public class ToplevelSystemImpl extends StandardclassImpl implements ToplevelSys
 				getHasConnections().clear();
 				getHasConnections().addAll((Collection<? extends Connections>)newValue);
 				return;
-			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM:
-				getHasInterBrickCommunicationSystem().clear();
-				getHasInterBrickCommunicationSystem().addAll((Collection<? extends InterBrickCommunication>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -231,9 +194,6 @@ public class ToplevelSystemImpl extends StandardclassImpl implements ToplevelSys
 			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_CONNECTIONS:
 				getHasConnections().clear();
 				return;
-			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM:
-				getHasInterBrickCommunicationSystem().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -252,8 +212,6 @@ public class ToplevelSystemImpl extends StandardclassImpl implements ToplevelSys
 				return hasBrick != null && !hasBrick.isEmpty();
 			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_CONNECTIONS:
 				return hasConnections != null && !hasConnections.isEmpty();
-			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM:
-				return hasInterBrickCommunicationSystem != null && !hasInterBrickCommunicationSystem.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

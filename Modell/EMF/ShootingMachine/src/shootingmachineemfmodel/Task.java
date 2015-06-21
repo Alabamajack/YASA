@@ -31,7 +31,7 @@ public interface Task extends Standardclass {
 	 * The list contents are of type {@link shootingmachineemfmodel.Event}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Has Event</em>' reference isn't clear,
+	 * If the meaning of the '<em>Has Event</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -47,7 +47,7 @@ public interface Task extends Standardclass {
 	 * The list contents are of type {@link shootingmachineemfmodel.Alarm}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Has Alarm</em>' reference isn't clear,
+	 * If the meaning of the '<em>Has Alarm</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

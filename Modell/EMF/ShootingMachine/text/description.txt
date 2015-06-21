@@ -11,7 +11,6 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
     Reference hasComponent : Component<<1..*>>
     Reference hasBrick : Brick<<1..*>>
     Reference hasConnections : Connections<<0..*>>
-    Reference hasInterBrickCommunicationSystem : InterBrickCommunication<<0..*>>
 
   Class Component -> Standardclass
     Reference hasHWPortsComponent : HWPorts<<0..*>>
@@ -26,13 +25,10 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
     Reference hasInterBrickOutBrick : InterBrickOut
 
   Class SA_Component -> Component
-    Reference hasPortsSAC : Ports<<0..*>>
 
   Class SW_Component -> Component
-    Reference hasPortsSWC : Ports<<0..*>>
 
   Class Ports -> Standardclass
-    Reference hasMessagePorts : Message<<1..1>>
 
   Class SenderPorts -> Ports
 
@@ -74,9 +70,12 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
   Class Connections -> Standardclass
     Reference hasReceiverPorts : ReceiverPorts<<1..*>>
     Reference hasSenderPorts : SenderPorts<<1..1>>
+    Reference hasInterBrickCommunicationSystem : InterBrickCommunication<<0..2>>
+    Reference hasMessage : Message<<1..1>>
 
   Class Runnable -> Standardclass
     Attribute applicationcode : EString
+    Reference hasSWPorts : Ports<<0..*>>
 
   Class InterBrickCommunication -> Standardclass
     Attribute messageID : EInt

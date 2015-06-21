@@ -9,8 +9,6 @@
         upperBound="-1" eType="#//Brick" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasConnections" upperBound="-1"
         eType="#//Connections" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hasInterBrickCommunicationSystem"
-        upperBound="-1" eType="#//InterBrickCommunication" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true" eSuperTypes="#//Standardclass">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasHWPortsComponent" upperBound="-1"
@@ -31,18 +29,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasInterBrickOutBrick"
         eType="#//InterBrickOut"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SA_Component" eSuperTypes="#//Component">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hasPortsSAC" upperBound="-1"
-        eType="#//Ports" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SW_Component" eSuperTypes="#//Component">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hasPortsSWC" upperBound="-1"
-        eType="#//Ports" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Ports" abstract="true" eSuperTypes="#//Standardclass">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hasMessagePorts" lowerBound="1"
-        eType="#//Message"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SA_Component" eSuperTypes="#//Component"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SW_Component" eSuperTypes="#//Component"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Ports" abstract="true" eSuperTypes="#//Standardclass"/>
   <eClassifiers xsi:type="ecore:EClass" name="SenderPorts" abstract="true" eSuperTypes="#//Ports"/>
   <eClassifiers xsi:type="ecore:EClass" name="ReceiverPorts" abstract="true" eSuperTypes="#//Ports"/>
   <eClassifiers xsi:type="ecore:EClass" name="Sender" eSuperTypes="#//SenderPorts"/>
@@ -79,9 +68,15 @@
         upperBound="-1" eType="#//ReceiverPorts"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasSenderPorts" lowerBound="1"
         eType="#//SenderPorts"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasInterBrickCommunicationSystem"
+        upperBound="2" eType="#//InterBrickCommunication" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasMessage" lowerBound="1"
+        eType="#//Message" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Runnable" eSuperTypes="#//Standardclass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="applicationcode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasSWPorts" upperBound="-1"
+        eType="#//Ports" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InterBrickCommunication" abstract="true"
       eSuperTypes="#//Standardclass">
@@ -109,7 +104,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InterBrickOut" eSuperTypes="#//InterBrickCommunication">
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasMessageInterBrickOut"
-        lowerBound="1" eType="#//Message" containment="true"/>
+        lowerBound="1" eType="#//Message"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasBrickInterBrickIn" eType="#//Brick"/>
   </eClassifiers>
 </ecore:EPackage>

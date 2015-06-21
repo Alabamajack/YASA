@@ -3,8 +3,11 @@
 package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import shootingmachineemfmodel.Alarm;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
@@ -36,6 +39,7 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	 * @ordered
 	 */
 	protected static final int MINCYCLE_EDEFAULT = 0;
+
 	/**
 	 * The cached value of the '{@link #getMINCYCLE() <em>MINCYCLE</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -45,6 +49,7 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	 * @ordered
 	 */
 	protected int mincycle = MINCYCLE_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getMAXALLOWEDVALUE() <em>MAXALLOWEDVALUE</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -54,6 +59,7 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	 * @ordered
 	 */
 	protected static final int MAXALLOWEDVALUE_EDEFAULT = 0;
+
 	/**
 	 * The cached value of the '{@link #getMAXALLOWEDVALUE() <em>MAXALLOWEDVALUE</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -63,6 +69,7 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	 * @ordered
 	 */
 	protected int maxallowedvalue = MAXALLOWEDVALUE_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getTICKSPERBASE() <em>TICKSPERBASE</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -72,6 +79,7 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	 * @ordered
 	 */
 	protected static final int TICKSPERBASE_EDEFAULT = 0;
+
 	/**
 	 * The cached value of the '{@link #getTICKSPERBASE() <em>TICKSPERBASE</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -81,6 +89,7 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	 * @ordered
 	 */
 	protected int ticksperbase = TICKSPERBASE_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #isAUTOSTART() <em>AUTOSTART</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -90,6 +99,7 @@ public class AlarmImpl extends StandardclassImpl implements Alarm {
 	 * @ordered
 	 */
 	protected static final boolean AUTOSTART_EDEFAULT = false;
+
 	/**
 	 * The cached value of the '{@link #isAUTOSTART() <em>AUTOSTART</em>}' attribute.
 	 * <!-- begin-user-doc -->

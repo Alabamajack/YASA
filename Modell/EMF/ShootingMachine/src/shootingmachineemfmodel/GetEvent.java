@@ -14,5 +14,4 @@ package shootingmachineemfmodel;
  * @generated
  */
 public interface GetEvent extends ReceiverPorts {
-
 } // GetEvent

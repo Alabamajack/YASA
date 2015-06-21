@@ -22,26 +22,26 @@ package shootingmachineemfmodel;
  */
 public interface InterBrickOut extends InterBrickCommunication {
 	/**
-	 * Returns the value of the '<em><b>Has Message Inter Brick Out</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Has Message Inter Brick Out</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Has Message Inter Brick Out</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Message Inter Brick Out</em>' containment reference.
+	 * @return the value of the '<em>Has Message Inter Brick Out</em>' reference.
 	 * @see #setHasMessageInterBrickOut(Message)
 	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getInterBrickOut_HasMessageInterBrickOut()
-	 * @model containment="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	Message getHasMessageInterBrickOut();
 
 	/**
-	 * Sets the value of the '{@link shootingmachineemfmodel.InterBrickOut#getHasMessageInterBrickOut <em>Has Message Inter Brick Out</em>}' containment reference.
+	 * Sets the value of the '{@link shootingmachineemfmodel.InterBrickOut#getHasMessageInterBrickOut <em>Has Message Inter Brick Out</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Message Inter Brick Out</em>' containment reference.
+	 * @param value the new value of the '<em>Has Message Inter Brick Out</em>' reference.
 	 * @see #getHasMessageInterBrickOut()
 	 * @generated
 	 */

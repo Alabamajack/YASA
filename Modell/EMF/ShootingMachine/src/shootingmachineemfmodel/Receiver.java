@@ -14,5 +14,4 @@ package shootingmachineemfmodel;
  * @generated
  */
 public interface Receiver extends ReceiverPorts {
-
 } // Receiver

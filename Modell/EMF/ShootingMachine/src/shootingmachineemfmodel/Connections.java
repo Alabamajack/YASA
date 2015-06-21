@@ -14,6 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link shootingmachineemfmodel.Connections#getHasReceiverPorts <em>Has Receiver Ports</em>}</li>
  *   <li>{@link shootingmachineemfmodel.Connections#getHasSenderPorts <em>Has Sender Ports</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.Connections#getHasInterBrickCommunicationSystem <em>Has Inter Brick Communication System</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.Connections#getHasMessage <em>Has Message</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,5 +65,47 @@ public interface Connections extends Standardclass {
 	 * @generated
 	 */
 	void setHasSenderPorts(SenderPorts value);
+
+	/**
+	 * Returns the value of the '<em><b>Has Inter Brick Communication System</b></em>' containment reference list.
+	 * The list contents are of type {@link shootingmachineemfmodel.InterBrickCommunication}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Has Inter Brick Communication System</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Has Inter Brick Communication System</em>' containment reference list.
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getConnections_HasInterBrickCommunicationSystem()
+	 * @model containment="true" upper="2"
+	 * @generated
+	 */
+	EList<InterBrickCommunication> getHasInterBrickCommunicationSystem();
+
+	/**
+	 * Returns the value of the '<em><b>Has Message</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Has Message</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Has Message</em>' containment reference.
+	 * @see #setHasMessage(Message)
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getConnections_HasMessage()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Message getHasMessage();
+
+	/**
+	 * Sets the value of the '{@link shootingmachineemfmodel.Connections#getHasMessage <em>Has Message</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Has Message</em>' containment reference.
+	 * @see #getHasMessage()
+	 * @generated
+	 */
+	void setHasMessage(Message value);
 
 } // Connections

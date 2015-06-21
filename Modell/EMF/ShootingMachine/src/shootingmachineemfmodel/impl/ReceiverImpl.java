@@ -3,6 +3,7 @@
 package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import shootingmachineemfmodel.Receiver;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 

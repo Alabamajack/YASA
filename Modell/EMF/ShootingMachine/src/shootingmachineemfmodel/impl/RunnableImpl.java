@@ -2,9 +2,19 @@
  */
 package shootingmachineemfmodel.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import shootingmachineemfmodel.Ports;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
 /**
@@ -15,6 +25,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link shootingmachineemfmodel.impl.RunnableImpl#getApplicationcode <em>Applicationcode</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.impl.RunnableImpl#getHasSWPorts <em>Has SW Ports</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,6 +41,7 @@ public class RunnableImpl extends StandardclassImpl implements shootingmachineem
 	 * @ordered
 	 */
 	protected static final String APPLICATIONCODE_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getApplicationcode() <em>Applicationcode</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -39,6 +51,17 @@ public class RunnableImpl extends StandardclassImpl implements shootingmachineem
 	 * @ordered
 	 */
 	protected String applicationcode = APPLICATIONCODE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getHasSWPorts() <em>Has SW Ports</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHasSWPorts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Ports> hasSWPorts;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,11 +107,39 @@ public class RunnableImpl extends StandardclassImpl implements shootingmachineem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Ports> getHasSWPorts() {
+		if (hasSWPorts == null) {
+			hasSWPorts = new EObjectContainmentEList<Ports>(Ports.class, this, ShootingmachineemfmodelPackage.RUNNABLE__HAS_SW_PORTS);
+		}
+		return hasSWPorts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ShootingmachineemfmodelPackage.RUNNABLE__HAS_SW_PORTS:
+				return ((InternalEList<?>)getHasSWPorts()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.RUNNABLE__APPLICATIONCODE:
 				return getApplicationcode();
+			case ShootingmachineemfmodelPackage.RUNNABLE__HAS_SW_PORTS:
+				return getHasSWPorts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -98,11 +149,16 @@ public class RunnableImpl extends StandardclassImpl implements shootingmachineem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.RUNNABLE__APPLICATIONCODE:
 				setApplicationcode((String)newValue);
+				return;
+			case ShootingmachineemfmodelPackage.RUNNABLE__HAS_SW_PORTS:
+				getHasSWPorts().clear();
+				getHasSWPorts().addAll((Collection<? extends Ports>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -119,6 +175,9 @@ public class RunnableImpl extends StandardclassImpl implements shootingmachineem
 			case ShootingmachineemfmodelPackage.RUNNABLE__APPLICATIONCODE:
 				setApplicationcode(APPLICATIONCODE_EDEFAULT);
 				return;
+			case ShootingmachineemfmodelPackage.RUNNABLE__HAS_SW_PORTS:
+				getHasSWPorts().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -133,6 +192,8 @@ public class RunnableImpl extends StandardclassImpl implements shootingmachineem
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.RUNNABLE__APPLICATIONCODE:
 				return APPLICATIONCODE_EDEFAULT == null ? applicationcode != null : !APPLICATIONCODE_EDEFAULT.equals(applicationcode);
+			case ShootingmachineemfmodelPackage.RUNNABLE__HAS_SW_PORTS:
+				return hasSWPorts != null && !hasSWPorts.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

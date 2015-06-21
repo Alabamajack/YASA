@@ -22,7 +22,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Component extends Standardclass {
-
 	/**
 	 * Returns the value of the '<em><b>Has HW Ports Component</b></em>' reference list.
 	 * The list contents are of type {@link shootingmachineemfmodel.HWPorts}.
@@ -54,4 +53,5 @@ public interface Component extends Standardclass {
 	 * @generated
 	 */
 	EList<shootingmachineemfmodel.Runnable> getHasRunnable();
+
 } // Component
