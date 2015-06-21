@@ -15,5 +15,4 @@ public interface StandardclassValidator {
 	boolean validate();
 
 	boolean validateName(String value);
-
 }

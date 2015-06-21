@@ -47,7 +47,7 @@ public interface Brick extends Standardclass {
 	 * The list contents are of type {@link shootingmachineemfmodel.Event}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Has Event Brick</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Has Event Brick</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -63,7 +63,7 @@ public interface Brick extends Standardclass {
 	 * The list contents are of type {@link shootingmachineemfmodel.Alarm}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Has Alarm Brick</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Has Alarm Brick</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

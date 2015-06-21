@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link shootingmachineemfmodel.ToplevelSystem#getHasComponent <em>Has Component</em>}</li>
  *   <li>{@link shootingmachineemfmodel.ToplevelSystem#getHasBrick <em>Has Brick</em>}</li>
  *   <li>{@link shootingmachineemfmodel.ToplevelSystem#getHasConnections <em>Has Connections</em>}</li>
- *   <li>{@link shootingmachineemfmodel.ToplevelSystem#getHasInterBrickCommunicationSystem <em>Has Inter Brick Communication System</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,21 +70,5 @@ public interface ToplevelSystem extends Standardclass {
 	 * @generated
 	 */
 	EList<Connections> getHasConnections();
-
-	/**
-	 * Returns the value of the '<em><b>Has Inter Brick Communication System</b></em>' containment reference list.
-	 * The list contents are of type {@link shootingmachineemfmodel.InterBrickCommunication}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Has Inter Brick Communication System</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Inter Brick Communication System</em>' containment reference list.
-	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getToplevelSystem_HasInterBrickCommunicationSystem()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<InterBrickCommunication> getHasInterBrickCommunicationSystem();
 
 } // ToplevelSystem

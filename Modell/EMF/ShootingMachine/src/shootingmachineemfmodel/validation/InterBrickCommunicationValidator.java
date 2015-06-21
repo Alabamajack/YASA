@@ -4,8 +4,6 @@
  */
 package shootingmachineemfmodel.validation;
 
-import shootingmachineemfmodel.Brick;
-import shootingmachineemfmodel.Message;
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.InterBrickCommunication}.
@@ -16,9 +14,5 @@ import shootingmachineemfmodel.Message;
 public interface InterBrickCommunicationValidator {
 	boolean validate();
 
-	boolean validateHasBrickInterBrickCommunication(Brick value);
-	boolean validateHasMessageInterBrickCommunication(Message value);
 	boolean validateMessageID(int value);
-
-	boolean validateName(String value);
 }

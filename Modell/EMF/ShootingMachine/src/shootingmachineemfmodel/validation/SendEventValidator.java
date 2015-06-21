@@ -4,7 +4,6 @@
  */
 package shootingmachineemfmodel.validation;
 
-import shootingmachineemfmodel.SenderPorts;
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.SendEvent}.
@@ -15,5 +14,4 @@ import shootingmachineemfmodel.SenderPorts;
 public interface SendEventValidator {
 	boolean validate();
 
-	boolean validateHasSendEvent(SenderPorts value);
 }

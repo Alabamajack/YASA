@@ -3,8 +3,11 @@
 package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
@@ -31,6 +34,7 @@ public abstract class HWPortsImpl extends StandardclassImpl implements HWPorts {
 	 * @ordered
 	 */
 	protected static final int PORTNUMBER_EDEFAULT = 0;
+
 	/**
 	 * The cached value of the '{@link #getPortnumber() <em>Portnumber</em>}' attribute.
 	 * <!-- begin-user-doc -->

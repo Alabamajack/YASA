@@ -77,7 +77,6 @@ public class ToplevelSystemItemProvider
 			childrenFeatures.add(ShootingmachineemfmodelPackage.Literals.TOPLEVEL_SYSTEM__HAS_COMPONENT);
 			childrenFeatures.add(ShootingmachineemfmodelPackage.Literals.TOPLEVEL_SYSTEM__HAS_BRICK);
 			childrenFeatures.add(ShootingmachineemfmodelPackage.Literals.TOPLEVEL_SYSTEM__HAS_CONNECTIONS);
-			childrenFeatures.add(ShootingmachineemfmodelPackage.Literals.TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM);
 		}
 		return childrenFeatures;
 	}
@@ -135,7 +134,6 @@ public class ToplevelSystemItemProvider
 			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_COMPONENT:
 			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_BRICK:
 			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_CONNECTIONS:
-			case ShootingmachineemfmodelPackage.TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -172,16 +170,6 @@ public class ToplevelSystemItemProvider
 			(createChildParameter
 				(ShootingmachineemfmodelPackage.Literals.TOPLEVEL_SYSTEM__HAS_CONNECTIONS,
 				 ShootingmachineemfmodelFactory.eINSTANCE.createConnections()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ShootingmachineemfmodelPackage.Literals.TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM,
-				 ShootingmachineemfmodelFactory.eINSTANCE.createInterBrickIn()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ShootingmachineemfmodelPackage.Literals.TOPLEVEL_SYSTEM__HAS_INTER_BRICK_COMMUNICATION_SYSTEM,
-				 ShootingmachineemfmodelFactory.eINSTANCE.createInterBrickOut()));
 	}
 
 }

@@ -3,13 +3,9 @@
 package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.InterBrickOut;
 import shootingmachineemfmodel.Message;
@@ -31,7 +27,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  */
 public class InterBrickOutImpl extends InterBrickCommunicationImpl implements InterBrickOut {
 	/**
-	 * The cached value of the '{@link #getHasMessageInterBrickOut() <em>Has Message Inter Brick Out</em>}' containment reference.
+	 * The cached value of the '{@link #getHasMessageInterBrickOut() <em>Has Message Inter Brick Out</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getHasMessageInterBrickOut()
@@ -75,6 +71,14 @@ public class InterBrickOutImpl extends InterBrickCommunicationImpl implements In
 	 * @generated
 	 */
 	public Message getHasMessageInterBrickOut() {
+		if (hasMessageInterBrickOut != null && hasMessageInterBrickOut.eIsProxy()) {
+			InternalEObject oldHasMessageInterBrickOut = (InternalEObject)hasMessageInterBrickOut;
+			hasMessageInterBrickOut = (Message)eResolveProxy(oldHasMessageInterBrickOut);
+			if (hasMessageInterBrickOut != oldHasMessageInterBrickOut) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT, oldHasMessageInterBrickOut, hasMessageInterBrickOut));
+			}
+		}
 		return hasMessageInterBrickOut;
 	}
 
@@ -83,14 +87,8 @@ public class InterBrickOutImpl extends InterBrickCommunicationImpl implements In
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetHasMessageInterBrickOut(Message newHasMessageInterBrickOut, NotificationChain msgs) {
-		Message oldHasMessageInterBrickOut = hasMessageInterBrickOut;
-		hasMessageInterBrickOut = newHasMessageInterBrickOut;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT, oldHasMessageInterBrickOut, newHasMessageInterBrickOut);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public Message basicGetHasMessageInterBrickOut() {
+		return hasMessageInterBrickOut;
 	}
 
 	/**
@@ -99,17 +97,10 @@ public class InterBrickOutImpl extends InterBrickCommunicationImpl implements In
 	 * @generated
 	 */
 	public void setHasMessageInterBrickOut(Message newHasMessageInterBrickOut) {
-		if (newHasMessageInterBrickOut != hasMessageInterBrickOut) {
-			NotificationChain msgs = null;
-			if (hasMessageInterBrickOut != null)
-				msgs = ((InternalEObject)hasMessageInterBrickOut).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT, null, msgs);
-			if (newHasMessageInterBrickOut != null)
-				msgs = ((InternalEObject)newHasMessageInterBrickOut).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT, null, msgs);
-			msgs = basicSetHasMessageInterBrickOut(newHasMessageInterBrickOut, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT, newHasMessageInterBrickOut, newHasMessageInterBrickOut));
+		Message oldHasMessageInterBrickOut = hasMessageInterBrickOut;
+		hasMessageInterBrickOut = newHasMessageInterBrickOut;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT, oldHasMessageInterBrickOut, hasMessageInterBrickOut));
 	}
 
 	/**
@@ -156,24 +147,11 @@ public class InterBrickOutImpl extends InterBrickCommunicationImpl implements In
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT:
-				return basicSetHasMessageInterBrickOut(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_MESSAGE_INTER_BRICK_OUT:
-				return getHasMessageInterBrickOut();
+				if (resolve) return getHasMessageInterBrickOut();
+				return basicGetHasMessageInterBrickOut();
 			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT__HAS_BRICK_INTER_BRICK_IN:
 				if (resolve) return getHasBrickInterBrickIn();
 				return basicGetHasBrickInterBrickIn();

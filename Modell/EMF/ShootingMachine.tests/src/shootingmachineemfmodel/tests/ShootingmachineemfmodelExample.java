@@ -3,9 +3,10 @@
 package shootingmachineemfmodel.tests;
 
 import java.io.*;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
@@ -19,7 +20,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import shootingmachineemfmodel.ShootingmachineemfmodelFactory;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.ToplevelSystem;
-import shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl;
+//import shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -104,9 +105,11 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Flo-virtual\\Documents\\Git\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
+        Map<String, String> RunnablesToTask = new HashMap<String, String>();
+        Map<String, String> EventPort = new HashMap<String, String>();
 
         try {
             // Demand load resource for this file.
@@ -258,10 +261,24 @@ public class ShootingmachineemfmodelExample {
                             + "\t{\n"
                             + "\t\tMASK = AUTO;\n"
                             + "\t};\n\n";
-                    oilFileWriter.write(oilFileEvent);
+                    oilFileBuffer.write(oilFileEvent);
 
                     System.out.print("\t\tEVENT " + mySystem.getHasBrick().get(i).getHasEventBrick().get(j).getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
 
+                }
+                //implizit Events erstellen für jeden Input-Port
+                for (int j = 0; j < mySystem.getHasConnections().size(); j++)
+                {
+                	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
+                	{
+                		EventPort.put(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT", mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName());
+                        String oilFileEvent = "\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT\n"
+                                + "\t{\n"
+                                + "\t\tMASK = AUTO;\n"
+                                + "\t};\n\n";
+                        oilFileBuffer.write(oilFileEvent);
+                        //TODO: debug ausgabe
+                	}
                 }
                 oilFileBuffer.write("};");
 
@@ -275,16 +292,24 @@ public class ShootingmachineemfmodelExample {
 
                 //Dateipfad + Dateiname
                 File cFile = new File(Brickname + "\\" + Brickname + ".c");
+                File gencFile = new File(Brickname + "\\YASA_generated.c");
 
                 //Datei erstellen, wenn noch nicht vorhanden
                 if (!cFile.exists()) {
                     cFile.createNewFile();
                     System.out.print("\tDatei " + Brickname + ".c erstellt\n");
                 }
+                if (!gencFile.exists()) {
+                	gencFile.createNewFile();
+                    System.out.print("\tDatei YASA_generated.c erstellt");
+                }
 
                 //BufferedWriter
                 FileWriter cFileWriter = new FileWriter(cFile.getAbsoluteFile());
                 BufferedWriter cFileBuffer = new BufferedWriter(cFileWriter);
+
+                FileWriter gencFileWriter = new FileWriter(gencFile.getAbsoluteFile());
+                BufferedWriter gencFileBuffer = new BufferedWriter(gencFileWriter);
 
                 String cFileBeginn = "#include \"kernel.h\"\n"
                         + "#include \"kernel_id.h\"\n"
@@ -351,11 +376,50 @@ public class ShootingmachineemfmodelExample {
                 	for(int k = 0; k < mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
                     {
                 		cFileTask = cFileTask + mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "();\n";
+                		RunnablesToTask.put(mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getHasRunnable().get(k).getName(), mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getName());
                     }
                 	cFileTask = cFileTask + "TerminateTask();\n"
                 			+ "}\n\n";
                 	cFileBuffer.write(cFileTask);
                 }
+
+                for (int j = 0; j < mySystem.getHasConnections().size(); j++)
+                {
+                	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
+                	{
+                		String genc = "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+                		genc = genc + "U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER[MAX_MESSAGE_LENGHT] = {0};\n";
+                		gencFileBuffer.write(genc);
+                        //TODO: debug ausgabe
+                	}
+                }
+
+                for(int j = 0; j < mySystem.getHasConnections().size(); j++)
+                {
+                	shootingmachineemfmodel.Brick acBrick = mySystem.getHasBrick().get(i);
+
+                	String mySenderrtefunc = "inline std_return " + mySystem.getHasConnections().get(j).getHasSenderPorts().getName() + "(char *a){\n";
+                	String myReceiverrtefun = "";
+
+                	if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem().size() >= 2)
+                	{
+                		//InterBrickConnection ist vorhanden -> über mehrere Bricks kommunizieren
+                	}
+                	else
+                	{
+                		for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size(); k++)
+                		{
+                			mySenderrtefunc = mySenderrtefunc + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER = *a;\n";
+                			mySenderrtefunc = mySenderrtefunc + "SetEvent(, " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+                		}
+                	}
+
+                	mySenderrtefunc += "}";
+                	gencFileBuffer.write(mySenderrtefunc);
+                }
+
+                //alle Files schließen
+                gencFileBuffer.close();
                 cFileBuffer.close();
             }
         }

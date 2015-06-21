@@ -16,6 +16,4 @@ public interface MessageValidator {
 
 	boolean validateMessageHeader(char value);
 	boolean validateMyMessage(String value);
-
-	boolean validateName(String value);
 }

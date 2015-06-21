@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<shootingmachineemfmodel:ToplevelSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:shootingmachineemfmodel="http://shootingmachineemfmodel/1.0">
-  <hasComponent xsi:type="shootingmachineemfmodel:SW_Component">
-    <hasRunnable name="runnable1" applicationcode="C:\Users\Philipp\Documents\YASA\Modell\EMF\ShootingMachine.tests\runnables\runnable1.c"/>
+<shootingmachineemfmodel:ToplevelSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:shootingmachineemfmodel="http://shootingmachineemfmodel/1.0" name="UnserTopLevelSystsem">
+  <hasComponent xsi:type="shootingmachineemfmodel:SA_Component" name="Output">
+    <hasRunnable name="Output_runnable" applicationcode="C:\Users\Flo-virtual\Documents\Git\Modell\EMF\ShootingMachine.tests\runnable\runnable.c">
+      <hasSWPorts xsi:type="shootingmachineemfmodel:Receiver" name="RTE_Output_GetValue_Receiver_In"/>
+    </hasRunnable>
   </hasComponent>
-  <hasBrick name="Brick1"/>
-  <hasBrick name="Brick2">
-    <hasTaskBrick name="Main" hasEvent="//@hasBrick.1/@hasEventBrick.1" hasAlarm="//@hasBrick.1/@hasAlarmBrick.0" hasRunnable="//@hasComponent.0/@hasRunnable.0"/>
-    <hasTaskBrick name="Schussanlage" hasEvent="//@hasBrick.1/@hasEventBrick.0" hasAlarm="//@hasBrick.1/@hasAlarmBrick.1"/>
-    <hasEventBrick name="evt_shoot"/>
-    <hasEventBrick name="evt_abort"/>
-    <hasAlarmBrick name="Alarm1"/>
-    <hasAlarmBrick name="Alarm2"/>
+  <hasComponent xsi:type="shootingmachineemfmodel:SW_Component" name="Schussanlage">
+    <hasRunnable name="Schussanlage_Runnable" applicationcode="C:\Users\Flo-virtual\Documents\Git\Modell\EMF\ShootingMachine.tests\runnable\runnable.c">
+      <hasSWPorts xsi:type="shootingmachineemfmodel:Sender" name="RTE_Schussanlage_SendMessage_Sender_Out"/>
+    </hasRunnable>
+  </hasComponent>
+  <hasBrick name="Master">
+    <hasTaskBrick name="SchussanlagenTask" hasRunnable="//@hasComponent.1/@hasRunnable.0"/>
   </hasBrick>
+  <hasBrick name="Slave">
+    <hasTaskBrick name="Output_Task" hasRunnable="//@hasComponent.0/@hasRunnable.0"/>
+  </hasBrick>
+  <hasConnections name="Schussanlage_Output" hasReceiverPorts="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.0" hasSenderPorts="//@hasComponent.1/@hasRunnable.0/@hasSWPorts.0">
+    <hasMessage name="mynachricht" myMessage="myachricht"/>
+  </hasConnections>
 </shootingmachineemfmodel:ToplevelSystem>

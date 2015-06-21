@@ -17,6 +17,5 @@ public interface InterBrickOutValidator {
 	boolean validate();
 
 	boolean validateHasMessageInterBrickOut(Message value);
-
 	boolean validateHasBrickInterBrickIn(Brick value);
 }

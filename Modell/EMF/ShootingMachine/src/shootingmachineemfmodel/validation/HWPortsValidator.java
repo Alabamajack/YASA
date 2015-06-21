@@ -15,5 +15,4 @@ public interface HWPortsValidator {
 	boolean validate();
 
 	boolean validatePortnumber(int value);
-
 }

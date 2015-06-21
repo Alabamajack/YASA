@@ -5,9 +5,8 @@
 package shootingmachineemfmodel.validation;
 
 import org.eclipse.emf.common.util.EList;
-import shootingmachineemfmodel.Component;
+
 import shootingmachineemfmodel.Ports;
-import shootingmachineemfmodel.Runnable;
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.SA_Component}.
@@ -18,11 +17,5 @@ import shootingmachineemfmodel.Runnable;
 public interface SA_ComponentValidator {
 	boolean validate();
 
-	boolean validateHasRunnableSAC(EList<Runnable> value);
-
 	boolean validateHasPortsSAC(EList<Ports> value);
-
-	boolean validateHasRunnableSAC(Runnable value);
-	boolean validateHasPortsSAC(Ports value);
-	boolean validateHasSAComponent(Component value);
 }

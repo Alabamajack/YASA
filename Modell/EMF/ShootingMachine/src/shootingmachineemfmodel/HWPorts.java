@@ -20,7 +20,6 @@ package shootingmachineemfmodel;
  * @generated
  */
 public interface HWPorts extends Standardclass {
-
 	/**
 	 * Returns the value of the '<em><b>Portnumber</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -46,4 +45,5 @@ public interface HWPorts extends Standardclass {
 	 * @generated
 	 */
 	void setPortnumber(int value);
+
 } // HWPorts

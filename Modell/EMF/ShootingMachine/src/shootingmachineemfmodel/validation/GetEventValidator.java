@@ -4,7 +4,6 @@
  */
 package shootingmachineemfmodel.validation;
 
-import shootingmachineemfmodel.ReceiverPorts;
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.GetEvent}.
@@ -15,5 +14,4 @@ import shootingmachineemfmodel.ReceiverPorts;
 public interface GetEventValidator {
 	boolean validate();
 
-	boolean validateHasGetEvent(ReceiverPorts value);
 }

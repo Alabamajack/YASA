@@ -15,6 +15,4 @@ public interface HWExternValidator {
 	boolean validate();
 
 	boolean validatePinnumber(int value);
-
-	boolean validatePortnumber(int value);
 }

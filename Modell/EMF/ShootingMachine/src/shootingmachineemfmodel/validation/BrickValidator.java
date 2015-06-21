@@ -9,7 +9,6 @@ import org.eclipse.emf.common.util.EList;
 import shootingmachineemfmodel.Alarm;
 import shootingmachineemfmodel.Event;
 import shootingmachineemfmodel.HWPorts;
-import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.InterBrickIn;
 import shootingmachineemfmodel.InterBrickOut;
 import shootingmachineemfmodel.Task;
@@ -25,17 +24,8 @@ public interface BrickValidator {
 
 	boolean validateHasTaskBrick(EList<Task> value);
 	boolean validateHasEventBrick(EList<Event> value);
-
 	boolean validateHasAlarmBrick(EList<Alarm> value);
-
 	boolean validateHasHWPortsBrick(EList<HWPorts> value);
-
 	boolean validateHasInterBrickInBrick(InterBrickIn value);
-
 	boolean validateHasInterBrickOutBrick(InterBrickOut value);
-
-	boolean validateHasInterBrickCommunicationBrick(InterBrickCommunication value);
-
-	boolean validateHasEventBrick(Event value);
-	boolean validateHasAlarmBrick(Alarm value);
 }
