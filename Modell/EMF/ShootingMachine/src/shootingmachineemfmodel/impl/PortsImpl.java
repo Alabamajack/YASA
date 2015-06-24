@@ -3,6 +3,7 @@
 package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import shootingmachineemfmodel.Ports;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 

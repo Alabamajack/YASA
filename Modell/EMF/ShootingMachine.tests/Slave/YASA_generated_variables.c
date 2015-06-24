@@ -1,0 +1,1 @@
+#define BT_COM_SERVICE 2

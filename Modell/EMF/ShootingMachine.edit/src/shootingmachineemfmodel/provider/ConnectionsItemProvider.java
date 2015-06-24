@@ -199,12 +199,7 @@ public class ConnectionsItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ShootingmachineemfmodelPackage.Literals.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM,
-				 ShootingmachineemfmodelFactory.eINSTANCE.createInterBrickIn()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ShootingmachineemfmodelPackage.Literals.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM,
-				 ShootingmachineemfmodelFactory.eINSTANCE.createInterBrickOut()));
+				 ShootingmachineemfmodelFactory.eINSTANCE.createInterBrickCommunication()));
 
 		newChildDescriptors.add
 			(createChildParameter

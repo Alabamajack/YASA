@@ -21,8 +21,6 @@ import shootingmachineemfmodel.HWIntern;
 import shootingmachineemfmodel.HWOutput;
 import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.InterBrickCommunication;
-import shootingmachineemfmodel.InterBrickIn;
-import shootingmachineemfmodel.InterBrickOut;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Motor;
 import shootingmachineemfmodel.Ports;
@@ -321,22 +319,6 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				Message message = (Message)theEObject;
 				T result = caseMessage(message);
 				if (result == null) result = caseStandardclass(message);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ShootingmachineemfmodelPackage.INTER_BRICK_IN: {
-				InterBrickIn interBrickIn = (InterBrickIn)theEObject;
-				T result = caseInterBrickIn(interBrickIn);
-				if (result == null) result = caseInterBrickCommunication(interBrickIn);
-				if (result == null) result = caseStandardclass(interBrickIn);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT: {
-				InterBrickOut interBrickOut = (InterBrickOut)theEObject;
-				T result = caseInterBrickOut(interBrickOut);
-				if (result == null) result = caseInterBrickCommunication(interBrickOut);
-				if (result == null) result = caseStandardclass(interBrickOut);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -776,36 +758,6 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMessage(Message object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Inter Brick In</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Inter Brick In</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseInterBrickIn(InterBrickIn object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Inter Brick Out</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Inter Brick Out</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseInterBrickOut(InterBrickOut object) {
 		return null;
 	}
 

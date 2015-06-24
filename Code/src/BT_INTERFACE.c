@@ -16,6 +16,7 @@ extern BT_transmit_package;
 extern COMSERVICE_transmit_package;
 extern COMSERVICE_receive_package;
 
+//bekommt Nachrichten vom BT und verteilt diese an die Ports
 TASK(TASK_BT_INTERFACE_READER)
 {
     U8 localBuffer[BT_PACKAGE_SIZE];
@@ -23,19 +24,21 @@ TASK(TASK_BT_INTERFACE_READER)
 	EventMaskType event;
     while(1)
     {
-		BT_DYNAMIC_CODE;
+		BT_DYNAMIC_Reader_CODE;
     }
     Terminate_Task();
 }
 
+//bekommt Nachrichten von Ports und verschickt diese über BT
 TASK(TASK_BT_INTERFACE_WRITER)
 {
     U8 localBuffer[BT_PACKAGE_SIZE];
     U8 id;
+	EventMaskType event;
     while(1)
     {
-        WaitEvent(BT_SEND_MY_MESSAGE);
-        ClearEvent(BT_SEND_MY_MESSAGE);
+
+		BT_DYNAMIC_WRITER_CODE;
     }
 
     TerminateTask();

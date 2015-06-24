@@ -9,7 +9,6 @@ import org.eclipse.emf.common.util.EList;
 import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.Component;
 import shootingmachineemfmodel.Connections;
-import shootingmachineemfmodel.InterBrickCommunication;
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.ToplevelSystem}.
@@ -23,5 +22,4 @@ public interface ToplevelSystemValidator {
 	boolean validateHasComponent(EList<Component> value);
 	boolean validateHasBrick(EList<Brick> value);
 	boolean validateHasConnections(EList<Connections> value);
-	boolean validateHasInterBrickCommunicationSystem(EList<InterBrickCommunication> value);
 }

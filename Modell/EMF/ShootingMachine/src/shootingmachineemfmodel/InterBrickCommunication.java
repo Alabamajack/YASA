@@ -4,7 +4,6 @@ package shootingmachineemfmodel;
 
 import org.eclipse.emf.common.util.EList;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Inter Brick Communication</b></em>'.
@@ -17,11 +16,12 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasIBCOut <em>Has IBC Out</em>}</li>
  *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasIBCIn <em>Has IBC In</em>}</li>
  *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasReceiverPort <em>Has Receiver Port</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasMessage <em>Has Message</em>}</li>
  * </ul>
  * </p>
  *
  * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getInterBrickCommunication()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface InterBrickCommunication extends Standardclass {
@@ -84,29 +84,45 @@ public interface InterBrickCommunication extends Standardclass {
 	EList<Brick> getHasIBCIn();
 
 	/**
-	 * Returns the value of the '<em><b>Has Receiver Port</b></em>' reference.
+	 * Returns the value of the '<em><b>Has Receiver Port</b></em>' reference list.
+	 * The list contents are of type {@link shootingmachineemfmodel.ReceiverPorts}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Has Receiver Port</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Receiver Port</em>' reference.
-	 * @see #setHasReceiverPort(ReceiverPorts)
+	 * @return the value of the '<em>Has Receiver Port</em>' reference list.
 	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getInterBrickCommunication_HasReceiverPort()
 	 * @model required="true"
 	 * @generated
 	 */
-	ReceiverPorts getHasReceiverPort();
+	EList<ReceiverPorts> getHasReceiverPort();
 
 	/**
-	 * Sets the value of the '{@link shootingmachineemfmodel.InterBrickCommunication#getHasReceiverPort <em>Has Receiver Port</em>}' reference.
+	 * Returns the value of the '<em><b>Has Message</b></em>' reference.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Has Message</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Receiver Port</em>' reference.
-	 * @see #getHasReceiverPort()
+	 * @return the value of the '<em>Has Message</em>' reference.
+	 * @see #setHasMessage(Message)
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getInterBrickCommunication_HasMessage()
+	 * @model required="true"
 	 * @generated
 	 */
-	void setHasReceiverPort(ReceiverPorts value);
+	Message getHasMessage();
+
+	/**
+	 * Sets the value of the '{@link shootingmachineemfmodel.InterBrickCommunication#getHasMessage <em>Has Message</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Has Message</em>' reference.
+	 * @see #getHasMessage()
+	 * @generated
+	 */
+	void setHasMessage(Message value);
 
 } // InterBrickCommunication

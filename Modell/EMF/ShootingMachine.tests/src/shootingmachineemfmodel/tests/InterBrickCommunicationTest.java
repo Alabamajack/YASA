@@ -2,7 +2,10 @@
  */
 package shootingmachineemfmodel.tests;
 
+import junit.textui.TestRunner;
+
 import shootingmachineemfmodel.InterBrickCommunication;
+import shootingmachineemfmodel.ShootingmachineemfmodelFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -10,7 +13,16 @@ import shootingmachineemfmodel.InterBrickCommunication;
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class InterBrickCommunicationTest extends StandardclassTest {
+public class InterBrickCommunicationTest extends StandardclassTest {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static void main(String[] args) {
+		TestRunner.run(InterBrickCommunicationTest.class);
+	}
 
 	/**
 	 * Constructs a new Inter Brick Communication test case with the given name.
@@ -31,6 +43,28 @@ public abstract class InterBrickCommunicationTest extends StandardclassTest {
 	@Override
 	protected InterBrickCommunication getFixture() {
 		return (InterBrickCommunication)fixture;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
+	@Override
+	protected void setUp() throws Exception {
+		setFixture(ShootingmachineemfmodelFactory.eINSTANCE.createInterBrickCommunication());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
+	@Override
+	protected void tearDown() throws Exception {
+		setFixture(null);
 	}
 
 } //InterBrickCommunicationTest

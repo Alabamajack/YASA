@@ -14,5 +14,4 @@ package shootingmachineemfmodel;
  * @generated
  */
 public interface Ports extends Standardclass {
-
 } // Ports

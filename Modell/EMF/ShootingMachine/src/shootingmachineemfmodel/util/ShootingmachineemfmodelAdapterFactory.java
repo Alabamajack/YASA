@@ -23,8 +23,6 @@ import shootingmachineemfmodel.HWIntern;
 import shootingmachineemfmodel.HWOutput;
 import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.InterBrickCommunication;
-import shootingmachineemfmodel.InterBrickIn;
-import shootingmachineemfmodel.InterBrickOut;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Motor;
 import shootingmachineemfmodel.Ports;
@@ -212,14 +210,6 @@ public class ShootingmachineemfmodelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseMessage(Message object) {
 				return createMessageAdapter();
-			}
-			@Override
-			public Adapter caseInterBrickIn(InterBrickIn object) {
-				return createInterBrickInAdapter();
-			}
-			@Override
-			public Adapter caseInterBrickOut(InterBrickOut object) {
-				return createInterBrickOutAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -644,34 +634,6 @@ public class ShootingmachineemfmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMessageAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link shootingmachineemfmodel.InterBrickIn <em>Inter Brick In</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see shootingmachineemfmodel.InterBrickIn
-	 * @generated
-	 */
-	public Adapter createInterBrickInAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link shootingmachineemfmodel.InterBrickOut <em>Inter Brick Out</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see shootingmachineemfmodel.InterBrickOut
-	 * @generated
-	 */
-	public Adapter createInterBrickOutAdapter() {
 		return null;
 	}
 

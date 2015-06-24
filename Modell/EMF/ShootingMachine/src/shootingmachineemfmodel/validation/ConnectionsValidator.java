@@ -22,10 +22,6 @@ public interface ConnectionsValidator {
 
 	boolean validateHasReceiverPorts(EList<ReceiverPorts> value);
 	boolean validateHasSenderPorts(SenderPorts value);
-
 	boolean validateHasInterBrickCommunicationSystem(EList<InterBrickCommunication> value);
-
-	boolean validateHasInterBrickCommunicationSystem(InterBrickCommunication value);
-
 	boolean validateHasMessage(Message value);
 }

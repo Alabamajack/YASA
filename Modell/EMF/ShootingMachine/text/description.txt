@@ -79,7 +79,8 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
     Attribute messageID : EInt
     Reference hasIBCOut : Brick<<0..*>>
     Reference hasIBCIn : Brick<<0..*>>
-    Reference hasReceiverPort : ReceiverPorts<<1..1>>
+    Reference hasReceiverPort : ReceiverPorts<<1..*>>
+    Reference hasMessage : Message<<1..1>>
 
   Class HWPorts -> Standardclass
     Attribute Portnumber : EInt
@@ -100,9 +101,3 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
   Class Message -> Standardclass
     Attribute MessageHeader : EChar
     Attribute myMessage : EString
-
-  Class InterBrickIn -> InterBrickCommunication
-    Reference hasMessageInterBrickIn : Message<<1..1>>
-
-  Class InterBrickOut -> InterBrickCommunication
-    Reference hasMessageInterBrickOut : Message<<1..1>>

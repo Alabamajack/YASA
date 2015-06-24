@@ -1,0 +1,2 @@
+#define BT_COM_SERVICE 2
+#define BT_DYNAMIC_WRITER_CODE (WaitEvent(RTE_Output_GetValue_Receiver_In_EVENT | RTE_Trigger_GetValue_Receiver_In_EVENT );GetEvent(TASK_BT_INTERFACE_WRITER, &event);if(event & RTE_Output_GetValue_Receiver_In_EVENT){ClearEvent(RTE_Output_GetValue_Receiver_In_EVENT);strcpy(BT_transmit_package, COMSERVICE_transmit_package[0];}if(event & RTE_Trigger_GetValue_Receiver_In_EVENT){ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);strcpy(BT_transmit_package, COMSERVICE_transmit_package[1];})

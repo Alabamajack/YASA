@@ -7,16 +7,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.swing.text.html.HTMLDocument.Iterator;
-
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.ToplevelSystem;
 //import shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl;
@@ -35,6 +31,7 @@ public class ShootingmachineemfmodelExample {
     static Map<String, String> EventPort = new HashMap<String, String>();
     static Map<String, String> PortRunnable = new HashMap<String, String>();
     static Map<String, Integer> PortToID = new HashMap<String, Integer>();
+    static Map<String, Integer> TaskBrick = new HashMap<String, Integer>();
 
     //Funktion um Runnablecode aus angegebenem Pfad einlesen und als String zurueckgeben
     public static String copyFiletoString(String input)
@@ -390,41 +387,56 @@ public class ShootingmachineemfmodelExample {
         gencFileBuffer.close();
     }
 
-    public static List<String> generateComService(ToplevelSystem mySystem) throws IOException
+    public static List<String> generateComService(ToplevelSystem mySystem, int Brickindex) throws IOException
     {
+    	// alles nur für einen Brick
     	List<String> retlist = new ArrayList<String>();
     	String BT_Global_String = "";
     	String BT_Receiver_String = "";
     	String BT_Transmitter_String = "";
-    	Map<String, String> BT_Events = new HashMap<String,String>();
 
+    	// abprüfen wie viele logische Ports auf dem aktuellen Brick sind
+    	// wie viel davon sind Sender und wie viele sind Receiver
+
+    	shootingmachineemfmodel.Brick actBrick = mySystem.getHasBrick().get(Brickindex);
+    	/*
+    	 * setzten des globalen defines, wie große der Speicherbereich fuer die Comschicht sein muss -> ist fuer beide Bricks gleich
+    	 * zuordnung zwischen den Bricks erfolgt symmetrisch, d.h. auf beiden Bricks zwei Speicherbereiche, die gleich "gehalten" werden!
+    	 */
+    	BT_Global_String += "#define BT_COM_SERVICE " + (PortToID.size()) + "\n";
+
+    	String loc_WaitEvents = "";
+    	String if_bed = "";
     	for(int i = 0; i < mySystem.getHasConnections().size(); i++)
     	{
-    		for(int j = 0; j < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size();j++)
+    		if(Brickindex == TaskBrick.get(RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasSenderPorts().getName()))))
     		{
-    			BT_Events.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().getName() + "_EVENT", mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().getName() + "_EVENT");
+    			//Senderport auf aktuellem Brick
+    			loc_WaitEvents += "WaitEvent(";
+    			for(int j = 0; j < mySystem.getHasConnections().get(i).getHasReceiverPorts().size(); j++)
+    			{
+    				loc_WaitEvents += mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT | ";
+    				if_bed += "if(event & " + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT){";
+    				if_bed += "ClearEvent(" + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
+    				if_bed += "strcpy(BT_transmit_package, COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "];";
+    				if_bed += "}";
+    			}
     		}
-    	}
+    		else
+    		{
+    			//Receiverport auf aktuellem Brick
+    		}
 
-    	BT_Global_String += "#define BT_COM_SIZE " + BT_Events.size() + "\n";
-    	BT_Receiver_String += "#define BT_DYNAMIC_RECEIVER_CODE ";
-    	if(BT_Events.size() > 0)
-    	{
-	    	BT_Receiver_String += "WaitEvent( ";
-	    	for(String key : BT_Events.keySet())
-	    	{
-	    		BT_Receiver_String += BT_Events.get(key) + " | ";
-	    	}
-	    	BT_Receiver_String = BT_Receiver_String.substring(0, BT_Receiver_String.length() - 2);
-	    	BT_Receiver_String += ");";
-	    	BT_Receiver_String += "GetEvent(TASK_BT_INTERFACE_READER, &event);";
-	    	for(String key : BT_Events.keySet())
-	    	{
-	    		BT_Receiver_String += "if(event & " + BT_Events.get(key) + "){" + "ClearEvent(" + BT_Events.get(key) + ");";
-	    		BT_Receiver_String += "strcpy(BT_transmit_package, COMSERVICE_receive_package[" + PortToID.get(BT_Events.get(key).substring(0, BT_Events.get(key).length() - 6 )) + "];";
-	    		BT_Receiver_String += "}";
-	    	}
     	}
+    	if(loc_WaitEvents.length() > 0)
+    	{
+    		loc_WaitEvents = loc_WaitEvents.substring(0, loc_WaitEvents.length() - 2) + ");";
+    		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE (" + loc_WaitEvents + "GetEvent(TASK_BT_INTERFACE_WRITER, &event);" + if_bed + ")";
+    	}
+    	else
+    		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE";
+
+
     	retlist.add(BT_Global_String);
     	retlist.add(BT_Receiver_String);
     	retlist.add(BT_Transmitter_String);
@@ -496,11 +508,17 @@ public class ShootingmachineemfmodelExample {
             {
             	for(int j = 0; j < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size(); j++)
             	{
-            		if(! PortToID.containsKey(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().getName()))
-            			PortToID.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().getName(), i * mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size() + j );
+            		for(int k = 0; k < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().size(); k++)
+            		{
+            			if(!PortToID.containsKey(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().get(k).getName()))
+            				PortToID.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().get(k).getName(), i * j + k );
+            		}
             	}
-            }
 
+            }
+            for(int i = 0; i < mySystem.getHasBrick().size();i++)
+            	for(int j = 0; j < mySystem.getHasBrick().get(i).getHasTaskBrick().size(); j++)
+            		TaskBrick.put(mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getName(), i);
 
             /*
              *
@@ -539,7 +557,7 @@ public class ShootingmachineemfmodelExample {
                 //Erzeugung dynamisches c File mit RTE Funktionen:
                 generatedynamiccFile(mySystem, i, Brickname);
 
-                List<String> comstrings = generateComService(mySystem);
+                List<String> comstrings = generateComService(mySystem,i);
 
                 File genvarfile = new File(Brickname + "\\YASA_generated_variables.c");
                 if (!genvarfile.exists()) {

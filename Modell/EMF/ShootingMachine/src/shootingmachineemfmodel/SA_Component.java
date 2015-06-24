@@ -14,5 +14,4 @@ package shootingmachineemfmodel;
  * @generated
  */
 public interface SA_Component extends Component {
-
 } // SA_Component

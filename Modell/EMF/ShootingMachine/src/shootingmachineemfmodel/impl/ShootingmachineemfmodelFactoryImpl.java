@@ -19,8 +19,7 @@ import shootingmachineemfmodel.Event;
 import shootingmachineemfmodel.GetEvent;
 import shootingmachineemfmodel.HWExtern;
 import shootingmachineemfmodel.HWIntern;
-import shootingmachineemfmodel.InterBrickIn;
-import shootingmachineemfmodel.InterBrickOut;
+import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Motor;
 import shootingmachineemfmodel.Receiver;
@@ -93,13 +92,12 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 			case ShootingmachineemfmodelPackage.ALARM: return createAlarm();
 			case ShootingmachineemfmodelPackage.CONNECTIONS: return createConnections();
 			case ShootingmachineemfmodelPackage.RUNNABLE: return createRunnable();
+			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION: return createInterBrickCommunication();
 			case ShootingmachineemfmodelPackage.HW_INTERN: return createHWIntern();
 			case ShootingmachineemfmodelPackage.HW_EXTERN: return createHWExtern();
 			case ShootingmachineemfmodelPackage.MOTOR: return createMotor();
 			case ShootingmachineemfmodelPackage.DISPLAY: return createDisplay();
 			case ShootingmachineemfmodelPackage.MESSAGE: return createMessage();
-			case ShootingmachineemfmodelPackage.INTER_BRICK_IN: return createInterBrickIn();
-			case ShootingmachineemfmodelPackage.INTER_BRICK_OUT: return createInterBrickOut();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -260,6 +258,16 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public InterBrickCommunication createInterBrickCommunication() {
+		InterBrickCommunicationImpl interBrickCommunication = new InterBrickCommunicationImpl();
+		return interBrickCommunication;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HWIntern createHWIntern() {
 		HWInternImpl hwIntern = new HWInternImpl();
 		return hwIntern;
@@ -303,26 +311,6 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 	public Message createMessage() {
 		MessageImpl message = new MessageImpl();
 		return message;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InterBrickIn createInterBrickIn() {
-		InterBrickInImpl interBrickIn = new InterBrickInImpl();
-		return interBrickIn;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InterBrickOut createInterBrickOut() {
-		InterBrickOutImpl interBrickOut = new InterBrickOutImpl();
-		return interBrickOut;
 	}
 
 	/**
