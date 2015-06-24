@@ -131,7 +131,7 @@ inline std_return RTE_StartTrigger_Trigger_SetValue_Event_Out();
  * @author Florian Laufenböck
  * @date    2015-06-08
  */
-inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t *);
+inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t*);
 
 
 ///

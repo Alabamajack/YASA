@@ -2,6 +2,8 @@
 #include "kernel_id.h"
 #include "YASA_global_variables.h"
 #include "YASA_types.h"
+#include "ecrobot_interface.h"
+#include <string.h>
 /** @file RTE_Output_SetOutput_OSPort_Out.c
  *
  * Aufruf einer Funktion, die Ausgaben macht.
@@ -34,5 +36,8 @@ void RTE_Output_SetOutput_OSPort_Out(const char* message)
 #ifdef RTE_Output_SetOutput_OSPort_Out_LED
     /* LED ausgeben */
 #endif 
+#ifdef RTE_Output_SetOutput_OSPort_Out_IIC
+	/* IIC handler aufrufen */
+#endif  
 }
 
