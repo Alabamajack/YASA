@@ -20,15 +20,10 @@ TASK(TASK_BT_INTERFACE_READER)
 {
     U8 localBuffer[BT_PACKAGE_SIZE];
     U8 id;
+	EventMaskType event;
     while(1)
     {
-        WaitEvent(BT_HAS_RECEIVED_PACKAGE);
-        ClearEvent(BT_HAS_RECEIVED_PACKAGE);
-        strcpy(localBuffer, BT_receive_package);
-        id = CHAR_TO_INT(localBuffer[0]);
-        // ids werden konfiguriert, sind also dynamisch und werden nur benötigt, wenn man über mehrere bricks hinweg kommunizieren will.
-        // also muss man hier verschiedene IDs generieren(die von der Konfiguration kommen)
-
+		BT_DYNAMIC_CODE;
     }
     Terminate_Task();
 }

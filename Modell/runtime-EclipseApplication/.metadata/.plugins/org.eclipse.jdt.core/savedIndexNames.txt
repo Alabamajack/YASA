@@ -1,1 +1,0 @@
-INDEX VERSION 1.126+C:\Users\Philipp\Documents\YASA\Modell\runtime-EclipseApplication\.metadata\.plugins\org.eclipse.jdt.core

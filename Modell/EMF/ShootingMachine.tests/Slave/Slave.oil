@@ -31,4 +31,9 @@ CPU ATMEL_AT91SAM7S256
 		MASK = AUTO;
 	};
 
+	EVENT RTE_Trigger_GetValue_Receiver_In_EVENT
+	{
+		MASK = AUTO;
+	};
+
 };

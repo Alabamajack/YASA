@@ -6,6 +6,7 @@ package shootingmachineemfmodel.validation;
 
 import org.eclipse.emf.common.util.EList;
 import shootingmachineemfmodel.Brick;
+import shootingmachineemfmodel.ReceiverPorts;
 
 
 /**
@@ -22,4 +23,6 @@ public interface InterBrickCommunicationValidator {
 	boolean validateHasIBCOut(EList<Brick> value);
 
 	boolean validateHasIBCIn(EList<Brick> value);
+
+	boolean validateHasReceiverPort(ReceiverPorts value);
 }

@@ -800,6 +800,15 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getInterBrickCommunication_HasReceiverPort() {
+		return (EReference)interBrickCommunicationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHWPorts() {
 		return hwPortsEClass;
 	}
@@ -1039,6 +1048,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		createEAttribute(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__MESSAGE_ID);
 		createEReference(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__HAS_IBC_OUT);
 		createEReference(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__HAS_IBC_IN);
+		createEReference(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT);
 
 		hwPortsEClass = createEClass(HW_PORTS);
 		createEAttribute(hwPortsEClass, HW_PORTS__PORTNUMBER);
@@ -1199,6 +1209,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getInterBrickCommunication_MessageID(), ecorePackage.getEInt(), "messageID", null, 0, 1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInterBrickCommunication_HasIBCOut(), this.getBrick(), null, "hasIBCOut", null, 0, -1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInterBrickCommunication_HasIBCIn(), this.getBrick(), null, "hasIBCIn", null, 0, -1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInterBrickCommunication_HasReceiverPort(), this.getReceiverPorts(), null, "hasReceiverPort", null, 1, 1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwPortsEClass, HWPorts.class, "HWPorts", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHWPorts_Portnumber(), ecorePackage.getEInt(), "Portnumber", null, 0, 1, HWPorts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

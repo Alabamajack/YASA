@@ -1122,13 +1122,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int INTER_BRICK_COMMUNICATION__HAS_IBC_IN = STANDARDCLASS_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Has Receiver Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT = STANDARDCLASS_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Inter Brick Communication</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTER_BRICK_COMMUNICATION_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 3;
+	int INTER_BRICK_COMMUNICATION_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Inter Brick Communication</em>' class.
@@ -1572,6 +1581,15 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int INTER_BRICK_IN__HAS_IBC_IN = INTER_BRICK_COMMUNICATION__HAS_IBC_IN;
 
 	/**
+	 * The feature id for the '<em><b>Has Receiver Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_BRICK_IN__HAS_RECEIVER_PORT = INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT;
+
+	/**
 	 * The feature id for the '<em><b>Has Message Inter Brick In</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1643,6 +1661,15 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTER_BRICK_OUT__HAS_IBC_IN = INTER_BRICK_COMMUNICATION__HAS_IBC_IN;
+
+	/**
+	 * The feature id for the '<em><b>Has Receiver Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTER_BRICK_OUT__HAS_RECEIVER_PORT = INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT;
 
 	/**
 	 * The feature id for the '<em><b>Has Message Inter Brick Out</b></em>' reference.
@@ -2222,6 +2249,17 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInterBrickCommunication_HasIBCIn();
+
+	/**
+	 * Returns the meta object for the reference '{@link shootingmachineemfmodel.InterBrickCommunication#getHasReceiverPort <em>Has Receiver Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Has Receiver Port</em>'.
+	 * @see shootingmachineemfmodel.InterBrickCommunication#getHasReceiverPort()
+	 * @see #getInterBrickCommunication()
+	 * @generated
+	 */
+	EReference getInterBrickCommunication_HasReceiverPort();
 
 	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.HWPorts <em>HW Ports</em>}'.
@@ -2869,6 +2907,14 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INTER_BRICK_COMMUNICATION__HAS_IBC_IN = eINSTANCE.getInterBrickCommunication_HasIBCIn();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Receiver Port</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT = eINSTANCE.getInterBrickCommunication_HasReceiverPort();
 
 		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.HWPortsImpl <em>HW Ports</em>}' class.

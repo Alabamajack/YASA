@@ -82,6 +82,8 @@
         eType="#//Brick"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasIBCIn" upperBound="-1"
         eType="#//Brick"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasReceiverPort" lowerBound="1"
+        eType="#//ReceiverPorts"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HWPorts" abstract="true" eSuperTypes="#//Standardclass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Portnumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

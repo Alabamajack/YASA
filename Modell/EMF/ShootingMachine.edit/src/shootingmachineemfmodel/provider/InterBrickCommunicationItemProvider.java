@@ -60,6 +60,7 @@ public class InterBrickCommunicationItemProvider
 			addMessageIDPropertyDescriptor(object);
 			addHasIBCOutPropertyDescriptor(object);
 			addHasIBCInPropertyDescriptor(object);
+			addHasReceiverPortPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -122,6 +123,28 @@ public class InterBrickCommunicationItemProvider
 				 getString("_UI_InterBrickCommunication_hasIBCIn_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_InterBrickCommunication_hasIBCIn_feature", "_UI_InterBrickCommunication_type"),
 				 ShootingmachineemfmodelPackage.Literals.INTER_BRICK_COMMUNICATION__HAS_IBC_IN,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Has Receiver Port feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHasReceiverPortPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InterBrickCommunication_hasReceiverPort_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InterBrickCommunication_hasReceiverPort_feature", "_UI_InterBrickCommunication_type"),
+				 ShootingmachineemfmodelPackage.Literals.INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT,
 				 true,
 				 false,
 				 true,
