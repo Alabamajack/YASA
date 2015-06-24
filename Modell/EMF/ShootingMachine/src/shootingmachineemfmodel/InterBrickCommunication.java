@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getMessageID <em>Message ID</em>}</li>
  *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasIBCOut <em>Has IBC Out</em>}</li>
  *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasIBCIn <em>Has IBC In</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.InterBrickCommunication#getHasReceiverPort <em>Has Receiver Port</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,5 +82,31 @@ public interface InterBrickCommunication extends Standardclass {
 	 * @generated
 	 */
 	EList<Brick> getHasIBCIn();
+
+	/**
+	 * Returns the value of the '<em><b>Has Receiver Port</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Has Receiver Port</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Has Receiver Port</em>' reference.
+	 * @see #setHasReceiverPort(ReceiverPorts)
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getInterBrickCommunication_HasReceiverPort()
+	 * @model required="true"
+	 * @generated
+	 */
+	ReceiverPorts getHasReceiverPort();
+
+	/**
+	 * Sets the value of the '{@link shootingmachineemfmodel.InterBrickCommunication#getHasReceiverPort <em>Has Receiver Port</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Has Receiver Port</em>' reference.
+	 * @see #getHasReceiverPort()
+	 * @generated
+	 */
+	void setHasReceiverPort(ReceiverPorts value);
 
 } // InterBrickCommunication

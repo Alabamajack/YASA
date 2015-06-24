@@ -8,11 +8,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import shootingmachineemfmodel.Brick;
 import shootingmachineemfmodel.InterBrickCommunication;
+import shootingmachineemfmodel.ReceiverPorts;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
 /**
@@ -25,6 +27,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getMessageID <em>Message ID</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getHasIBCOut <em>Has IBC Out</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getHasIBCIn <em>Has IBC In</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.impl.InterBrickCommunicationImpl#getHasReceiverPort <em>Has Receiver Port</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +73,16 @@ public abstract class InterBrickCommunicationImpl extends StandardclassImpl impl
 	 * @ordered
 	 */
 	protected EList<Brick> hasIBCIn;
+
+	/**
+	 * The cached value of the '{@link #getHasReceiverPort() <em>Has Receiver Port</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHasReceiverPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected ReceiverPorts hasReceiverPort;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,6 +153,44 @@ public abstract class InterBrickCommunicationImpl extends StandardclassImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ReceiverPorts getHasReceiverPort() {
+		if (hasReceiverPort != null && hasReceiverPort.eIsProxy()) {
+			InternalEObject oldHasReceiverPort = (InternalEObject)hasReceiverPort;
+			hasReceiverPort = (ReceiverPorts)eResolveProxy(oldHasReceiverPort);
+			if (hasReceiverPort != oldHasReceiverPort) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT, oldHasReceiverPort, hasReceiverPort));
+			}
+		}
+		return hasReceiverPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReceiverPorts basicGetHasReceiverPort() {
+		return hasReceiverPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHasReceiverPort(ReceiverPorts newHasReceiverPort) {
+		ReceiverPorts oldHasReceiverPort = hasReceiverPort;
+		hasReceiverPort = newHasReceiverPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT, oldHasReceiverPort, hasReceiverPort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -149,6 +200,9 @@ public abstract class InterBrickCommunicationImpl extends StandardclassImpl impl
 				return getHasIBCOut();
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_IBC_IN:
 				return getHasIBCIn();
+			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT:
+				if (resolve) return getHasReceiverPort();
+				return basicGetHasReceiverPort();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -173,6 +227,9 @@ public abstract class InterBrickCommunicationImpl extends StandardclassImpl impl
 				getHasIBCIn().clear();
 				getHasIBCIn().addAll((Collection<? extends Brick>)newValue);
 				return;
+			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT:
+				setHasReceiverPort((ReceiverPorts)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -194,6 +251,9 @@ public abstract class InterBrickCommunicationImpl extends StandardclassImpl impl
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_IBC_IN:
 				getHasIBCIn().clear();
 				return;
+			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT:
+				setHasReceiverPort((ReceiverPorts)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -212,6 +272,8 @@ public abstract class InterBrickCommunicationImpl extends StandardclassImpl impl
 				return hasIBCOut != null && !hasIBCOut.isEmpty();
 			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_IBC_IN:
 				return hasIBCIn != null && !hasIBCIn.isEmpty();
+			case ShootingmachineemfmodelPackage.INTER_BRICK_COMMUNICATION__HAS_RECEIVER_PORT:
+				return hasReceiverPort != null;
 		}
 		return super.eIsSet(featureID);
 	}

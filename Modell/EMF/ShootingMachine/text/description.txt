@@ -79,6 +79,7 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
     Attribute messageID : EInt
     Reference hasIBCOut : Brick<<0..*>>
     Reference hasIBCIn : Brick<<0..*>>
+    Reference hasReceiverPort : ReceiverPorts<<1..1>>
 
   Class HWPorts -> Standardclass
     Attribute Portnumber : EInt

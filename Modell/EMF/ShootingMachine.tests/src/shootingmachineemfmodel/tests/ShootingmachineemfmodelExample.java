@@ -3,14 +3,20 @@
 package shootingmachineemfmodel.tests;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.ToplevelSystem;
 //import shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl;
@@ -22,6 +28,12 @@ import shootingmachineemfmodel.ToplevelSystem;
  * @generated
  */
 public class ShootingmachineemfmodelExample {
+	/*
+	 * HASHES VORBEREITEN:
+	 */
+	static Map<String, String> RunnablesToTask = new HashMap<String, String>();
+    static Map<String, String> EventPort = new HashMap<String, String>();
+    static Map<String, String> PortRunnable = new HashMap<String, String>();
 
     //Funktion um Runnablecode aus angegebenem Pfad einlesen und als String zurueckgeben
     public static String copyFiletoString(String input)
@@ -320,48 +332,6 @@ public class ShootingmachineemfmodelExample {
 
     public static void generatedynamiccFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
-    	/*
-    	 * HASHES VORBEREITEN:
-    	 */
-    	Map<String, String> RunnablesToTask = new HashMap<String, String>();
-        Map<String, String> EventPort = new HashMap<String, String>();
-        Map<String, String> PortRunnable = new HashMap<String, String>();
-
-    	//initialisierungen fuer die Hashes
-        for(int i = 0; i < mySystem.getHasComponent().size(); i++)
-        {
-        	for(int j = 0; j < mySystem.getHasComponent().get(i).getHasRunnable().size(); j++)
-        	{
-        		 for(int k = 0; k < mySystem.getHasComponent().get(i).getHasRunnable().get(j).getHasSWPorts().size(); k++)
-        		 {
-        			 PortRunnable.put(mySystem.getHasComponent().get(i).getHasRunnable().get(j).getHasSWPorts().get(k).getName(), mySystem.getHasComponent().get(i).getHasRunnable().get(j).getName());
-        		 }
-        	}
-        }
-
-        //Weitere Initialisierungen
-        for (int j = 0; j < mySystem.getHasConnections().size(); j++)
-        {
-        	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
-        	{
-        		EventPort.put(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT", mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName());
-        	}
-        }
-
-        //Und noch mehr Hashes initialisieren
-        for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
-        {
-        	for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
-            {
-        		RunnablesToTask.put(mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName(), mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName());
-            }
-        }
-
-        /*
-         *
-         * HASHES FERTIG
-         *
-         */
 
     	//Dateipfad + Dateiname
         File gencFile = new File(Brickname + "\\YASA_generated.c");
@@ -418,6 +388,41 @@ public class ShootingmachineemfmodelExample {
         gencFileBuffer.close();
     }
 
+    public static void generateComService(ToplevelSystem mySystem) throws IOException
+    {
+    	String BT_Global_String = "";
+    	String BT_Reader_String = "";
+    	Map<String, String> BT_Events = new HashMap<String,String>();
+
+    	for(int i = 0; i < mySystem.getHasConnections().size(); i++)
+    	{
+    		for(int j = 0; j < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size();j++)
+    		{
+    			BT_Events.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().getName() + "_EVENT", mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().getName() + "_EVENT");
+    		}
+    	}
+
+    	BT_Global_String += "#define SIZE " + BT_Events.size();
+    	if(BT_Events.size() > 0)
+    	{
+	    	BT_Reader_String += "WaitEvent( ";
+	    	for(String key : BT_Events.keySet())
+	    	{
+	    		BT_Reader_String += BT_Events.get(key) + " | ";
+	    	}
+	    	BT_Reader_String = BT_Reader_String.substring(0, BT_Reader_String.length() - 2);
+	    	BT_Reader_String += ");\n";
+	    	BT_Reader_String += "GetEvent(TASK_BT_INTERFACE_READER, &event);\n";
+	    	for(String key : BT_Events.keySet())
+	    	{
+	    		BT_Reader_String += "if(event & " + BT_Events.get(key) + "){\n" + "ClearEven(" + BT_Events.get(key) + ");\n";
+
+	    		BT_Reader_String += "}";
+	    	}
+	    	System.out.print(BT_Reader_String);
+    	}
+    }
+
     public static void main(String[] args) {
         // Create a resource set to hold the resources.
         //
@@ -435,7 +440,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Flo-virtual\\Documents\\Git\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
@@ -445,6 +450,45 @@ public class ShootingmachineemfmodelExample {
             Resource resource = resourceSet.getResource(uri, true);
 
             ToplevelSystem mySystem = (ToplevelSystem)resource.getContents().get(0);
+        	//initialisierungen fuer die Hashes
+            for(int i = 0; i < mySystem.getHasComponent().size(); i++)
+            {
+            	for(int j = 0; j < mySystem.getHasComponent().get(i).getHasRunnable().size(); j++)
+            	{
+            		 for(int k = 0; k < mySystem.getHasComponent().get(i).getHasRunnable().get(j).getHasSWPorts().size(); k++)
+            		 {
+            			 PortRunnable.put(mySystem.getHasComponent().get(i).getHasRunnable().get(j).getHasSWPorts().get(k).getName(), mySystem.getHasComponent().get(i).getHasRunnable().get(j).getName());
+            		 }
+            	}
+            }
+
+            //Weitere Initialisierungen
+            for (int j = 0; j < mySystem.getHasConnections().size(); j++)
+            {
+            	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
+            	{
+            		EventPort.put(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT", mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName());
+            	}
+            }
+
+            //Und noch mehr Hashes initialisieren
+            for(int i = 0; i < mySystem.getHasBrick().size(); i++)
+            {
+            	int Brickindex = i;
+	            for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
+	            {
+	            	for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
+	                {
+	            		RunnablesToTask.put(mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName(), mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName());
+	                }
+	            }
+            }
+
+            /*
+             *
+             * HASHES FERTIG
+             *
+             */
 
 
             //For Schleife in welcher die einzelnen Dateien und Ordner erstellt werden
@@ -476,6 +520,7 @@ public class ShootingmachineemfmodelExample {
 
                 //Erzeugung dynamisches c File mit RTE Funktionen:
                 generatedynamiccFile(mySystem, i, Brickname);
+                generateComService(mySystem);
 
 
             }

@@ -9,6 +9,11 @@
  * @version 1.0 Initiale Version
  * @author Florian Laufenböck
  * @date 2015-06-07
+ * @version 1.1 Komponentendiagramm geändert - wegfallen des Eventports zwischen Schussanlage und Output und ändern von Server-Client zwischen Trigger/Schussanlage zu Eventport
+ * 			entfernen aller benannten Übergabeparameter, da dann die Codegenerierung einfacher ist
+ * 			ändern der Namen aller Eventports - neue Namenskonvention für EventPorts: RTE_KomponenteZuDerderPortgehört_KomponentenVonWoderPortkommt_[Get|Set]Value_[In|Out]
+ * @author Florian Laufenböck
+ * @date 2015-06-23
  *
  * */
 
@@ -39,7 +44,7 @@ extern COMSERVICE_receive_package;
  * @author Florian Laufenböck
  * @date 2015-06-07
  */
-inline std_return RTE_StopSensor_GetSensorValue_OSPort_In(uint8_t *value);
+inline std_return RTE_StopSensor_GetSensorValue_OSPort_In(uint8_t *);
 
 /**
  * \brief Setzt Event für SW-Komponente Schussanlage
@@ -52,7 +57,7 @@ inline std_return RTE_StopSensor_GetSensorValue_OSPort_In(uint8_t *value);
  * @author Florian Laufenböck
  * @date 2015-06-07
  */
-inline std_return RTE_StopSensor_SetValue_Event_Out();
+inline std_return RTE_StopSensor_Schussanlage_SetValue_Event_Out();
 
 
 ///
@@ -72,7 +77,7 @@ inline std_return RTE_StopSensor_SetValue_Event_Out();
  * @author Florian Laufenböck
  * @date 2015-06-08
  */
-inline std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(const uint32_t *degree);
+inline std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(const uint32_t *);
 
 
 ///
@@ -88,18 +93,8 @@ inline std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(const uint32_t *degr
  * @author Florian Laufenböck
  * @date    2015-06-08
  */
-inline std_return RTE_Output_SetOutput_OSPort_Out(const uint8_t *message);
+inline std_return RTE_Output_SetOutput_OSPort_Out(const uint8_t *);
 
-/**
- * \brief Wartet auf ein konfiguriertes Event
- * blockiert den Ablauf des aufrufenden Task solange, bis Event eingetroffen ist
- * @return  @Errorcode
- * @version 1.0 Initiale Version
- * @author Florian Laufenböck
- * @date    2015-06-08
- *
- */
-inline std_return RTE_Output_GetValue_Event_In();
 
 /**
  * \brief holt sich die Nachricht, die auf dem Display angezeigt werden soll, blockiert solange den weiteren Ablauf des Task, bis die Nachricht da ist
@@ -124,7 +119,7 @@ inline std_return RTE_Output_GetValue_Receiver_In(char*);
  * @author Florian Laufenböck
  * @date    2015-06-08
  */
-inline std_return RTE_StartTrigger_SetValue_Event_Out();
+inline std_return RTE_StartTrigger_Trigger_SetValue_Event_Out();
 
 /**
  * \brief Kommuniziert mit aussen und gibt an ob von aussen getriggert worden ist oder nicht.
@@ -136,7 +131,7 @@ inline std_return RTE_StartTrigger_SetValue_Event_Out();
  * @author Florian Laufenböck
  * @date    2015-06-08
  */
-inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t *value);
+inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t *);
 
 
 ///
@@ -154,22 +149,7 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t *value);
  * @author Florian Laufenböck
  * @date    2015-06-09
  */
-inline std_return RTE_Schussanlage_GetValue_Event_In(uint8_t *eventvalue);
-
-/**
- * \brief TODO
- *
- * @return             @Errorcode
- *
- * @version 1.0 Initiale Version
- *
- * @author Florian Laufenböck
- *
- * @date    2015-06-10
- *
- * @todo über Port nachdenken, wirklich so sinnvoll
- */
-inline std_return RTE_Schussanlage_GetOrder_Server_In();
+inline std_return RTE_Schussanlage_StopSensor_GetValue_Event_In(uint8_t*);
 
 /**
  * \brief Setzt eine Nachricht für den Multicast-Betrieb. Beinhaltet bereits die gesamte Nachricht!
@@ -189,19 +169,6 @@ inline std_return RTE_Schussanlage_GetOrder_Server_In();
 inline std_return RTE_Schussanlage_SendMessage_Sender_Out(const char*);
 
 /**
- * \brief setzt Event um der SAK Output zu signalisieren, dass sich der interne Zustand geändert hat und jetzt was ausgegeben werden kann
- *
- * @return  @Errorcode
- *
- * @version 1.0 Initale Version
- *
- * @author Florian Laufenböck
- *
- * @date    2015-06-10
- */
-inline std_return RTE_Schussanlage_SetValue_Event_Out();
-
-/**
  * \brief wie viele Schüsse sollen von SchussMotor ausgeführt werden
  * stellt gleichzeitig die Funktion für die SAK SchussMotor da
  *
@@ -218,32 +185,43 @@ inline std_return RTE_Schussanlage_SetValue_Event_Out();
  *
  * @attention da Funktionsaufruf natürlich blockierend
  */
-inline std_return RTE_Schussanlage_SetOrder_Client_Out(const uint8_t *schuesse, uint32_t *return_val);
+inline std_return RTE_Schussanlage_SetOrder_Client_Out(const uint8_t *, uint32_t *);
 
+/**
+ * \brief Kriegt Event von Trigger, wenn die Schussanlagenmaschinerie gestartet werden soll.
+ * 		  nicht blockierender Port!!! (entspricht einem GetEvent auf OS-Sicht)
+ * 
+ * @param eventvalue 0 wenn Event nicht gesetzt, !0 sonst
+ * 
+ * @return @Errorcode
+ * 
+ * @version 1.0 Initale Version 
+ * @date 2015-06-23
+ * @author Florian Laufenböck
+ * 
+ */
+inline std_return RTE_Schussanlage_Trigger_GetValue_Event_In(uint8_t*);
 
 ///
 ///SWK Trigger
 ///
 
 /**
- * \brief setzt einen Befehl um die Zustand der Kommunikation mit aussen anzuzeigen
- *
- * @param   message      ganzahl die angibt wie der Zustand ist
- *
- * @return             @Errorcode
- *
+ * \brief Setzt ein Event für die Schussanlage um zu symbolisieren, dass sich der interne Zustand geändert hat und getriggert wird
+ * 
+ * @return @Errorcode
+ * 
  * @version 1.0 Initale Version
- *
+ * @date 2015-06-23
  * @author Florian Laufenböck
- *
- * @date    2015-06-10
- *
- * @todo Nachdenken ob dieser Port überhaupt sinnvoll so ist
+ * 
  */
-inline std_return RTE_Trigger_SetOrder_Client_Out();
+inline std_return RTE_Trigger_Schussanlage_SetEvent_Out();
 
 /**
- * \brief bekommt eine Nachricht, in der bestimmte Informationen über den Zustand der Schussanlage drinstehen
+ * \brief bekommt eine Nachricht, in der bestimmte Informationen über den Zustand der Schussanlage drinstehen - nicht blockierend
+ * 
+ * @param message Nachricht die empfangen wird und interpretiert wird
  *
  * @return             @Errorcode
  *
@@ -252,10 +230,12 @@ inline std_return RTE_Trigger_SetOrder_Client_Out();
  * @author Florian Laufenböck
  *
  * @date    2015-06-10
- *
- * @todo Nachdenken ob diese Beziehung überhaupt sinnvoll ist
+ * 
+ * @version 1.1 hinzufügen von Übergabeparameter
+ * @author Florian Laufenböck
+ * @date 2015-06-23
  */
-inline std_return RTE_Trigger_GetValue_Receiver_In();
+inline std_return RTE_Trigger_GetValue_Receiver_In(char*);
 
 /**
  * \brief Status des Events abfragen, welches symbolisiert, dass der Trigger gestartet wurde
@@ -269,6 +249,6 @@ inline std_return RTE_Trigger_GetValue_Receiver_In();
  *
  * @date    2015-06-10
  */
-inline std_return RTE_Trigger_GetValue_Event_In();
+inline std_return RTE_Trigger_StartTrigger_GetValue_Event_In();
 
 #endif YASA_RTEAPI
