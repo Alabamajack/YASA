@@ -26,6 +26,11 @@ void print(const char* intern_message)
 	display_string(intern_message);
 	display_update();
 	y++;
+	if(y == 8)
+	{
+		y = 0;
+		display_clear(0);
+	}
 }
 
 void RTE_Output_SetOutput_OSPort_Out(const char* message)
