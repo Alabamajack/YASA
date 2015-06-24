@@ -88,25 +88,17 @@ public class ShootingmachineemfmodelExample {
             path.delete();
     }
 
-    public static void generateOilFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
+    public static List<String> generateOilFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
-    	//Dateipfad + Dateiname
-        File OilFile = new File(Brickname + "\\" + Brickname + ".oil");
-
-        //Datei erstellen, wenn noch nicht vorhanden
-        if (!OilFile.exists()) {
-            OilFile.createNewFile();
-            System.out.print("\tDatei " + Brickname + ".oil erstellt\n");
-        }
-
-
-
-        //BufferedWriter
-        FileWriter oilFileWriter = new FileWriter(OilFile.getAbsoluteFile());
-        BufferedWriter oilFileBuffer = new BufferedWriter(oilFileWriter);
+    	List<String> retlist = new ArrayList<String>();
+    	String oilFileBeginn = "";
+    	String oilFileTask = "";
+    	String oilFileAlarm = "";
+    	String oilFileCounter = "";
+    	String oilFileEvent = "";
 
         //Anfang hardcoded
-        String oilFileBeginn = "#include \"implementation.oil\"\n\n"
+        oilFileBeginn = "#include \"implementation.oil\"\n\n"
                 + "CPU ATMEL_AT91SAM7S256\n"
                 + "{\n"
                 + "\tOS LEJOS_OSEK\n"
@@ -123,13 +115,11 @@ public class ShootingmachineemfmodelExample {
                 + "\t};\n\n"
                 + "\tAPPMODE LEGOSAR{};\n\n";
 
-        oilFileBuffer.write(oilFileBeginn); //String Beginn(Anfang) in Datei schreiben
-
         //for schleife fuer Task sektion
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
         	shootingmachineemfmodel.Task actualTask = mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j);
-            String oilFileTask = "\tTASK " + actualTask.getName() + "\n"
+            oilFileTask = "\tTASK " + actualTask.getName() + "\n"
                     + "\t{\n";
             //Wenn AUTOSTART true ist:
             if (actualTask.isAUTOSTART() == true)
@@ -158,12 +148,11 @@ public class ShootingmachineemfmodelExample {
             }
             oilFileTask = oilFileTask + "\t};\n\n";
 
-            oilFileBuffer.write(oilFileTask);
 
             //for Schleife f¸r ALARME
             for(int k = 0; k < actualTask.getHasAlarm().size(); k++)
             {
-                String oilFileAlarm = "\tALARM " + actualTask.getHasAlarm().get(k).getName() + "\n"
+                oilFileAlarm = "\tALARM " + actualTask.getHasAlarm().get(k).getName() + "\n"
                         + "\t{\n"
                         + "\t\tCOUNTER = " + actualTask.getHasAlarm().get(k).getName() + ";\n"
                         + "\t\tACTION = ACTIVATETASK\n"
@@ -188,31 +177,29 @@ public class ShootingmachineemfmodelExample {
                 oilFileAlarm = oilFileAlarm + "\t};\n\n";
 
                 //pro ALARM 1 Counter erstellen
-                String oilFileCounter = "\tCOUNTER C_" + actualTask.getHasAlarm().get(k).getName() + "\n"
+                oilFileCounter = "\tCOUNTER C_" + actualTask.getHasAlarm().get(k).getName() + "\n"
                         + "\t{\n"
                         + "\t\tMINCYCLE = " + actualTask.getHasAlarm().get(k).getMINCYCLE() + ";\n"
                         + "\t\tMAXALLOWEDVALUE = " + actualTask.getHasAlarm().get(k).getMAXALLOWEDVALUE() + ";\n"
                         + "\t\tTICKSPERBASE = " + actualTask.getHasAlarm().get(k).getTICKSPERBASE() + ";\n"
                         + "\t};\n\n";
 
-                oilFileBuffer.write(oilFileAlarm);
-                oilFileBuffer.write(oilFileCounter);
 
                 System.out.print("\t\tALARM " + actualTask.getHasAlarm().get(k).getName() + " und COUNTER C_"
                 		+ actualTask.getHasAlarm().get(k).getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
 
             }
 
+
         }
         //for Schleife fuer EVENTS
         for (int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasEventBrick().size(); j++)
         {
         	shootingmachineemfmodel.Event actualEvent = mySystem.getHasBrick().get(Brickindex).getHasEventBrick().get(j);
-            String oilFileEvent = "\tEVENT " + actualEvent.getName() + "\n"
+            oilFileEvent = "\tEVENT " + actualEvent.getName() + "\n"
                     + "\t{\n"
                     + "\t\tMASK = AUTO;\n"
                     + "\t};\n\n";
-            oilFileBuffer.write(oilFileEvent);
 
             System.out.print("\t\tEVENT " + actualEvent.getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
         }
@@ -222,67 +209,63 @@ public class ShootingmachineemfmodelExample {
         {
         	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
         	{
-                String oilFileEvent = "\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT\n"
+                oilFileEvent = "\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT\n"
                         + "\t{\n"
                         + "\t\tMASK = AUTO;\n"
                         + "\t};\n\n";
-                oilFileBuffer.write(oilFileEvent);
                 System.out.print("\t\tImplizites Event " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT erzeugt\n");
         	}
         }
-        oilFileBuffer.write("};");
 
 
-        oilFileBuffer.close(); //Datei schlieﬂen
+        retlist.add(oilFileBeginn);
+        retlist.add(oilFileTask);
+    	retlist.add(oilFileAlarm);
+    	retlist.add(oilFileCounter);
+    	retlist.add(oilFileEvent);
+        retlist.add("};");
 
+        return retlist;
     }
 
-    public static void generatecFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
+    public static List<String> generatecFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
-    	//Dateipfad + Dateiname
-    	File cFile = new File(Brickname + "\\" + Brickname + ".c");
+    	List<String> retlist = new ArrayList<String>();
+    	String cFileBeginn = "";
+    	String cFileDeclareTask = "";
+    	String cFileDeclareAlarm = "";
+    	String newline = "\n";
+    	String cFileDeclareEvent = "";
+    	String newline1 = "\n";
+    	String cFileRunnable = "";
+    	String cFileTask = "";
 
-    	//Datei erstellen, wenn noch nicht vorhanden
-        if (!cFile.exists()) {
-            cFile.createNewFile();
-            System.out.print("\tDatei " + Brickname + ".c erstellt\n");
-        }
 
-        //BufferedWriter
-        FileWriter cFileWriter = new FileWriter(cFile.getAbsoluteFile());
-        BufferedWriter cFileBuffer = new BufferedWriter(cFileWriter);
 
-        String cFileBeginn = "#include \"kernel.h\"\n"
+        cFileBeginn = "#include \"kernel.h\"\n"
                 + "#include \"kernel_id.h\"\n"
                 + "#include \"ecrobot_interface.h\"\n"
                 + "#include \"ecrobot_bluetooth.h\"\n\n";
-        cFileBuffer.write(cFileBeginn);
 
         //For Schleife in welcher alle Tasks deklariert werden
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
-            String cFileDeclareTask = "DeclareTask(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ");\n";
-            cFileBuffer.write(cFileDeclareTask);
+            cFileDeclareTask = "DeclareTask(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ");\n\n";
 
-            cFileBuffer.write("\n");
 
             //For Schleife in welcher alle Alarme mit den zugehoerigen Countern deklariert werden
             for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().size(); k++)
             {
-                String cFileDeclareAlarm = "DeclareAlarm(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + ");\n"
+                cFileDeclareAlarm = "DeclareAlarm(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + ");\n"
                         + "DeclareCounter(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + ");\n";
-                cFileBuffer.write(cFileDeclareAlarm);
             }
-            cFileBuffer.write("\n");
         }
 
         //For Schleife in welcher alle Events deklariert werden
         for (int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasEventBrick().size(); j++)
         {
-            String cFileDeclareEvent = "DeclareEvent(" + mySystem.getHasBrick().get(Brickindex).getHasEventBrick().get(j).getName() + ");\n";
-            cFileBuffer.write(cFileDeclareEvent);
+            cFileDeclareEvent = "DeclareEvent(" + mySystem.getHasBrick().get(Brickindex).getHasEventBrick().get(j).getName() + ");\n";
         }
-        cFileBuffer.write("\n");
 
 
         //For Schleife in welcher die Runnables deklariert werden
@@ -290,19 +273,18 @@ public class ShootingmachineemfmodelExample {
         {
             for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
             {
-                String cFileRunnable = "//" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "\n"
+                cFileRunnable = "//" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "\n"
                 		+ "void " + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "()\n"
                         + "{\n"
                         + copyFiletoString(mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getApplicationcode())
                         + "\n}\n\n";
-                cFileBuffer.write(cFileRunnable);
                 System.out.print("\t\tRunnable " + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + " hinzugefuegt\n");
             }
         }
 
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
-        	String cFileTask = "TASK(" +  mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ")\n"
+        	cFileTask = "TASK(" +  mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ")\n"
         			+ "{\n"
         			+ "\twhile(1)\n"
         			+ "\t{\n";
@@ -323,26 +305,28 @@ public class ShootingmachineemfmodelExample {
         	cFileTask = cFileTask +  "\t}\n"
         			+ "\tTerminateTask();\n"
         			+ "}\n";
-        	cFileBuffer.write(cFileTask);
         }
-        cFileBuffer.close();
+
+        retlist.add(cFileBeginn);
+    	retlist.add(cFileDeclareTask);
+    	retlist.add(cFileDeclareAlarm);
+    	retlist.add(newline);
+    	retlist.add(cFileDeclareEvent);
+    	retlist.add(newline1);
+    	retlist.add(cFileRunnable);
+    	retlist.add(cFileTask);
+
+
+        return retlist;
     }
 
-    public static void generatedynamiccFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
+    public static List<String> generatedynamiccFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
+    	List <String> retlist = new ArrayList<String>();
+    	String genc = "";
+    	String mySenderrtefunc = "";
+    	String myReceiverrtefun = "";
 
-    	//Dateipfad + Dateiname
-        File gencFile = new File(Brickname + "\\YASA_generated.c");
-
-
-        if (!gencFile.exists()) {
-        	gencFile.createNewFile();
-            System.out.print("\tDatei YASA_generated.c erstellt\n");
-        }
-
-
-        FileWriter gencFileWriter = new FileWriter(gencFile.getAbsoluteFile());
-        BufferedWriter gencFileBuffer = new BufferedWriter(gencFileWriter);
 
         // Sender-Receiver Ports
         //Pro SenderReceiverConnection ein Event und eine globale Variable erstellen
@@ -350,9 +334,8 @@ public class ShootingmachineemfmodelExample {
         {
         	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
         	{
-        		String genc = "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+        		genc = "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
         		genc = genc + "U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER[MAX_MESSAGE_LENGHT] = {0};\n";
-        		gencFileBuffer.write(genc);
                 System.out.print("\t\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT erstellt.\n");
                 System.out.print("\t\tVariable U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER[MAX_MESSAGE_LENGHT] erstellt.\n");
         	}
@@ -362,8 +345,8 @@ public class ShootingmachineemfmodelExample {
         {
         	shootingmachineemfmodel.Brick acBrick = mySystem.getHasBrick().get(Brickindex);
 
-        	String mySenderrtefunc = "\ninline std_return " + mySystem.getHasConnections().get(j).getHasSenderPorts().getName() + "(char *a)\n{\n";
-        	String myReceiverrtefun = "";
+        	mySenderrtefunc = "\ninline std_return " + mySystem.getHasConnections().get(j).getHasSenderPorts().getName() + "(char *a)\n{\n";
+        	myReceiverrtefun = "";
 
         	if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem().size() >= 2)
         	{
@@ -379,12 +362,14 @@ public class ShootingmachineemfmodelExample {
         	}
 
         	mySenderrtefunc += "}";
-        	gencFileBuffer.write(mySenderrtefunc);
         	System.out.print("\t\tFunktion "+ mySystem.getHasConnections().get(j).getHasSenderPorts().getName() + "(char *a) erstellt\n");
         }
 
-        //Datei schlieﬂen
-        gencFileBuffer.close();
+        retlist.add(genc);
+    	retlist.add(mySenderrtefunc);
+    	retlist.add(myReceiverrtefun);
+
+        return retlist;
     }
 
     public static List<String> generateComService(ToplevelSystem mySystem, int Brickindex) throws IOException
@@ -460,7 +445,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
@@ -548,15 +533,102 @@ public class ShootingmachineemfmodelExample {
                 }
 
 
-                //Erzeugung oil File:
-                generateOilFile(mySystem, i, Brickname);
+                /*
+                 *
+                 * Erzeugung oil File:
+                 *
+                 *
+                 */
+                List <String> oilStrings = generateOilFile(mySystem, i, Brickname);
 
-                //Erzeugung c File:
-                generatecFile(mySystem, i, Brickname);
 
-                //Erzeugung dynamisches c File mit RTE Funktionen:
-                generatedynamiccFile(mySystem, i, Brickname);
+                //Dateipfad + Dateiname
+                File OilFile = new File(Brickname + "\\" + Brickname + ".oil");
+                if (!OilFile.exists()) {
+                    OilFile.createNewFile();
+                    System.out.print("\tDatei " + Brickname + ".oil erstellt\n");
+                }
 
+
+                //BufferedWriter
+                FileWriter oilFileWriter = new FileWriter(OilFile.getAbsoluteFile());
+                BufferedWriter oilFileBuffer = new BufferedWriter(oilFileWriter);
+
+                oilFileBuffer.write(oilStrings.get(0));
+                oilFileBuffer.write(oilStrings.get(1));
+                oilFileBuffer.write(oilStrings.get(2));
+                oilFileBuffer.write(oilStrings.get(3));
+                oilFileBuffer.write(oilStrings.get(4));
+                oilFileBuffer.write(oilStrings.get(5));
+
+                oilFileBuffer.close();
+
+                /*
+                 *
+                 * Erzeugung c File
+                 *
+                 *
+                 */
+                List <String> cStrings = generatecFile(mySystem, i, Brickname);
+
+                //Dateipfad + Dateiname
+            	File cFile = new File(Brickname + "\\" + Brickname + ".c");
+
+            	//Datei erstellen, wenn noch nicht vorhanden
+                if (!cFile.exists()) {
+                    cFile.createNewFile();
+                    System.out.print("\tDatei " + Brickname + ".c erstellt\n");
+                }
+
+                //BufferedWriter
+                FileWriter cFileWriter = new FileWriter(cFile.getAbsoluteFile());
+                BufferedWriter cFileBuffer = new BufferedWriter(cFileWriter);
+
+                cFileBuffer.write(cStrings.get(0));
+                cFileBuffer.write(cStrings.get(1));
+                cFileBuffer.write(cStrings.get(2));
+                cFileBuffer.write(cStrings.get(3));
+                cFileBuffer.write(cStrings.get(4));
+                cFileBuffer.write(cStrings.get(5));
+                cFileBuffer.write(cStrings.get(6));
+                cFileBuffer.write(cStrings.get(7));
+
+                cFileBuffer.close();
+
+                /*
+                 *
+                 * Dynamischen C-Code Erzeugen
+                 *
+                 *
+                 */
+                List <String> dynamiccStrings = generatedynamiccFile(mySystem, i, Brickname);
+
+                //Dateipfad + Dateiname
+                File gencFile = new File(Brickname + "\\YASA_generated.c");
+
+
+                if (!gencFile.exists()) {
+                	gencFile.createNewFile();
+                    System.out.print("\tDatei YASA_generated.c erstellt\n");
+                }
+
+
+                FileWriter gencFileWriter = new FileWriter(gencFile.getAbsoluteFile());
+                BufferedWriter gencFileBuffer = new BufferedWriter(gencFileWriter);
+
+                gencFileBuffer.write(dynamiccStrings.get(0));
+                gencFileBuffer.write(dynamiccStrings.get(1));
+                gencFileBuffer.write(dynamiccStrings.get(2));
+
+                gencFileBuffer.close();
+
+
+                /*
+                 *
+                 * Com Service erzeugen
+                 *
+                 *
+                 */
                 List<String> comstrings = generateComService(mySystem,i);
 
                 File genvarfile = new File(Brickname + "\\YASA_generated_variables.c");
