@@ -20,11 +20,11 @@
 
 inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 {
-	static InitializedSonar = 0;
+	static uint8_t InitializedSonar = 0;
 #ifdef RTE_StartTrigger_GetSensorValue_OSPort_In_BUTTON
 	/* als Trigger ist ein Button definiert */
-	int currentStatus = ecrobot_get_touch_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
-	static int driverButtonLastState = 0;
+	uint32_t currentStatus = ecrobot_get_touch_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
+	static uint32_t driverButtonLastState = 0;
 	if ( currentStatus != driverButtonLastState && currentStatus != 0)
 	{
 		/* Button is gedrückt */
@@ -42,7 +42,7 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 	uint8_t measurement = 0;
 	if(!InitializedSonar)
 	{
-		ecrobot_init_sonar(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
+		ecrobot_init_sonar_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
 	}
 	measurement = ecrobot_get_sonar_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
 	/* ab dem gemessenen Wert 80, wird getriggert */
