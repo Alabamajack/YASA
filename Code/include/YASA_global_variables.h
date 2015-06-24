@@ -36,10 +36,10 @@
 U8 BT_transmit_package[BT_PACKAGE_SIZE];
 /** \brief Buffer-Speicher für Nachrichten, die über BT empfangen wurden */
 U8 BT_receive_package[BT_PACKAGE_SIZE];
+/* BT_COM_SERVICE wird in der Konfiguration angegeben */
+U8 COMSERVICE_receive_package[BT_COM_SERVICE][MAX_MESSAGE_LENGHT];
 
-U8 COMSERVICE_receive_package[MAX_MESSAGE_LENGHT];
-
-U8 COMSERVICE_transmit_package[MAX_MESSAGE_LENGHT];
+U8 COMSERVICE_transmit_package[BT_COM_SERVICE][MAX_MESSAGE_LENGHT];
 
 /** \brief globale Variable für die Ausgabe. Quasi generiert */
 U8 Output_Message[MAX_MESSAGE_LENGHT];
