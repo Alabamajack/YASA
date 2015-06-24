@@ -23,8 +23,8 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 	static uint8_t InitializedSonar = 0;
 #ifdef RTE_StartTrigger_GetSensorValue_OSPort_In_BUTTON
 	/* als Trigger ist ein Button definiert */
-	uint32_t currentStatus = ecrobot_get_touch_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
-	static uint32_t driverButtonLastState = 0;
+	uint8_t currentStatus = ecrobot_get_touch_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
+	static uint8_t driverButtonLastState = 0;
 	if ( currentStatus != driverButtonLastState && currentStatus != 0)
 	{
 		/* Button is gedrückt */
