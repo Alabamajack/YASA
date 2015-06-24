@@ -26,14 +26,13 @@ void print(const char* intern_message)
 	y++;
 }
 
-#ifdef RTE_OUTPUT_SETOUTPUT_OSPORT_OUT
 void RTE_Output_SetOutput_OSPort_Out(const char* message)
 {
-#ifdef RTE_Output_SetOutput_OSPort_Out_ONEBRICK
+#ifdef RTE_Output_SetOutput_OSPort_Out_DISPLAY
     print(message);
 #endif
-#ifdef RTE_Output_SetOutput_OSPort_Out_TWOBRICK
-    /*ComService aufrufen, welche Funktion? */
+#ifdef RTE_Output_SetOutput_OSPort_Out_LED
+    /* LED ausgeben */
 #endif 
 }
-#endif /* RTE_OUTPUT_SETOUTPUT_OSPORT_OUT */
+
