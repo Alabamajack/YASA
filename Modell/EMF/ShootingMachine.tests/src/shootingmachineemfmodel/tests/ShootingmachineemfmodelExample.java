@@ -390,10 +390,12 @@ public class ShootingmachineemfmodelExample {
         gencFileBuffer.close();
     }
 
-    public static void generateComService(ToplevelSystem mySystem) throws IOException
+    public static List<String> generateComService(ToplevelSystem mySystem) throws IOException
     {
+    	List<String> retlist = new ArrayList<String>();
     	String BT_Global_String = "";
     	String BT_Receiver_String = "";
+    	String BT_Transmitter_String = "";
     	Map<String, String> BT_Events = new HashMap<String,String>();
 
     	for(int i = 0; i < mySystem.getHasConnections().size(); i++)
@@ -404,7 +406,8 @@ public class ShootingmachineemfmodelExample {
     		}
     	}
 
-    	BT_Global_String += "#define BT_COM_SIZE " + BT_Events.size();
+    	BT_Global_String += "#define BT_COM_SIZE " + BT_Events.size() + "\n";
+    	BT_Receiver_String += "#define BT_DYNAMIC_RECEIVER_CODE ";
     	if(BT_Events.size() > 0)
     	{
 	    	BT_Receiver_String += "WaitEvent( ";
@@ -413,16 +416,19 @@ public class ShootingmachineemfmodelExample {
 	    		BT_Receiver_String += BT_Events.get(key) + " | ";
 	    	}
 	    	BT_Receiver_String = BT_Receiver_String.substring(0, BT_Receiver_String.length() - 2);
-	    	BT_Receiver_String += ");\n";
-	    	BT_Receiver_String += "GetEvent(TASK_BT_INTERFACE_READER, &event);\n";
+	    	BT_Receiver_String += ");";
+	    	BT_Receiver_String += "GetEvent(TASK_BT_INTERFACE_READER, &event);";
 	    	for(String key : BT_Events.keySet())
 	    	{
-	    		BT_Receiver_String += "if(event & " + BT_Events.get(key) + "){\n" + "ClearEven(" + BT_Events.get(key) + ");\n";
-
+	    		BT_Receiver_String += "if(event & " + BT_Events.get(key) + "){" + "ClearEvent(" + BT_Events.get(key) + ");";
+	    		BT_Receiver_String += "strcpy(BT_transmit_package, COMSERVICE_receive_package[" + PortToID.get(BT_Events.get(key).substring(0, BT_Events.get(key).length() - 6 )) + "];";
 	    		BT_Receiver_String += "}";
 	    	}
-	    	System.out.print(BT_Receiver_String);
     	}
+    	retlist.add(BT_Global_String);
+    	retlist.add(BT_Receiver_String);
+    	retlist.add(BT_Transmitter_String);
+    	return retlist;
     }
 
     public static void main(String[] args) {
@@ -490,7 +496,8 @@ public class ShootingmachineemfmodelExample {
             {
             	for(int j = 0; j < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size(); j++)
             	{
-            		PortToID.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().getName(), i * mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size() + j );
+            		if(! PortToID.containsKey(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().getName()))
+            			PortToID.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().getName(), i * mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size() + j );
             	}
             }
 
@@ -531,9 +538,22 @@ public class ShootingmachineemfmodelExample {
 
                 //Erzeugung dynamisches c File mit RTE Funktionen:
                 generatedynamiccFile(mySystem, i, Brickname);
-                generateComService(mySystem);
+
+                List<String> comstrings = generateComService(mySystem);
+
+                File genvarfile = new File(Brickname + "\\YASA_generated_variables.c");
+                if (!genvarfile.exists()) {
+                	genvarfile.createNewFile();
+                    System.out.print("\tDatei YASA_generated_variables.c erstellt\n");
+                }
 
 
+                FileWriter genvarfileWriter = new FileWriter(genvarfile.getAbsoluteFile());
+                BufferedWriter genvarfileBuffer = new BufferedWriter(genvarfileWriter);
+                genvarfileBuffer.write(comstrings.get(0));
+                genvarfileBuffer.write(comstrings.get(1));
+                genvarfileBuffer.write(comstrings.get(2));
+                genvarfileBuffer.close();
             }
         }
         catch (RuntimeException exception) {
