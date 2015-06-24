@@ -20,7 +20,7 @@
 
 inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 {
-	static uint8_t InitializedSonar = 0;
+	static uint8_t InitializedSonar = 0; /* Golbal ermöglichen!? */
 #ifdef RTE_StartTrigger_GetSensorValue_OSPort_In_BUTTON
 	/* als Trigger ist ein Button definiert */
 	uint8_t currentStatus = ecrobot_get_touch_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
@@ -42,6 +42,7 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 	uint8_t measurement = 0;
 	if(!InitializedSonar)
 	{
+        InitializedSonar = 1;
 		ecrobot_init_sonar_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
 	}
 	measurement = ecrobot_get_sonar_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
@@ -54,6 +55,27 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 	{
 		*value = 0;
 	}
+#endif
+#ifdef RTE_StartTrigger_GetSensorValue_OSPort_In_IIC
+    /* als Trigger ist der IIC Expander mit Taster definiert */
+    uint8_t currentStatus = 0;
+    uint8_t lastStatus = 0;
+    int32_t reg = 0;
+    if(!IIC_Initialized) /* IIC_Initialized global ermöglichen! bzw in der Main ganz am Anfang sowohl fuer IIC als auc SONAR einmal machen */
+    {
+        IIC_Initialized = 1;
+        ecrobot_init_i2c(RTE_Output_SetOutput_OSPort_Out_PORT, LOWSPEED);
+    }
+    ecrobot_read_i2c(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT, 0x20, reg, currentStatus, 1);
+    if( currentStatus != lastStatus && currentStatus != 0)
+    {
+        /* button gedrückt */
+        *value = 1;
+    }
+    else
+    {
+        *value = 0;
+    }
 #endif
 	return 0;
 }

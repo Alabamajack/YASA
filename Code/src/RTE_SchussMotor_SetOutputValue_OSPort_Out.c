@@ -18,9 +18,9 @@
  *
  */
 
-std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(U32* degree)
+inline std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(U32* degree)
 {
-	static U8 correction = 0;
+	static uint8_t correction = 0;
 #ifdef RTE_SchussMotor_SetOutputValue_OSPort_Out_ENGINE
 		nxt_motor_set_speed(RTE_SchussMotor_SetOutputValue_OSPort_Out_PORT, 35, 1);
 		if(correction == 5)

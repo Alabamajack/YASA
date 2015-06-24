@@ -33,7 +33,7 @@ void print(const char* intern_message)
 	}
 }
 
-void RTE_Output_SetOutput_OSPort_Out(const char* message)
+inline std_return RTE_Output_SetOutput_OSPort_Out(const char* message)
 {
 #ifdef RTE_Output_SetOutput_OSPort_Out_DISPLAY
     print(message);
@@ -42,7 +42,15 @@ void RTE_Output_SetOutput_OSPort_Out(const char* message)
     /* LED ausgeben */
 #endif 
 #ifdef RTE_Output_SetOutput_OSPort_Out_IIC
-	/* IIC handler aufrufen */
-#endif  
+    uint8_t data_IIC = 0; /* Idee: die message in einen Integer wandeln und dann auf die LED's legen */
+    int32_t reg = 0;
+	if(!IIC_Initialized) /* IIC_Initialized global ermöglichen! */
+    {
+        IIC_Initialized = 1;
+        ecrobot_init_i2c(RTE_Output_SetOutput_OSPort_Out_PORT, LOWSPEED);
+    }
+    ecrobot_send_i2c(RTE_Output_SetOutput_OSPort_Out_PORT, 0x20, reg, data_IIC, 1);
+#endif
+    return 0;
 }
 
