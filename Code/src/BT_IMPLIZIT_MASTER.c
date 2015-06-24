@@ -9,9 +9,9 @@
  * zusammenfassend benötigt folgende externe Abhängigkeiten:
  * Variablen: BT_receive_package, BT_transmit_package
  * Makros: BT_SLAVE_ADDRESS, BT_PACKAGE_SIZE
- * Events: BT_HAS_RECEIVED_PACKAGE - setztend für Task TASK_BT_INTERFACE
+ * Events: BT_HAS_RECEIVED_PACKAGE - setztend für Task TASK_BT_INTERFACE_READER
  * 		   frägt Event ab, das auf eigenen Task gesetzt wird
- * Tasks: TASK_BT_INTERFACE
+ * Tasks: TASK_BT_INTERFACE_READER
  *
  * @version 1.0
  * @date 2015-06-19
@@ -39,7 +39,7 @@ TASK(BT_IMPLIZIT_MASTER)
 		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
 		{
 			BT_receive_package = lastValue;
-			SetEvent(TASK_BT_INTERFACE, BT_HAS_RECEIVED_PACKAGE);
+			SetEvent(TASK_BT_INTERFACE_READER, BT_HAS_RECEIVED_PACKAGE);
 		}
 		if(GetEvent(BT_IMPLIZIT_MASTER, &bt_event)
 		{
