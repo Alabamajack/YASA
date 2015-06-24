@@ -17,22 +17,8 @@
  *
  */
 
-#ifdef RTE_STOPSENSOR_GETSENSORVALUE_OSPORT_IN
 void RTE_StopSensor_GetSensorValue_OSPort_In(uint8_t* value)
 {
-#ifdef RTE_StopSensor_GetSensorValue_OSPort_In_ONEBRICK
-    if(*value)
-    {
-        SetEvent(STOPSENSORTASK, STOPEVENT);
-    }
-#endif
-
-#ifdef RTE_StopSensor_GetSensorValue_OSPort_In_TWOBRICK
-/*wann ComService aufrufen?*/
-    if(*value)
-    {
-        SetEvent(STOPSENSORTASK, STOPEVENT);
-    }
-#endif
+	
 }
-#endif /* RTE_STOPSENSOR_GETSENSORVALUE_OSPORT_IN */
+
