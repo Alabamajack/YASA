@@ -34,6 +34,7 @@ public class ShootingmachineemfmodelExample {
 	static Map<String, String> RunnablesToTask = new HashMap<String, String>();
     static Map<String, String> EventPort = new HashMap<String, String>();
     static Map<String, String> PortRunnable = new HashMap<String, String>();
+    static Map<String, Integer> PortToID = new HashMap<String, Integer>();
 
     //Funktion um Runnablecode aus angegebenem Pfad einlesen und als String zurueckgeben
     public static String copyFiletoString(String input)
@@ -346,7 +347,8 @@ public class ShootingmachineemfmodelExample {
         FileWriter gencFileWriter = new FileWriter(gencFile.getAbsoluteFile());
         BufferedWriter gencFileBuffer = new BufferedWriter(gencFileWriter);
 
-        //Pro Connection ein Event und eine globale Variable erstellen
+        // Sender-Receiver Ports
+        //Pro SenderReceiverConnection ein Event und eine globale Variable erstellen
         for (int j = 0; j < mySystem.getHasConnections().size(); j++)
         {
         	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
@@ -391,7 +393,7 @@ public class ShootingmachineemfmodelExample {
     public static void generateComService(ToplevelSystem mySystem) throws IOException
     {
     	String BT_Global_String = "";
-    	String BT_Reader_String = "";
+    	String BT_Receiver_String = "";
     	Map<String, String> BT_Events = new HashMap<String,String>();
 
     	for(int i = 0; i < mySystem.getHasConnections().size(); i++)
@@ -402,24 +404,24 @@ public class ShootingmachineemfmodelExample {
     		}
     	}
 
-    	BT_Global_String += "#define SIZE " + BT_Events.size();
+    	BT_Global_String += "#define BT_COM_SIZE " + BT_Events.size();
     	if(BT_Events.size() > 0)
     	{
-	    	BT_Reader_String += "WaitEvent( ";
+	    	BT_Receiver_String += "WaitEvent( ";
 	    	for(String key : BT_Events.keySet())
 	    	{
-	    		BT_Reader_String += BT_Events.get(key) + " | ";
+	    		BT_Receiver_String += BT_Events.get(key) + " | ";
 	    	}
-	    	BT_Reader_String = BT_Reader_String.substring(0, BT_Reader_String.length() - 2);
-	    	BT_Reader_String += ");\n";
-	    	BT_Reader_String += "GetEvent(TASK_BT_INTERFACE_READER, &event);\n";
+	    	BT_Receiver_String = BT_Receiver_String.substring(0, BT_Receiver_String.length() - 2);
+	    	BT_Receiver_String += ");\n";
+	    	BT_Receiver_String += "GetEvent(TASK_BT_INTERFACE_READER, &event);\n";
 	    	for(String key : BT_Events.keySet())
 	    	{
-	    		BT_Reader_String += "if(event & " + BT_Events.get(key) + "){\n" + "ClearEven(" + BT_Events.get(key) + ");\n";
+	    		BT_Receiver_String += "if(event & " + BT_Events.get(key) + "){\n" + "ClearEven(" + BT_Events.get(key) + ");\n";
 
-	    		BT_Reader_String += "}";
+	    		BT_Receiver_String += "}";
 	    	}
-	    	System.out.print(BT_Reader_String);
+	    	System.out.print(BT_Receiver_String);
     	}
     }
 
@@ -440,7 +442,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Flo-virtual\\Documents\\Git\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
@@ -482,6 +484,14 @@ public class ShootingmachineemfmodelExample {
 	            		RunnablesToTask.put(mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName(), mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName());
 	                }
 	            }
+            }
+
+            for(int i = 0; i < mySystem.getHasConnections().size(); i++)
+            {
+            	for(int j = 0; j < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size(); j++)
+            	{
+            		PortToID.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().getName(), i * mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size() + j );
+            	}
             }
 
             /*
