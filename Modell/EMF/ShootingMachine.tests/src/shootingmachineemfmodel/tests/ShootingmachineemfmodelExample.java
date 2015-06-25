@@ -5,14 +5,17 @@ package shootingmachineemfmodel.tests;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.ToplevelSystem;
 //import shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl;
@@ -32,6 +35,7 @@ public class ShootingmachineemfmodelExample {
     static Map<String, String> PortRunnable = new HashMap<String, String>();
     static Map<String, Integer> PortToID = new HashMap<String, Integer>();
     static Map<String, Integer> TaskBrick = new HashMap<String, Integer>();
+    static Map<Integer, String> IDToPort = new HashMap<Integer, String>();
 
     //Funktion um Runnablecode aus angegebenem Pfad einlesen und als String zurueckgeben
     public static String copyFiletoString(String input)
@@ -392,6 +396,8 @@ public class ShootingmachineemfmodelExample {
 
     	String loc_WaitEvents = "";
     	String if_bed = "";
+
+    	String loc_red_string = "switch(id){";
     	for(int i = 0; i < mySystem.getHasConnections().size(); i++)
     	{
     		if(Brickindex == TaskBrick.get(RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasSenderPorts().getName()))))
@@ -403,13 +409,26 @@ public class ShootingmachineemfmodelExample {
     				loc_WaitEvents += mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT | ";
     				if_bed += "if(event & " + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT){";
     				if_bed += "ClearEvent(" + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
-    				if_bed += "strcpy(BT_transmit_package, COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "];";
+    				if_bed += "*transmit_pack_ptr = " + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ";" + "transmit_pack_ptr++;";
+    				if_bed += "strcpy(BT_transmit_package, COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "]);";
+    				if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
+    					if_bed += "SetEvent(BT_IMPLIZIT_MASTER,BT_SEND_MY_MESSAGE);";
+    				else
+    					if_bed += "SetEvent(BT_IMPLIZIT_SLAVE,BT_SEND_MY_MESSAGE);";
     				if_bed += "}";
     			}
     		}
     		else
     		{
     			//Receiverport auf aktuellem Brick
+    			for(int j = 0; j < mySystem.getHasConnections().get(i).getHasReceiverPorts().size(); j++)
+    			{
+    				loc_red_string += "case " + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ":";
+    				loc_red_string += "SetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()));
+    				loc_red_string +=  "," + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
+    				loc_red_string += "break;";
+    			}
+
     		}
 
     	}
@@ -420,6 +439,9 @@ public class ShootingmachineemfmodelExample {
     	}
     	else
     		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE";
+
+    	loc_red_string += "}";
+    	BT_Receiver_String = "#define BT_DYNAMIC_READER_CODE ( "+ loc_red_string + ")";
 
 
     	retlist.add(BT_Global_String);
@@ -445,7 +467,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
@@ -505,6 +527,11 @@ public class ShootingmachineemfmodelExample {
             	for(int j = 0; j < mySystem.getHasBrick().get(i).getHasTaskBrick().size(); j++)
             		TaskBrick.put(mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getName(), i);
 
+            //also making a hashmap with ID to port
+            for(String key : PortToID.keySet())
+            {
+            	IDToPort.put(PortToID.get(key), key);
+            }
             /*
              *
              * HASHES FERTIG
@@ -640,9 +667,9 @@ public class ShootingmachineemfmodelExample {
 
                 FileWriter genvarfileWriter = new FileWriter(genvarfile.getAbsoluteFile());
                 BufferedWriter genvarfileBuffer = new BufferedWriter(genvarfileWriter);
-                genvarfileBuffer.write(comstrings.get(0));
-                genvarfileBuffer.write(comstrings.get(1));
-                genvarfileBuffer.write(comstrings.get(2));
+                genvarfileBuffer.write(comstrings.get(0) + "\n");
+                genvarfileBuffer.write(comstrings.get(1) + "\n");
+                genvarfileBuffer.write(comstrings.get(2) + "\n");
                 genvarfileBuffer.close();
             }
         }
