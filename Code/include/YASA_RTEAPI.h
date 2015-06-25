@@ -1,4 +1,4 @@
-#ifnded YASA_RTEAPI
+#ifndef YASA_RTEAPI
 #define YASA_RTEAPI
 /** @file YASA_RTEAPI.h
  *
