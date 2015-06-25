@@ -20,7 +20,6 @@
   </hasBrick>
   <hasBrick name="Slave">
     <hasTaskBrick name="Output_Task" hasRunnable="//@hasComponent.0/@hasRunnable.0"/>
-    <hasTaskBrick name="Trigger" hasRunnable="//@hasComponent.2/@hasRunnable.0"/>
   </hasBrick>
   <hasConnections name="Schussanlage_OutputTrigger" hasReceiverPorts="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.0 //@hasComponent.2/@hasRunnable.0/@hasSWPorts.0" hasSenderPorts="//@hasComponent.1/@hasRunnable.0/@hasSWPorts.0">
     <hasInterBrickCommunicationSystem name="IBC_Schussanlage_Output" hasIBCOut="//@hasBrick.0" hasIBCIn="//@hasBrick.1" hasReceiverPort="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.0 //@hasComponent.2/@hasRunnable.0/@hasSWPorts.0" hasMessage="//@hasConnections.0/@hasMessage"/>
