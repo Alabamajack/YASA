@@ -35,6 +35,10 @@
   <children xmi:type="notation:Node" xmi:id="_NDon8ARmEeWnTYYRtuHBGg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_NDon8wRmEeWnTYYRtuHBGg" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_NDon9ARmEeWnTYYRtuHBGg" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_IkpK4BthEeWib6EWKTw0iw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="ShootingMachineEMFModel.ecore#//Brick/IsMaster"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_IkpK4RthEeWib6EWKTw0iw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_NDon9QRmEeWnTYYRtuHBGg"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_NDon9gRmEeWnTYYRtuHBGg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_NDon9wRmEeWnTYYRtuHBGg"/>

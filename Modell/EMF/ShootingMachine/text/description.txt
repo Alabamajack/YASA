@@ -21,6 +21,7 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
     Reference hasEventBrick : Event<<0..*>>
     Reference hasAlarmBrick : Alarm<<0..*>>
     Reference hasHWPortsBrick : HWPorts<<0..7>>
+    Attribute IsMaster : EBoolean<<1..1>>
 
   Class SA_Component -> Component
 

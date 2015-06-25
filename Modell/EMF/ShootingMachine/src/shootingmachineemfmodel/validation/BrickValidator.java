@@ -24,4 +24,6 @@ public interface BrickValidator {
 	boolean validateHasEventBrick(EList<Event> value);
 	boolean validateHasAlarmBrick(EList<Alarm> value);
 	boolean validateHasHWPortsBrick(EList<HWPorts> value);
+
+	boolean validateIsMaster(boolean value);
 }

@@ -11,12 +11,14 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import shootingmachineemfmodel.Brick;
@@ -58,8 +60,31 @@ public class BrickItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addIsMasterPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Master feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsMasterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Brick_IsMaster_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Brick_IsMaster_feature", "_UI_Brick_type"),
+				 ShootingmachineemfmodelPackage.Literals.BRICK__IS_MASTER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -132,6 +157,9 @@ public class BrickItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Brick.class)) {
+			case ShootingmachineemfmodelPackage.BRICK__IS_MASTER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case ShootingmachineemfmodelPackage.BRICK__HAS_TASK_BRICK:
 			case ShootingmachineemfmodelPackage.BRICK__HAS_EVENT_BRICK:
 			case ShootingmachineemfmodelPackage.BRICK__HAS_ALARM_BRICK:

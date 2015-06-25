@@ -268,13 +268,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int BRICK__HAS_HW_PORTS_BRICK = STANDARDCLASS_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Is Master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BRICK__IS_MASTER = STANDARDCLASS_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Brick</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BRICK_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 4;
+	int BRICK_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Brick</em>' class.
@@ -1674,6 +1683,17 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EReference getBrick_HasHWPortsBrick();
 
 	/**
+	 * Returns the meta object for the attribute '{@link shootingmachineemfmodel.Brick#isIsMaster <em>Is Master</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Master</em>'.
+	 * @see shootingmachineemfmodel.Brick#isIsMaster()
+	 * @see #getBrick()
+	 * @generated
+	 */
+	EAttribute getBrick_IsMaster();
+
+	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.SA_Component <em>SA Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2365,6 +2385,14 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BRICK__HAS_HW_PORTS_BRICK = eINSTANCE.getBrick_HasHWPortsBrick();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Master</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BRICK__IS_MASTER = eINSTANCE.getBrick_IsMaster();
 
 		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.SA_ComponentImpl <em>SA Component</em>}' class.

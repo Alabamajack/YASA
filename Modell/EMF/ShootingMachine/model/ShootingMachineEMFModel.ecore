@@ -25,6 +25,8 @@
         eType="#//Alarm" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasHWPortsBrick" upperBound="7"
         eType="#//HWPorts" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="IsMaster" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SA_Component" eSuperTypes="#//Component"/>
   <eClassifiers xsi:type="ecore:EClass" name="SW_Component" eSuperTypes="#//Component"/>

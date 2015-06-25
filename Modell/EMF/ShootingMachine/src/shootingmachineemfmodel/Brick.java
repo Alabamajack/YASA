@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link shootingmachineemfmodel.Brick#getHasEventBrick <em>Has Event Brick</em>}</li>
  *   <li>{@link shootingmachineemfmodel.Brick#getHasAlarmBrick <em>Has Alarm Brick</em>}</li>
  *   <li>{@link shootingmachineemfmodel.Brick#getHasHWPortsBrick <em>Has HW Ports Brick</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.Brick#isIsMaster <em>Is Master</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,5 +88,31 @@ public interface Brick extends Standardclass {
 	 * @generated
 	 */
 	EList<HWPorts> getHasHWPortsBrick();
+
+	/**
+	 * Returns the value of the '<em><b>Is Master</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Master</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Master</em>' attribute.
+	 * @see #setIsMaster(boolean)
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getBrick_IsMaster()
+	 * @model required="true"
+	 * @generated
+	 */
+	boolean isIsMaster();
+
+	/**
+	 * Sets the value of the '{@link shootingmachineemfmodel.Brick#isIsMaster <em>Is Master</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Master</em>' attribute.
+	 * @see #isIsMaster()
+	 * @generated
+	 */
+	void setIsMaster(boolean value);
 
 } // Brick
