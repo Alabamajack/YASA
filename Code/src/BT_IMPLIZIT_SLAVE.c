@@ -23,6 +23,7 @@ extern BT_receive_package;
 extern BT_transmit_package;
 
 DeclareTask(BT_IMPLIZIT_SLAVE);
+DeclareEvent(BT_SEND_MY_MESSAGE);
 
 TASK(BT_IMPLIZIT_SLAVE)
 {

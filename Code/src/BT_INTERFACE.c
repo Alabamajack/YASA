@@ -21,10 +21,20 @@ TASK(TASK_BT_INTERFACE_READER)
 {
     U8 localBuffer[BT_PACKAGE_SIZE];
     U8 id;
+	U8* locBuffer_ptr = localBuffer;
 	EventMaskType event;
     while(1)
     {
-		BT_DYNAMIC_Reader_CODE;
+		WaitEvent(BT_HAS_RECEIVED_PACKAGE);
+		ClearEvent(BT_HAS_RECEIVED_PACKAGE);
+		strcpy(localBuffer, BT_receiver_package);
+		id = localBuffer[0];
+		locBuffer_ptr++;
+		strcpy(COMSERVICE_receive_package[id], locBuffer_ptr);
+		switch(id){
+			case 0:SetEvent(Output_Task,RTE_Output_GetValue_Receiver_In_EVENT);break;
+			case 1:SetEvent(null,RTE_Trigger_GetValue_Receiver_In_EVENT);break;
+		}
     }
     Terminate_Task();
 }
@@ -35,6 +45,7 @@ TASK(TASK_BT_INTERFACE_WRITER)
     U8 localBuffer[BT_PACKAGE_SIZE];
     U8 id;
 	EventMaskType event;
+	U8* transmit_pack_ptr = BT_transmit_package;
     while(1)
     {
 
