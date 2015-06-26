@@ -38,15 +38,17 @@ inline std_return RTE_StopSensor_GetSensorValue_OSPort_In(uint8_t* value)
 #endif
 #ifdef RTE_StopSensor_GetSensorValue_OSPort_In_IIC
     /* als Abbruchbedingung ist der IIC definiert */
-    int32_t reg = 0; /* noch zum ausprobieren */
-    uint8_t currentStatus = 0;
-    if(!IIC_Initialized)
-    {
-        IIC_Initialized = 1;
-        ecrobot_init_i2c(RTE_StopSensor_GetSensorValue_OSPort_In_PORT, LOWSPEED);
-    }
-    ecrobot_read_i2c(RTE_StopSensor_GetSensorValue_OSPort_In_PORT, 0x20, reg, currentStatus, 1);
-    if(currentStatus != 0) /* testen, was hier zurückkommt */
+    static uint8_t currentStatus_StopSensor = 0xFF;
+    
+    // if(!IIC_Initialized)
+    // {
+        // IIC_Initialized = 1;
+        // i2c_enable(RTE_StopSensor_GetSensorValue_OSPort_In_PORT);
+    // }
+	ecrobot_send_i2c(RTE_StopSensor_GetSensorValue_OSPort_In_PORT, 0x20, currentStatus, &currentStatus, 0);
+	while(i2c_busy(RTE_StopSensor_GetSensorValue_OSPort_In_PORT) != 0);
+    ecrobot_read_i2c(RTE_StopSensor_GetSensorValue_OSPort_In_PORT, 0x20, 0xF0, &currentStatus, 1);
+    if((currentStatus == 0xD0) || (currentStatus == 0xE0))
     {
         *value = 1;
     }

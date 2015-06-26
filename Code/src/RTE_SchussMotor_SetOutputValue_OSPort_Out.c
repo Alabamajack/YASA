@@ -1,6 +1,5 @@
 #include "kernel.h"
 #include "kernel_id.h"
-#include "YASA_global_variables.h"
 #include "YASA_types.h"
 #include "ecrobot_interface.h"
 /** @file RTE_SchussMotor_SetOutputValue_OSPort_Out.c
@@ -17,20 +16,19 @@
  * @authors Tobias Schwindl
  *
  */
-
-inline std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(U32* degree)
+ 
+inline std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(uint32_t* degree)
 {
-	static uint8_t correction = 0;
+#define CORRECTION 11
 #ifdef RTE_SchussMotor_SetOutputValue_OSPort_Out_ENGINE
+		nxt_motor_set_count(RTE_SchussMotor_SetOutputValue_OSPort_Out_PORT, 0);
 		nxt_motor_set_speed(RTE_SchussMotor_SetOutputValue_OSPort_Out_PORT, 35, 1);
-		if(correction == 5)
+		while ( nxt_motor_get_count(RTE_SchussMotor_SetOutputValue_OSPort_Out_PORT) < (*degree - CORRECTION) )
 		{
-			systick_wait_ms(100);
-			correction = 0;
+			;
 		}
-		systick_wait_ms(10*(*degree/3));	
 		nxt_motor_set_speed(RTE_SchussMotor_SetOutputValue_OSPort_Out_PORT, 0, 1);
-		correction++;
+		
 #endif
 return 0;
 }
