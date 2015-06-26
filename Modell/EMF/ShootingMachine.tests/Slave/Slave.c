@@ -3,12 +3,13 @@
 #include "ecrobot_interface.h"
 #include "ecrobot_bluetooth.h"
 
-DeclareTask(Output_Task);
+DeclareTask(InitHook);
+DeclareTask(Trigger);
 
 
 
-//Output_runnable
-void Output_runnable()
+//Trigger_Runnable
+void Trigger_Runnable()
 {
 Bla Bla runnable
 pi pa po
@@ -16,11 +17,15 @@ pi pa po
 
 }
 
-TASK(Output_Task)
+TASK(InitHook)
+{
+}
+
+TASK(Trigger)
 {
 	while(1)
 	{
-		Output_runnable();
+		Trigger_Runnable();
 	}
 	TerminateTask();
 }

@@ -4,6 +4,7 @@ package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -22,6 +23,7 @@ import shootingmachineemfmodel.HWInput;
 import shootingmachineemfmodel.HWIntern;
 import shootingmachineemfmodel.HWOutput;
 import shootingmachineemfmodel.HWPorts;
+import shootingmachineemfmodel.HWType;
 import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Motor;
@@ -251,6 +253,13 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	private EClass messageEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum hwTypeEEnum = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -471,6 +480,15 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 */
 	public EClass getReceiverPorts() {
 		return receiverPortsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getReceiverPorts_Blockierend() {
+		return (EAttribute)receiverPortsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -856,6 +874,15 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getHWIntern_Type() {
+		return (EAttribute)hwInternEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHWExtern() {
 		return hwExternEClass;
 	}
@@ -919,6 +946,15 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getHWType() {
+		return hwTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ShootingmachineemfmodelFactory getShootingmachineemfmodelFactory() {
 		return (ShootingmachineemfmodelFactory)getEFactoryInstance();
 	}
@@ -967,6 +1003,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		senderPortsEClass = createEClass(SENDER_PORTS);
 
 		receiverPortsEClass = createEClass(RECEIVER_PORTS);
+		createEAttribute(receiverPortsEClass, RECEIVER_PORTS__BLOCKIEREND);
 
 		senderEClass = createEClass(SENDER);
 
@@ -1026,6 +1063,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		hwOutputEClass = createEClass(HW_OUTPUT);
 
 		hwInternEClass = createEClass(HW_INTERN);
+		createEAttribute(hwInternEClass, HW_INTERN__TYPE);
 
 		hwExternEClass = createEClass(HW_EXTERN);
 		createEAttribute(hwExternEClass, HW_EXTERN__PINNUMBER);
@@ -1037,6 +1075,9 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		messageEClass = createEClass(MESSAGE);
 		createEAttribute(messageEClass, MESSAGE__MESSAGE_HEADER);
 		createEAttribute(messageEClass, MESSAGE__MY_MESSAGE);
+
+		// Create enums
+		hwTypeEEnum = createEEnum(HW_TYPE);
 	}
 
 	/**
@@ -1122,6 +1163,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEClass(senderPortsEClass, SenderPorts.class, "SenderPorts", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(receiverPortsEClass, ReceiverPorts.class, "ReceiverPorts", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReceiverPorts_Blockierend(), ecorePackage.getEBoolean(), "blockierend", null, 0, 1, ReceiverPorts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(senderEClass, Sender.class, "Sender", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1181,6 +1223,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEClass(hwOutputEClass, HWOutput.class, "HWOutput", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(hwInternEClass, HWIntern.class, "HWIntern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHWIntern_Type(), this.getHWType(), "Type", null, 0, 1, HWIntern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwExternEClass, HWExtern.class, "HWExtern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHWExtern_Pinnumber(), ecorePackage.getEInt(), "Pinnumber", null, 0, 1, HWExtern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1193,8 +1236,33 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getMessage_MessageHeader(), ecorePackage.getEChar(), "MessageHeader", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessage_MyMessage(), ecorePackage.getEString(), "myMessage", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		// Initialize enums and add enum literals
+		initEEnum(hwTypeEEnum, HWType.class, "HWType");
+		addEEnumLiteral(hwTypeEEnum, HWType.TASTER);
+		addEEnumLiteral(hwTypeEEnum, HWType.SONIC);
+
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
+		addAnnotation
+		  (getHWIntern_Type(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });
 	}
 
 } //ShootingmachineemfmodelPackageImpl

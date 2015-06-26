@@ -1,30 +1,3 @@
-#include "kernel.h"
-#include "kernel_id.h"
-#include "ecrobot_interface.h"
-#include "YASA_global_variables.h"
-#include "YASA_types.h"
-/** @file BT_IMPLIZIT_MASTER.c
- *
- * Enthält Code um einen BT-Slave Task zu erstellen. Dieser kann sowohl Nachrichten empfangen als auch Nachrichten senden
- * zusammenfassend benötigt folgende externe Abhängigkeiten:
- * Variablen: BT_receive_package, BT_transmit_package
- * Makros: BT_PACKAGE_SIZE
- * Events: BT_HAS_RECEIVED_PACKAGE - setztend für Task TASK_BT_INTERFACE
- * 		   frägt Event ab, das auf eigenen Task gesetzt wird
- * Tasks: TASK_BT_INTERFACE
- *
- * @version 1.0
- * @date 2015-06-19
- * @authors Florian Laufenböck, Phillip Eidenschink, Tobias Schwindl, Tim Schmidl
- *
- */
-
-extern BT_receive_package;
-extern BT_transmit_package;
-
-DeclareTask(BT_IMPLIZIT_SLAVE);
-DeclareEvent(BT_SEND_MY_MESSAGE);
-
 TASK(BT_IMPLIZIT_SLAVE)
 {
 	U8 lastValue[BT_PACKAGE_SIZE];

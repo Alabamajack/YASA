@@ -32,7 +32,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="SW_Component" eSuperTypes="#//Component"/>
   <eClassifiers xsi:type="ecore:EClass" name="Ports" abstract="true" eSuperTypes="#//Standardclass"/>
   <eClassifiers xsi:type="ecore:EClass" name="SenderPorts" abstract="true" eSuperTypes="#//Ports"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ReceiverPorts" abstract="true" eSuperTypes="#//Ports"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReceiverPorts" abstract="true" eSuperTypes="#//Ports">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="blockierend" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sender" eSuperTypes="#//SenderPorts"/>
   <eClassifiers xsi:type="ecore:EClass" name="Client" eSuperTypes="#//SenderPorts"/>
   <eClassifiers xsi:type="ecore:EClass" name="SendEvent" eSuperTypes="#//SenderPorts"/>
@@ -93,7 +95,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HWInput" abstract="true" eSuperTypes="#//HWPorts"/>
   <eClassifiers xsi:type="ecore:EClass" name="HWOutput" abstract="true" eSuperTypes="#//HWPorts"/>
-  <eClassifiers xsi:type="ecore:EClass" name="HWIntern" eSuperTypes="#//HWInput"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HWIntern" eSuperTypes="#//HWInput">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Type" eType="#//HWType">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HWExtern" eSuperTypes="#//HWInput">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Pinnumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
@@ -102,5 +110,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="#//Standardclass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="MessageHeader" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="myMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HWType">
+    <eLiterals name="Taster"/>
+    <eLiterals name="Sonic" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

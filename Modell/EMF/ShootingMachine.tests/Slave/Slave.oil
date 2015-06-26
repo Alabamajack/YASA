@@ -17,13 +17,25 @@ CPU ATMEL_AT91SAM7S256
 
 	APPMODE LEGOSAR{};
 
-	TASK Output_Task
+	TASK Trigger
 	{
 		AUTOSTART = FALSE;
 		PRIORITY = 0;
 		ACIVATION = 0;
 		SCHEDULE = FULL;
 		STACKSIZE = 512;
+	};
+
+	TASK InitHook
+	{
+		AUTOSTART = TRUE
+		{
+			APPMODE = LEGOSAR;
+		};
+		PRIORITY = 10;
+		ACTIVATION = 1
+		SCHEDULE = FULL
+		STACKSIZE = 512
 	};
 
 	EVENT RTE_Trigger_GetValue_Receiver_In_EVENT

@@ -5,17 +5,16 @@ package shootingmachineemfmodel.tests;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-
+import shootingmachineemfmodel.HWExtern;
+import shootingmachineemfmodel.HWIntern;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.ToplevelSystem;
 //import shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl;
@@ -94,9 +93,12 @@ public class ShootingmachineemfmodelExample {
 
     public static List<String> generateOilFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
+
+    	System.out.print("\tDatei " + Brickname + ".oil erstellt.\n");
     	List<String> retlist = new ArrayList<String>();
     	String oilFileBeginn = "";
     	String oilFileTask = "";
+    	String oilFileInitHook = "";
     	String oilFileAlarm = "";
     	String oilFileCounter = "";
     	String oilFileEvent = "";
@@ -144,6 +146,20 @@ public class ShootingmachineemfmodelExample {
                     + "\t\tSTACKSIZE = 512;\n";
 
             System.out.print("\t\tTASK " + actualTask.getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
+
+            oilFileInitHook = "\tTASK InitHook\n"
+            		+"\t{\n"
+            		+"\t\tAUTOSTART = TRUE\n"
+            		+"\t\t{\n"
+            		+"\t\t\tAPPMODE = LEGOSAR;\n"
+            		+"\t\t};\n"
+            		+"\t\tPRIORITY = 10;\n"
+            		+"\t\tACTIVATION = 1\n"
+            		+"\t\tSCHEDULE = FULL\n"
+            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t};\n\n";
+
+            System.out.print("\t\tImpliziten Task InitHook hinzugefuegt.\n");
 
             //EVENTS die zu den TASKS gehoeren
             for(int k = 0; k < actualTask.getHasEvent().size(); k++)
@@ -224,6 +240,7 @@ public class ShootingmachineemfmodelExample {
 
         retlist.add(oilFileBeginn);
         retlist.add(oilFileTask);
+        retlist.add(oilFileInitHook);
     	retlist.add(oilFileAlarm);
     	retlist.add(oilFileCounter);
     	retlist.add(oilFileEvent);
@@ -234,14 +251,17 @@ public class ShootingmachineemfmodelExample {
 
     public static List<String> generatecFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
+    	System.out.print("\tDatei " + Brickname + ".c erstellt.\n");
     	List<String> retlist = new ArrayList<String>();
     	String cFileBeginn = "";
+    	String cFileDeclareInitHook = "";
     	String cFileDeclareTask = "";
     	String cFileDeclareAlarm = "";
     	String newline = "\n";
     	String cFileDeclareEvent = "";
     	String newline1 = "\n";
     	String cFileRunnable = "";
+    	String cFileInitHook = "";
     	String cFileTask = "";
 
 
@@ -251,6 +271,8 @@ public class ShootingmachineemfmodelExample {
                 + "#include \"ecrobot_interface.h\"\n"
                 + "#include \"ecrobot_bluetooth.h\"\n\n";
 
+
+        cFileDeclareInitHook = "DeclareTask(InitHook);\n";
         //For Schleife in welcher alle Tasks deklariert werden
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
@@ -286,6 +308,32 @@ public class ShootingmachineemfmodelExample {
             }
         }
 
+        cFileInitHook = "TASK(InitHook)\n"
+        		+ "{\n";
+        for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().size(); j++)
+        {
+        	try{
+        		shootingmachineemfmodel.HWIntern myinput =  (HWIntern) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
+        		if(myinput.getType() == shootingmachineemfmodel.HWType.SONIC)
+        		{
+        			cFileInitHook += "\tecrobot_init_sonar_sensor(NXT_PORT_S"+mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortnumber()+");\n";
+        			System.out.print("\t\tPort " + mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortnumber() + " als Ultraschall initialisiert\n");
+        		}
+        	}catch (java.lang.ClassCastException e){
+
+        	}
+
+        	try{
+        		shootingmachineemfmodel.HWExtern myoutput = (HWExtern) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
+        		cFileInitHook += "\ti2c_enable(NXT_PORT_S"+myoutput.getPinnumber()+");\n";
+        		System.out.print("\t\tI2C Expander an Port " + mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortnumber() + " initialisiert.\n");
+        	}
+        	catch (java.lang.ClassCastException e)
+        	{
+
+        	}
+        }
+        cFileInitHook += "}\n\n";
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
         	cFileTask = "TASK(" +  mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ")\n"
@@ -312,12 +360,14 @@ public class ShootingmachineemfmodelExample {
         }
 
         retlist.add(cFileBeginn);
+        retlist.add(cFileDeclareInitHook);
     	retlist.add(cFileDeclareTask);
     	retlist.add(cFileDeclareAlarm);
     	retlist.add(newline);
     	retlist.add(cFileDeclareEvent);
     	retlist.add(newline1);
     	retlist.add(cFileRunnable);
+    	retlist.add(cFileInitHook);
     	retlist.add(cFileTask);
 
 
@@ -326,6 +376,7 @@ public class ShootingmachineemfmodelExample {
 
     public static List<String> generatedynamiccFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
+    	System.out.print("\tDatei YASA_generated.c erstellt.\n");
     	List <String> retlist = new ArrayList<String>();
     	String genc = "";
     	String mySenderrtefunc = "";
@@ -467,7 +518,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\eip46272\\Desktop\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
@@ -573,7 +624,6 @@ public class ShootingmachineemfmodelExample {
                 File OilFile = new File(Brickname + "\\" + Brickname + ".oil");
                 if (!OilFile.exists()) {
                     OilFile.createNewFile();
-                    System.out.print("\tDatei " + Brickname + ".oil erstellt\n");
                 }
 
 
@@ -587,6 +637,7 @@ public class ShootingmachineemfmodelExample {
                 oilFileBuffer.write(oilStrings.get(3));
                 oilFileBuffer.write(oilStrings.get(4));
                 oilFileBuffer.write(oilStrings.get(5));
+                oilFileBuffer.write(oilStrings.get(6));
 
                 oilFileBuffer.close();
 
@@ -604,7 +655,6 @@ public class ShootingmachineemfmodelExample {
             	//Datei erstellen, wenn noch nicht vorhanden
                 if (!cFile.exists()) {
                     cFile.createNewFile();
-                    System.out.print("\tDatei " + Brickname + ".c erstellt\n");
                 }
 
                 //BufferedWriter
@@ -619,6 +669,8 @@ public class ShootingmachineemfmodelExample {
                 cFileBuffer.write(cStrings.get(5));
                 cFileBuffer.write(cStrings.get(6));
                 cFileBuffer.write(cStrings.get(7));
+                cFileBuffer.write(cStrings.get(8));
+                cFileBuffer.write(cStrings.get(9));
 
                 cFileBuffer.close();
 
@@ -636,7 +688,6 @@ public class ShootingmachineemfmodelExample {
 
                 if (!gencFile.exists()) {
                 	gencFile.createNewFile();
-                    System.out.print("\tDatei YASA_generated.c erstellt\n");
                 }
 
 

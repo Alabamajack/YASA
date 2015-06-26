@@ -121,6 +121,10 @@
   <children xmi:type="notation:Node" xmi:id="_Fw0sMARnEeWnTYYRtuHBGg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_Fw0sMwRnEeWnTYYRtuHBGg" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_Fw0sNARnEeWnTYYRtuHBGg" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_fdijEBwCEeW0Ia_hXcutAg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="ShootingMachineEMFModel.ecore#//ReceiverPorts/blockierend"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_fdijERwCEeW0Ia_hXcutAg"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_Fw0sNQRnEeWnTYYRtuHBGg"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_Fw0sNgRnEeWnTYYRtuHBGg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_Fw0sNwRnEeWnTYYRtuHBGg"/>
@@ -132,7 +136,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_Fw0sMQRnEeWnTYYRtuHBGg" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="ShootingMachineEMFModel.ecore#//ReceiverPorts"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fw0sMgRnEeWnTYYRtuHBGg" x="250" y="665"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fw0sMgRnEeWnTYYRtuHBGg" x="250" y="665" width="173" height="83"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_NRscoARnEeWnTYYRtuHBGg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_NRscowRnEeWnTYYRtuHBGg" type="4001"/>
@@ -451,6 +455,10 @@
   <children xmi:type="notation:Node" xmi:id="_PAAd8AR6EeWnTYYRtuHBGg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_PAAd8wR6EeWnTYYRtuHBGg" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_PAAd9AR6EeWnTYYRtuHBGg" type="5001">
+      <children xmi:type="notation:Node" xmi:id="__FZxYBvxEeW0Ia_hXcutAg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="ShootingMachineEMFModel.ecore#//HWIntern/Type"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="__FZxYRvxEeW0Ia_hXcutAg"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_PAAd9QR6EeWnTYYRtuHBGg"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_PAAd9gR6EeWnTYYRtuHBGg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_PAAd9wR6EeWnTYYRtuHBGg"/>
@@ -541,6 +549,25 @@
     <styles xmi:type="notation:ShapeStyle" xmi:id="_RUIAMQR7EeWnTYYRtuHBGg" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="ShootingMachineEMFModel.ecore#//Message"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RUIAMgR7EeWnTYYRtuHBGg" x="1485" y="675"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_3Q89oBvxEeW0Ia_hXcutAg" type="1005">
+    <children xmi:type="notation:Node" xmi:id="_3Q89oxvxEeW0Ia_hXcutAg" type="4010"/>
+    <children xmi:type="notation:Node" xmi:id="_3Q89pBvxEeW0Ia_hXcutAg" type="5008">
+      <children xmi:type="notation:Node" xmi:id="_4ytEQBvxEeW0Ia_hXcutAg" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="ShootingMachineEMFModel.ecore#//HWType/Taster"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_4ytEQRvxEeW0Ia_hXcutAg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_8iH8UBvxEeW0Ia_hXcutAg" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="ShootingMachineEMFModel.ecore#//HWType/Sonic"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_8iH8URvxEeW0Ia_hXcutAg"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_3Q89pRvxEeW0Ia_hXcutAg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_3Q89phvxEeW0Ia_hXcutAg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_3Q89pxvxEeW0Ia_hXcutAg"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_3Q89oRvxEeW0Ia_hXcutAg" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EEnum" href="ShootingMachineEMFModel.ecore#//HWType"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3Q89ohvxEeW0Ia_hXcutAg" x="1907" y="617"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_odrNIQRkEeWnTYYRtuHBGg"/>
   <element xmi:type="ecore:EPackage" href="ShootingMachineEMFModel.ecore#/"/>

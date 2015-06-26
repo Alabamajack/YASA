@@ -4,6 +4,8 @@
  */
 package shootingmachineemfmodel.validation;
 
+import shootingmachineemfmodel.HWType;
+
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.HWIntern}.
@@ -13,5 +15,7 @@ package shootingmachineemfmodel.validation;
  */
 public interface HWInternValidator {
 	boolean validate();
+
+	boolean validateType(HWType value);
 
 }

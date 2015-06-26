@@ -3,6 +3,7 @@
 package shootingmachineemfmodel.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -19,6 +20,7 @@ import shootingmachineemfmodel.Event;
 import shootingmachineemfmodel.GetEvent;
 import shootingmachineemfmodel.HWExtern;
 import shootingmachineemfmodel.HWIntern;
+import shootingmachineemfmodel.HWType;
 import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Motor;
@@ -100,6 +102,36 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 			case ShootingmachineemfmodelPackage.MESSAGE: return createMessage();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case ShootingmachineemfmodelPackage.HW_TYPE:
+				return createHWTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case ShootingmachineemfmodelPackage.HW_TYPE:
+				return convertHWTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -311,6 +343,26 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 	public Message createMessage() {
 		MessageImpl message = new MessageImpl();
 		return message;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HWType createHWTypeFromString(EDataType eDataType, String initialValue) {
+		HWType result = HWType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertHWTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

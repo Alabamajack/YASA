@@ -1,0 +1,32 @@
+Allgeimein: Upper & Lower Bounds checken.
+
+für die Codegenerierung:
+
+1x Task.c -> C file für Brick
+1x Task.oil -> oil file für einen brick
+1x genarted_variables.h -> muss überall am Anfang eingebunden werden, defines etc.
+1x YASA_generated.c
+
+
+Inhalt Task.c:
+
+	ComService einfach reinkopieren(BT_Interface.c)
+	if Master:
+		BT_master reinkopieren
+	sonst slave
+	
+Inhalt YASA_generated.c
+	implementierung der RTE-funktionen
+	
+Inhalt generated_variables.h
+
+
+	
+		
+		
+		
+		
+alleEvents die gesetzt werden müssen:
+
+- BT_SEND_MY_MESSAGE -> gehört zu BT_SLAVE oder BT_Master
+- BT_HAS_RECEIVED_PACKAGE -> gehört zu TASK_BT_INTERFACE_READER -> wird gesettz von BT_SLAVE oder BT_MASTER

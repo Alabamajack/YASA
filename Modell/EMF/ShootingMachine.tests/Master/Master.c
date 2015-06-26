@@ -3,6 +3,7 @@
 #include "ecrobot_interface.h"
 #include "ecrobot_bluetooth.h"
 
+DeclareTask(InitHook);
 DeclareTask(SchussanlagenTask);
 
 
@@ -14,6 +15,12 @@ Bla Bla runnable
 pi pa po
 	lalelu
 
+}
+
+TASK(InitHook)
+{
+	ecrobot_init_sonar_sensor(NXT_PORT_S0);
+	i2c_enable(NXT_PORT_S1);
 }
 
 TASK(SchussanlagenTask)

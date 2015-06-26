@@ -4,6 +4,7 @@ package shootingmachineemfmodel;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -498,13 +499,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int RECEIVER_PORTS__NAME = PORTS__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Blockierend</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVER_PORTS__BLOCKIEREND = PORTS_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Receiver Ports</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECEIVER_PORTS_FEATURE_COUNT = PORTS_FEATURE_COUNT + 0;
+	int RECEIVER_PORTS_FEATURE_COUNT = PORTS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Receiver Ports</em>' class.
@@ -646,6 +656,15 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int RECEIVER__NAME = RECEIVER_PORTS__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Blockierend</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECEIVER__BLOCKIEREND = RECEIVER_PORTS__BLOCKIEREND;
+
+	/**
 	 * The number of structural features of the '<em>Receiver</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -683,6 +702,15 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int SERVER__NAME = RECEIVER_PORTS__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Blockierend</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER__BLOCKIEREND = RECEIVER_PORTS__BLOCKIEREND;
+
+	/**
 	 * The number of structural features of the '<em>Server</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -718,6 +746,15 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int GET_EVENT__NAME = RECEIVER_PORTS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Blockierend</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_EVENT__BLOCKIEREND = RECEIVER_PORTS__BLOCKIEREND;
 
 	/**
 	 * The number of structural features of the '<em>Get Event</em>' class.
@@ -1333,13 +1370,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int HW_INTERN__PORTNUMBER = HW_INPUT__PORTNUMBER;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_INTERN__TYPE = HW_INPUT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>HW Intern</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_INTERN_FEATURE_COUNT = HW_INPUT_FEATURE_COUNT + 0;
+	int HW_INTERN_FEATURE_COUNT = HW_INPUT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>HW Intern</em>' class.
@@ -1554,6 +1600,17 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.HWType <em>HW Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.HWType
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getHWType()
+	 * @generated
+	 */
+	int HW_TYPE = 29;
+
+
+	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.ToplevelSystem <em>Toplevel System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1742,6 +1799,17 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getReceiverPorts();
+
+	/**
+	 * Returns the meta object for the attribute '{@link shootingmachineemfmodel.ReceiverPorts#isBlockierend <em>Blockierend</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Blockierend</em>'.
+	 * @see shootingmachineemfmodel.ReceiverPorts#isBlockierend()
+	 * @see #getReceiverPorts()
+	 * @generated
+	 */
+	EAttribute getReceiverPorts_Blockierend();
 
 	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.Sender <em>Sender</em>}'.
@@ -2189,6 +2257,17 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EClass getHWIntern();
 
 	/**
+	 * Returns the meta object for the attribute '{@link shootingmachineemfmodel.HWIntern#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see shootingmachineemfmodel.HWIntern#getType()
+	 * @see #getHWIntern()
+	 * @generated
+	 */
+	EAttribute getHWIntern_Type();
+
+	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.HWExtern <em>HW Extern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2260,6 +2339,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMessage_MyMessage();
+
+	/**
+	 * Returns the meta object for enum '{@link shootingmachineemfmodel.HWType <em>HW Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>HW Type</em>'.
+	 * @see shootingmachineemfmodel.HWType
+	 * @generated
+	 */
+	EEnum getHWType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2443,6 +2532,14 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass RECEIVER_PORTS = eINSTANCE.getReceiverPorts();
+
+		/**
+		 * The meta object literal for the '<em><b>Blockierend</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RECEIVER_PORTS__BLOCKIEREND = eINSTANCE.getReceiverPorts_Blockierend();
 
 		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.SenderImpl <em>Sender</em>}' class.
@@ -2815,6 +2912,14 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EClass HW_INTERN = eINSTANCE.getHWIntern();
 
 		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HW_INTERN__TYPE = eINSTANCE.getHWIntern_Type();
+
+		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.HWExternImpl <em>HW Extern</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2877,6 +2982,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MESSAGE__MY_MESSAGE = eINSTANCE.getMessage_MyMessage();
+
+		/**
+		 * The meta object literal for the '{@link shootingmachineemfmodel.HWType <em>HW Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see shootingmachineemfmodel.HWType
+		 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getHWType()
+		 * @generated
+		 */
+		EEnum HW_TYPE = eINSTANCE.getHWType();
 
 	}
 

@@ -14,4 +14,6 @@ package shootingmachineemfmodel.validation;
 public interface ReceiverPortsValidator {
 	boolean validate();
 
+	boolean validateBlockierend(boolean value);
+
 }

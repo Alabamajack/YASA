@@ -32,6 +32,7 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
   Class SenderPorts -> Ports
 
   Class ReceiverPorts -> Ports
+    Attribute blockierend : EBoolean
 
   Class Sender -> SenderPorts
 
@@ -91,6 +92,7 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
   Class HWOutput -> HWPorts
 
   Class HWIntern -> HWInput
+    Attribute Type : HWType
 
   Class HWExtern -> HWInput
     Attribute Pinnumber : EInt
@@ -102,3 +104,7 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
   Class Message -> Standardclass
     Attribute MessageHeader : EChar
     Attribute myMessage : EString
+
+  Enum HWType
+    Literal Taster = 0
+    Literal Sonic = 1
