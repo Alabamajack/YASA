@@ -91,6 +91,12 @@ public class ShootingmachineemfmodelExample {
             path.delete();
     }
 
+    public static String getBTFiles()
+    {
+    	String result = copyFiletoString("..\\..\\..\\Code\\src\\BT_INTERFACE.c");
+    	return result;
+    }
+
     public static List<String> generateOilFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
 
@@ -99,9 +105,12 @@ public class ShootingmachineemfmodelExample {
     	String oilFileBeginn = "";
     	String oilFileTask = "";
     	String oilFileInitHook = "";
+    	String oilFileBTInterface = "";
+    	String oilFileBTImplizit = "";
     	String oilFileAlarm = "";
     	String oilFileCounter = "";
     	String oilFileEvent = "";
+    	String oilFileBTEvents = "";
 
         //Anfang hardcoded
         oilFileBeginn = "#include \"implementation.oil\"\n\n"
@@ -160,6 +169,55 @@ public class ShootingmachineemfmodelExample {
             		+"\t};\n\n";
 
             System.out.print("\t\tImpliziten Task InitHook hinzugefuegt.\n");
+
+            oilFileBTInterface = "\tTASK TASK_BT_INTERFACE_READER\n"
+            		+ "\t{\n"
+            		+"\t\tAUTOSTART = TRUE\n"
+            		+"\t\t{\n"
+            		+"\t\t\tAPPMODE = LEGOSAR;\n"
+            		+"\t\t};\n"
+            		+"\t\tPRIORITY = 8;\n"
+            		+"\t\tACTIVATION = 1\n"
+            		+"\t\tSCHEDULE = FULL\n"
+            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t\tEVENT = BT_HAS_RECEIVED_PACKAGE;\n"
+            		+"\t};\n\n"
+            		+"\tTASK TASK_BT_INTERFACE_WRITER\n"
+            		+ "\t{\n"
+            		+"\t\tAUTOSTART = TRUE\n"
+            		+"\t\t{\n"
+            		+"\t\t\tAPPMODE = LEGOSAR;\n"
+            		+"\t\t};\n"
+            		+"\t\tPRIORITY = 8;\n"
+            		+"\t\tACTIVATION = 1\n"
+            		+"\t\tSCHEDULE = FULL\n"
+            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t};\n\n";
+
+            System.out.print("\t\tTasks fuer Com-Service hinzugefuegt\n");
+
+            if (mySystem.getHasBrick().get(Brickindex).isIsMaster())
+            {
+            	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_MASTER\n";
+            	System.out.print("\t\tBT_MASTER hinzugefuegt.\n");
+            }
+            else
+            {
+            	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_SLAVE\n";
+            	System.out.print("\t\tBT_SLAVE hinzugefuegt\n");
+            }
+            oilFileBTImplizit += "\t{\n"
+            		+"\t\tAUTOSTART = TRUE\n"
+            		+"\t\t{\n"
+            		+"\t\t\tAPPMODE = LEGOSAR;\n"
+            		+"\t\t};\n"
+            		+"\t\tPRIORITY = 9;\n"
+            		+"\t\tACTIVATION = 1\n"
+            		+"\t\tSCHEDULE = FULL\n"
+            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t\tEVENT = BT_SEND_MY_MESSAGE;\n"
+            		+"\t};\n\n";
+
 
             //EVENTS die zu den TASKS gehoeren
             for(int k = 0; k < actualTask.getHasEvent().size(); k++)
@@ -224,6 +282,17 @@ public class ShootingmachineemfmodelExample {
             System.out.print("\t\tEVENT " + actualEvent.getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
         }
 
+        //Events zu Com-Service und BT_IMPLIZIT_MASTER/SLAVE hinzufuegen
+        oilFileBTEvents = "\tEVENT BT_HAS_RECEIVED_PACKAGE\n"
+        		+"\t{\n"
+        		+"\t\tMASK = AUTO;\n"
+        		+"\t};\n\n"
+        		+"\tEVENT BT_SEND_MY_MESSAGE\n"
+        		+"\t{\n"
+        		+"\t\tMASK = AUTO;\n"
+        		+"\t};\n\n";
+        System.out.print("\t\tEvents BT_HAS_RECEIVED_PACKAGE & BT_SEND_MY_MESSAGE hinzugefuegt.\n");
+
         //for Schleife fuer implizite Events
         for (int j = 0; j < mySystem.getHasConnections().size(); j++)
         {
@@ -241,8 +310,11 @@ public class ShootingmachineemfmodelExample {
         retlist.add(oilFileBeginn);
         retlist.add(oilFileTask);
         retlist.add(oilFileInitHook);
+        retlist.add(oilFileBTInterface);
+        retlist.add(oilFileBTImplizit);
     	retlist.add(oilFileAlarm);
     	retlist.add(oilFileCounter);
+    	retlist.add(oilFileBTEvents);
     	retlist.add(oilFileEvent);
         retlist.add("};");
 
@@ -255,6 +327,8 @@ public class ShootingmachineemfmodelExample {
     	List<String> retlist = new ArrayList<String>();
     	String cFileBeginn = "";
     	String cFileDeclareInitHook = "";
+    	String cFileDeclareBTInterface = "";
+    	String cFileDeclareBTImplizit = "";
     	String cFileDeclareTask = "";
     	String cFileDeclareAlarm = "";
     	String newline = "\n";
@@ -262,6 +336,8 @@ public class ShootingmachineemfmodelExample {
     	String newline1 = "\n";
     	String cFileRunnable = "";
     	String cFileInitHook = "";
+    	String cFileBTInterface = "";
+    	String cFileBTImplizit = "";
     	String cFileTask = "";
 
 
@@ -273,6 +349,18 @@ public class ShootingmachineemfmodelExample {
 
 
         cFileDeclareInitHook = "DeclareTask(InitHook);\n";
+        cFileDeclareBTInterface = "DeclareTask(TASK_BT_INTERFACE_READER);\n"
+        		+ "DeclareTask(TASK_BT_INTERFACE_WRITER);\n";
+
+        if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
+        {
+        	cFileDeclareBTImplizit = "DeclareTask(BT_IMPLIZIT_MASTER);\n";
+        }
+        else
+        {
+        	cFileDeclareBTImplizit = "DeclareTask(BT_IMPLIZIT_SLAVE);\n";
+        }
+
         //For Schleife in welcher alle Tasks deklariert werden
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
@@ -330,26 +418,38 @@ public class ShootingmachineemfmodelExample {
         	}
         	catch (java.lang.ClassCastException e)
         	{
-
         	}
         }
-        cFileInitHook += "}\n\n";
+        cFileInitHook = cFileInitHook + "}\n\n";
+
+        //BT Tasks hinzufuegen
+        cFileBTInterface = copyFiletoString("..\\..\\..\\Code\\src\\BT_INTERFACE.c") + "\n";
+
+        System.out.print("\t\tBT_INTERFACE hinzugefuegt\n");
+
+        /*Noch nicht fertig, da in Dateien BT_IMPLIZIT_MASTER/SLAVE viel Grampf drinsteht
+
+
+        if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
+        {
+        	cFileBTImplizit = copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_MASTER.c") + "\n";
+        	System.out.print("\t\tBT_IMPLIZIT_MASTER hinzuegfuegt\n");
+        }
+        else
+        {
+        	cFileBTImplizit = copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_SLAVE.c") + "\n";
+        	System.out.print("\t\tBT_IMPLIZIT_SLAVE hinzuegfuegt\n");
+        }
+        */
+
+
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
         	cFileTask = "TASK(" +  mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ")\n"
         			+ "{\n"
         			+ "\twhile(1)\n"
         			+ "\t{\n";
-        			//Hier werden voruebergehend einfach alle runnables des Tasks nacheinander aufgerufen
-        			/*
-        			 *
-        			 *
-        			 *
-        			 * Hier noch dynamisch Zeug rein generieren
-        			 *
-        			 *
-        			 *
-        			 */
+
         	for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
             {
         		cFileTask = cFileTask + "\t\t" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "();\n";
@@ -361,6 +461,8 @@ public class ShootingmachineemfmodelExample {
 
         retlist.add(cFileBeginn);
         retlist.add(cFileDeclareInitHook);
+        retlist.add(cFileDeclareBTInterface);
+        retlist.add(cFileDeclareBTImplizit);
     	retlist.add(cFileDeclareTask);
     	retlist.add(cFileDeclareAlarm);
     	retlist.add(newline);
@@ -368,6 +470,8 @@ public class ShootingmachineemfmodelExample {
     	retlist.add(newline1);
     	retlist.add(cFileRunnable);
     	retlist.add(cFileInitHook);
+    	retlist.add(cFileBTInterface);
+    	retlist.add(cFileBTImplizit);
     	retlist.add(cFileTask);
 
 
@@ -518,7 +622,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\eip46272\\Desktop\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
@@ -631,13 +735,10 @@ public class ShootingmachineemfmodelExample {
                 FileWriter oilFileWriter = new FileWriter(OilFile.getAbsoluteFile());
                 BufferedWriter oilFileBuffer = new BufferedWriter(oilFileWriter);
 
-                oilFileBuffer.write(oilStrings.get(0));
-                oilFileBuffer.write(oilStrings.get(1));
-                oilFileBuffer.write(oilStrings.get(2));
-                oilFileBuffer.write(oilStrings.get(3));
-                oilFileBuffer.write(oilStrings.get(4));
-                oilFileBuffer.write(oilStrings.get(5));
-                oilFileBuffer.write(oilStrings.get(6));
+                for(int listindex = 0; listindex < oilStrings.size(); listindex ++)
+                {
+                	oilFileBuffer.write(oilStrings.get(listindex));
+                }
 
                 oilFileBuffer.close();
 
@@ -661,16 +762,10 @@ public class ShootingmachineemfmodelExample {
                 FileWriter cFileWriter = new FileWriter(cFile.getAbsoluteFile());
                 BufferedWriter cFileBuffer = new BufferedWriter(cFileWriter);
 
-                cFileBuffer.write(cStrings.get(0));
-                cFileBuffer.write(cStrings.get(1));
-                cFileBuffer.write(cStrings.get(2));
-                cFileBuffer.write(cStrings.get(3));
-                cFileBuffer.write(cStrings.get(4));
-                cFileBuffer.write(cStrings.get(5));
-                cFileBuffer.write(cStrings.get(6));
-                cFileBuffer.write(cStrings.get(7));
-                cFileBuffer.write(cStrings.get(8));
-                cFileBuffer.write(cStrings.get(9));
+                for(int listindex = 0; listindex < cStrings.size(); listindex ++)
+                {
+                	cFileBuffer.write(cStrings.get(listindex));
+                }
 
                 cFileBuffer.close();
 
@@ -694,9 +789,10 @@ public class ShootingmachineemfmodelExample {
                 FileWriter gencFileWriter = new FileWriter(gencFile.getAbsoluteFile());
                 BufferedWriter gencFileBuffer = new BufferedWriter(gencFileWriter);
 
-                gencFileBuffer.write(dynamiccStrings.get(0));
-                gencFileBuffer.write(dynamiccStrings.get(1));
-                gencFileBuffer.write(dynamiccStrings.get(2));
+                for(int listindex = 0; listindex < dynamiccStrings.size(); listindex ++)
+                {
+                	gencFileBuffer.write(dynamiccStrings.get(listindex));
+                }
 
                 gencFileBuffer.close();
 

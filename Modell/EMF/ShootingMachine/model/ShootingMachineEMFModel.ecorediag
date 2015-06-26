@@ -567,7 +567,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_3Q89oRvxEeW0Ia_hXcutAg" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EEnum" href="ShootingMachineEMFModel.ecore#//HWType"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3Q89ohvxEeW0Ia_hXcutAg" x="1907" y="617"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3Q89ohvxEeW0Ia_hXcutAg" x="1860" y="615"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_odrNIQRkEeWnTYYRtuHBGg"/>
   <element xmi:type="ecore:EPackage" href="ShootingMachineEMFModel.ecore#/"/>
