@@ -91,12 +91,6 @@ public class ShootingmachineemfmodelExample {
             path.delete();
     }
 
-    public static String getBTFiles()
-    {
-    	String result = copyFiletoString("..\\..\\..\\Code\\src\\BT_INTERFACE.c");
-    	return result;
-    }
-
     public static List<String> generateOilFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
 
@@ -329,6 +323,7 @@ public class ShootingmachineemfmodelExample {
     	String cFileDeclareInitHook = "";
     	String cFileDeclareBTInterface = "";
     	String cFileDeclareBTImplizit = "";
+    	String cFiledeclareBTEvents = "";
     	String cFileDeclareTask = "";
     	String cFileDeclareAlarm = "";
     	String newline = "\n";
@@ -360,6 +355,9 @@ public class ShootingmachineemfmodelExample {
         {
         	cFileDeclareBTImplizit = "DeclareTask(BT_IMPLIZIT_SLAVE);\n";
         }
+
+        cFiledeclareBTEvents = "DeclareEvent(BT_HAS_RECEIVED_PACKAGE);\n"
+        		+"DeclareEvent(BT_SEND_MY_MESSAGE)\n";
 
         //For Schleife in welcher alle Tasks deklariert werden
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
@@ -463,6 +461,7 @@ public class ShootingmachineemfmodelExample {
         retlist.add(cFileDeclareInitHook);
         retlist.add(cFileDeclareBTInterface);
         retlist.add(cFileDeclareBTImplizit);
+        retlist.add(cFiledeclareBTEvents);
     	retlist.add(cFileDeclareTask);
     	retlist.add(cFileDeclareAlarm);
     	retlist.add(newline);
