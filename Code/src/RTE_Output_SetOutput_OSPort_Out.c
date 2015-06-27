@@ -37,9 +37,6 @@ inline std_return RTE_Output_SetOutput_OSPort_Out(const char* message)
 #ifdef RTE_Output_SetOutput_OSPort_Out_DISPLAY
     print(message);
 #endif
-#ifdef RTE_Output_SetOutput_OSPort_Out_LED
-    /* LED ausgeben */
-#endif 
 #ifdef RTE_Output_SetOutput_OSPort_Out_IIC
     uint8_t data_IIC = 0x5F; /* wenn 0 auf ein LED ausgegeben wird, dann leuchtet eine LED, wobei die ersten 4 bit entscheiden */
 	// static uint8_t IIC_Initialized = 0;

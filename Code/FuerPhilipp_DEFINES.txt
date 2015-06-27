@@ -1,0 +1,41 @@
+Defines, die meine RTE Funktionen brauchen:
+
+1) Fuer RTE_StopSensor_GetSensorValue_OSPort_In:
+
+Immer:
+RTE_StopSensor_GetSensorValue_OSPort_In_PORT mit NXT_PORT_S1 || NXT_PORT_S2 || NXT_PORT_S3 || NXT_PORT_S4
+(#define RTE_StopSensor_GetSensorValue_OSPort_In_PORT NXT_PORT_S1 usw.)
++ 
+entweder:
+RTE_StopSensor_GetSensorValue_OSPort_In_BUTTON setze dieses DEFINE, wenn als Abbruchbedingung der Taster konfiguriert ist
+oder:
+RTE_StopSensor_GetSensorValue_OSPort_In_IIC setze diesen DEFINE, wenn als Abbruchbedingung der IIC konfiguriert ist
+
+
+2) Fuer RTE_StartTrigger_GetSensorValue_OSPort_In:
+
+Immer:
+RTE_StartTrigger_GetSensorValue_OSPort_In_PORT mit NXT_PORT_S1 || NXT_PORT_S2 || NXT_PORT_S3 || NXT_PORT_S4
++
+entweder:
+RTE_StartTrigger_GetSensorValue_OSPort_In_BUTTON, als Trigger für das Schießen ist der Button konfiguriert
+oder:
+RTE_StartTrigger_GetSensorValue_OSPort_In_SONIC, als Trigger für das Schießen ist der Ultraschall konfiguriert
+oder:
+RTE_StartTrigger_GetSensorValue_OSPort_In_IIC, als Trigger für das Schießen ist der IIC konfiguriert
+
+
+3) Fuer RTE_SchussMotor_SetOutputValue_OSPort_Out:
+
+Immer:
+RTE_SchussMotor_SetOutputValue_OSPort_Out_PORT mit NXT_PORT_A || NXT_PORT_B || NXT_PORT_C
++
+RTE_SchussMotor_SetOutputValue_OSPort_Out_ENGINE, wenn als Motor der Motor konfiguriert ist (also immer!)
+
+4) Fuer RTE_Output_SetOutput_OSPort_Out:
+
+entweder:
+RTE_Output_SetOutput_OSPort_Out_DISPLAY, wenn das Display als Output konfiguriert ist
+oder: (beides)
+RTE_Output_SetOutput_OSPort_Out_IIC, wenn der IIC als Output konfiguriert ist
+RTE_Output_SetOutput_OSPort_Out_PORT mit NXT_PORT_S1 || NXT_PORT_S2 || NXT_PORT_S3 || NXT_PORT_S4
