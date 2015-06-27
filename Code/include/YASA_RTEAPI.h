@@ -251,4 +251,85 @@ inline std_return RTE_Trigger_GetValue_Receiver_In(char*);
  */
 inline std_return RTE_Trigger_StartTrigger_GetValue_Event_In();
 
+
+/**
+ * \brief Wartet auf ein konfiguriertes Event
+ * Funktionsaufruf ist nicht blockierend, da aus dem Komponentendiagramm hervorgeht, das dies hier nicht sinnvoll ist.
+ * entspricht einem GetEvent
+ * @param eventvalue 0 wenn Event nicht gesetzt, !0 wenn Event gesetzt
+ *
+ * @return  @Errorcode
+ * @version 1.0 Initale Version
+ * @author Tim Schmidl
+ * @date    2015-06-27
+ */
+inline std_return RTE_Output_GetValue_Receiver_In(uint8_t*);
+
+
+/**
+ * \brief Wartet auf ein konfiguriertes Event
+ * Funktionsaufruf ist nicht blockierend, da aus dem Komponentendiagramm hervorgeht, das dies hier nicht sinnvoll ist.
+ * entspricht einem GetEvent
+ * @param eventvalue 0 wenn Event nicht gesetzt, !0 wenn Event gesetzt
+ *
+ * @return  @Errorcode
+ * @version 1.0 Initale Version
+ * @author Tim Schmidl
+ * @date    2015-06-27
+ */
+inline std_return RTE_Trigger_GetValue_Receiver_In(uint8_t*);
+
+
+/**
+ * \brief Wartet auf ein konfiguriertes Event
+ * Funktionsaufruf ist nicht blockierend, da aus dem Komponentendiagramm hervorgeht, das dies hier nicht sinnvoll ist.
+ * entspricht einem GetEvent
+ * @param eventvalue 0 wenn Event nicht gesetzt, !0 wenn Event gesetzt
+ *
+ * @return  @Errorcode
+ * @version 1.0 Initale Version
+ * @author Tim Schmidl
+ * @date    2015-06-27
+ */
+inline std_return RTE_Schussanlage_Trigger_SetEvent_Out(uint8_t*);
+
+/**
+ * \brief Wartet auf ein konfiguriertes Event
+ * Funktionsaufruf ist nicht blockierend, da aus dem Komponentendiagramm hervorgeht, das dies hier nicht sinnvoll ist.
+ * entspricht einem GetEvent
+ * @param eventvalue 0 wenn Event nicht gesetzt, !0 wenn Event gesetzt
+ *
+ * @return  @Errorcode
+ * @version 1.0 Initale Version
+ * @author Tim Schmidl
+ * @date    2015-06-27
+ */
+inline std_return RTE_Schussanlage_Output_SetEvent_Out(uint8_t*);
+
+/**
+ * \brief Wartet auf ein konfiguriertes Event
+ * Funktionsaufruf ist nicht blockierend, da aus dem Komponentendiagramm hervorgeht, das dies hier nicht sinnvoll ist.
+ * entspricht einem GetEvent
+ * @param eventvalue 0 wenn Event nicht gesetzt, !0 wenn Event gesetzt
+ *
+ * @return  @Errorcode
+ * @version 1.0 Initale Version
+ * @author Tim Schmidl
+ * @date    2015-06-27
+ */
+inline std_return RTE_Output_Schussanlage_GetValue_Event_In(uint8_t*);
+
+/**
+ * \brief Wartet auf ein konfiguriertes Event
+ * Funktionsaufruf ist nicht blockierend, da aus dem Komponentendiagramm hervorgeht, das dies hier nicht sinnvoll ist.
+ * entspricht einem GetEvent
+ * @param eventvalue 0 wenn Event nicht gesetzt, !0 wenn Event gesetzt
+ *
+ * @return  @Errorcode
+ * @version 1.0 Initale Version
+ * @author Tim Schmidl
+ * @date    2015-06-27
+ */
+inline std_return RTE_Trigger_Schussanlage_GetValue_Event_In(uint8_t*);
+
 #endif YASA_RTEAPI
