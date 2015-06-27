@@ -1,10 +1,12 @@
-uint32_t shots = 1;
-uint32_t shotsInDegree = shots * 360;
-uint8_t triggered = 0;
-(RTE_StartTrigger_GetSensorValue_OSPort_In(&triggered);
-if(triggered)
+uint8_t shots = 1;
+uint32_t ret_val;
+uint8_t shotevent = 0;
+RTE_Schussanlage_GetValue_Event_in(&shotevent);
+if(shotevent)
 {
-    RTE_SchussMotor_SetOutputValue_OSPort_Out(shotsInDegree);
+    RTE_Schussanlage_SendMessage_Sender_Out(/*woher kommt hier die message?*/);
+    RTE_Schussanlage_SetOrder_Client_Out(shots, &ret_val);
+    RTE_Schussanlage_SetValue_Event_Out();
 }
 else
 {

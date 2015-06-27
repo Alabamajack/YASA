@@ -1,9 +1,10 @@
 uint8_t triggerd = 0;
-RTE_StopSensor_GetSensorValue_OSPort_In(&triggerd);
+RTE_Schussanlage_StopSensor_GetValue_Event_In(&triggerd);
 if(triggerd)
 {
-    /* AbbruchTaster ist gedrückt -> alles stop */
-    
+    /* Output.c runnable code hier rein */
+    /* dann einfach nichts mehr machen */
+    while(1);
 }
 else
 {
