@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import shootingmachineemfmodel.HWPort;
 import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
@@ -18,7 +19,7 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link shootingmachineemfmodel.impl.HWPortsImpl#getPortnumber <em>Portnumber</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.impl.HWPortsImpl#getPortname <em>Portname</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,24 +27,24 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  */
 public abstract class HWPortsImpl extends StandardclassImpl implements HWPorts {
 	/**
-	 * The default value of the '{@link #getPortnumber() <em>Portnumber</em>}' attribute.
+	 * The default value of the '{@link #getPortname() <em>Portname</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPortnumber()
+	 * @see #getPortname()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int PORTNUMBER_EDEFAULT = 0;
+	protected static final HWPort PORTNAME_EDEFAULT = HWPort.NXT_PORT_S1;
 
 	/**
-	 * The cached value of the '{@link #getPortnumber() <em>Portnumber</em>}' attribute.
+	 * The cached value of the '{@link #getPortname() <em>Portname</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPortnumber()
+	 * @see #getPortname()
 	 * @generated
 	 * @ordered
 	 */
-	protected int portnumber = PORTNUMBER_EDEFAULT;
+	protected HWPort portname = PORTNAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,8 +70,8 @@ public abstract class HWPortsImpl extends StandardclassImpl implements HWPorts {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPortnumber() {
-		return portnumber;
+	public HWPort getPortname() {
+		return portname;
 	}
 
 	/**
@@ -78,11 +79,11 @@ public abstract class HWPortsImpl extends StandardclassImpl implements HWPorts {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPortnumber(int newPortnumber) {
-		int oldPortnumber = portnumber;
-		portnumber = newPortnumber;
+	public void setPortname(HWPort newPortname) {
+		HWPort oldPortname = portname;
+		portname = newPortname == null ? PORTNAME_EDEFAULT : newPortname;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.HW_PORTS__PORTNUMBER, oldPortnumber, portnumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.HW_PORTS__PORTNAME, oldPortname, portname));
 	}
 
 	/**
@@ -93,8 +94,8 @@ public abstract class HWPortsImpl extends StandardclassImpl implements HWPorts {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.HW_PORTS__PORTNUMBER:
-				return getPortnumber();
+			case ShootingmachineemfmodelPackage.HW_PORTS__PORTNAME:
+				return getPortname();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -107,8 +108,8 @@ public abstract class HWPortsImpl extends StandardclassImpl implements HWPorts {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.HW_PORTS__PORTNUMBER:
-				setPortnumber((Integer)newValue);
+			case ShootingmachineemfmodelPackage.HW_PORTS__PORTNAME:
+				setPortname((HWPort)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,8 +123,8 @@ public abstract class HWPortsImpl extends StandardclassImpl implements HWPorts {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.HW_PORTS__PORTNUMBER:
-				setPortnumber(PORTNUMBER_EDEFAULT);
+			case ShootingmachineemfmodelPackage.HW_PORTS__PORTNAME:
+				setPortname(PORTNAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,8 +138,8 @@ public abstract class HWPortsImpl extends StandardclassImpl implements HWPorts {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.HW_PORTS__PORTNUMBER:
-				return portnumber != PORTNUMBER_EDEFAULT;
+			case ShootingmachineemfmodelPackage.HW_PORTS__PORTNAME:
+				return portname != PORTNAME_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -153,8 +154,8 @@ public abstract class HWPortsImpl extends StandardclassImpl implements HWPorts {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (Portnumber: ");
-		result.append(portnumber);
+		result.append(" (Portname: ");
+		result.append(portname);
 		result.append(')');
 		return result.toString();
 	}

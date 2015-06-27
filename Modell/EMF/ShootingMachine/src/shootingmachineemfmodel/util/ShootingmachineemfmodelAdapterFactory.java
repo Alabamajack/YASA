@@ -25,6 +25,8 @@ import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Motor;
+import shootingmachineemfmodel.OSPortIN;
+import shootingmachineemfmodel.OSPortOUT;
 import shootingmachineemfmodel.Ports;
 import shootingmachineemfmodel.Receiver;
 import shootingmachineemfmodel.ReceiverPorts;
@@ -210,6 +212,14 @@ public class ShootingmachineemfmodelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseMessage(Message object) {
 				return createMessageAdapter();
+			}
+			@Override
+			public Adapter caseOSPortIN(OSPortIN object) {
+				return createOSPortINAdapter();
+			}
+			@Override
+			public Adapter caseOSPortOUT(OSPortOUT object) {
+				return createOSPortOUTAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -634,6 +644,34 @@ public class ShootingmachineemfmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMessageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link shootingmachineemfmodel.OSPortIN <em>OS Port IN</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see shootingmachineemfmodel.OSPortIN
+	 * @generated
+	 */
+	public Adapter createOSPortINAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link shootingmachineemfmodel.OSPortOUT <em>OS Port OUT</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see shootingmachineemfmodel.OSPortOUT
+	 * @generated
+	 */
+	public Adapter createOSPortOUTAdapter() {
 		return null;
 	}
 

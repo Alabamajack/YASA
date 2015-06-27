@@ -5,8 +5,9 @@ package shootingmachineemfmodel;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import org.eclipse.emf.common.util.Enumerator;
+
+
 
 /**
  * <!-- begin-user-doc -->
@@ -19,42 +20,40 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum HWType implements Enumerator {
 	/**
-	 * The '<em><b>Taster</b></em>' literal object.
+	 * The '<em><b>BUTTON</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #TASTER_VALUE
+	 * @see #BUTTON_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	TASTER(0, "Taster", "Taster"),
-
-	/**
-	 * The '<em><b>Sonic</b></em>' literal object.
+	BUTTON(0, "BUTTON", "BUTTON"), /**
+	 * The '<em><b>SONIC</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #SONIC_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	SONIC(1, "Sonic", "Sonic");
+	SONIC(1, "SONIC", "SONIC");
 
 	/**
-	 * The '<em><b>Taster</b></em>' literal value.
+	 * The '<em><b>BUTTON</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Taster</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>BUTTON</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TASTER
-	 * @model name="Taster"
+	 * @see #BUTTON
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TASTER_VALUE = 0;
+	public static final int BUTTON_VALUE = 0;
 
 	/**
-	 * The '<em><b>Sonic</b></em>' literal value.
+	 * The '<em><b>SONIC</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Sonic</b></em>' literal object isn't clear,
@@ -62,7 +61,7 @@ public enum HWType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SONIC
-	 * @model name="Sonic"
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -76,7 +75,7 @@ public enum HWType implements Enumerator {
 	 */
 	private static final HWType[] VALUES_ARRAY =
 		new HWType[] {
-			TASTER,
+			BUTTON,
 			SONIC,
 		};
 
@@ -128,7 +127,7 @@ public enum HWType implements Enumerator {
 	 */
 	public static HWType get(int value) {
 		switch (value) {
-			case TASTER_VALUE: return TASTER;
+			case BUTTON_VALUE: return BUTTON;
 			case SONIC_VALUE: return SONIC;
 		}
 		return null;

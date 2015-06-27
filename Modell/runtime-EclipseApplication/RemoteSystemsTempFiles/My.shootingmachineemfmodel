@@ -17,8 +17,6 @@
   </hasComponent>
   <hasBrick name="Master" IsMaster="true">
     <hasTaskBrick name="SchussanlagenTask" hasRunnable="//@hasComponent.1/@hasRunnable.0"/>
-    <hasHWPortsBrick xsi:type="shootingmachineemfmodel:HWIntern" name="Test" Type="Sonic"/>
-    <hasHWPortsBrick xsi:type="shootingmachineemfmodel:HWExtern" name="i2czeug" Pinnumber="1"/>
   </hasBrick>
   <hasBrick name="Slave">
     <hasTaskBrick name="Output_Task" hasRunnable="//@hasComponent.0/@hasRunnable.0"/>

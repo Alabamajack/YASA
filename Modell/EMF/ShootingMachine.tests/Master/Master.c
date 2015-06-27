@@ -17,16 +17,13 @@ DeclareTask(SchussanlagenTask);
 //Schussanlage_Runnable
 void Schussanlage_Runnable()
 {
-Bla Bla runnable
-pi pa po
-	lalelu
+asdjkahsfdjklahsfjksdhfg+
+sdfgdukfgklsfdgjklg
 
 }
 
 TASK(InitHook)
 {
-	ecrobot_init_sonar_sensor(NXT_PORT_S0);
-	i2c_enable(NXT_PORT_S1);
 }
 
 //bekommt Nachrichten vom BT und verteilt diese an die Ports

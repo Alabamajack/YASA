@@ -203,6 +203,16 @@ public class RunnableItemProvider
 			(createChildParameter
 				(ShootingmachineemfmodelPackage.Literals.RUNNABLE__HAS_SW_PORTS,
 				 ShootingmachineemfmodelFactory.eINSTANCE.createGetEvent()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ShootingmachineemfmodelPackage.Literals.RUNNABLE__HAS_SW_PORTS,
+				 ShootingmachineemfmodelFactory.eINSTANCE.createOSPortIN()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ShootingmachineemfmodelPackage.Literals.RUNNABLE__HAS_SW_PORTS,
+				 ShootingmachineemfmodelFactory.eINSTANCE.createOSPortOUT()));
 	}
 
 }

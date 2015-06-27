@@ -13,7 +13,6 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
     Reference hasConnections : Connections<<0..*>>
 
   Class Component -> Standardclass
-    Reference hasHWPortsComponent : HWPorts<<0..*>>
     Reference hasRunnable : Runnable<<1..*>>
 
   Class Brick -> Standardclass
@@ -85,11 +84,13 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
     Reference hasMessage : Message<<1..1>>
 
   Class HWPorts -> Standardclass
-    Attribute Portnumber : EInt
+    Attribute Portname : HWPort
 
   Class HWInput -> HWPorts
+    Reference Has_OSPORTS_IN : OSPortIN
 
   Class HWOutput -> HWPorts
+    Reference Has_OSPORTS_OUT : OSPortOUT
 
   Class HWIntern -> HWInput
     Attribute Type : HWType
@@ -105,6 +106,20 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
     Attribute MessageHeader : EChar
     Attribute myMessage : EString
 
+  Class OSPortIN -> ReceiverPorts
+
+  Class OSPortOUT -> SenderPorts
+
   Enum HWType
-    Literal Taster = 0
-    Literal Sonic = 1
+    Literal BUTTON = 0
+    Literal SONIC = 1
+
+  Enum HWPort
+    Literal NXT_PORT_S1 = 0
+    Literal NXT_PORT_S2 = 1
+    Literal NXT_PORT_S3 = 2
+    Literal NXT_PORT_S4 = 3
+    Literal NXT_PORT_A = 4
+    Literal NXT_PORT_B = 5
+    Literal NXT_PORT_C = 6
+    Literal Display = 7

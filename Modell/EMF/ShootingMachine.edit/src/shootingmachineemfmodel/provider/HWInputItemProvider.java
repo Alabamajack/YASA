@@ -9,6 +9,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -17,6 +18,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import shootingmachineemfmodel.HWInput;
+import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
 /**
  * This is the item provider adapter for a {@link shootingmachineemfmodel.HWInput} object.
@@ -53,8 +55,31 @@ public class HWInputItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addHas_OSPORTS_INPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Has OSPORTS IN feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHas_OSPORTS_INPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_HWInput_Has_OSPORTS_IN_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HWInput_Has_OSPORTS_IN_feature", "_UI_HWInput_type"),
+				 ShootingmachineemfmodelPackage.Literals.HW_INPUT__HAS_OSPORTS_IN,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

@@ -11,8 +11,6 @@
         eType="#//Connections" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true" eSuperTypes="#//Standardclass">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hasHWPortsComponent" upperBound="-1"
-        eType="#//HWPorts"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasRunnable" lowerBound="1"
         upperBound="-1" eType="#//Runnable" containment="true"/>
   </eClassifiers>
@@ -91,10 +89,14 @@
         eType="#//Message"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HWPorts" abstract="true" eSuperTypes="#//Standardclass">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Portnumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Portname" eType="#//HWPort"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HWInput" abstract="true" eSuperTypes="#//HWPorts"/>
-  <eClassifiers xsi:type="ecore:EClass" name="HWOutput" abstract="true" eSuperTypes="#//HWPorts"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HWInput" abstract="true" eSuperTypes="#//HWPorts">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Has_OSPORTS_IN" eType="#//OSPortIN"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWOutput" abstract="true" eSuperTypes="#//HWPorts">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Has_OSPORTS_OUT" eType="#//OSPortOUT"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HWIntern" eSuperTypes="#//HWInput">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Type" eType="#//HWType">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -112,7 +114,19 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="myMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="HWType">
-    <eLiterals name="Taster"/>
-    <eLiterals name="Sonic" value="1"/>
+    <eLiterals name="BUTTON"/>
+    <eLiterals name="SONIC" value="1"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HWPort">
+    <eLiterals name="NXT_PORT_S1"/>
+    <eLiterals name="NXT_PORT_S2" value="1"/>
+    <eLiterals name="NXT_PORT_S3" value="2" literal="NXT_PORT_S3"/>
+    <eLiterals name="NXT_PORT_S4" value="3"/>
+    <eLiterals name="NXT_PORT_A" value="4"/>
+    <eLiterals name="NXT_PORT_B" value="5"/>
+    <eLiterals name="NXT_PORT_C" value="6"/>
+    <eLiterals name="Display" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OSPortIN" eSuperTypes="#//ReceiverPorts"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OSPortOUT" eSuperTypes="#//SenderPorts"/>
 </ecore:EPackage>

@@ -11,7 +11,7 @@ package shootingmachineemfmodel;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link shootingmachineemfmodel.HWPorts#getPortnumber <em>Portnumber</em>}</li>
+ *   <li>{@link shootingmachineemfmodel.HWPorts#getPortname <em>Portname</em>}</li>
  * </ul>
  * </p>
  *
@@ -21,29 +21,32 @@ package shootingmachineemfmodel;
  */
 public interface HWPorts extends Standardclass {
 	/**
-	 * Returns the value of the '<em><b>Portnumber</b></em>' attribute.
+	 * Returns the value of the '<em><b>Portname</b></em>' attribute.
+	 * The literals are from the enumeration {@link shootingmachineemfmodel.HWPort}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Portnumber</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Portname</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Portnumber</em>' attribute.
-	 * @see #setPortnumber(int)
-	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getHWPorts_Portnumber()
+	 * @return the value of the '<em>Portname</em>' attribute.
+	 * @see shootingmachineemfmodel.HWPort
+	 * @see #setPortname(HWPort)
+	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getHWPorts_Portname()
 	 * @model
 	 * @generated
 	 */
-	int getPortnumber();
+	HWPort getPortname();
 
 	/**
-	 * Sets the value of the '{@link shootingmachineemfmodel.HWPorts#getPortnumber <em>Portnumber</em>}' attribute.
+	 * Sets the value of the '{@link shootingmachineemfmodel.HWPorts#getPortname <em>Portname</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Portnumber</em>' attribute.
-	 * @see #getPortnumber()
+	 * @param value the new value of the '<em>Portname</em>' attribute.
+	 * @see shootingmachineemfmodel.HWPort
+	 * @see #getPortname()
 	 * @generated
 	 */
-	void setPortnumber(int value);
+	void setPortname(HWPort value);
 
 } // HWPorts

@@ -22,11 +22,14 @@ import shootingmachineemfmodel.HWExtern;
 import shootingmachineemfmodel.HWInput;
 import shootingmachineemfmodel.HWIntern;
 import shootingmachineemfmodel.HWOutput;
+import shootingmachineemfmodel.HWPort;
 import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.HWType;
 import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Motor;
+import shootingmachineemfmodel.OSPortIN;
+import shootingmachineemfmodel.OSPortOUT;
 import shootingmachineemfmodel.Ports;
 import shootingmachineemfmodel.Receiver;
 import shootingmachineemfmodel.ReceiverPorts;
@@ -257,7 +260,28 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass osPortINEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass osPortOUTEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum hwTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum hwPortEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -370,17 +394,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponent_HasHWPortsComponent() {
-		return (EReference)componentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getComponent_HasRunnable() {
-		return (EReference)componentEClass.getEStructuralFeatures().get(1);
+		return (EReference)componentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -838,7 +853,7 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHWPorts_Portnumber() {
+	public EAttribute getHWPorts_Portname() {
 		return (EAttribute)hwPortsEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -856,8 +871,26 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getHWInput_Has_OSPORTS_IN() {
+		return (EReference)hwInputEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getHWOutput() {
 		return hwOutputEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHWOutput_Has_OSPORTS_OUT() {
+		return (EReference)hwOutputEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -946,8 +979,35 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOSPortIN() {
+		return osPortINEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOSPortOUT() {
+		return osPortOUTEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getHWType() {
 		return hwTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getHWPort() {
+		return hwPortEEnum;
 	}
 
 	/**
@@ -984,7 +1044,6 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		createEReference(toplevelSystemEClass, TOPLEVEL_SYSTEM__HAS_CONNECTIONS);
 
 		componentEClass = createEClass(COMPONENT);
-		createEReference(componentEClass, COMPONENT__HAS_HW_PORTS_COMPONENT);
 		createEReference(componentEClass, COMPONENT__HAS_RUNNABLE);
 
 		brickEClass = createEClass(BRICK);
@@ -1056,11 +1115,13 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		createEReference(interBrickCommunicationEClass, INTER_BRICK_COMMUNICATION__HAS_MESSAGE);
 
 		hwPortsEClass = createEClass(HW_PORTS);
-		createEAttribute(hwPortsEClass, HW_PORTS__PORTNUMBER);
+		createEAttribute(hwPortsEClass, HW_PORTS__PORTNAME);
 
 		hwInputEClass = createEClass(HW_INPUT);
+		createEReference(hwInputEClass, HW_INPUT__HAS_OSPORTS_IN);
 
 		hwOutputEClass = createEClass(HW_OUTPUT);
+		createEReference(hwOutputEClass, HW_OUTPUT__HAS_OSPORTS_OUT);
 
 		hwInternEClass = createEClass(HW_INTERN);
 		createEAttribute(hwInternEClass, HW_INTERN__TYPE);
@@ -1076,8 +1137,13 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		createEAttribute(messageEClass, MESSAGE__MESSAGE_HEADER);
 		createEAttribute(messageEClass, MESSAGE__MY_MESSAGE);
 
+		osPortINEClass = createEClass(OS_PORT_IN);
+
+		osPortOUTEClass = createEClass(OS_PORT_OUT);
+
 		// Create enums
 		hwTypeEEnum = createEEnum(HW_TYPE);
+		hwPortEEnum = createEEnum(HW_PORT);
 	}
 
 	/**
@@ -1136,6 +1202,8 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		motorEClass.getESuperTypes().add(this.getHWOutput());
 		displayEClass.getESuperTypes().add(this.getHWOutput());
 		messageEClass.getESuperTypes().add(this.getStandardclass());
+		osPortINEClass.getESuperTypes().add(this.getReceiverPorts());
+		osPortOUTEClass.getESuperTypes().add(this.getSenderPorts());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(toplevelSystemEClass, ToplevelSystem.class, "ToplevelSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1144,7 +1212,6 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEReference(getToplevelSystem_HasConnections(), this.getConnections(), null, "hasConnections", null, 0, -1, ToplevelSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentEClass, Component.class, "Component", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getComponent_HasHWPortsComponent(), this.getHWPorts(), null, "hasHWPortsComponent", null, 0, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponent_HasRunnable(), this.getRunnable(), null, "hasRunnable", null, 1, -1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(brickEClass, Brick.class, "Brick", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1216,11 +1283,13 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEReference(getInterBrickCommunication_HasMessage(), this.getMessage(), null, "hasMessage", null, 1, 1, InterBrickCommunication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwPortsEClass, HWPorts.class, "HWPorts", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getHWPorts_Portnumber(), ecorePackage.getEInt(), "Portnumber", null, 0, 1, HWPorts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHWPorts_Portname(), this.getHWPort(), "Portname", null, 0, 1, HWPorts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwInputEClass, HWInput.class, "HWInput", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHWInput_Has_OSPORTS_IN(), this.getOSPortIN(), null, "Has_OSPORTS_IN", null, 0, 1, HWInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwOutputEClass, HWOutput.class, "HWOutput", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHWOutput_Has_OSPORTS_OUT(), this.getOSPortOUT(), null, "Has_OSPORTS_OUT", null, 0, 1, HWOutput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(hwInternEClass, HWIntern.class, "HWIntern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHWIntern_Type(), this.getHWType(), "Type", null, 0, 1, HWIntern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1236,10 +1305,24 @@ public class ShootingmachineemfmodelPackageImpl extends EPackageImpl implements 
 		initEAttribute(getMessage_MessageHeader(), ecorePackage.getEChar(), "MessageHeader", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessage_MyMessage(), ecorePackage.getEString(), "myMessage", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(osPortINEClass, OSPortIN.class, "OSPortIN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(osPortOUTEClass, OSPortOUT.class, "OSPortOUT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Initialize enums and add enum literals
 		initEEnum(hwTypeEEnum, HWType.class, "HWType");
-		addEEnumLiteral(hwTypeEEnum, HWType.TASTER);
+		addEEnumLiteral(hwTypeEEnum, HWType.BUTTON);
 		addEEnumLiteral(hwTypeEEnum, HWType.SONIC);
+
+		initEEnum(hwPortEEnum, HWPort.class, "HWPort");
+		addEEnumLiteral(hwPortEEnum, HWPort.NXT_PORT_S1);
+		addEEnumLiteral(hwPortEEnum, HWPort.NXT_PORT_S2);
+		addEEnumLiteral(hwPortEEnum, HWPort.NXT_PORT_S3);
+		addEEnumLiteral(hwPortEEnum, HWPort.NXT_PORT_S4);
+		addEEnumLiteral(hwPortEEnum, HWPort.NXT_PORT_A);
+		addEEnumLiteral(hwPortEEnum, HWPort.NXT_PORT_B);
+		addEEnumLiteral(hwPortEEnum, HWPort.NXT_PORT_C);
+		addEEnumLiteral(hwPortEEnum, HWPort.DISPLAY);
 
 		// Create resource
 		createResource(eNS_URI);

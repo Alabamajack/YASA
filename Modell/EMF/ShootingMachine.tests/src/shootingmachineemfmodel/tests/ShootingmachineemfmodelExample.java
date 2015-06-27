@@ -13,8 +13,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import shootingmachineemfmodel.Display;
 import shootingmachineemfmodel.HWExtern;
 import shootingmachineemfmodel.HWIntern;
+import shootingmachineemfmodel.Motor;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.ToplevelSystem;
 //import shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl;
@@ -26,10 +28,10 @@ import shootingmachineemfmodel.ToplevelSystem;
  * @generated
  */
 public class ShootingmachineemfmodelExample {
-    /*
-     * HASHES VORBEREITEN:
-     */
-    static Map<String, String> RunnablesToTask = new HashMap<String, String>();
+	/*
+	 * HASHES VORBEREITEN:
+	 */
+	static Map<String, String> RunnablesToTask = new HashMap<String, String>();
     static Map<String, String> EventPort = new HashMap<String, String>();
     static Map<String, String> PortRunnable = new HashMap<String, String>();
     static Map<String, Integer> PortToID = new HashMap<String, Integer>();
@@ -44,8 +46,8 @@ public class ShootingmachineemfmodelExample {
 
         if (!file.canRead() || !file.isFile())
         {
-            System.out.print("Error: Datei " + input + " konnte nicht gefunden werden!!\n");
-            System.exit(0);
+        	System.out.print("Error: Datei " + input + " konnte nicht gefunden werden!!\n");
+        	System.exit(0);
         }
 
             BufferedReader in = null;
@@ -82,11 +84,11 @@ public class ShootingmachineemfmodelExample {
     //Funktion um Ordner rekursiv mit evtl. Unterordnern und Dateien zu loeschen
     public static void deleteDir(File path)
     {
-        for (File files : path.listFiles())
+    	for (File files : path.listFiles())
         {
-            if (files.isDirectory())
-                deleteDir(files);
-            files.delete();
+        	if (files.isDirectory())
+        		deleteDir(files);
+        	files.delete();
         }
             path.delete();
     }
@@ -94,17 +96,17 @@ public class ShootingmachineemfmodelExample {
     public static List<String> generateOilFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
 
-        System.out.print("\tDatei " + Brickname + ".oil erstellt.\n");
-        List<String> retlist = new ArrayList<String>();
-        String oilFileBeginn = "";
-        String oilFileTask = "";
-        String oilFileInitHook = "";
-        String oilFileBTInterface = "";
-        String oilFileBTImplizit = "";
-        String oilFileAlarm = "";
-        String oilFileCounter = "";
-        String oilFileEvent = "";
-        String oilFileBTEvents = "";
+    	System.out.print("\tDatei " + Brickname + ".oil erstellt.\n");
+    	List<String> retlist = new ArrayList<String>();
+    	String oilFileBeginn = "";
+    	String oilFileTask = "";
+    	String oilFileInitHook = "";
+    	String oilFileBTInterface = "";
+    	String oilFileBTImplizit = "";
+    	String oilFileAlarm = "";
+    	String oilFileCounter = "";
+    	String oilFileEvent = "";
+    	String oilFileBTEvents = "";
 
         //Anfang hardcoded
         oilFileBeginn = "#include \"implementation.oil\"\n\n"
@@ -127,7 +129,7 @@ public class ShootingmachineemfmodelExample {
         //for schleife fuer Task sektion
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
-            shootingmachineemfmodel.Task actualTask = mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j);
+        	shootingmachineemfmodel.Task actualTask = mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j);
             oilFileTask = "\tTASK " + actualTask.getName() + "\n"
                     + "\t{\n";
             //Wenn AUTOSTART true ist:
@@ -151,66 +153,66 @@ public class ShootingmachineemfmodelExample {
             System.out.print("\t\tTASK " + actualTask.getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
 
             oilFileInitHook = "\tTASK InitHook\n"
-                    +"\t{\n"
-                    +"\t\tAUTOSTART = TRUE\n"
-                    +"\t\t{\n"
-                    +"\t\t\tAPPMODE = LEGOSAR;\n"
-                    +"\t\t};\n"
-                    +"\t\tPRIORITY = 10;\n"
-                    +"\t\tACTIVATION = 1\n"
-                    +"\t\tSCHEDULE = FULL\n"
-                    +"\t\tSTACKSIZE = 512\n"
-                    +"\t};\n\n";
+            		+"\t{\n"
+            		+"\t\tAUTOSTART = TRUE\n"
+            		+"\t\t{\n"
+            		+"\t\t\tAPPMODE = LEGOSAR;\n"
+            		+"\t\t};\n"
+            		+"\t\tPRIORITY = 10;\n"
+            		+"\t\tACTIVATION = 1\n"
+            		+"\t\tSCHEDULE = FULL\n"
+            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t};\n\n";
 
             System.out.print("\t\tImpliziten Task InitHook hinzugefuegt.\n");
 
             oilFileBTInterface = "\tTASK TASK_BT_INTERFACE_READER\n"
-                    + "\t{\n"
-                    +"\t\tAUTOSTART = TRUE\n"
-                    +"\t\t{\n"
-                    +"\t\t\tAPPMODE = LEGOSAR;\n"
-                    +"\t\t};\n"
-                    +"\t\tPRIORITY = 7;\n"
-                    +"\t\tACTIVATION = 1\n"
-                    +"\t\tSCHEDULE = FULL\n"
-                    +"\t\tSTACKSIZE = 512\n"
-                    +"\t\tEVENT = BT_HAS_RECEIVED_PACKAGE;\n"
-                    +"\t};\n\n"
-                    +"\tTASK TASK_BT_INTERFACE_WRITER\n"
-                    + "\t{\n"
-                    +"\t\tAUTOSTART = TRUE\n"
-                    +"\t\t{\n"
-                    +"\t\t\tAPPMODE = LEGOSAR;\n"
-                    +"\t\t};\n"
-                    +"\t\tPRIORITY = 7;\n"
-                    +"\t\tACTIVATION = 1\n"
-                    +"\t\tSCHEDULE = FULL\n"
-                    +"\t\tSTACKSIZE = 512\n"
-                    +"\t};\n\n";
+            		+ "\t{\n"
+            		+"\t\tAUTOSTART = TRUE\n"
+            		+"\t\t{\n"
+            		+"\t\t\tAPPMODE = LEGOSAR;\n"
+            		+"\t\t};\n"
+            		+"\t\tPRIORITY = 7;\n"
+            		+"\t\tACTIVATION = 1\n"
+            		+"\t\tSCHEDULE = FULL\n"
+            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t\tEVENT = BT_HAS_RECEIVED_PACKAGE;\n"
+            		+"\t};\n\n"
+            		+"\tTASK TASK_BT_INTERFACE_WRITER\n"
+            		+ "\t{\n"
+            		+"\t\tAUTOSTART = TRUE\n"
+            		+"\t\t{\n"
+            		+"\t\t\tAPPMODE = LEGOSAR;\n"
+            		+"\t\t};\n"
+            		+"\t\tPRIORITY = 7;\n"
+            		+"\t\tACTIVATION = 1\n"
+            		+"\t\tSCHEDULE = FULL\n"
+            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t};\n\n";
 
             System.out.print("\t\tTasks fuer Com-Service hinzugefuegt\n");
 
             if (mySystem.getHasBrick().get(Brickindex).isIsMaster())
             {
-                oilFileBTImplizit = "\tTASK BT_IMPLIZIT_MASTER\n";
-                System.out.print("\t\tBT_MASTER hinzugefuegt.\n");
+            	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_MASTER\n";
+            	System.out.print("\t\tBT_MASTER hinzugefuegt.\n");
             }
             else
             {
-                oilFileBTImplizit = "\tTASK BT_IMPLIZIT_SLAVE\n";
-                System.out.print("\t\tBT_SLAVE hinzugefuegt\n");
+            	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_SLAVE\n";
+            	System.out.print("\t\tBT_SLAVE hinzugefuegt\n");
             }
             oilFileBTImplizit += "\t{\n"
-                    +"\t\tAUTOSTART = TRUE\n"
-                    +"\t\t{\n"
-                    +"\t\t\tAPPMODE = LEGOSAR;\n"
-                    +"\t\t};\n"
-                    +"\t\tPRIORITY = 9;\n"
-                    +"\t\tACTIVATION = 1\n"
-                    +"\t\tSCHEDULE = FULL\n"
-                    +"\t\tSTACKSIZE = 512\n"
-                    +"\t\tEVENT = BT_SEND_MY_MESSAGE;\n"
-                    +"\t};\n\n";
+            		+"\t\tAUTOSTART = TRUE\n"
+            		+"\t\t{\n"
+            		+"\t\t\tAPPMODE = LEGOSAR;\n"
+            		+"\t\t};\n"
+            		+"\t\tPRIORITY = 9;\n"
+            		+"\t\tACTIVATION = 1\n"
+            		+"\t\tSCHEDULE = FULL\n"
+            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t\tEVENT = BT_SEND_MY_MESSAGE;\n"
+            		+"\t};\n\n";
 
 
             //EVENTS die zu den TASKS gehoeren
@@ -221,7 +223,7 @@ public class ShootingmachineemfmodelExample {
             oilFileTask = oilFileTask + "\t};\n\n";
 
 
-            //for Schleife f r ALARME
+            //for Schleife für ALARME
             for(int k = 0; k < actualTask.getHasAlarm().size(); k++)
             {
                 oilFileAlarm = "\tALARM " + actualTask.getHasAlarm().get(k).getName() + "\n"
@@ -258,7 +260,7 @@ public class ShootingmachineemfmodelExample {
 
 
                 System.out.print("\t\tALARM " + actualTask.getHasAlarm().get(k).getName() + " und COUNTER C_"
-                        + actualTask.getHasAlarm().get(k).getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
+                		+ actualTask.getHasAlarm().get(k).getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
 
             }
 
@@ -267,7 +269,7 @@ public class ShootingmachineemfmodelExample {
         //for Schleife fuer EVENTS
         for (int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasEventBrick().size(); j++)
         {
-            shootingmachineemfmodel.Event actualEvent = mySystem.getHasBrick().get(Brickindex).getHasEventBrick().get(j);
+        	shootingmachineemfmodel.Event actualEvent = mySystem.getHasBrick().get(Brickindex).getHasEventBrick().get(j);
             oilFileEvent = "\tEVENT " + actualEvent.getName() + "\n"
                     + "\t{\n"
                     + "\t\tMASK = AUTO;\n"
@@ -278,26 +280,26 @@ public class ShootingmachineemfmodelExample {
 
         //Events zu Com-Service und BT_IMPLIZIT_MASTER/SLAVE hinzufuegen
         oilFileBTEvents = "\tEVENT BT_HAS_RECEIVED_PACKAGE\n"
-                +"\t{\n"
-                +"\t\tMASK = AUTO;\n"
-                +"\t};\n\n"
-                +"\tEVENT BT_SEND_MY_MESSAGE\n"
-                +"\t{\n"
-                +"\t\tMASK = AUTO;\n"
-                +"\t};\n\n";
+        		+"\t{\n"
+        		+"\t\tMASK = AUTO;\n"
+        		+"\t};\n\n"
+        		+"\tEVENT BT_SEND_MY_MESSAGE\n"
+        		+"\t{\n"
+        		+"\t\tMASK = AUTO;\n"
+        		+"\t};\n\n";
         System.out.print("\t\tEvents BT_HAS_RECEIVED_PACKAGE & BT_SEND_MY_MESSAGE hinzugefuegt.\n");
 
         //for Schleife fuer implizite Events
         for (int j = 0; j < mySystem.getHasConnections().size(); j++)
         {
-            for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
-            {
+        	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
+        	{
                 oilFileEvent = "\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT\n"
                         + "\t{\n"
                         + "\t\tMASK = AUTO;\n"
                         + "\t};\n\n";
                 System.out.print("\t\tImplizites Event " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT erzeugt\n");
-            }
+        	}
         }
 
 
@@ -306,10 +308,10 @@ public class ShootingmachineemfmodelExample {
         retlist.add(oilFileInitHook);
         retlist.add(oilFileBTInterface);
         retlist.add(oilFileBTImplizit);
-        retlist.add(oilFileAlarm);
-        retlist.add(oilFileCounter);
-        retlist.add(oilFileBTEvents);
-        retlist.add(oilFileEvent);
+    	retlist.add(oilFileAlarm);
+    	retlist.add(oilFileCounter);
+    	retlist.add(oilFileBTEvents);
+    	retlist.add(oilFileEvent);
         retlist.add("};");
 
         return retlist;
@@ -317,23 +319,23 @@ public class ShootingmachineemfmodelExample {
 
     public static List<String> generatecFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
-        System.out.print("\tDatei " + Brickname + ".c erstellt.\n");
-        List<String> retlist = new ArrayList<String>();
-        String cFileBeginn = "";
-        String cFileDeclareInitHook = "";
-        String cFileDeclareBTInterface = "";
-        String cFileDeclareBTImplizit = "";
-        String cFiledeclareBTEvents = "";
-        String cFileDeclareTask = "";
-        String cFileDeclareAlarm = "";
-        String newline = "\n";
-        String cFileDeclareEvent = "";
-        String newline1 = "\n";
-        String cFileRunnable = "";
-        String cFileInitHook = "";
-        String cFileBTInterface = "";
-        String cFileBTImplizit = "";
-        String cFileTask = "";
+    	System.out.print("\tDatei " + Brickname + ".c erstellt.\n");
+    	List<String> retlist = new ArrayList<String>();
+    	String cFileBeginn = "";
+    	String cFileDeclareInitHook = "";
+    	String cFileDeclareBTInterface = "";
+    	String cFileDeclareBTImplizit = "";
+    	String cFiledeclareBTEvents = "";
+    	String cFileDeclareTask = "";
+    	String cFileDeclareAlarm = "";
+    	String newline = "\n";
+    	String cFileDeclareEvent = "";
+    	String newline1 = "\n";
+    	String cFileRunnable = "";
+    	String cFileInitHook = "";
+    	String cFileBTInterface = "";
+    	String cFileBTImplizit = "";
+    	String cFileTask = "";
 
 
 
@@ -346,19 +348,19 @@ public class ShootingmachineemfmodelExample {
 
         cFileDeclareInitHook = "DeclareTask(InitHook);\n";
         cFileDeclareBTInterface = "DeclareTask(TASK_BT_INTERFACE_READER);\n"
-                + "DeclareTask(TASK_BT_INTERFACE_WRITER);\n";
+        		+ "DeclareTask(TASK_BT_INTERFACE_WRITER);\n";
 
         if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
         {
-            cFileDeclareBTImplizit = "DeclareTask(BT_IMPLIZIT_MASTER);\n";
+        	cFileDeclareBTImplizit = "DeclareTask(BT_IMPLIZIT_MASTER);\n";
         }
         else
         {
-            cFileDeclareBTImplizit = "DeclareTask(BT_IMPLIZIT_SLAVE);\n";
+        	cFileDeclareBTImplizit = "DeclareTask(BT_IMPLIZIT_SLAVE);\n";
         }
 
         cFiledeclareBTEvents = "DeclareEvent(BT_HAS_RECEIVED_PACKAGE);\n"
-                +"DeclareEvent(BT_SEND_MY_MESSAGE)\n";
+        		+"DeclareEvent(BT_SEND_MY_MESSAGE)\n";
 
         //For Schleife in welcher alle Tasks deklariert werden
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
@@ -387,7 +389,7 @@ public class ShootingmachineemfmodelExample {
             for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
             {
                 cFileRunnable = "//" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "\n"
-                        + "void " + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "()\n"
+                		+ "void " + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "()\n"
                         + "{\n"
                         + copyFiletoString(mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getApplicationcode())
                         + "\n}\n\n";
@@ -396,28 +398,28 @@ public class ShootingmachineemfmodelExample {
         }
 
         cFileInitHook = "TASK(InitHook)\n"
-                + "{\n";
+        		+ "{\n";
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().size(); j++)
         {
-            try{
-                shootingmachineemfmodel.HWIntern myinput =  (HWIntern) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
-                if(myinput.getType() == shootingmachineemfmodel.HWType.SONIC)
-                {
-                    cFileInitHook += "\tecrobot_init_sonar_sensor(NXT_PORT_S"+mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortnumber()+");\n";
-                    System.out.print("\t\tPort " + mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortnumber() + " als Ultraschall initialisiert\n");
-                }
-            }catch (java.lang.ClassCastException e){
+        	try{
+        		shootingmachineemfmodel.HWIntern myinput =  (HWIntern) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
+        		if(myinput.getType() == shootingmachineemfmodel.HWType.SONIC)
+        		{
+        			cFileInitHook += "\tecrobot_init_sonar_sensor("+mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname()+");\n";
+        			System.out.print("\t\tPort " + mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + " als Ultraschall initialisiert\n");
+        		}
+        	}catch (java.lang.ClassCastException e){
 
-            }
+        	}
 
-            try{
-                shootingmachineemfmodel.HWExtern myoutput = (HWExtern) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
-                cFileInitHook += "\ti2c_enable(NXT_PORT_S"+myoutput.getPinnumber()+");\n";
-                System.out.print("\t\tI2C Expander an Port " + mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortnumber() + " initialisiert.\n");
-            }
-            catch (java.lang.ClassCastException e)
-            {
-            }
+        	try{
+        		shootingmachineemfmodel.HWExtern myoutput = (HWExtern) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
+        		cFileInitHook += "\ti2c_enable(NXT_PORT_S"+myoutput.getPinnumber()+");\n";
+        		System.out.print("\t\tI2C Expander an Port " + mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + " initialisiert.\n");
+        	}
+        	catch (java.lang.ClassCastException e)
+        	{
+        	}
         }
         cFileInitHook = cFileInitHook + "}\n\n";
 
@@ -429,30 +431,30 @@ public class ShootingmachineemfmodelExample {
 
         if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
         {
-            cFileBTImplizit = copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_MASTER.c") + "\n";
-            System.out.print("\t\tBT_IMPLIZIT_MASTER hinzuegfuegt\n");
+        	cFileBTImplizit = copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_MASTER.c") + "\n";
+        	System.out.print("\t\tBT_IMPLIZIT_MASTER hinzuegfuegt\n");
         }
         else
         {
-            cFileBTImplizit = copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_SLAVE.c") + "\n";
-            System.out.print("\t\tBT_IMPLIZIT_SLAVE hinzuegfuegt\n");
+        	cFileBTImplizit = copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_SLAVE.c") + "\n";
+        	System.out.print("\t\tBT_IMPLIZIT_SLAVE hinzuegfuegt\n");
         }
 
 
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
-            cFileTask = "TASK(" +  mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ")\n"
-                    + "{\n"
-                    + "\twhile(1)\n"
-                    + "\t{\n";
+        	cFileTask = "TASK(" +  mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ")\n"
+        			+ "{\n"
+        			+ "\twhile(1)\n"
+        			+ "\t{\n";
 
-            for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
+        	for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
             {
-                cFileTask = cFileTask + "\t\t" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "();\n";
+        		cFileTask = cFileTask + "\t\t" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "();\n";
             }
-            cFileTask = cFileTask +  "\t}\n"
-                    + "\tTerminateTask();\n"
-                    + "}\n";
+        	cFileTask = cFileTask +  "\t}\n"
+        			+ "\tTerminateTask();\n"
+        			+ "}\n";
         }
 
         retlist.add(cFileBeginn);
@@ -460,16 +462,16 @@ public class ShootingmachineemfmodelExample {
         retlist.add(cFileDeclareBTInterface);
         retlist.add(cFileDeclareBTImplizit);
         retlist.add(cFiledeclareBTEvents);
-        retlist.add(cFileDeclareTask);
-        retlist.add(cFileDeclareAlarm);
-        retlist.add(newline);
-        retlist.add(cFileDeclareEvent);
-        retlist.add(newline1);
-        retlist.add(cFileRunnable);
-        retlist.add(cFileInitHook);
-        retlist.add(cFileBTInterface);
-        retlist.add(cFileBTImplizit);
-        retlist.add(cFileTask);
+    	retlist.add(cFileDeclareTask);
+    	retlist.add(cFileDeclareAlarm);
+    	retlist.add(newline);
+    	retlist.add(cFileDeclareEvent);
+    	retlist.add(newline1);
+    	retlist.add(cFileRunnable);
+    	retlist.add(cFileInitHook);
+    	retlist.add(cFileBTInterface);
+    	retlist.add(cFileBTImplizit);
+    	retlist.add(cFileTask);
 
 
         return retlist;
@@ -477,24 +479,484 @@ public class ShootingmachineemfmodelExample {
 
     public static List<String> generatedynamiccFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
-        System.out.print("\tDatei YASA_generated.c erstellt.\n");
-        List <String> retlist = new ArrayList<String>();
-        String genc = "";
-        String mySenderrtefunc = "";
-        String myReceiverrtefun = "";
+    	System.out.print("\tDatei YASA_generated.c erstellt.\n");
+    	List <String> retlist = new ArrayList<String>();
+    	String genc = "";
+    	String mySenderrtefunc = "";
+    	String myReceiverrtefunc = "";
 
 
         // Sender-Receiver Ports
         //Pro SenderReceiverConnection ein Event und eine globale Variable erstellen
         for (int j = 0; j < mySystem.getHasConnections().size(); j++)
         {
-            for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
-            {
-                genc = "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
-                genc = genc + "U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER[MAX_MESSAGE_LENGHT] = {0};\n";
+        	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
+        	{
+        		genc = "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+        		genc = genc + "U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER[MAX_MESSAGE_LENGHT] = {0};\n";
                 System.out.print("\t\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT erstellt.\n");
                 System.out.print("\t\tVariable U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER[MAX_MESSAGE_LENGHT] erstellt.\n");
-            }
+        	}
         }
 
-...
+        for(int j = 0; j < mySystem.getHasConnections().size(); j++)
+        {
+        	shootingmachineemfmodel.Brick acBrick = mySystem.getHasBrick().get(Brickindex);
+
+        	mySenderrtefunc = "\ninline std_return " + mySystem.getHasConnections().get(j).getHasSenderPorts().getName() + "(char *a)\n{\n";
+        	myReceiverrtefunc = "";
+
+        	if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem().size() >= 2)
+        	{
+        		//InterBrickConnection ist vorhanden -> über mehrere Bricks kommunizieren
+        	}
+        	else
+        	{
+        		for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size(); k++)
+        		{
+        			mySenderrtefunc = mySenderrtefunc + "\t" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER = *a;\n";
+        			mySenderrtefunc = mySenderrtefunc + "\tSetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName())) + ", " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+        		}
+        	}
+
+        	mySenderrtefunc += "}";
+        	System.out.print("\t\tFunktion "+ mySystem.getHasConnections().get(j).getHasSenderPorts().getName() + "(char *a) erstellt\n");
+        }
+
+        //Magee:
+
+        //Pro Connection Event Setzen
+        for (int j = 0; j < mySystem.getHasConnections().size(); j++)
+        {
+        	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
+        	{
+        		genc = "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+        		System.out.print("\t\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT erstellt.\n");
+        	}
+        }
+
+
+        for(int j = 0; j < mySystem.getHasConnections().size(); j++)
+        {
+        	if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem().size()>= 2)
+        	{
+        		if (Brickindex == TaskBrick.get(RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasSenderPorts().getName()))))
+        		{
+        			mySenderrtefunc = mySenderrtefunc + "\ninline std_return " + mySystem.getHasConnections().get(j).getHasSenderPorts().getName() + "(char *a)\n{\n";
+        			for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
+        			{
+        				mySenderrtefunc = mySenderrtefunc + "\tSetEvent(TASK_BT_INTERFACE_WRITER, " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+        			}
+        			mySenderrtefunc += "}\n";
+        		}
+        		else
+        		{
+        			for(int l = 0; l < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();l++)
+        			{
+        				//blockierend
+        				if(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).isBlockierend() == true) {
+        					myReceiverrtefunc = myReceiverrtefunc + "\ninline std_return " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "(char *a)\n{\n";
+        					myReceiverrtefunc = myReceiverrtefunc + "\tWaitEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
+        					myReceiverrtefunc = myReceiverrtefunc + "\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
+        				}
+        				//nicht blockierend
+        				else
+        				{
+        					myReceiverrtefunc = myReceiverrtefunc + "\ninline std_return " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "(uint8_t *a)\n{\n";
+        					myReceiverrtefunc = myReceiverrtefunc + "\tEventMaskType event = 0;\n";
+        					myReceiverrtefunc = myReceiverrtefunc + "\tGetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())) + ",&event);\n";
+        					myReceiverrtefunc = myReceiverrtefunc + "\tif(event & " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT)\n\t{\n";
+        					myReceiverrtefunc = myReceiverrtefunc + "\t\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n\t\t*a= 1;\n\t}\n\telse\n\t\t*a= 0;\n";
+        				}
+        				myReceiverrtefunc += "}\n";
+        			}
+        		}
+        	}
+        	else
+        	{
+        		for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size(); k++)
+        		{
+        			mySenderrtefunc = mySenderrtefunc + "\tSetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName())) + ", " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+        			mySenderrtefunc += "}\n";
+        		}
+        	}
+
+
+        	//System.out.print(mySenderrtefunc);
+        	//System.out.print(myReceiverrtefunc);
+        }
+
+        retlist.add(genc);
+    	retlist.add(mySenderrtefunc);
+    	retlist.add(myReceiverrtefunc);
+
+        return retlist;
+    }
+
+    public static List<String> generateComService(ToplevelSystem mySystem, int Brickindex) throws IOException
+    {
+    	// alles nur für einen Brick
+    	List<String> retlist = new ArrayList<String>();
+    	String BT_Global_String = "";
+    	String BT_Receiver_String = "";
+    	String BT_Transmitter_String = "";
+
+    	// abprüfen wie viele logische Ports auf dem aktuellen Brick sind
+    	// wie viel davon sind Sender und wie viele sind Receiver
+
+    	shootingmachineemfmodel.Brick actBrick = mySystem.getHasBrick().get(Brickindex);
+    	/*
+    	 * setzten des globalen defines, wie große der Speicherbereich fuer die Comschicht sein muss -> ist fuer beide Bricks gleich
+    	 * zuordnung zwischen den Bricks erfolgt symmetrisch, d.h. auf beiden Bricks zwei Speicherbereiche, die gleich "gehalten" werden!
+    	 */
+    	BT_Global_String += "#define BT_COM_SERVICE " + (PortToID.size()) + "\n";
+
+    	String loc_WaitEvents = "";
+    	String if_bed = "";
+
+    	String loc_red_string = "switch(id){";
+    	for(int i = 0; i < mySystem.getHasConnections().size(); i++)
+    	{
+    		if(Brickindex == TaskBrick.get(RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasSenderPorts().getName()))))
+    		{
+    			//Senderport auf aktuellem Brick
+    			loc_WaitEvents += "WaitEvent(";
+    			for(int j = 0; j < mySystem.getHasConnections().get(i).getHasReceiverPorts().size(); j++)
+    			{
+    				loc_WaitEvents += mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT | ";
+    				if_bed += "if(event & " + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT){";
+    				if_bed += "ClearEvent(" + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
+    				if_bed += "*transmit_pack_ptr = " + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ";" + "transmit_pack_ptr++;";
+    				if_bed += "strcpy(BT_transmit_package, COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "]);";
+    				if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
+    					if_bed += "SetEvent(BT_IMPLIZIT_MASTER,BT_SEND_MY_MESSAGE);";
+    				else
+    					if_bed += "SetEvent(BT_IMPLIZIT_SLAVE,BT_SEND_MY_MESSAGE);";
+    				if_bed += "}";
+    			}
+    		}
+    		else
+    		{
+    			//Receiverport auf aktuellem Brick
+    			for(int j = 0; j < mySystem.getHasConnections().get(i).getHasReceiverPorts().size(); j++)
+    			{
+    				loc_red_string += "case " + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ":";
+    				loc_red_string += "SetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()));
+    				loc_red_string +=  "," + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
+    				loc_red_string += "break;";
+    			}
+
+    		}
+
+    	}
+    	if(loc_WaitEvents.length() > 0)
+    	{
+    		loc_WaitEvents = loc_WaitEvents.substring(0, loc_WaitEvents.length() - 2) + ");";
+    		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE (" + loc_WaitEvents + "GetEvent(TASK_BT_INTERFACE_WRITER, &event);" + if_bed + ")";
+    	}
+    	else
+    		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE";
+
+    	loc_red_string += "}";
+    	BT_Receiver_String = "#define BT_DYNAMIC_READER_CODE ( "+ loc_red_string + ")";
+
+
+    	retlist.add(BT_Global_String);
+    	retlist.add(BT_Receiver_String);
+    	retlist.add(BT_Transmitter_String);
+    	return retlist;
+    }
+
+    public static String setPortDefines(ToplevelSystem mySystem, int Brickindex)
+    {
+    	String retstring = "";
+
+
+    	for (int j = 0; j< mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().size(); j++)
+    	{
+    		try{
+    			//Wenn Cast gut geht, ist des vom Typ HWExtern
+    			shootingmachineemfmodel.HWExtern myHWExtern = (HWExtern) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
+    			retstring +=  "#define " + myHWExtern.getHas_OSPORTS_IN().getName() + "_PORT "+ mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + "\n"
+    					+ "#define " + myHWExtern.getHas_OSPORTS_IN().getName() + "_In_IIC\n";
+
+        	}catch (java.lang.ClassCastException e){
+
+        	}
+    		try{
+    			shootingmachineemfmodel.HWIntern myHWIntern = (HWIntern) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
+    			retstring += "#define " + myHWIntern.getHas_OSPORTS_IN().getName() + "_PORT "+ mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + "\n"
+    					+ "#define " + myHWIntern.getHas_OSPORTS_IN().getName() + "_In_" + myHWIntern.getType() + "\n";
+    		}
+    		catch (java.lang.ClassCastException e){
+
+        	}
+    		try{
+    			shootingmachineemfmodel.Motor myMotor =  (Motor) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
+    			retstring += "#define " + myMotor.getHas_OSPORTS_OUT().getName() + "PORT "+ mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + "\n"
+    					+ "#define " + myMotor.getHas_OSPORTS_OUT().getName() + "_Out_ENGINE\n";
+
+    		}
+    		catch (java.lang.ClassCastException e){
+
+        	}
+    		try{
+    			shootingmachineemfmodel.Display myDisplay = (Display) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
+    			retstring += "#define " + myDisplay.getHas_OSPORTS_OUT().getName() + "PORT "+ mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + "\n"
+    					+ "#define " + myDisplay.getHas_OSPORTS_OUT().getName() + "_Out_DSIPLAY\n";
+    		}
+    		catch (java.lang.ClassCastException e){
+
+        	}
+    	}
+
+    	System.out.print(retstring);
+
+    	return retstring;
+    }
+
+    public static void main(String[] args) {
+        // Create a resource set to hold the resources.
+        //
+        ResourceSet resourceSet = new ResourceSetImpl();
+
+        // Register the appropriate resource factory to handle all file extensions.
+        //
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
+            (Resource.Factory.Registry.DEFAULT_EXTENSION,
+             new XMIResourceFactoryImpl());
+
+        // Register the package to ensure it is available during loading.
+        //
+        resourceSet.getPackageRegistry().put
+            (ShootingmachineemfmodelPackage.eNS_URI,
+             ShootingmachineemfmodelPackage.eINSTANCE);
+
+        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
+
+
+
+
+        try {
+            // Demand load resource for this file.
+            //
+            Resource resource = resourceSet.getResource(uri, true);
+
+            ToplevelSystem mySystem = (ToplevelSystem)resource.getContents().get(0);
+        	//initialisierungen fuer die Hashes
+            for(int i = 0; i < mySystem.getHasComponent().size(); i++)
+            {
+            	for(int j = 0; j < mySystem.getHasComponent().get(i).getHasRunnable().size(); j++)
+            	{
+            		 for(int k = 0; k < mySystem.getHasComponent().get(i).getHasRunnable().get(j).getHasSWPorts().size(); k++)
+            		 {
+            			 PortRunnable.put(mySystem.getHasComponent().get(i).getHasRunnable().get(j).getHasSWPorts().get(k).getName(), mySystem.getHasComponent().get(i).getHasRunnable().get(j).getName());
+            		 }
+            	}
+            }
+
+            //Weitere Initialisierungen
+            for (int j = 0; j < mySystem.getHasConnections().size(); j++)
+            {
+            	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
+            	{
+            		EventPort.put(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT", mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName());
+            	}
+            }
+
+            //Und noch mehr Hashes initialisieren
+            for(int i = 0; i < mySystem.getHasBrick().size(); i++)
+            {
+            	int Brickindex = i;
+	            for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
+	            {
+	            	for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
+	                {
+	            		RunnablesToTask.put(mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName(), mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName());
+	                }
+	            }
+            }
+
+            for(int i = 0; i < mySystem.getHasConnections().size(); i++)
+            {
+            	for(int j = 0; j < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size(); j++)
+            	{
+            		for(int k = 0; k < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().size(); k++)
+            		{
+            			if(!PortToID.containsKey(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().get(k).getName()))
+            				PortToID.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().get(k).getName(), i * j + k );
+            		}
+            	}
+
+            }
+            for(int i = 0; i < mySystem.getHasBrick().size();i++)
+            	for(int j = 0; j < mySystem.getHasBrick().get(i).getHasTaskBrick().size(); j++)
+            		TaskBrick.put(mySystem.getHasBrick().get(i).getHasTaskBrick().get(j).getName(), i);
+
+            //also making a hashmap with ID to port
+            for(String key : PortToID.keySet())
+            {
+            	IDToPort.put(PortToID.get(key), key);
+            }
+            /*
+             *
+             * HASHES FERTIG
+             *
+             */
+
+
+            //For Schleife in welcher die einzelnen Dateien und Ordner erstellt werden
+            for(int i = 0; i<mySystem.getHasBrick().size(); i++)
+            {
+
+                String Brickname = mySystem.getHasBrick().get(i).getName();
+                //Ordnername = Name des Bricks
+                File BrickFolder = new File(Brickname);
+
+                //Ordner erstellen, falls noch nicht vorhanden
+                if(!BrickFolder.exists()){
+                    BrickFolder.mkdir();
+                    System.out.print("Ordner " + Brickname + " erstellt\n");
+                }
+                else //Wenn Ordner schon vorhanden ist, Ordner mit Dateien vorher loeschen
+                {
+                    deleteDir(BrickFolder);
+                    BrickFolder.mkdir();
+                    System.out.print("Ordner " + Brickname + " rekursiv geloescht und neu erstellt\n");
+                }
+
+                setPortDefines(mySystem, i);
+
+                /*
+                 *
+                 * Erzeugung oil File:
+                 *
+                 *
+                 */
+                List <String> oilStrings = generateOilFile(mySystem, i, Brickname);
+
+
+                //Dateipfad + Dateiname
+                File OilFile = new File(Brickname + "\\" + Brickname + ".oil");
+                if (!OilFile.exists()) {
+                    OilFile.createNewFile();
+                }
+
+
+                //BufferedWriter
+                FileWriter oilFileWriter = new FileWriter(OilFile.getAbsoluteFile());
+                BufferedWriter oilFileBuffer = new BufferedWriter(oilFileWriter);
+
+                for(int listindex = 0; listindex < oilStrings.size(); listindex ++)
+                {
+                	oilFileBuffer.write(oilStrings.get(listindex));
+                }
+
+                oilFileBuffer.close();
+
+                /*
+                 *
+                 * Erzeugung c File
+                 *
+                 *
+                 */
+                List <String> cStrings = generatecFile(mySystem, i, Brickname);
+
+                //Dateipfad + Dateiname
+            	File cFile = new File(Brickname + "\\" + Brickname + ".c");
+
+            	//Datei erstellen, wenn noch nicht vorhanden
+                if (!cFile.exists()) {
+                    cFile.createNewFile();
+                }
+
+                //BufferedWriter
+                FileWriter cFileWriter = new FileWriter(cFile.getAbsoluteFile());
+                BufferedWriter cFileBuffer = new BufferedWriter(cFileWriter);
+
+                for(int listindex = 0; listindex < cStrings.size(); listindex ++)
+                {
+                	cFileBuffer.write(cStrings.get(listindex));
+                }
+
+                cFileBuffer.close();
+
+                /*
+                 *
+                 * Dynamischen C-Code Erzeugen
+                 *
+                 *
+                 */
+                List <String> dynamiccStrings = generatedynamiccFile(mySystem, i, Brickname);
+
+                //Dateipfad + Dateiname
+                File gencFile = new File(Brickname + "\\YASA_generated.c");
+
+
+                if (!gencFile.exists()) {
+                	gencFile.createNewFile();
+                }
+
+
+                FileWriter gencFileWriter = new FileWriter(gencFile.getAbsoluteFile());
+                BufferedWriter gencFileBuffer = new BufferedWriter(gencFileWriter);
+
+                for(int listindex = 0; listindex < dynamiccStrings.size(); listindex ++)
+                {
+                	gencFileBuffer.write(dynamiccStrings.get(listindex));
+                }
+
+                gencFileBuffer.close();
+
+
+                /*
+                 *
+                 * Com Service erzeugen
+                 *
+                 *
+                 */
+                List<String> comstrings = generateComService(mySystem,i);
+
+                File genvarfile = new File(Brickname + "\\YASA_generated_variables.h");
+                if (!genvarfile.exists()) {
+                	genvarfile.createNewFile();
+                    System.out.print("\tDatei YASA_generated_variables.c erstellt\n");
+                }
+
+
+                FileWriter genvarfileWriter = new FileWriter(genvarfile.getAbsoluteFile());
+                BufferedWriter genvarfileBuffer = new BufferedWriter(genvarfileWriter);
+                genvarfileBuffer.write(setPortDefines(mySystem, i));
+                genvarfileBuffer.write(comstrings.get(0) + "\n");
+                genvarfileBuffer.write(comstrings.get(1) + "\n");
+                genvarfileBuffer.write(comstrings.get(2) + "\n");
+                genvarfileBuffer.close();
+            }
+        }
+        catch (RuntimeException exception) {
+            System.out.println("Problem loading " + uri);
+            exception.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+	 * <!-- begin-user-doc -->
+     * Prints diagnostics with indentation.
+     * <!-- end-user-doc -->
+	 * @param diagnostic the diagnostic to print.
+	 * @param indent the indentation for printing.
+	 * @generated
+	 */
+    protected static void printDiagnostic(Diagnostic diagnostic, String indent) {
+		System.out.print(indent);
+		System.out.println(diagnostic.getMessage());
+		for (Diagnostic child : diagnostic.getChildren()) {
+			printDiagnostic(child, indent + "  ");
+		}
+	}
+
+} //ShootingmachineemfmodelExample

@@ -32,7 +32,7 @@ public class HWInternImpl extends HWInputImpl implements HWIntern {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final HWType TYPE_EDEFAULT = HWType.TASTER;
+	protected static final HWType TYPE_EDEFAULT = HWType.BUTTON;
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->

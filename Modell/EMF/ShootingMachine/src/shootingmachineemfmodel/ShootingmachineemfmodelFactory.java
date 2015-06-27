@@ -211,6 +211,24 @@ public interface ShootingmachineemfmodelFactory extends EFactory {
 	Message createMessage();
 
 	/**
+	 * Returns a new object of class '<em>OS Port IN</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>OS Port IN</em>'.
+	 * @generated
+	 */
+	OSPortIN createOSPortIN();
+
+	/**
+	 * Returns a new object of class '<em>OS Port OUT</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>OS Port OUT</em>'.
+	 * @generated
+	 */
+	OSPortOUT createOSPortOUT();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

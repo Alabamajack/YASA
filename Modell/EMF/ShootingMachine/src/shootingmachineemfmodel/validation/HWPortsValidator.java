@@ -4,6 +4,8 @@
  */
 package shootingmachineemfmodel.validation;
 
+import shootingmachineemfmodel.HWPort;
+
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.HWPorts}.
@@ -13,6 +15,8 @@ package shootingmachineemfmodel.validation;
  */
 public interface HWPortsValidator {
 	boolean validate();
+
+	boolean validatePortname(HWPort value);
 
 	boolean validatePortnumber(int value);
 }

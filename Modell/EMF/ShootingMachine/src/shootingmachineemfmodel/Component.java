@@ -12,7 +12,6 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link shootingmachineemfmodel.Component#getHasHWPortsComponent <em>Has HW Ports Component</em>}</li>
  *   <li>{@link shootingmachineemfmodel.Component#getHasRunnable <em>Has Runnable</em>}</li>
  * </ul>
  * </p>
@@ -22,22 +21,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Component extends Standardclass {
-	/**
-	 * Returns the value of the '<em><b>Has HW Ports Component</b></em>' reference list.
-	 * The list contents are of type {@link shootingmachineemfmodel.HWPorts}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Has HW Ports Component</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has HW Ports Component</em>' reference list.
-	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getComponent_HasHWPortsComponent()
-	 * @model
-	 * @generated
-	 */
-	EList<HWPorts> getHasHWPortsComponent();
-
 	/**
 	 * Returns the value of the '<em><b>Has Runnable</b></em>' containment reference list.
 	 * The list contents are of type {@link shootingmachineemfmodel.Runnable}.

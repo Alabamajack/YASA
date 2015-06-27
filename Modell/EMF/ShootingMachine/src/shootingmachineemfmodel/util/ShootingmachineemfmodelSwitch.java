@@ -23,6 +23,8 @@ import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Motor;
+import shootingmachineemfmodel.OSPortIN;
+import shootingmachineemfmodel.OSPortOUT;
 import shootingmachineemfmodel.Ports;
 import shootingmachineemfmodel.Receiver;
 import shootingmachineemfmodel.ReceiverPorts;
@@ -319,6 +321,24 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 				Message message = (Message)theEObject;
 				T result = caseMessage(message);
 				if (result == null) result = caseStandardclass(message);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ShootingmachineemfmodelPackage.OS_PORT_IN: {
+				OSPortIN osPortIN = (OSPortIN)theEObject;
+				T result = caseOSPortIN(osPortIN);
+				if (result == null) result = caseReceiverPorts(osPortIN);
+				if (result == null) result = casePorts(osPortIN);
+				if (result == null) result = caseStandardclass(osPortIN);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ShootingmachineemfmodelPackage.OS_PORT_OUT: {
+				OSPortOUT osPortOUT = (OSPortOUT)theEObject;
+				T result = caseOSPortOUT(osPortOUT);
+				if (result == null) result = caseSenderPorts(osPortOUT);
+				if (result == null) result = casePorts(osPortOUT);
+				if (result == null) result = caseStandardclass(osPortOUT);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -758,6 +778,36 @@ public class ShootingmachineemfmodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMessage(Message object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>OS Port IN</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>OS Port IN</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOSPortIN(OSPortIN object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>OS Port OUT</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>OS Port OUT</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOSPortOUT(OSPortOUT object) {
 		return null;
 	}
 

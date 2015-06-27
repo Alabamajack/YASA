@@ -3,20 +3,13 @@
 package shootingmachineemfmodel.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import shootingmachineemfmodel.Component;
-import shootingmachineemfmodel.HWPorts;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 
 /**
@@ -26,7 +19,6 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link shootingmachineemfmodel.impl.ComponentImpl#getHasHWPortsComponent <em>Has HW Ports Component</em>}</li>
  *   <li>{@link shootingmachineemfmodel.impl.ComponentImpl#getHasRunnable <em>Has Runnable</em>}</li>
  * </ul>
  * </p>
@@ -34,16 +26,6 @@ import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
  * @generated
  */
 public abstract class ComponentImpl extends StandardclassImpl implements Component {
-	/**
-	 * The cached value of the '{@link #getHasHWPortsComponent() <em>Has HW Ports Component</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getHasHWPortsComponent()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<HWPorts> hasHWPortsComponent;
-
 	/**
 	 * The cached value of the '{@link #getHasRunnable() <em>Has Runnable</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -71,18 +53,6 @@ public abstract class ComponentImpl extends StandardclassImpl implements Compone
 	@Override
 	protected EClass eStaticClass() {
 		return ShootingmachineemfmodelPackage.Literals.COMPONENT;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<HWPorts> getHasHWPortsComponent() {
-		if (hasHWPortsComponent == null) {
-			hasHWPortsComponent = new EObjectResolvingEList<HWPorts>(HWPorts.class, this, ShootingmachineemfmodelPackage.COMPONENT__HAS_HW_PORTS_COMPONENT);
-		}
-		return hasHWPortsComponent;
 	}
 
 	/**
@@ -119,8 +89,6 @@ public abstract class ComponentImpl extends StandardclassImpl implements Compone
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.COMPONENT__HAS_HW_PORTS_COMPONENT:
-				return getHasHWPortsComponent();
 			case ShootingmachineemfmodelPackage.COMPONENT__HAS_RUNNABLE:
 				return getHasRunnable();
 		}
@@ -136,10 +104,6 @@ public abstract class ComponentImpl extends StandardclassImpl implements Compone
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.COMPONENT__HAS_HW_PORTS_COMPONENT:
-				getHasHWPortsComponent().clear();
-				getHasHWPortsComponent().addAll((Collection<? extends HWPorts>)newValue);
-				return;
 			case ShootingmachineemfmodelPackage.COMPONENT__HAS_RUNNABLE:
 				getHasRunnable().clear();
 				getHasRunnable().addAll((Collection<? extends shootingmachineemfmodel.Runnable>)newValue);
@@ -156,9 +120,6 @@ public abstract class ComponentImpl extends StandardclassImpl implements Compone
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.COMPONENT__HAS_HW_PORTS_COMPONENT:
-				getHasHWPortsComponent().clear();
-				return;
 			case ShootingmachineemfmodelPackage.COMPONENT__HAS_RUNNABLE:
 				getHasRunnable().clear();
 				return;
@@ -174,8 +135,6 @@ public abstract class ComponentImpl extends StandardclassImpl implements Compone
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ShootingmachineemfmodelPackage.COMPONENT__HAS_HW_PORTS_COMPONENT:
-				return hasHWPortsComponent != null && !hasHWPortsComponent.isEmpty();
 			case ShootingmachineemfmodelPackage.COMPONENT__HAS_RUNNABLE:
 				return hasRunnable != null && !hasRunnable.isEmpty();
 		}

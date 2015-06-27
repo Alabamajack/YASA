@@ -4,6 +4,8 @@
  */
 package shootingmachineemfmodel.validation;
 
+import shootingmachineemfmodel.OSPortOUT;
+
 
 /**
  * A sample validator interface for {@link shootingmachineemfmodel.HWOutput}.
@@ -13,5 +15,11 @@ package shootingmachineemfmodel.validation;
  */
 public interface HWOutputValidator {
 	boolean validate();
+
+	boolean validateHas_OSPORTS_OUT(OSPortOUT value);
+
+	boolean validateHasOSPORT_OUT(OSPortOUT value);
+
+	boolean validateHasOSPORTOUT(OSPortOUT value);
 
 }

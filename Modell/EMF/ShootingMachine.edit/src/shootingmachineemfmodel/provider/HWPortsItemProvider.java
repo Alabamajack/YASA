@@ -57,29 +57,29 @@ public class HWPortsItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPortnumberPropertyDescriptor(object);
+			addPortnamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Portnumber feature.
+	 * This adds a property descriptor for the Portname feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPortnumberPropertyDescriptor(Object object) {
+	protected void addPortnamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_HWPorts_Portnumber_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HWPorts_Portnumber_feature", "_UI_HWPorts_type"),
-				 ShootingmachineemfmodelPackage.Literals.HW_PORTS__PORTNUMBER,
+				 getString("_UI_HWPorts_Portname_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_HWPorts_Portname_feature", "_UI_HWPorts_type"),
+				 ShootingmachineemfmodelPackage.Literals.HW_PORTS__PORTNAME,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -110,7 +110,7 @@ public class HWPortsItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(HWPorts.class)) {
-			case ShootingmachineemfmodelPackage.HW_PORTS__PORTNUMBER:
+			case ShootingmachineemfmodelPackage.HW_PORTS__PORTNAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

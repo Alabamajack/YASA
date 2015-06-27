@@ -555,6 +555,52 @@ public class ShootingmachineemfmodelItemProviderAdapterFactory extends Shootingm
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link shootingmachineemfmodel.OSPortIN} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OSPortINItemProvider osPortINItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link shootingmachineemfmodel.OSPortIN}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOSPortINAdapter() {
+		if (osPortINItemProvider == null) {
+			osPortINItemProvider = new OSPortINItemProvider(this);
+		}
+
+		return osPortINItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link shootingmachineemfmodel.OSPortOUT} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OSPortOUTItemProvider osPortOUTItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link shootingmachineemfmodel.OSPortOUT}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOSPortOUTAdapter() {
+		if (osPortOUTItemProvider == null) {
+			osPortOUTItemProvider = new OSPortOUTItemProvider(this);
+		}
+
+		return osPortOUTItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -674,6 +720,8 @@ public class ShootingmachineemfmodelItemProviderAdapterFactory extends Shootingm
 		if (motorItemProvider != null) motorItemProvider.dispose();
 		if (displayItemProvider != null) displayItemProvider.dispose();
 		if (messageItemProvider != null) messageItemProvider.dispose();
+		if (osPortINItemProvider != null) osPortINItemProvider.dispose();
+		if (osPortOUTItemProvider != null) osPortOUTItemProvider.dispose();
 	}
 
 }

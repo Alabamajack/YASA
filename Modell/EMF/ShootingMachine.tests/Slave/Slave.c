@@ -17,9 +17,8 @@ DeclareTask(Trigger);
 //Trigger_Runnable
 void Trigger_Runnable()
 {
-Bla Bla runnable
-pi pa po
-	lalelu
+asdjkahsfdjklahsfjksdhfg+
+sdfgdukfgklsfdgjklg
 
 }
 

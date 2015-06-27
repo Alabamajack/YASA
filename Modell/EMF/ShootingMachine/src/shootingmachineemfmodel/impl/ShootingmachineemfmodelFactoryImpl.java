@@ -20,10 +20,13 @@ import shootingmachineemfmodel.Event;
 import shootingmachineemfmodel.GetEvent;
 import shootingmachineemfmodel.HWExtern;
 import shootingmachineemfmodel.HWIntern;
+import shootingmachineemfmodel.HWPort;
 import shootingmachineemfmodel.HWType;
 import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.Message;
 import shootingmachineemfmodel.Motor;
+import shootingmachineemfmodel.OSPortIN;
+import shootingmachineemfmodel.OSPortOUT;
 import shootingmachineemfmodel.Receiver;
 import shootingmachineemfmodel.SA_Component;
 import shootingmachineemfmodel.SW_Component;
@@ -100,6 +103,8 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 			case ShootingmachineemfmodelPackage.MOTOR: return createMotor();
 			case ShootingmachineemfmodelPackage.DISPLAY: return createDisplay();
 			case ShootingmachineemfmodelPackage.MESSAGE: return createMessage();
+			case ShootingmachineemfmodelPackage.OS_PORT_IN: return createOSPortIN();
+			case ShootingmachineemfmodelPackage.OS_PORT_OUT: return createOSPortOUT();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -115,6 +120,8 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 		switch (eDataType.getClassifierID()) {
 			case ShootingmachineemfmodelPackage.HW_TYPE:
 				return createHWTypeFromString(eDataType, initialValue);
+			case ShootingmachineemfmodelPackage.HW_PORT:
+				return createHWPortFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -130,6 +137,8 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 		switch (eDataType.getClassifierID()) {
 			case ShootingmachineemfmodelPackage.HW_TYPE:
 				return convertHWTypeToString(eDataType, instanceValue);
+			case ShootingmachineemfmodelPackage.HW_PORT:
+				return convertHWPortToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -350,6 +359,26 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OSPortIN createOSPortIN() {
+		OSPortINImpl osPortIN = new OSPortINImpl();
+		return osPortIN;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OSPortOUT createOSPortOUT() {
+		OSPortOUTImpl osPortOUT = new OSPortOUTImpl();
+		return osPortOUT;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HWType createHWTypeFromString(EDataType eDataType, String initialValue) {
 		HWType result = HWType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -362,6 +391,26 @@ public class ShootingmachineemfmodelFactoryImpl extends EFactoryImpl implements 
 	 * @generated
 	 */
 	public String convertHWTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HWPort createHWPortFromString(EDataType eDataType, String initialValue) {
+		HWPort result = HWPort.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertHWPortToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

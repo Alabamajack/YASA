@@ -178,22 +178,13 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int COMPONENT__NAME = STANDARDCLASS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Has HW Ports Component</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT__HAS_HW_PORTS_COMPONENT = STANDARDCLASS_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Has Runnable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT__HAS_RUNNABLE = STANDARDCLASS_FEATURE_COUNT + 1;
+	int COMPONENT__HAS_RUNNABLE = STANDARDCLASS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Component</em>' class.
@@ -202,7 +193,7 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 2;
+	int COMPONENT_FEATURE_COUNT = STANDARDCLASS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Component</em>' class.
@@ -315,15 +306,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int SA_COMPONENT__NAME = COMPONENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Has HW Ports Component</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SA_COMPONENT__HAS_HW_PORTS_COMPONENT = COMPONENT__HAS_HW_PORTS_COMPONENT;
-
-	/**
 	 * The feature id for the '<em><b>Has Runnable</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -368,15 +350,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SW_COMPONENT__NAME = COMPONENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Has HW Ports Component</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SW_COMPONENT__HAS_HW_PORTS_COMPONENT = COMPONENT__HAS_HW_PORTS_COMPONENT;
 
 	/**
 	 * The feature id for the '<em><b>Has Runnable</b></em>' containment reference list.
@@ -1223,13 +1196,13 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int HW_PORTS__NAME = STANDARDCLASS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Portnumber</b></em>' attribute.
+	 * The feature id for the '<em><b>Portname</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_PORTS__PORTNUMBER = STANDARDCLASS_FEATURE_COUNT + 0;
+	int HW_PORTS__PORTNAME = STANDARDCLASS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>HW Ports</em>' class.
@@ -1269,13 +1242,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int HW_INPUT__NAME = HW_PORTS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Portnumber</b></em>' attribute.
+	 * The feature id for the '<em><b>Portname</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_INPUT__PORTNUMBER = HW_PORTS__PORTNUMBER;
+	int HW_INPUT__PORTNAME = HW_PORTS__PORTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Has OSPORTS IN</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_INPUT__HAS_OSPORTS_IN = HW_PORTS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>HW Input</em>' class.
@@ -1284,7 +1266,7 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_INPUT_FEATURE_COUNT = HW_PORTS_FEATURE_COUNT + 0;
+	int HW_INPUT_FEATURE_COUNT = HW_PORTS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>HW Input</em>' class.
@@ -1315,13 +1297,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int HW_OUTPUT__NAME = HW_PORTS__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Portnumber</b></em>' attribute.
+	 * The feature id for the '<em><b>Portname</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_OUTPUT__PORTNUMBER = HW_PORTS__PORTNUMBER;
+	int HW_OUTPUT__PORTNAME = HW_PORTS__PORTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Has OSPORTS OUT</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_OUTPUT__HAS_OSPORTS_OUT = HW_PORTS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>HW Output</em>' class.
@@ -1330,7 +1321,7 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HW_OUTPUT_FEATURE_COUNT = HW_PORTS_FEATURE_COUNT + 0;
+	int HW_OUTPUT_FEATURE_COUNT = HW_PORTS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>HW Output</em>' class.
@@ -1361,13 +1352,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int HW_INTERN__NAME = HW_INPUT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Portnumber</b></em>' attribute.
+	 * The feature id for the '<em><b>Portname</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_INTERN__PORTNUMBER = HW_INPUT__PORTNUMBER;
+	int HW_INTERN__PORTNAME = HW_INPUT__PORTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Has OSPORTS IN</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_INTERN__HAS_OSPORTS_IN = HW_INPUT__HAS_OSPORTS_IN;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1416,13 +1416,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int HW_EXTERN__NAME = HW_INPUT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Portnumber</b></em>' attribute.
+	 * The feature id for the '<em><b>Portname</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HW_EXTERN__PORTNUMBER = HW_INPUT__PORTNUMBER;
+	int HW_EXTERN__PORTNAME = HW_INPUT__PORTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Has OSPORTS IN</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HW_EXTERN__HAS_OSPORTS_IN = HW_INPUT__HAS_OSPORTS_IN;
 
 	/**
 	 * The feature id for the '<em><b>Pinnumber</b></em>' attribute.
@@ -1471,13 +1480,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int MOTOR__NAME = HW_OUTPUT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Portnumber</b></em>' attribute.
+	 * The feature id for the '<em><b>Portname</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MOTOR__PORTNUMBER = HW_OUTPUT__PORTNUMBER;
+	int MOTOR__PORTNAME = HW_OUTPUT__PORTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Has OSPORTS OUT</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOTOR__HAS_OSPORTS_OUT = HW_OUTPUT__HAS_OSPORTS_OUT;
 
 	/**
 	 * The number of structural features of the '<em>Motor</em>' class.
@@ -1517,13 +1535,22 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int DISPLAY__NAME = HW_OUTPUT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Portnumber</b></em>' attribute.
+	 * The feature id for the '<em><b>Portname</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISPLAY__PORTNUMBER = HW_OUTPUT__PORTNUMBER;
+	int DISPLAY__PORTNAME = HW_OUTPUT__PORTNAME;
+
+	/**
+	 * The feature id for the '<em><b>Has OSPORTS OUT</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY__HAS_OSPORTS_OUT = HW_OUTPUT__HAS_OSPORTS_OUT;
 
 	/**
 	 * The number of structural features of the '<em>Display</em>' class.
@@ -1600,6 +1627,89 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.OSPortINImpl <em>OS Port IN</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.OSPortINImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getOSPortIN()
+	 * @generated
+	 */
+	int OS_PORT_IN = 29;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_PORT_IN__NAME = RECEIVER_PORTS__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Blockierend</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_PORT_IN__BLOCKIEREND = RECEIVER_PORTS__BLOCKIEREND;
+
+	/**
+	 * The number of structural features of the '<em>OS Port IN</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_PORT_IN_FEATURE_COUNT = RECEIVER_PORTS_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>OS Port IN</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_PORT_IN_OPERATION_COUNT = RECEIVER_PORTS_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.impl.OSPortOUTImpl <em>OS Port OUT</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.impl.OSPortOUTImpl
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getOSPortOUT()
+	 * @generated
+	 */
+	int OS_PORT_OUT = 30;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_PORT_OUT__NAME = SENDER_PORTS__NAME;
+
+	/**
+	 * The number of structural features of the '<em>OS Port OUT</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_PORT_OUT_FEATURE_COUNT = SENDER_PORTS_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>OS Port OUT</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OS_PORT_OUT_OPERATION_COUNT = SENDER_PORTS_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link shootingmachineemfmodel.HWType <em>HW Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1607,7 +1717,18 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getHWType()
 	 * @generated
 	 */
-	int HW_TYPE = 29;
+	int HW_TYPE = 31;
+
+
+	/**
+	 * The meta object id for the '{@link shootingmachineemfmodel.HWPort <em>HW Port</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see shootingmachineemfmodel.HWPort
+	 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getHWPort()
+	 * @generated
+	 */
+	int HW_PORT = 32;
 
 
 	/**
@@ -1662,17 +1783,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getComponent();
-
-	/**
-	 * Returns the meta object for the reference list '{@link shootingmachineemfmodel.Component#getHasHWPortsComponent <em>Has HW Ports Component</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Has HW Ports Component</em>'.
-	 * @see shootingmachineemfmodel.Component#getHasHWPortsComponent()
-	 * @see #getComponent()
-	 * @generated
-	 */
-	EReference getComponent_HasHWPortsComponent();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link shootingmachineemfmodel.Component#getHasRunnable <em>Has Runnable</em>}'.
@@ -2216,15 +2326,15 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EClass getHWPorts();
 
 	/**
-	 * Returns the meta object for the attribute '{@link shootingmachineemfmodel.HWPorts#getPortnumber <em>Portnumber</em>}'.
+	 * Returns the meta object for the attribute '{@link shootingmachineemfmodel.HWPorts#getPortname <em>Portname</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Portnumber</em>'.
-	 * @see shootingmachineemfmodel.HWPorts#getPortnumber()
+	 * @return the meta object for the attribute '<em>Portname</em>'.
+	 * @see shootingmachineemfmodel.HWPorts#getPortname()
 	 * @see #getHWPorts()
 	 * @generated
 	 */
-	EAttribute getHWPorts_Portnumber();
+	EAttribute getHWPorts_Portname();
 
 	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.HWInput <em>HW Input</em>}'.
@@ -2237,6 +2347,17 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EClass getHWInput();
 
 	/**
+	 * Returns the meta object for the reference '{@link shootingmachineemfmodel.HWInput#getHas_OSPORTS_IN <em>Has OSPORTS IN</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Has OSPORTS IN</em>'.
+	 * @see shootingmachineemfmodel.HWInput#getHas_OSPORTS_IN()
+	 * @see #getHWInput()
+	 * @generated
+	 */
+	EReference getHWInput_Has_OSPORTS_IN();
+
+	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.HWOutput <em>HW Output</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2245,6 +2366,17 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getHWOutput();
+
+	/**
+	 * Returns the meta object for the reference '{@link shootingmachineemfmodel.HWOutput#getHas_OSPORTS_OUT <em>Has OSPORTS OUT</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Has OSPORTS OUT</em>'.
+	 * @see shootingmachineemfmodel.HWOutput#getHas_OSPORTS_OUT()
+	 * @see #getHWOutput()
+	 * @generated
+	 */
+	EReference getHWOutput_Has_OSPORTS_OUT();
 
 	/**
 	 * Returns the meta object for class '{@link shootingmachineemfmodel.HWIntern <em>HW Intern</em>}'.
@@ -2341,6 +2473,26 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EAttribute getMessage_MyMessage();
 
 	/**
+	 * Returns the meta object for class '{@link shootingmachineemfmodel.OSPortIN <em>OS Port IN</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>OS Port IN</em>'.
+	 * @see shootingmachineemfmodel.OSPortIN
+	 * @generated
+	 */
+	EClass getOSPortIN();
+
+	/**
+	 * Returns the meta object for class '{@link shootingmachineemfmodel.OSPortOUT <em>OS Port OUT</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>OS Port OUT</em>'.
+	 * @see shootingmachineemfmodel.OSPortOUT
+	 * @generated
+	 */
+	EClass getOSPortOUT();
+
+	/**
 	 * Returns the meta object for enum '{@link shootingmachineemfmodel.HWType <em>HW Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2349,6 +2501,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getHWType();
+
+	/**
+	 * Returns the meta object for enum '{@link shootingmachineemfmodel.HWPort <em>HW Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>HW Port</em>'.
+	 * @see shootingmachineemfmodel.HWPort
+	 * @generated
+	 */
+	EEnum getHWPort();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2416,14 +2578,6 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass COMPONENT = eINSTANCE.getComponent();
-
-		/**
-		 * The meta object literal for the '<em><b>Has HW Ports Component</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPONENT__HAS_HW_PORTS_COMPONENT = eINSTANCE.getComponent_HasHWPortsComponent();
 
 		/**
 		 * The meta object literal for the '<em><b>Has Runnable</b></em>' containment reference list feature.
@@ -2874,12 +3028,12 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EClass HW_PORTS = eINSTANCE.getHWPorts();
 
 		/**
-		 * The meta object literal for the '<em><b>Portnumber</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Portname</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute HW_PORTS__PORTNUMBER = eINSTANCE.getHWPorts_Portnumber();
+		EAttribute HW_PORTS__PORTNAME = eINSTANCE.getHWPorts_Portname();
 
 		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.HWInputImpl <em>HW Input</em>}' class.
@@ -2892,6 +3046,14 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EClass HW_INPUT = eINSTANCE.getHWInput();
 
 		/**
+		 * The meta object literal for the '<em><b>Has OSPORTS IN</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HW_INPUT__HAS_OSPORTS_IN = eINSTANCE.getHWInput_Has_OSPORTS_IN();
+
+		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.HWOutputImpl <em>HW Output</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2900,6 +3062,14 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass HW_OUTPUT = eINSTANCE.getHWOutput();
+
+		/**
+		 * The meta object literal for the '<em><b>Has OSPORTS OUT</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HW_OUTPUT__HAS_OSPORTS_OUT = eINSTANCE.getHWOutput_Has_OSPORTS_OUT();
 
 		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.HWInternImpl <em>HW Intern</em>}' class.
@@ -2984,6 +3154,26 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EAttribute MESSAGE__MY_MESSAGE = eINSTANCE.getMessage_MyMessage();
 
 		/**
+		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.OSPortINImpl <em>OS Port IN</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see shootingmachineemfmodel.impl.OSPortINImpl
+		 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getOSPortIN()
+		 * @generated
+		 */
+		EClass OS_PORT_IN = eINSTANCE.getOSPortIN();
+
+		/**
+		 * The meta object literal for the '{@link shootingmachineemfmodel.impl.OSPortOUTImpl <em>OS Port OUT</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see shootingmachineemfmodel.impl.OSPortOUTImpl
+		 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getOSPortOUT()
+		 * @generated
+		 */
+		EClass OS_PORT_OUT = eINSTANCE.getOSPortOUT();
+
+		/**
 		 * The meta object literal for the '{@link shootingmachineemfmodel.HWType <em>HW Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2992,6 +3182,16 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum HW_TYPE = eINSTANCE.getHWType();
+
+		/**
+		 * The meta object literal for the '{@link shootingmachineemfmodel.HWPort <em>HW Port</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see shootingmachineemfmodel.HWPort
+		 * @see shootingmachineemfmodel.impl.ShootingmachineemfmodelPackageImpl#getHWPort()
+		 * @generated
+		 */
+		EEnum HW_PORT = eINSTANCE.getHWPort();
 
 	}
 
