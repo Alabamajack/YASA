@@ -170,7 +170,7 @@ public class ShootingmachineemfmodelExample {
             		+"\t\t{\n"
             		+"\t\t\tAPPMODE = LEGOSAR;\n"
             		+"\t\t};\n"
-            		+"\t\tPRIORITY = 8;\n"
+            		+"\t\tPRIORITY = 7;\n"
             		+"\t\tACTIVATION = 1\n"
             		+"\t\tSCHEDULE = FULL\n"
             		+"\t\tSTACKSIZE = 512\n"
@@ -182,7 +182,7 @@ public class ShootingmachineemfmodelExample {
             		+"\t\t{\n"
             		+"\t\t\tAPPMODE = LEGOSAR;\n"
             		+"\t\t};\n"
-            		+"\t\tPRIORITY = 8;\n"
+            		+"\t\tPRIORITY = 7;\n"
             		+"\t\tACTIVATION = 1\n"
             		+"\t\tSCHEDULE = FULL\n"
             		+"\t\tSTACKSIZE = 512\n"
@@ -340,7 +340,8 @@ public class ShootingmachineemfmodelExample {
         cFileBeginn = "#include \"kernel.h\"\n"
                 + "#include \"kernel_id.h\"\n"
                 + "#include \"ecrobot_interface.h\"\n"
-                + "#include \"ecrobot_bluetooth.h\"\n\n";
+                + "#include \"ecrobot_bluetooth.h\"\n"
+                + "#include \"YASA_generated_variables.h\"\n\n";
 
 
         cFileDeclareInitHook = "DeclareTask(InitHook);\n";
@@ -804,7 +805,7 @@ public class ShootingmachineemfmodelExample {
                  */
                 List<String> comstrings = generateComService(mySystem,i);
 
-                File genvarfile = new File(Brickname + "\\YASA_generated_variables.c");
+                File genvarfile = new File(Brickname + "\\YASA_generated_variables.h");
                 if (!genvarfile.exists()) {
                 	genvarfile.createNewFile();
                     System.out.print("\tDatei YASA_generated_variables.c erstellt\n");
