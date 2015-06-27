@@ -1,4 +1,4 @@
-char msg[128] = {0};
+char msg[MAX_MESSAGE_LENGHT] = {0};
 /* blockierender Aufruf */
 RTE_Output_GetValue_Event_In();
 /* blockierender Aufruf */

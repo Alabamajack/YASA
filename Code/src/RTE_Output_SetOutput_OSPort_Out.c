@@ -3,6 +3,7 @@
 #include "YASA_types.h"
 #include "ecrobot_interface.h"
 #include <string.h>
+#inlcude "YASA_generated_variables.h"
 /** @file RTE_Output_SetOutput_OSPort_Out.c
  *
  * Aufruf einer Funktion, die Ausgaben macht.

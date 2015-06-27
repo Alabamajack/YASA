@@ -2,6 +2,7 @@
 #include "kernel_id.h"
 #include "YASA_types.h"
 #include "ecrobot_interface.h"
+#inlcude "YASA_generated_variables.h"
 /** @file RTE_SchussMotor_SetOutputValue_OSPort_Out.c
  *
  * Abstraktion um auf die Output-Hardware zuzugreifen. hier: Zugriff auf Motor. 

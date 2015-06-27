@@ -2,6 +2,7 @@
 #include "kernel_id.h"
 #include "YASA_types.h"
 #include "ecrobot_interface.h"
+#inlcude "YASA_generated_variables.h"
 /** @file RTE_StartTrigger_GetSensorValue_OSPort_In.c
  *
  * Kommuniziert mit aussen und gibt an ob von aussen getriggert worden ist oder nicht. Einfachster Fall ist ein Taster, komplizierterer Fall ist z.B. ein Ultraschallsensor dessen Output aber auch auf einen diskreten Wert runtergebrochen werden muss.
