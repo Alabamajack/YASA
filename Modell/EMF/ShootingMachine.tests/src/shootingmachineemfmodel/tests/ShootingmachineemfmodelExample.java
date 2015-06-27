@@ -426,8 +426,6 @@ public class ShootingmachineemfmodelExample {
 
         System.out.print("\t\tBT_INTERFACE hinzugefuegt\n");
 
-        /*Noch nicht fertig, da in Dateien BT_IMPLIZIT_MASTER/SLAVE viel Grampf drinsteht
-
 
         if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
         {
@@ -439,7 +437,6 @@ public class ShootingmachineemfmodelExample {
         	cFileBTImplizit = copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_SLAVE.c") + "\n";
         	System.out.print("\t\tBT_IMPLIZIT_SLAVE hinzuegfuegt\n");
         }
-        */
 
 
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
