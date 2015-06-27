@@ -1,32 +1,14 @@
-Allgeimein: Upper & Lower Bounds checken.
+Maggee:
 
-für die Codegenerierung:
-
-1x Task.c -> C file für Brick
-1x Task.oil -> oil file für einen brick
-1x genarted_variables.h -> muss überall am Anfang eingebunden werden, defines etc.
-1x YASA_generated.c
-
-
-Inhalt Task.c:
-
-	ComService einfach reinkopieren(BT_Interface.c)
-	if Master:
-		BT_master reinkopieren
-	sonst slave
+	- Tim helfen SenderReceiver
+	- 
+Tim :
+	-SenderReceiver port
+	- trennung von variablen/Events und Deklaration
 	
-Inhalt YASA_generated.c
-	implementierung der RTE-funktionen
+flo:
+	EMF modell nochmal nachbauen im astah
 	
-Inhalt generated_variables.h
-
-
-	
-		
-		
-		
-		
-alleEvents die gesetzt werden müssen:
-
-- BT_SEND_MY_MESSAGE -> gehört zu BT_SLAVE oder BT_Master
-- BT_HAS_RECEIVED_PACKAGE -> gehört zu TASK_BT_INTERFACE_READER -> wird gesettz von BT_SLAVE oder BT_MASTER
+Fipsi:
+Unterscheidung welcher PortTyp: Eventport oder SenderReceiver -> kein else 
+rumkopieren von den Strings, die aus generatedynamicc zurückkommen
