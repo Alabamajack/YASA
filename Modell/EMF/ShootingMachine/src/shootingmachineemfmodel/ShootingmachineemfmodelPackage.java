@@ -1004,7 +1004,7 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	int CONNECTIONS__HAS_SENDER_PORTS = STANDARDCLASS_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Has Inter Brick Communication System</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Has Inter Brick Communication System</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2197,10 +2197,10 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 	EReference getConnections_HasSenderPorts();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link shootingmachineemfmodel.Connections#getHasInterBrickCommunicationSystem <em>Has Inter Brick Communication System</em>}'.
+	 * Returns the meta object for the containment reference '{@link shootingmachineemfmodel.Connections#getHasInterBrickCommunicationSystem <em>Has Inter Brick Communication System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Has Inter Brick Communication System</em>'.
+	 * @return the meta object for the containment reference '<em>Has Inter Brick Communication System</em>'.
 	 * @see shootingmachineemfmodel.Connections#getHasInterBrickCommunicationSystem()
 	 * @see #getConnections()
 	 * @generated
@@ -2926,7 +2926,7 @@ public interface ShootingmachineemfmodelPackage extends EPackage {
 		EReference CONNECTIONS__HAS_SENDER_PORTS = eINSTANCE.getConnections_HasSenderPorts();
 
 		/**
-		 * The meta object literal for the '<em><b>Has Inter Brick Communication System</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Has Inter Brick Communication System</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

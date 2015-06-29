@@ -69,7 +69,7 @@ Package shootingmachineemfmodel <http://shootingmachineemfmodel/1.0>
   Class Connections -> Standardclass
     Reference hasReceiverPorts : ReceiverPorts<<1..*>>
     Reference hasSenderPorts : SenderPorts<<1..1>>
-    Reference hasInterBrickCommunicationSystem : InterBrickCommunication<<0..2>>
+    Reference hasInterBrickCommunicationSystem : InterBrickCommunication
     Reference hasMessage : Message<<1..1>>
 
   Class Runnable -> Standardclass

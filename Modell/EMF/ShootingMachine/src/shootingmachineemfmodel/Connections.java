@@ -67,20 +67,30 @@ public interface Connections extends Standardclass {
 	void setHasSenderPorts(SenderPorts value);
 
 	/**
-	 * Returns the value of the '<em><b>Has Inter Brick Communication System</b></em>' containment reference list.
-	 * The list contents are of type {@link shootingmachineemfmodel.InterBrickCommunication}.
+	 * Returns the value of the '<em><b>Has Inter Brick Communication System</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Has Inter Brick Communication System</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Inter Brick Communication System</em>' containment reference list.
+	 * @return the value of the '<em>Has Inter Brick Communication System</em>' containment reference.
+	 * @see #setHasInterBrickCommunicationSystem(InterBrickCommunication)
 	 * @see shootingmachineemfmodel.ShootingmachineemfmodelPackage#getConnections_HasInterBrickCommunicationSystem()
-	 * @model containment="true" upper="2"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<InterBrickCommunication> getHasInterBrickCommunicationSystem();
+	InterBrickCommunication getHasInterBrickCommunicationSystem();
+
+	/**
+	 * Sets the value of the '{@link shootingmachineemfmodel.Connections#getHasInterBrickCommunicationSystem <em>Has Inter Brick Communication System</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Has Inter Brick Communication System</em>' containment reference.
+	 * @see #getHasInterBrickCommunicationSystem()
+	 * @generated
+	 */
+	void setHasInterBrickCommunicationSystem(InterBrickCommunication value);
 
 	/**
 	 * Returns the value of the '<em><b>Has Message</b></em>' containment reference.

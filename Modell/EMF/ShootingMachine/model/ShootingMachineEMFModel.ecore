@@ -68,7 +68,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasSenderPorts" lowerBound="1"
         eType="#//SenderPorts"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasInterBrickCommunicationSystem"
-        upperBound="2" eType="#//InterBrickCommunication" containment="true"/>
+        eType="#//InterBrickCommunication" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hasMessage" lowerBound="1"
         eType="#//Message" containment="true"/>
   </eClassifiers>

@@ -12,10 +12,67 @@ DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
 DeclareEvent(BT_SEND_MY_MESSAGE)
 DeclareTask(SchussanlagenTask);
 
+DeclareTask(Output);
 
+DeclareTask(StopSensor);
+
+
+
+//Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
+DeclareEvent(RTE_Schussanlage_StopSensor_GetValue_Event_In_EVENT);
+DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+U8 RTE_Trigger_GetValue_Receiver_In_SPEICHER;
+DeclareEvent(RTE_Output_GetValue_Receiver_In_EVENT);
+
+inline std_return RTE_Schussanlage_SendMessage_Sender_Out()
+{
+	RTE_Trigger_GetValue_Receiver_In_SPEICHER = *a;
+	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Trigger_GetValue_Receiver_In_EVENT);
+}
+
+inline std_return RTE_Schussanlage_StopSensor_GetValue_Event_In(uint8_t *a)
+{
+	EventMaskType event = 0;
+	GetEvent(SchussanlagenTask,&event);
+	if(event & RTE_Schussanlage_StopSensor_GetValue_Event_In_EVENT)
+	{
+		ClearEvent(RTE_Schussanlage_StopSensor_GetValue_Event_In_EVENT);
+		*a= 1;
+	}
+	else
+		*a= 0;
+	}
+}
+
+inline std_return RTE_Output_GetValue_Receiver_In(uint8_t *a)
+{
+	EventMaskType event = 0;
+	GetEvent(Output,&event);
+	if(event & RTE_Output_GetValue_Receiver_In_EVENT)
+	{
+		ClearEvent(RTE_Output_GetValue_Receiver_In_EVENT);
+		*a = strcpy(COMSERVICE_transmit_package[null]));
+	}
+}
 
 //Schussanlage_Runnable
 void Schussanlage_Runnable()
+{
+asdjkahsfdjklahsfjksdhfg+
+sdfgdukfgklsfdgjklg
+
+}
+
+//Output_Runnable
+void Output_Runnable()
+{
+asdjkahsfdjklahsfjksdhfg+
+sdfgdukfgklsfdgjklg
+
+}
+
+//StopSensor_Runnable
+void StopSensor_Runnable()
 {
 asdjkahsfdjklahsfjksdhfg+
 sdfgdukfgklsfdgjklg
@@ -85,6 +142,22 @@ TASK(SchussanlagenTask)
 	while(1)
 	{
 		Schussanlage_Runnable();
+	}
+	TerminateTask();
+}
+TASK(Output)
+{
+	while(1)
+	{
+		Output_Runnable();
+	}
+	TerminateTask();
+}
+TASK(StopSensor)
+{
+	while(1)
+	{
+		StopSensor_Runnable();
 	}
 	TerminateTask();
 }

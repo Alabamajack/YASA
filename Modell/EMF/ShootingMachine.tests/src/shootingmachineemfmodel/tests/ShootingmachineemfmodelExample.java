@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import shootingmachineemfmodel.Client;
 import shootingmachineemfmodel.Display;
 import shootingmachineemfmodel.GetEvent;
 import shootingmachineemfmodel.HWExtern;
@@ -23,6 +24,7 @@ import shootingmachineemfmodel.Motor;
 import shootingmachineemfmodel.Receiver;
 import shootingmachineemfmodel.SendEvent;
 import shootingmachineemfmodel.Sender;
+import shootingmachineemfmodel.Server;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.ToplevelSystem;
 //import shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl;
@@ -138,12 +140,12 @@ public class ShootingmachineemfmodelExample {
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
         	shootingmachineemfmodel.Task actualTask = mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j);
-            oilFileTask = "\tTASK " + actualTask.getName() + "\n"
+            oilFileTask += "\tTASK " + actualTask.getName() + "\n"
                     + "\t{\n";
             //Wenn AUTOSTART true ist:
             if (actualTask.isAUTOSTART() == true)
             {
-                oilFileTask = oilFileTask + "\t\tAUTOSTART = TRUE\n"
+                oilFileTask += oilFileTask + "\t\tAUTOSTART = TRUE\n"
                         + "\t\t{\n"
                         + "\t\t\tAPPMODE = LEGOSAR;\n"
                         + "\t\t};\n";
@@ -151,16 +153,16 @@ public class ShootingmachineemfmodelExample {
             //AUTOSTART false
             else
             {
-                oilFileTask = oilFileTask + "\t\tAUTOSTART = FALSE;\n";
+                oilFileTask += "\t\tAUTOSTART = FALSE;\n";
             }
-            oilFileTask = oilFileTask + "\t\tPRIORITY = " + actualTask.getPRIORITY() + ";\n"
+            oilFileTask += "\t\tPRIORITY = " + actualTask.getPRIORITY() + ";\n"
                     + "\t\tACIVATION = " + actualTask.getACTIVATION() + ";\n"
                     + "\t\tSCHEDULE = FULL;\n"
                     + "\t\tSTACKSIZE = 512;\n";
 
             System.out.print("\t\tTASK " + actualTask.getName() + " in Datei " + Brickname +".oil hinzugefuegt\n");
 
-            oilFileInitHook = "\tTASK InitHook\n"
+            oilFileInitHook = "\tTASK InitHook\n" //Hier kein +=, weil es nur einmal pro Datei und nicht einmal pro Task eingefuegt werden soll
             		+"\t{\n"
             		+"\t\tAUTOSTART = TRUE\n"
             		+"\t\t{\n"
@@ -174,7 +176,7 @@ public class ShootingmachineemfmodelExample {
 
             System.out.print("\t\tImpliziten Task InitHook hinzugefuegt.\n");
 
-            oilFileBTInterface = "\tTASK TASK_BT_INTERFACE_READER\n"
+            oilFileBTInterface = "\tTASK TASK_BT_INTERFACE_READER\n"  //Hier kein +=, weil es nur einmal pro Datei und nicht einmal pro Task eingefuegt werden soll
             		+ "\t{\n"
             		+"\t\tAUTOSTART = TRUE\n"
             		+"\t\t{\n"
@@ -202,12 +204,12 @@ public class ShootingmachineemfmodelExample {
 
             if (mySystem.getHasBrick().get(Brickindex).isIsMaster())
             {
-            	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_MASTER\n";
+            	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_MASTER\n";  //Hier kein +=, weil es nur einmal pro Datei und nicht einmal pro Task eingefuegt werden soll
             	System.out.print("\t\tBT_MASTER hinzugefuegt.\n");
             }
             else
             {
-            	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_SLAVE\n";
+            	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_SLAVE\n";  //Hier kein +=, weil es nur einmal pro Datei und nicht einmal pro Task eingefuegt werden soll
             	System.out.print("\t\tBT_SLAVE hinzugefuegt\n");
             }
             oilFileBTImplizit += "\t{\n"
@@ -226,15 +228,15 @@ public class ShootingmachineemfmodelExample {
             //EVENTS die zu den TASKS gehoeren
             for(int k = 0; k < actualTask.getHasEvent().size(); k++)
             {
-                oilFileTask = oilFileTask + "\t\tEVENT = " + actualTask.getHasEvent().get(k).getName() + ";\n";
+                oilFileTask += "\t\tEVENT = " + actualTask.getHasEvent().get(k).getName() + ";\n";
             }
-            oilFileTask = oilFileTask + "\t};\n\n";
+            oilFileTask += "\t};\n\n";
 
 
             //for Schleife für ALARME
             for(int k = 0; k < actualTask.getHasAlarm().size(); k++)
             {
-                oilFileAlarm = "\tALARM " + actualTask.getHasAlarm().get(k).getName() + "\n"
+                oilFileAlarm += "\tALARM " + actualTask.getHasAlarm().get(k).getName() + "\n"
                         + "\t{\n"
                         + "\t\tCOUNTER = " + actualTask.getHasAlarm().get(k).getName() + ";\n"
                         + "\t\tACTION = ACTIVATETASK\n"
@@ -244,7 +246,7 @@ public class ShootingmachineemfmodelExample {
                 //AUTOSTART ist true
                 if(actualTask.getHasAlarm().get(k).isAUTOSTART() == true)
                 {
-                    oilFileAlarm = oilFileAlarm + "\t\tAUTOSTART = TRUE\n"
+                    oilFileAlarm += oilFileAlarm + "\t\tAUTOSTART = TRUE\n"
                             + "\t\t{\n"
                             + "\t\t\tALARMTIME = " + actualTask.getHasAlarm().get(k).getALARMTIME() + ";\n"
                             + "\t\t\tCYCLETIME = " + actualTask.getHasAlarm().get(k).getCYCLETIME() + ";\n"
@@ -254,12 +256,12 @@ public class ShootingmachineemfmodelExample {
                 //AUTOSTART ist false
                 else
                 {
-                    oilFileAlarm = oilFileAlarm + "\t\tAUTOSTART = FALSE;\n";
+                    oilFileAlarm += "\t\tAUTOSTART = FALSE;\n";
                 }
-                oilFileAlarm = oilFileAlarm + "\t};\n\n";
+                oilFileAlarm += "\t};\n\n";
 
                 //pro ALARM 1 Counter erstellen
-                oilFileCounter = "\tCOUNTER C_" + actualTask.getHasAlarm().get(k).getName() + "\n"
+                oilFileCounter += "\tCOUNTER C_" + actualTask.getHasAlarm().get(k).getName() + "\n"
                         + "\t{\n"
                         + "\t\tMINCYCLE = " + actualTask.getHasAlarm().get(k).getMINCYCLE() + ";\n"
                         + "\t\tMAXALLOWEDVALUE = " + actualTask.getHasAlarm().get(k).getMAXALLOWEDVALUE() + ";\n"
@@ -278,7 +280,7 @@ public class ShootingmachineemfmodelExample {
         for (int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasEventBrick().size(); j++)
         {
         	shootingmachineemfmodel.Event actualEvent = mySystem.getHasBrick().get(Brickindex).getHasEventBrick().get(j);
-            oilFileEvent = "\tEVENT " + actualEvent.getName() + "\n"
+            oilFileEvent += "\tEVENT " + actualEvent.getName() + "\n"
                     + "\t{\n"
                     + "\t\tMASK = AUTO;\n"
                     + "\t};\n\n";
@@ -287,7 +289,7 @@ public class ShootingmachineemfmodelExample {
         }
 
         //Events zu Com-Service und BT_IMPLIZIT_MASTER/SLAVE hinzufuegen
-        oilFileBTEvents = "\tEVENT BT_HAS_RECEIVED_PACKAGE\n"
+        oilFileBTEvents += "\tEVENT BT_HAS_RECEIVED_PACKAGE\n"
         		+"\t{\n"
         		+"\t\tMASK = AUTO;\n"
         		+"\t};\n\n"
@@ -302,7 +304,7 @@ public class ShootingmachineemfmodelExample {
         {
         	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
         	{
-                oilFileEvent = "\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT\n"
+                oilFileEvent += "\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT\n"
                         + "\t{\n"
                         + "\t\tMASK = AUTO;\n"
                         + "\t};\n\n";
@@ -347,39 +349,39 @@ public class ShootingmachineemfmodelExample {
 
 
 
-        cFileBeginn = "#include \"kernel.h\"\n"
+        cFileBeginn += "#include \"kernel.h\"\n"
                 + "#include \"kernel_id.h\"\n"
                 + "#include \"ecrobot_interface.h\"\n"
                 + "#include \"ecrobot_bluetooth.h\"\n"
                 + "#include \"YASA_generated_variables.h\"\n\n";
 
 
-        cFileDeclareInitHook = "DeclareTask(InitHook);\n";
-        cFileDeclareBTInterface = "DeclareTask(TASK_BT_INTERFACE_READER);\n"
+        cFileDeclareInitHook += "DeclareTask(InitHook);\n";
+        cFileDeclareBTInterface += "DeclareTask(TASK_BT_INTERFACE_READER);\n"
         		+ "DeclareTask(TASK_BT_INTERFACE_WRITER);\n";
 
         if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
         {
-        	cFileDeclareBTImplizit = "DeclareTask(BT_IMPLIZIT_MASTER);\n";
+        	cFileDeclareBTImplizit += "DeclareTask(BT_IMPLIZIT_MASTER);\n";
         }
         else
         {
-        	cFileDeclareBTImplizit = "DeclareTask(BT_IMPLIZIT_SLAVE);\n";
+        	cFileDeclareBTImplizit += "DeclareTask(BT_IMPLIZIT_SLAVE);\n";
         }
 
-        cFiledeclareBTEvents = "DeclareEvent(BT_HAS_RECEIVED_PACKAGE);\n"
+        cFiledeclareBTEvents += "DeclareEvent(BT_HAS_RECEIVED_PACKAGE);\n"
         		+"DeclareEvent(BT_SEND_MY_MESSAGE)\n";
 
         //For Schleife in welcher alle Tasks deklariert werden
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
-            cFileDeclareTask = "DeclareTask(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ");\n\n";
+            cFileDeclareTask += "DeclareTask(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ");\n\n";
 
 
             //For Schleife in welcher alle Alarme mit den zugehoerigen Countern deklariert werden
             for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().size(); k++)
             {
-                cFileDeclareAlarm = "DeclareAlarm(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + ");\n"
+                cFileDeclareAlarm += "DeclareAlarm(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + ");\n"
                         + "DeclareCounter(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + ");\n";
             }
         }
@@ -387,7 +389,7 @@ public class ShootingmachineemfmodelExample {
         //For Schleife in welcher alle Events deklariert werden
         for (int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasEventBrick().size(); j++)
         {
-            cFileDeclareEvent = "DeclareEvent(" + mySystem.getHasBrick().get(Brickindex).getHasEventBrick().get(j).getName() + ");\n";
+            cFileDeclareEvent += "DeclareEvent(" + mySystem.getHasBrick().get(Brickindex).getHasEventBrick().get(j).getName() + ");\n";
         }
 
 
@@ -397,8 +399,8 @@ public class ShootingmachineemfmodelExample {
 
             for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
             {
-            	System.out.print("hier" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName());
-                cFileRunnable = "//" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "\n"
+            	System.out.print("\t\thier " + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "\n");
+                cFileRunnable += "//" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "\n"
                 		+ "void " + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "()\n"
                         + "{\n"
                         + copyFiletoString(mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getApplicationcode())
@@ -407,7 +409,7 @@ public class ShootingmachineemfmodelExample {
             }
         }
 
-        cFileInitHook = "TASK(InitHook)\n"
+        cFileInitHook += "TASK(InitHook)\n"
         		+ "{\n";
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().size(); j++)
         {
@@ -431,38 +433,38 @@ public class ShootingmachineemfmodelExample {
         	{
         	}
         }
-        cFileInitHook = cFileInitHook + "}\n\n";
+        cFileInitHook += "}\n\n";
 
         //BT Tasks hinzufuegen
-        cFileBTInterface = copyFiletoString("..\\..\\..\\Code\\src\\BT_INTERFACE.c") + "\n";
+        cFileBTInterface += copyFiletoString("..\\..\\..\\Code\\src\\BT_INTERFACE.c") + "\n";
 
         System.out.print("\t\tBT_INTERFACE hinzugefuegt\n");
 
 
         if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
         {
-        	cFileBTImplizit = copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_MASTER.c") + "\n";
+        	cFileBTImplizit += copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_MASTER.c") + "\n";
         	System.out.print("\t\tBT_IMPLIZIT_MASTER hinzuegfuegt\n");
         }
         else
         {
-        	cFileBTImplizit = copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_SLAVE.c") + "\n";
+        	cFileBTImplizit += copyFiletoString("..\\..\\..\\Code\\src\\BT_IMPLIZIT_SLAVE.c") + "\n";
         	System.out.print("\t\tBT_IMPLIZIT_SLAVE hinzuegfuegt\n");
         }
 
 
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
         {
-        	cFileTask = "TASK(" +  mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ")\n"
+        	cFileTask += "TASK(" +  mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getName() + ")\n"
         			+ "{\n"
         			+ "\twhile(1)\n"
         			+ "\t{\n";
 
         	for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().size(); k++)
             {
-        		cFileTask = cFileTask + "\t\t" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "();\n";
+        		cFileTask +="\t\t" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasRunnable().get(k).getName() + "();\n";
             }
-        	cFileTask = cFileTask +  "\t}\n"
+        	cFileTask +=  "\t}\n"
         			+ "\tTerminateTask();\n"
         			+ "}\n";
         }
@@ -500,7 +502,7 @@ public class ShootingmachineemfmodelExample {
         for(int j = 0; j < mySystem.getHasConnections().size(); j++)
         {
         		//Aktueller Sender sendet zu anderem Brick und ist auf aktuellem Brick(zweiter Teil der Bedingung)
-        		if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem().size() == 1 && Brickindex == TaskBrick.get(RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasSenderPorts().getName()))))
+        		if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() != null && Brickindex == TaskBrick.get(RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasSenderPorts().getName()))))
         		{
         			try
                 	{
@@ -537,9 +539,24 @@ public class ShootingmachineemfmodelExample {
                 	{
 
                 	}
+        			try
+        			{
+        				shootingmachineemfmodel.Client myClient = (Client) mySystem.getHasConnections().get(j).getHasSenderPorts();
+        				/*
+	       				 *
+	       				 * Vorbereitung fuer Client/Server Kommunikation ueber 2 Bricks (hier Client)
+	       				 *
+	       				 *
+	       				 */
+	       				System.out.print("\t\tClient einer Client/Server Kommunikation ueber 2 Bricks\n");
+        			}
+        			catch(java.lang.ClassCastException e)
+        			{
+
+        			}
         		}
         		//Aktueller Port ist kein Sender, aber nicht zwingend Receiver der zu diesem Brick gehoert
-        		else if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem().size() == 1)
+        		else if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() == null)
         		{
         			//Ueber alle Receiver Ports des aktuellen Eintrags der Klasse iterieren
         			for(int l = 0; l < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();l++)
@@ -604,11 +621,27 @@ public class ShootingmachineemfmodelExample {
                         	{
 
                         	}
+                			try
+                			{
+                				shootingmachineemfmodel.Server myServer = (Server) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
+                				/*
+                				 *
+                				 *
+                				 * Vorbereitung fuer Client/Server Kommunikation ueber 2 Bricks (hier Server)
+                				 *
+                				 *
+                				 */
+                				System.out.print("\t\tServer einer Client/Server Kommunikation ueber 2 Bricks\n");
+                			}
+                			catch(java.lang.ClassCastException e)
+                			{
+
+                			}
         				}
         			}
         		}
         		//Kommunikation laeuft nur ueber einen Brick
-        		else if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem().size() == 0)
+        		else if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() == null)
         		{
         			//EVENT KOMMUNIKATION
         			try
@@ -727,6 +760,45 @@ public class ShootingmachineemfmodelExample {
         					}
                 		}
         			}
+        			try
+        			{
+        				shootingmachineemfmodel.Client myClient =  (Client) mySystem.getHasConnections().get(j).getHasSenderPorts();
+        				/*
+        				 *
+        				 *
+        				 * Vorbereitung fuer Client/Server Kommunikation ueber 1 Brick (hier Client)
+                		 *
+                		 *
+                		 */
+                		 System.out.print("\t\tClient einer Client/Server Kommunikation ueber 1 Brick\n");
+        			}
+        			catch(java.lang.ClassCastException e)
+        			{
+
+        			}
+        			for(int l = 0; l < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();l++)
+        			{
+        				if(Brickindex == TaskBrick.get(RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName()))))
+                		{
+        					try
+                        	{
+                        		//Aktueller Eintrag laesst sich nach SendEvent casten -> Kommunikation uber Events und aktueller Eintrag ist Sender
+                        		shootingmachineemfmodel.Server myServer =  (Server) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
+                        		/*
+                        		 *
+                        		 *
+                        		 * Vorbereitung fuer Client/Server Kommunikation ueber 1 Brick (hier Server)
+                        		 *
+                        		 *
+                        		 */
+                        		System.out.print("\t\tServer einer Sender-Receiver Kommunikation ueber 1 Brick\n");
+                        	}
+        					catch(java.lang.ClassCastException e)
+        					{
+
+        					}
+                		}
+        			}
         		}
         	}
 
@@ -754,7 +826,6 @@ public class ShootingmachineemfmodelExample {
 
         return retlist;
     }
-
 
     public static List<String> generateComService(ToplevelSystem mySystem, int Brickindex) throws IOException
     {
@@ -895,7 +966,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Magee\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
@@ -943,12 +1014,14 @@ public class ShootingmachineemfmodelExample {
 
             for(int i = 0; i < mySystem.getHasConnections().size(); i++)
             {
-            	for(int j = 0; j < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size(); j++)
+            	//for(int j = 0; j < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size(); j++)
+            	if(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem() != null)
             	{
-            		for(int k = 0; k < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().size(); k++)
+            		System.out.print("Test");
+            		for(int k = 0; k < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().getHasReceiverPort().size(); k++)
             		{
-            			if(!PortToID.containsKey(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().get(k).getName()))
-            				PortToID.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().get(j).getHasReceiverPort().get(k).getName(), i * j + k );
+            			if(!PortToID.containsKey(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().getHasReceiverPort().get(k).getName()))
+            				PortToID.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().getHasReceiverPort().get(k).getName(), i + k );
             		}
             	}
 
@@ -1019,6 +1092,45 @@ public class ShootingmachineemfmodelExample {
                 oilFileBuffer.close();
 
 
+                /*
+                *
+                * Dynamischen C-Code Erzeugen
+                *
+                *
+                */
+               List <String> dynamiccStrings = generatedynamiccFile(mySystem, i, Brickname);
+
+               //Dateipfad + Dateiname
+
+               /*
+                *
+                * File dynamiccFile wird im Moment nicht benoetigt und daher nicht erstellt. Der Inhalt ist jetzt in der Brickname.c Datei
+                *
+                */
+
+
+//               File gencFile = new File(Brickname + "\\YASA_generated.c");
+//
+//
+//               if (!gencFile.exists()) {
+//               	gencFile.createNewFile();
+//               }
+//
+//
+//               FileWriter gencFileWriter = new FileWriter(gencFile.getAbsoluteFile());
+//               BufferedWriter gencFileBuffer = new BufferedWriter(gencFileWriter);
+
+               String genc = dynamiccStrings.get(0);
+               String mySenderrtefunc = dynamiccStrings.get(1);
+               String myReceiverrtefunc = dynamiccStrings.get(2);
+
+
+//               gencFileBuffer.write(mySenderrtefunc);
+//               gencFileBuffer.write(myReceiverrtefunc);
+//
+//               gencFileBuffer.close();
+
+
 
                 /*
                  *
@@ -1040,39 +1152,30 @@ public class ShootingmachineemfmodelExample {
                 FileWriter cFileWriter = new FileWriter(cFile.getAbsoluteFile());
                 BufferedWriter cFileBuffer = new BufferedWriter(cFileWriter);
 
-                for(int listindex = 0; listindex < cStrings.size(); listindex ++)
-                {
-                	cFileBuffer.write(cStrings.get(listindex));
-                }
+                //Sry Flo mir ist nichts besseres eingefallen
+                cFileBuffer.write(cStrings.get(0));
+                cFileBuffer.write(cStrings.get(1));
+                cFileBuffer.write(cStrings.get(2));
+                cFileBuffer.write(cStrings.get(3));
+                cFileBuffer.write(cStrings.get(4));
+                cFileBuffer.write(cStrings.get(5));
+                cFileBuffer.write(cStrings.get(6));
+                cFileBuffer.write(cStrings.get(7));
+                cFileBuffer.write("\n//Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:\n");
+                cFileBuffer.write(genc);
+                cFileBuffer.write(mySenderrtefunc);
+                cFileBuffer.write(myReceiverrtefunc);
+                cFileBuffer.write(cStrings.get(8));
+                cFileBuffer.write(cStrings.get(9));
+                cFileBuffer.write(cStrings.get(10));
+                cFileBuffer.write(cStrings.get(11));
+                cFileBuffer.write(cStrings.get(12));
+                cFileBuffer.write(cStrings.get(13));
+                cFileBuffer.write(cStrings.get(14));
+
+
 
                 cFileBuffer.close();
-
-                /*
-                 *
-                 * Dynamischen C-Code Erzeugen
-                 *
-                 *
-                 */
-                List <String> dynamiccStrings = generatedynamiccFile(mySystem, i, Brickname);
-
-                //Dateipfad + Dateiname
-                File gencFile = new File(Brickname + "\\YASA_generated.c");
-
-
-                if (!gencFile.exists()) {
-                	gencFile.createNewFile();
-                }
-
-
-                FileWriter gencFileWriter = new FileWriter(gencFile.getAbsoluteFile());
-                BufferedWriter gencFileBuffer = new BufferedWriter(gencFileWriter);
-
-                for(int listindex = 0; listindex < dynamiccStrings.size(); listindex ++)
-                {
-                	gencFileBuffer.write(dynamiccStrings.get(listindex));
-                }
-
-                gencFileBuffer.close();
 
 
                 /*

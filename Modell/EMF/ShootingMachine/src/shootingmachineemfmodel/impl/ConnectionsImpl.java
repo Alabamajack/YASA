@@ -3,21 +3,13 @@
 package shootingmachineemfmodel.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import shootingmachineemfmodel.Connections;
 import shootingmachineemfmodel.InterBrickCommunication;
 import shootingmachineemfmodel.Message;
@@ -63,14 +55,14 @@ public class ConnectionsImpl extends StandardclassImpl implements Connections {
 	protected SenderPorts hasSenderPorts;
 
 	/**
-	 * The cached value of the '{@link #getHasInterBrickCommunicationSystem() <em>Has Inter Brick Communication System</em>}' containment reference list.
+	 * The cached value of the '{@link #getHasInterBrickCommunicationSystem() <em>Has Inter Brick Communication System</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getHasInterBrickCommunicationSystem()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InterBrickCommunication> hasInterBrickCommunicationSystem;
+	protected InterBrickCommunication hasInterBrickCommunicationSystem;
 
 	/**
 	 * The cached value of the '{@link #getHasMessage() <em>Has Message</em>}' containment reference.
@@ -156,11 +148,42 @@ public class ConnectionsImpl extends StandardclassImpl implements Connections {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<InterBrickCommunication> getHasInterBrickCommunicationSystem() {
-		if (hasInterBrickCommunicationSystem == null) {
-			hasInterBrickCommunicationSystem = new EObjectContainmentEList<InterBrickCommunication>(InterBrickCommunication.class, this, ShootingmachineemfmodelPackage.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM);
-		}
+	public InterBrickCommunication getHasInterBrickCommunicationSystem() {
 		return hasInterBrickCommunicationSystem;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetHasInterBrickCommunicationSystem(InterBrickCommunication newHasInterBrickCommunicationSystem, NotificationChain msgs) {
+		InterBrickCommunication oldHasInterBrickCommunicationSystem = hasInterBrickCommunicationSystem;
+		hasInterBrickCommunicationSystem = newHasInterBrickCommunicationSystem;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM, oldHasInterBrickCommunicationSystem, newHasInterBrickCommunicationSystem);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHasInterBrickCommunicationSystem(InterBrickCommunication newHasInterBrickCommunicationSystem) {
+		if (newHasInterBrickCommunicationSystem != hasInterBrickCommunicationSystem) {
+			NotificationChain msgs = null;
+			if (hasInterBrickCommunicationSystem != null)
+				msgs = ((InternalEObject)hasInterBrickCommunicationSystem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ShootingmachineemfmodelPackage.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM, null, msgs);
+			if (newHasInterBrickCommunicationSystem != null)
+				msgs = ((InternalEObject)newHasInterBrickCommunicationSystem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ShootingmachineemfmodelPackage.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM, null, msgs);
+			msgs = basicSetHasInterBrickCommunicationSystem(newHasInterBrickCommunicationSystem, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ShootingmachineemfmodelPackage.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM, newHasInterBrickCommunicationSystem, newHasInterBrickCommunicationSystem));
 	}
 
 	/**
@@ -215,7 +238,7 @@ public class ConnectionsImpl extends StandardclassImpl implements Connections {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ShootingmachineemfmodelPackage.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM:
-				return ((InternalEList<?>)getHasInterBrickCommunicationSystem()).basicRemove(otherEnd, msgs);
+				return basicSetHasInterBrickCommunicationSystem(null, msgs);
 			case ShootingmachineemfmodelPackage.CONNECTIONS__HAS_MESSAGE:
 				return basicSetHasMessage(null, msgs);
 		}
@@ -260,8 +283,7 @@ public class ConnectionsImpl extends StandardclassImpl implements Connections {
 				setHasSenderPorts((SenderPorts)newValue);
 				return;
 			case ShootingmachineemfmodelPackage.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM:
-				getHasInterBrickCommunicationSystem().clear();
-				getHasInterBrickCommunicationSystem().addAll((Collection<? extends InterBrickCommunication>)newValue);
+				setHasInterBrickCommunicationSystem((InterBrickCommunication)newValue);
 				return;
 			case ShootingmachineemfmodelPackage.CONNECTIONS__HAS_MESSAGE:
 				setHasMessage((Message)newValue);
@@ -285,7 +307,7 @@ public class ConnectionsImpl extends StandardclassImpl implements Connections {
 				setHasSenderPorts((SenderPorts)null);
 				return;
 			case ShootingmachineemfmodelPackage.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM:
-				getHasInterBrickCommunicationSystem().clear();
+				setHasInterBrickCommunicationSystem((InterBrickCommunication)null);
 				return;
 			case ShootingmachineemfmodelPackage.CONNECTIONS__HAS_MESSAGE:
 				setHasMessage((Message)null);
@@ -307,7 +329,7 @@ public class ConnectionsImpl extends StandardclassImpl implements Connections {
 			case ShootingmachineemfmodelPackage.CONNECTIONS__HAS_SENDER_PORTS:
 				return hasSenderPorts != null;
 			case ShootingmachineemfmodelPackage.CONNECTIONS__HAS_INTER_BRICK_COMMUNICATION_SYSTEM:
-				return hasInterBrickCommunicationSystem != null && !hasInterBrickCommunicationSystem.isEmpty();
+				return hasInterBrickCommunicationSystem != null;
 			case ShootingmachineemfmodelPackage.CONNECTIONS__HAS_MESSAGE:
 				return hasMessage != null;
 		}
