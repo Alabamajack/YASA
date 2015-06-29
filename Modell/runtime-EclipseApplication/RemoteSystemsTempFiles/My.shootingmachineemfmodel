@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <shootingmachineemfmodel:ToplevelSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:shootingmachineemfmodel="http://shootingmachineemfmodel/1.0" name="UnserTopLevelSystsem">
   <hasComponent xsi:type="shootingmachineemfmodel:SW_Component" name="Schussanlage">
-    <hasRunnable name="Schussanlage_Runnable" applicationcode="C:\Users\Philipp\Documents\YASA\Code\runnable\Output.c">
+    <hasRunnable name="Schussanlage_Runnable" applicationcode="C:\Users\Magee\Documents\YASA\Code\runnable\Output.c">
       <hasSWPorts xsi:type="shootingmachineemfmodel:GetEvent" name="RTE_Schussanlage_Trigger_GetValue_Event_In"/>
       <hasSWPorts xsi:type="shootingmachineemfmodel:Receiver" name="RTE_Schussanlage_Trigger_GetValue_Event_In"/>
     </hasRunnable>
   </hasComponent>
   <hasComponent xsi:type="shootingmachineemfmodel:SW_Component" name="Trigger">
-    <hasRunnable name="Trigger_Runnable" applicationcode="C:\Users\Philipp\Documents\YASA\Code\runnable\Output.c">
+    <hasRunnable name="Trigger_Runnable" applicationcode="C:\Users\Magee\Documents\YASA\Code\runnable\Output.c">
       <hasSWPorts xsi:type="shootingmachineemfmodel:SendEvent" name="RTE_Trigger_Schussanlage_SetEvent_Out"/>
       <hasSWPorts xsi:type="shootingmachineemfmodel:Sender" name="RTE_Schussanlage_Trigger_Sender"/>
+      <hasSWPorts xsi:type="shootingmachineemfmodel:GetEvent" name="RTE_Trigger_Schussanlage_GetValue_Event_In"/>
     </hasRunnable>
   </hasComponent>
   <hasBrick name="Master" IsMaster="true">
@@ -22,7 +23,7 @@
     <hasInterBrickCommunicationSystem name="InterBrickMasterSlave" hasIBCOut="//@hasBrick.1" hasIBCIn="//@hasBrick.0" hasReceiverPort="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.0" hasMessage="//@hasConnections.0/@hasMessage"/>
     <hasMessage name="test" myMessage="Testnachricht"/>
   </hasConnections>
-  <hasConnections hasReceiverPorts="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.1" hasSenderPorts="//@hasComponent.1/@hasRunnable.0/@hasSWPorts.1">
+  <hasConnections name="SenderReceivercom" hasReceiverPorts="//@hasComponent.1/@hasRunnable.0/@hasSWPorts.2" hasSenderPorts="//@hasComponent.1/@hasRunnable.0/@hasSWPorts.1">
     <hasInterBrickCommunicationSystem hasIBCOut="//@hasBrick.1" hasIBCIn="//@hasBrick.0" hasReceiverPort="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.1" hasMessage="//@hasConnections.1/@hasMessage"/>
     <hasMessage name="test1"/>
   </hasConnections>
