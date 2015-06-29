@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import shootingmachineemfmodel.Client;
 import shootingmachineemfmodel.Display;
 import shootingmachineemfmodel.GetEvent;
 import shootingmachineemfmodel.HWExtern;
@@ -23,6 +24,7 @@ import shootingmachineemfmodel.Motor;
 import shootingmachineemfmodel.Receiver;
 import shootingmachineemfmodel.SendEvent;
 import shootingmachineemfmodel.Sender;
+import shootingmachineemfmodel.Server;
 import shootingmachineemfmodel.ShootingmachineemfmodelPackage;
 import shootingmachineemfmodel.ToplevelSystem;
 //import shootingmachineemfmodel.util.ShootingmachineemfmodelResourceFactoryImpl;
@@ -510,7 +512,7 @@ public class ShootingmachineemfmodelExample {
         		{
         			try
                 	{
-                		//Aktueller Eintrag laesst sich nach SendEvent casten -> Kommunikation uber Events und aktueller Brick ist Sender
+                		//Aktueller Eintrag laesst sich nach SendEvent casten -> Kommunikation ueber Events und aktueller Brick ist Sender
                 		shootingmachineemfmodel.SendEvent myEventSender =  (SendEvent) mySystem.getHasConnections().get(j).getHasSenderPorts();
                 		mySenderrtefunc = mySenderrtefunc + "\ninline std_return " + myEventSender.getName() + "(char *a)\n{\n";
             			for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size(); k++)
@@ -540,6 +542,22 @@ public class ShootingmachineemfmodelExample {
                 	{
 
                 	}
+        			try
+        			{
+        				//Aktueller Eintrag laesst sich nach Client casten -> Kommunikation ueber Client/Server und aktueller Brick ist Client
+        				shootingmachineemfmodel.Client myClient = (Client) mySystem.getHasConnections().get(j).getHasSenderPorts();
+        				/*
+        				 *
+        				 * Vorbereitung fuer Client/Server Kommunikation ueber 2 Bricks (hier Client)
+        				 *
+        				 *
+        				 */
+        				System.out.print("\t\tClient einer Client/Server Kommunikation ueber 2 Bricks\n");
+        			}
+        			catch(java.lang.ClassCastException e)
+        			{
+
+        			}
         		}
         		//Aktueller Port ist kein Sender, aber nicht zwingend Receiver der zu diesem Brick gehoert
         		else if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem().size() == 1)
@@ -605,6 +623,22 @@ public class ShootingmachineemfmodelExample {
                         	{
 
                         	}
+                			try
+                			{
+                				shootingmachineemfmodel.Server myServer = (Server) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
+                				/*
+                				 *
+                				 *
+                				 * Vorbereitung fuer Client/Server Kommunikation ueber 2 Bricks (hier Server)
+                				 *
+                				 *
+                				 */
+                				System.out.print("\t\tServer einer Client/Server Kommunikation ueber 2 Bricks\n");
+                			}
+                			catch(java.lang.ClassCastException e)
+                			{
+
+                			}
         				}
         			}
         		}
@@ -717,12 +751,52 @@ public class ShootingmachineemfmodelExample {
         					}
                 		}
         			}
+        			try
+        			{
+        				shootingmachineemfmodel.Client myClient =  (Client) mySystem.getHasConnections().get(j).getHasSenderPorts();
+        				/*
+        				 *
+        				 *
+        				 * Vorbereitung fuer Client/Server Kommunikation ueber 1 Brick (hier Client)
+                		 *
+                		 *
+                		 */
+                		 System.out.print("\t\tClient einer Client/Server Kommunikation ueber 1 Brick\n");
+        			}
+        			catch(java.lang.ClassCastException e)
+        			{
+
+        			}
+        			for(int l = 0; l < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();l++)
+        			{
+        				if(Brickindex == TaskBrick.get(RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName()))))
+                		{
+        					try
+                        	{
+                        		//Aktueller Eintrag laesst sich nach SendEvent casten -> Kommunikation uber Events und aktueller Eintrag ist Sender
+                        		shootingmachineemfmodel.Server myServer =  (Server) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
+                        		/*
+                        		 *
+                        		 *
+                        		 * Vorbereitung fuer Client/Server Kommunikation ueber 1 Brick (hier Server)
+                        		 *
+                        		 *
+                        		 */
+                        		System.out.print("\t\tServer einer Sender-Receiver Kommunikation ueber 1 Brick\n");
+                        	}
+        					catch(java.lang.ClassCastException e)
+        					{
+
+        					}
+                		}
+        			}
         		}
         	}
 
-		System.out.print(genc);
-		System.out.print(mySenderrtefunc);
-		System.out.print(myReceiverrtefunc);
+        //Gib doch nicht immer so Riesen Strings aus Magee ;)
+		//System.out.print(genc);
+		//System.out.print(mySenderrtefunc);
+		//System.out.print(myReceiverrtefunc);
 
         retlist.add(genc);
     	retlist.add(mySenderrtefunc);
@@ -870,7 +944,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Magee\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
