@@ -642,16 +642,21 @@ public class ShootingmachineemfmodelExample {
                         		//Aktueller Eintrag laesst sich nach SendEvent casten -> Kommunikation uber Events und aktueller Eintrag ist Sender
                         		shootingmachineemfmodel.GetEvent myEventGetter =  (GetEvent) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
                         		genc = genc + "DeclareEvent(" + myEventGetter.getName() + "_EVENT);\n";
-                        		myReceiverrtefunc = myReceiverrtefunc + "\ninline std_return " + myEventGetter.getName() + "(char *a)\n{\n";
                     			//blockierend
                     			if(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).isBlockierend() == true)
     	                    	{
+                            		myReceiverrtefunc = myReceiverrtefunc + "\ninline std_return " + myEventGetter.getName() + "(char *a)\n{\n";
                     				myReceiverrtefunc = myReceiverrtefunc + "\tWaitEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())) + ", " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
+                    				myReceiverrtefunc = myReceiverrtefunc + "\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
     	                    	}
                     			//nicht blockierend
                     			else
                     			{
-                    				myReceiverrtefunc = myReceiverrtefunc + "\tGetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())) + ", " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
+                    				myReceiverrtefunc = myReceiverrtefunc + "\ninline std_return " + myEventGetter.getName() + "(uint8_t *a)\n{\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\tEventMaskType event = 0;\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\tGetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())) + ",&event);\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\tif(event & " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT)\n\t{\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n\t\t*a= 1;\n\t}\n\telse\n\t\t*a= 0;\n\t}\n";
                     			}
                     			myReceiverrtefunc = myReceiverrtefunc + "}\n";
 
