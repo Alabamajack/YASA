@@ -3,6 +3,7 @@
 #include "ecrobot_interface.h"
 #include "ecrobot_bluetooth.h"
 #include "YASA_generated_variables.h"
+#include "YASA_global_variables.h"
 
 DeclareTask(InitHook);
 DeclareTask(TASK_BT_INTERFACE_READER);
@@ -12,43 +13,18 @@ DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
 DeclareEvent(BT_SEND_MY_MESSAGE)
 DeclareTask(Trigger);
 
-DeclareTask(StartTrigger);
-
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
 DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
-DeclareEvent(RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT);
 
 inline std_return RTE_Trigger_Schussanlage_SetEvent_Out()
 {
 	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
 }
 
-inline std_return RTE_Trigger_StartTrigger_GetValue_Event_In(uint8_t *a)
-{
-	EventMaskType event = 0;
-	GetEvent(Trigger,&event);
-	if(event & RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT)
-	{
-		ClearEvent(RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT);
-		*a= 1;
-	}
-	else
-		*a= 0;
-	}
-}
-
 //Trigger_Runnable
 void Trigger_Runnable()
-{
-asdjkahsfdjklahsfjksdhfg+
-sdfgdukfgklsfdgjklg
-
-}
-
-//StartTrigger_Runnable
-void StartTrigger_Runnable()
 {
 asdjkahsfdjklahsfjksdhfg+
 sdfgdukfgklsfdgjklg
@@ -122,14 +98,6 @@ TASK(Trigger)
 	while(1)
 	{
 		Trigger_Runnable();
-	}
-	TerminateTask();
-}
-TASK(StartTrigger)
-{
-	while(1)
-	{
-		StartTrigger_Runnable();
 	}
 	TerminateTask();
 }

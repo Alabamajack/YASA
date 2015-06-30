@@ -20,25 +20,7 @@ CPU ATMEL_AT91SAM7S256
 	TASK SchussanlagenTask
 	{
 		AUTOSTART = FALSE;
-		PRIORITY = 0;
-		ACIVATION = 0;
-		SCHEDULE = FULL;
-		STACKSIZE = 512;
-	};
-
-	TASK Output
-	{
-		AUTOSTART = FALSE;
-		PRIORITY = 0;
-		ACIVATION = 0;
-		SCHEDULE = FULL;
-		STACKSIZE = 512;
-	};
-
-	TASK StopSensor
-	{
-		AUTOSTART = FALSE;
-		PRIORITY = 0;
+		PRIORITY = 5;
 		ACIVATION = 0;
 		SCHEDULE = FULL;
 		STACKSIZE = 512;
@@ -67,6 +49,7 @@ CPU ATMEL_AT91SAM7S256
 		SCHEDULE = FULL
 		STACKSIZE = 512
 		EVENT = BT_HAS_RECEIVED_PACKAGE;
+		EVENT = RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT;
 	};
 
 	TASK TASK_BT_INTERFACE_WRITER
@@ -105,26 +88,6 @@ CPU ATMEL_AT91SAM7S256
 	};
 
 	EVENT RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT
-	{
-		MASK = AUTO;
-	};
-
-	EVENT RTE_Schussanlage_StopSensor_GetValue_Event_In_EVENT
-	{
-		MASK = AUTO;
-	};
-
-	EVENT RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT
-	{
-		MASK = AUTO;
-	};
-
-	EVENT RTE_Trigger_GetValue_Receiver_In_EVENT
-	{
-		MASK = AUTO;
-	};
-
-	EVENT RTE_Output_GetValue_Receiver_In_EVENT
 	{
 		MASK = AUTO;
 	};

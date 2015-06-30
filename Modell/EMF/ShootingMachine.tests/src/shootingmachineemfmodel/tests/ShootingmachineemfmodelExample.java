@@ -3,6 +3,7 @@
 package shootingmachineemfmodel.tests;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +47,8 @@ public class ShootingmachineemfmodelExample {
     static Map<String, Integer> TaskBrick = new HashMap<String, Integer>();
     static Map<Integer, String> IDToPort = new HashMap<Integer, String>();
 
+    //Liste von Listen von Listen von String um bei Erzeugung des oil-Files die richtigen Sender und Receiver Events im richtigen Brick hinzuzufuegen
+    static List<ArrayList<ArrayList<String>>> Brick_SR_Events = new ArrayList<ArrayList<ArrayList<String>>>();
 
 
     //Funktion um Runnablecode aus angegebenem Pfad einlesen und als String zurueckgeben
@@ -105,6 +108,13 @@ public class ShootingmachineemfmodelExample {
 
     public static List<String> generateOilFile(ToplevelSystem mySystem, int Brickindex, String Brickname) throws IOException
     {
+    	//List<List<> Zeug fuer Events
+    	List<ArrayList<String>> SenderReceiverEvents = new ArrayList<ArrayList<String>>();
+    	List<String> SenderEvents = new ArrayList<String>();
+    	List<String> ReceiverEvents = new ArrayList<String>();
+    	SenderReceiverEvents = Brick_SR_Events.get(Brickindex);
+    	SenderEvents = SenderReceiverEvents.get(0);
+    	ReceiverEvents = SenderReceiverEvents.get(1);
 
     	System.out.print("\tDatei " + Brickname + ".oil erstellt.\n");
     	List<String> retlist = new ArrayList<String>();
@@ -186,19 +196,27 @@ public class ShootingmachineemfmodelExample {
             		+"\t\tACTIVATION = 1\n"
             		+"\t\tSCHEDULE = FULL\n"
             		+"\t\tSTACKSIZE = 512\n"
-            		+"\t\tEVENT = BT_HAS_RECEIVED_PACKAGE;\n"
-            		+"\t};\n\n"
-            		+"\tTASK TASK_BT_INTERFACE_WRITER\n"
-            		+ "\t{\n"
-            		+"\t\tAUTOSTART = TRUE\n"
-            		+"\t\t{\n"
-            		+"\t\t\tAPPMODE = LEGOSAR;\n"
-            		+"\t\t};\n"
-            		+"\t\tPRIORITY = 7;\n"
-            		+"\t\tACTIVATION = 1\n"
-            		+"\t\tSCHEDULE = FULL\n"
-            		+"\t\tSTACKSIZE = 512\n"
-            		+"\t};\n\n";
+            		+"\t\tEVENT = BT_HAS_RECEIVED_PACKAGE;\n";
+            for(int k = 0; k < ReceiverEvents.size(); k++) //Hier werden alle Events die zum InterfaceReader gehoeren aus der Liste geholt
+            {
+            	oilFileBTInterface += "\t\tEVENT = " + ReceiverEvents.get(k) + ";\n";
+            }
+    		oilFileBTInterface += "\t};\n\n"
+    				+ "\tTASK TASK_BT_INTERFACE_WRITER\n"
+    				+ "\t{\n"
+    				+"\t\tAUTOSTART = TRUE\n"
+    				+"\t\t{\n"
+    				+"\t\t\tAPPMODE = LEGOSAR;\n"
+    				+"\t\t};\n"
+    				+"\t\tPRIORITY = 7;\n"
+    				+"\t\tACTIVATION = 1\n"
+    				+"\t\tSCHEDULE = FULL\n"
+    				+"\t\tSTACKSIZE = 512\n";
+    		for(int k = 0; k < SenderEvents.size(); k++) //Hier werden alle Events die zum InterfaceWriter gehoeren aus der Liste geholt
+    		{
+    			oilFileBTInterface += "\t\tEVENT = " + SenderEvents.get(k) + ";\n";
+    		}
+    		oilFileBTInterface += "\t};\n\n";
 
             System.out.print("\t\tTasks fuer Com-Service hinzugefuegt\n");
 
@@ -299,17 +317,36 @@ public class ShootingmachineemfmodelExample {
         		+"\t};\n\n";
         System.out.print("\t\tEvents BT_HAS_RECEIVED_PACKAGE & BT_SEND_MY_MESSAGE hinzugefuegt.\n");
 
+
+        //Irgendwie ueberfluessig, bin aber schon bloed im Schaedel, laeuft jetzt auf jeden Fall ueber die List<List<List<String>>>
+
         //for Schleife fuer implizite Events
-        for (int j = 0; j < mySystem.getHasConnections().size(); j++)
+//        for (int j = 0; j < mySystem.getHasConnections().size(); j++)
+//        {
+//        	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
+//        	{
+//                oilFileEvent += "\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT\n"
+//                        + "\t{\n"
+//                        + "\t\tMASK = AUTO;\n"
+//                        + "\t};\n\n";
+//                System.out.print("\t\tImplizites Event " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT erzeugt\n");
+//        	}
+//        }
+
+        //RTE_Funktionen Events werden hier hinzugefuegt
+        for (int j = 0; j<ReceiverEvents.size(); j++)
         {
-        	for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
-        	{
-                oilFileEvent += "\tEVENT " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT\n"
-                        + "\t{\n"
-                        + "\t\tMASK = AUTO;\n"
-                        + "\t};\n\n";
-                System.out.print("\t\tImplizites Event " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT erzeugt\n");
-        	}
+        	oilFileEvent += "\tEVENT " + ReceiverEvents.get(j) + "\n"
+                    + "\t{\n"
+                    + "\t\tMASK = AUTO;\n"
+                    + "\t};\n\n";
+        }
+        for (int j = 0; j<SenderEvents.size(); j++)
+        {
+        	oilFileEvent += "\tEVENT " + SenderEvents.get(j) + "\n"
+                    + "\t{\n"
+                    + "\t\tMASK = AUTO;\n"
+                    + "\t};\n\n";
         }
 
 
@@ -353,7 +390,8 @@ public class ShootingmachineemfmodelExample {
                 + "#include \"kernel_id.h\"\n"
                 + "#include \"ecrobot_interface.h\"\n"
                 + "#include \"ecrobot_bluetooth.h\"\n"
-                + "#include \"YASA_generated_variables.h\"\n\n";
+                + "#include \"YASA_generated_variables.h\"\n"
+                + "#include \"YASA_global_variables.h\"\n\n";
 
 
         cFileDeclareInitHook += "DeclareTask(InitHook);\n";
@@ -493,6 +531,11 @@ public class ShootingmachineemfmodelExample {
     {
     	System.out.print("\tDatei YASA_generated.c erstellt.\n");
     	List <String> retlist = new ArrayList<String>();
+
+    	ArrayList<ArrayList<String>> Bricklist = new ArrayList<ArrayList<String>>();
+    	ArrayList<String> SenderList = new ArrayList<String>();
+    	ArrayList<String> ReceiverList = new ArrayList();
+
     	String genc = "";
     	String mySenderrtefunc = "";
     	String mySenderEinZweirtefunc = "";
@@ -512,6 +555,7 @@ public class ShootingmachineemfmodelExample {
                 		for(int k=0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size(); k++)
                 		{
                 			genc = genc + "DeclareEvent(" +  mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+                			SenderList.add(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT");
                 			mySenderrtefunc = mySenderrtefunc + "\tSetEvent(TASK_BT_INTERFACE_WRITER, " +  mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
                 		}
             			mySenderrtefunc = mySenderrtefunc + "}\n";
@@ -529,6 +573,7 @@ public class ShootingmachineemfmodelExample {
         				for(int k=0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size(); k++)
                 		{
                     		genc = genc + "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+                    		SenderList.add(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT");
             				genc = genc + "U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER;\n";
             				mySenderEinZweirtefunc = mySenderEinZweirtefunc + "\t" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER = *a;\n";
             				mySenderEinZweirtefunc = mySenderEinZweirtefunc + "\tSetEvent(TASK_BT_INTERFACE_WRITER, " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
@@ -556,7 +601,7 @@ public class ShootingmachineemfmodelExample {
         			}
         		}
         		//Aktueller Port ist kein Sender, aber nicht zwingend Receiver der zu diesem Brick gehoert
-        		if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() == null)
+        		if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() != null)
         		{
         			//Ueber alle Receiver Ports des aktuellen Eintrags der Klasse iterieren
         			for(int l = 0; l < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();l++)
@@ -569,6 +614,7 @@ public class ShootingmachineemfmodelExample {
 	        					//Aktueller Eintrag laesst sich nach SendEvent casten -> Kommunikation uber Events und aktueller Brick ist Sender
 	                    		shootingmachineemfmodel.GetEvent myEventgetter =  (GetEvent) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
 	                    		genc = genc + "DeclareEvent(" + myEventgetter.getName() + "_EVENT);\n";
+	                    		ReceiverList.add(myEventgetter.getName() + "_EVENT");
 	                    		//blockierend
 	                    		if(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).isBlockierend() == true)
 	                    		{
@@ -596,6 +642,7 @@ public class ShootingmachineemfmodelExample {
                 			{
                 				shootingmachineemfmodel.Receiver myReceiver =  (Receiver) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
                 				genc = genc + "DeclareEvent(" + myReceiver.getName() + "_EVENT);\n";
+                				ReceiverList.add(myReceiver.getName() + "_EVENT");
                 				//blockierend
                 				if(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).isBlockierend() == true)
 	                    		{
@@ -655,6 +702,7 @@ public class ShootingmachineemfmodelExample {
                 			for(int k=0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();k++)
                 			{
                 				genc = genc + "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+                				SenderList.add(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT");
                 				mySenderrtefunc = mySenderrtefunc + "\tSetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName())) + ", " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
                 			}
                 			mySenderrtefunc = mySenderrtefunc + "}\n";
@@ -676,6 +724,7 @@ public class ShootingmachineemfmodelExample {
                         		//Aktueller Eintrag laesst sich nach SendEvent casten -> Kommunikation uber Events und aktueller Eintrag ist Sender
                         		shootingmachineemfmodel.GetEvent myEventGetter =  (GetEvent) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
                         		genc = genc + "DeclareEvent(" + myEventGetter.getName() + "_EVENT);\n";
+                        		ReceiverList.add(myEventGetter.getName() + "_EVENT");
                     			//blockierend
                     			if(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).isBlockierend() == true)
     	                    	{
@@ -716,6 +765,7 @@ public class ShootingmachineemfmodelExample {
                 			for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size(); k++)
                 			{
                 				genc = genc + "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
+                				SenderList.add(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT");
                 				mySenderEinZweirtefunc = mySenderEinZweirtefunc + "\t" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER = *a;\n";
                 				mySenderEinZweirtefunc = mySenderEinZweirtefunc + "\tSetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName())) + ", " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
                        		}
@@ -737,6 +787,7 @@ public class ShootingmachineemfmodelExample {
                         		//Aktueller Eintrag laesst sich nach SendEvent casten -> Kommunikation uber Events und aktueller Eintrag ist Sender
                         		shootingmachineemfmodel.Receiver myReceiver =  (Receiver) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
                         		genc = genc + "DeclareEvent(" + myReceiver.getName() + "_EVENT);\n";
+                        		ReceiverList.add(myReceiver.getName() + "_EVENT");
                         		myReceiverrtefunc = myReceiverrtefunc + "\ninline std_return " + myReceiver.getName() + "(char *a)\n{\n";
                 				//blockierend
                 				if(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).isBlockierend() == true)
@@ -827,6 +878,12 @@ public class ShootingmachineemfmodelExample {
     	retlist.add(mySenderrtefunc);
     	retlist.add(myReceiverrtefunc);
 
+    	//Listen zu Listen zu Liste hinzufuegen
+    	Bricklist.add(SenderList);
+    	Bricklist.add(ReceiverList);
+
+    	Brick_SR_Events.add(Bricklist);
+
         return retlist;
     }
 
@@ -878,6 +935,7 @@ public class ShootingmachineemfmodelExample {
     			for(int j = 0; j < mySystem.getHasConnections().get(i).getHasReceiverPorts().size(); j++)
     			{
     				loc_red_string += "case " + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ":";
+    				loc_red_string += "strcpy(" + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_SPEICHER, locBuffer_ptr);";
     				loc_red_string += "SetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()));
     				loc_red_string +=  "," + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
     				loc_red_string += "break;";
@@ -969,7 +1027,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Magee\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
@@ -1065,7 +1123,40 @@ public class ShootingmachineemfmodelExample {
                     System.out.print("Ordner " + Brickname + " rekursiv geloescht und neu erstellt\n");
                 }
 
+                /*
+                 *
+                 *
+                 * YASA_global_variables und implementation.oil kopieren
+                 *
+                 *
+                 */
+
+                File global_variables_src = new File("..\\..\\..\\Code\\include\\YASA_global_variables.h");
+                File global_variables_dest = new File(Brickname + "\\YASA_global_variables.h");
+
+                Files.copy(global_variables_src.toPath(), global_variables_dest.toPath());
+
+                File implementation_oil_src = new File("..\\..\\..\\Code\\include\\implementation.oil");
+                File implementation_oil_dest = new File(Brickname + "\\implementation.oil");
+
+                Files.copy(implementation_oil_src.toPath(), implementation_oil_dest.toPath());
+
+
                 setPortDefines(mySystem, i);
+
+                /*
+                *
+                * Dynamischen C-Code Erzeugen
+                *
+                *
+                */
+               List <String> dynamiccStrings = generatedynamiccFile(mySystem, i, Brickname);
+
+
+               String genc = dynamiccStrings.get(0);
+               String mySenderrtefunc = dynamiccStrings.get(1);
+               String myReceiverrtefunc = dynamiccStrings.get(2);
+
 
                 /*
                  *
@@ -1093,45 +1184,6 @@ public class ShootingmachineemfmodelExample {
                 }
 
                 oilFileBuffer.close();
-
-
-                /*
-                *
-                * Dynamischen C-Code Erzeugen
-                *
-                *
-                */
-               List <String> dynamiccStrings = generatedynamiccFile(mySystem, i, Brickname);
-
-               //Dateipfad + Dateiname
-
-               /*
-                *
-                * File dynamiccFile wird im Moment nicht benoetigt und daher nicht erstellt. Der Inhalt ist jetzt in der Brickname.c Datei
-                *
-                */
-
-
-//               File gencFile = new File(Brickname + "\\YASA_generated.c");
-//
-//
-//               if (!gencFile.exists()) {
-//               	gencFile.createNewFile();
-//               }
-//
-//
-//               FileWriter gencFileWriter = new FileWriter(gencFile.getAbsoluteFile());
-//               BufferedWriter gencFileBuffer = new BufferedWriter(gencFileWriter);
-
-               String genc = dynamiccStrings.get(0);
-               String mySenderrtefunc = dynamiccStrings.get(1);
-               String myReceiverrtefunc = dynamiccStrings.get(2);
-
-
-//               gencFileBuffer.write(mySenderrtefunc);
-//               gencFileBuffer.write(myReceiverrtefunc);
-//
-//               gencFileBuffer.close();
 
 
 
