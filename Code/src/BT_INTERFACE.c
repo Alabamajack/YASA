@@ -5,9 +5,16 @@ TASK(TASK_BT_INTERFACE_READER)
     U8 id;
 	U8* locBuffer_ptr = localBuffer;
 	EventMaskType event;
+	
     while(1)
     {
-	
+		WaitEvent(BT_HAS_RECEIVED_PACKAGE); // auf Event von BT-Handler warten
+		ClearEvent(BT_HAS_RECEIVED_PACKAGE);
+		strcpy(localBuffer, BT_receive_package); // Wert aus BT-Handler zwischenspeichern
+		id = *locBuffer_ptr; // die id extrahieren
+		locBuffer_ptr++; // auf die zweite Stelle speichern
+		
+		BT_DYNAMIC_READER_CODE;
     }
     Terminate_Task();
 }

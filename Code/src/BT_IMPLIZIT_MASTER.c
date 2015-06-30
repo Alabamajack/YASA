@@ -8,18 +8,20 @@ TASK(BT_IMPLIZIT_MASTER)
 {
 	U8 lastValue[BT_PACKAGE_SIZE];
 	EventMaskType bt_event;
+	
 	while(1)
 	{
+		GetEvent(BT_IMPLIZIT_MASTER, &bt_event);
 		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
 		{
-			BT_receive_package = lastValue;
+			strcpy(BT_receive_package, lastValue);
 			SetEvent(TASK_BT_INTERFACE_READER, BT_HAS_RECEIVED_PACKAGE);
 		}
-		if(GetEvent(BT_IMPLIZIT_MASTER, &bt_event)
+		if(bt_event & BT_SEND_MY_MESSAGE)
 		{
-			ClearEvent(bt_event);
+			ClearEvent(BT_SEND_MY_MESSAGE);
 			ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
 		}
 	}
-	Terminate_Task();
+	TerminateTask();
 }
