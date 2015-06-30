@@ -556,7 +556,7 @@ public class ShootingmachineemfmodelExample {
         			}
         		}
         		//Aktueller Port ist kein Sender, aber nicht zwingend Receiver der zu diesem Brick gehoert
-        		else if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() == null)
+        		if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() == null)
         		{
         			//Ueber alle Receiver Ports des aktuellen Eintrags der Klasse iterieren
         			for(int l = 0; l < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();l++)
@@ -602,7 +602,7 @@ public class ShootingmachineemfmodelExample {
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\ninline std_return " + myReceiver.getName() + "(char *a)\n{\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\tWaitEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
-	                    			myReceiverrtefunc = myReceiverrtefunc + "\t*a = " + "strcpy(COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName()) + "]));\n\t}\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\tstrcpy(*a,COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName()) + "]);\n\t}\n";
 	                    		}
 	                    		//nicht blockierend
 	                    		else
@@ -612,7 +612,8 @@ public class ShootingmachineemfmodelExample {
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\tGetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())) + ",&event);\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\tif(event & " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT)\n\t{\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
-	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\t*a = " + "strcpy(COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName()) + "]));\n\t}\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\tstrcpy(*a,COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName()) + "]);\n\t}\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc +"\telse\n\t{\n\t\ta* = null;\n\t}\n";
 	                    		}
 	                    		myReceiverrtefunc += "}\n";
                 				System.out.print("\t\tReceiver einer Sender-Receiver Kommunikation ueber 2 Bricks\n");
@@ -641,7 +642,7 @@ public class ShootingmachineemfmodelExample {
         			}
         		}
         		//Kommunikation laeuft nur ueber einen Brick
-        		else if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() == null)
+        		if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() == null)
         		{
         			//EVENT KOMMUNIKATION
         			try
@@ -747,9 +748,12 @@ public class ShootingmachineemfmodelExample {
                 				//nicht blockierend
                 				else
                 				{
-                					myReceiverrtefunc = myReceiverrtefunc + "\tGetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())) + ", " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
-                					myReceiverrtefunc = myReceiverrtefunc + "\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
-	                    			myReceiverrtefunc = myReceiverrtefunc + "\t*a = " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_SPEICHER ;\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\tEventMaskType event = 0;\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\tGetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())) + ",&event);\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\tif(event & " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT)\n\t{\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\tstrcpy(*a,"+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_SPEICHER);\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc +"\telse\n\t{\n\t\ta* = null;\n\t}\n";
 	                    		}
                 				myReceiverrtefunc = myReceiverrtefunc + "}\n";
                         		System.out.print("\t\tReceiver einer Sender-Receiver Kommunikation ueber 1 Brick\n");
@@ -807,9 +811,8 @@ public class ShootingmachineemfmodelExample {
 		mySenderrtefunc = mySenderrtefunc + mySenderEinZweirtefunc;
 
 
-		 //Funktion die doppelte Declares entfernt
-	    //public static String EliminateDuplicates(String input)
-	    //{
+		 //doppelte Declares entfernt
+
 	    String[] parts = genc.split("\n");
 	    String newString = "";
 	    for(int i=0; i<parts.length; i++)
@@ -817,9 +820,9 @@ public class ShootingmachineemfmodelExample {
 	    	if(!newString.contains(parts[i]))
 	    		newString = newString + parts[i] + "\n";
 	    }
-	    	//return newString;
-	    //}
+
 	    genc = newString;
+
         retlist.add(genc);
     	retlist.add(mySenderrtefunc);
     	retlist.add(myReceiverrtefunc);
@@ -966,7 +969,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Magee\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
