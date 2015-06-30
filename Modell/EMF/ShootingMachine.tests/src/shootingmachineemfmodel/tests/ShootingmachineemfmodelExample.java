@@ -556,7 +556,7 @@ public class ShootingmachineemfmodelExample {
         			}
         		}
         		//Aktueller Port ist kein Sender, aber nicht zwingend Receiver der zu diesem Brick gehoert
-        		if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() == null)
+        		if(mySystem.getHasConnections().get(j).getHasInterBrickCommunicationSystem() != null)
         		{
         			//Ueber alle Receiver Ports des aktuellen Eintrags der Klasse iterieren
         			for(int l = 0; l < mySystem.getHasConnections().get(j).getHasReceiverPorts().size();l++)
@@ -970,7 +970,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Magee\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
