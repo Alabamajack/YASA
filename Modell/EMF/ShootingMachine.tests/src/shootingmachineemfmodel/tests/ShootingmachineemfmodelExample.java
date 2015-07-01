@@ -952,7 +952,7 @@ public class ShootingmachineemfmodelExample {
     	if(loc_WaitEvents.length() > 0)
     	{
     		loc_WaitEvents = loc_WaitEvents.substring(0, loc_WaitEvents.length() - 2) + ");";
-    		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE (" + loc_WaitEvents + "GetEvent(TASK_BT_INTERFACE_WRITER, &event);" + if_bed + ")";
+    		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE " + loc_WaitEvents + "GetEvent(TASK_BT_INTERFACE_WRITER, &event);" + if_bed;
     	}
     	else
     		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE";
