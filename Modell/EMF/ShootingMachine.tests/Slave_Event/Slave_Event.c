@@ -5,6 +5,7 @@
 #include "YASA_generated_variables.h"
 #include "YASA_global_variables.h"
 #include "YASA_types.h"
+#include <string.h>
 
 DeclareTask(InitHook);
 DeclareTask(TASK_BT_INTERFACE_READER);
@@ -22,6 +23,7 @@ DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
 inline std_return RTE_Trigger_Schussanlage_SetEvent_Out()
 {
 	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+	return 0;
 }
 
 //Trigger_Runnable
@@ -34,6 +36,7 @@ sdfgdukfgklsfdgjklg
 
 TASK(InitHook)
 {
+	TerminateTask();
 }
 
 //bekommt Nachrichten vom BT und verteilt diese an die Ports
@@ -54,7 +57,7 @@ TASK(TASK_BT_INTERFACE_READER)
 		
 		BT_DYNAMIC_READER_CODE;
     }
-    Terminate_Task();
+    TerminateTask();
 }
 //bekommt Nachrichten von Ports und verschickt diese über BT
 TASK(TASK_BT_INTERFACE_WRITER)

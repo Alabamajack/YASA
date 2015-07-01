@@ -16,7 +16,7 @@ TASK(TASK_BT_INTERFACE_READER)
 		
 		BT_DYNAMIC_READER_CODE;
     }
-    Terminate_Task();
+    TerminateTask();
 }
 //bekommt Nachrichten von Ports und verschickt diese über BT
 TASK(TASK_BT_INTERFACE_WRITER)

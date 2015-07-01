@@ -166,7 +166,7 @@ public class ShootingmachineemfmodelExample {
                 oilFileTask += "\t\tAUTOSTART = FALSE;\n";
             }
             oilFileTask += "\t\tPRIORITY = " + actualTask.getPRIORITY() + ";\n"
-                    + "\t\tACIVATION = " + actualTask.getACTIVATION() + ";\n"
+                    + "\t\tACTIVATION = " + actualTask.getACTIVATION() + ";\n"
                     + "\t\tSCHEDULE = FULL;\n"
                     + "\t\tSTACKSIZE = 512;\n";
 
@@ -391,7 +391,9 @@ public class ShootingmachineemfmodelExample {
                 + "#include \"ecrobot_interface.h\"\n"
                 + "#include \"ecrobot_bluetooth.h\"\n"
                 + "#include \"YASA_generated_variables.h\"\n"
-                + "#include \"YASA_global_variables.h\"\n\n";
+                + "#include \"YASA_global_variables.h\"\n"
+                + "#include \"YASA_types.h\"\n"
+                + "#include <string.h>\n\n";
 
 
         cFileDeclareInitHook += "DeclareTask(InitHook);\n";
@@ -471,7 +473,7 @@ public class ShootingmachineemfmodelExample {
         	{
         	}
         }
-        cFileInitHook += "}\n\n";
+        cFileInitHook += "\tTerminateTask();\n}\n\n";
 
         //BT Tasks hinzufuegen
         cFileBTInterface += copyFiletoString("..\\..\\..\\Code\\src\\BT_INTERFACE.c") + "\n";
@@ -558,7 +560,7 @@ public class ShootingmachineemfmodelExample {
                 			SenderList.add(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT");
                 			mySenderrtefunc = mySenderrtefunc + "\tSetEvent(TASK_BT_INTERFACE_WRITER, " +  mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
                 		}
-            			mySenderrtefunc = mySenderrtefunc + "}\n";
+            			mySenderrtefunc = mySenderrtefunc + "\treturn 0;\n}\n";
                 		System.out.print("\t\tSender einer Eventbasierten Kommunikation ueber 2 Bricks\n");
                 	}
         			catch(java.lang.ClassCastException e)
@@ -632,7 +634,7 @@ public class ShootingmachineemfmodelExample {
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\t*a = 1;\n\t}\n\telse\n\t{\n\t\t*a = 0;\n\t}\n";
 	                    		}
-	                    		myReceiverrtefunc += "}\n";
+	                    		myReceiverrtefunc += "\treturn 0;\n}\n";
 	                    		System.out.print("\t\tReceiver einer Eventbasierten Kommunikation ueber 2 Bricks\n");
         					}
         					catch(java.lang.ClassCastException e)
@@ -663,7 +665,7 @@ public class ShootingmachineemfmodelExample {
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\tstrcpy(a,COMSERVICE_receive_package[" + PortToID.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName()) + "]);\n\t}\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc +"\telse\n\t{\n\t\tstrcpy(a,\"\");\n\t}\n";
 	                    		}
-	                    		myReceiverrtefunc += "}\n";
+	                    		myReceiverrtefunc += "\treturn 0;\n}\n";
                 				System.out.print("\t\tReceiver einer Sender-Receiver Kommunikation ueber 2 Bricks\n");
                 			}
                 			catch(java.lang.ClassCastException e)
@@ -706,7 +708,7 @@ public class ShootingmachineemfmodelExample {
                 				SenderList.add(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT");
                 				mySenderrtefunc = mySenderrtefunc + "\tSetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName())) + ", " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
                 			}
-                			mySenderrtefunc = mySenderrtefunc + "}\n";
+                			mySenderrtefunc = mySenderrtefunc + "\treturn 0;\n}\n";
                 			System.out.print("\t\tSender einer Eventbasierten Kommunikation ueber 1 Brick\n");
                 		}
 
@@ -743,7 +745,7 @@ public class ShootingmachineemfmodelExample {
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc	+ "\t\t*a = 1;\n\t}\n\telse\n\t\t*a = 0;\n\t}\n";
                     			}
-                    			myReceiverrtefunc = myReceiverrtefunc + "}\n";
+                    			myReceiverrtefunc = myReceiverrtefunc + "\treturn 0;\n}\n";
 
                         		System.out.print("\t\tReceiver einer Eventbasierten Kommunikation ueber 1 Brick\n");
                         	}
@@ -809,7 +811,7 @@ public class ShootingmachineemfmodelExample {
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\tstrcpy(a,"+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_SPEICHER);\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc +"\telse\n\t{\n\t\tstrcpy(a,\"\");\n\t}\n";
 	                    		}
-                				myReceiverrtefunc = myReceiverrtefunc + "}\n";
+                				myReceiverrtefunc = myReceiverrtefunc + "\treturn 0;\n}\n";
                         		System.out.print("\t\tReceiver einer Sender-Receiver Kommunikation ueber 1 Brick\n");
                         	}
         					catch(java.lang.ClassCastException e)
@@ -861,7 +863,7 @@ public class ShootingmachineemfmodelExample {
         	}
 
 		if(mySenderEinZweirtefunc != "")
-			mySenderEinZweirtefunc = mySenderEinZweirtefunc + "}\n";
+			mySenderEinZweirtefunc = mySenderEinZweirtefunc + "\treturn 0;\n}\n";
 		mySenderrtefunc = mySenderrtefunc + mySenderEinZweirtefunc;
 
 
@@ -956,7 +958,7 @@ public class ShootingmachineemfmodelExample {
     		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE";
 
     	loc_red_string += "}";
-    	BT_Receiver_String = "#define BT_DYNAMIC_READER_CODE ( "+ loc_red_string + ")";
+    	BT_Receiver_String = "#define BT_DYNAMIC_READER_CODE "+ loc_red_string;
 
 
     	retlist.add(BT_Global_String);
@@ -1143,6 +1145,11 @@ public class ShootingmachineemfmodelExample {
                 File implementation_oil_dest = new File(Brickname + "\\implementation.oil");
 
                 Files.copy(implementation_oil_src.toPath(), implementation_oil_dest.toPath());
+
+                File YASA_types_src = new File("..\\..\\..\\Code\\include\\YASA_types.h");
+                File YASA_types_dest = new File(Brickname + "\\YASA_types.h");
+
+                Files.copy(YASA_types_src.toPath(), YASA_types_dest.toPath());
 
 
                 setPortDefines(mySystem, i);
