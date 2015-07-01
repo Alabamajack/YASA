@@ -1,10 +1,11 @@
 uint8_t triggered = 0;
+RTE_StartTrigger_GetSensorValue_OSPort_In(&triggerd);
 if (triggered)
 {
-    /* Trigger fuers schießen ausgelöst -> here we go */
+    /* Trigger fuers schieÃŸen ausgelÃ¶st -> here we go */
 	RTE_StartTrigger_Trigger_SetValue_Event_Out();
 }
 else
 {
-    /* Trigger fuers schießen nicht ausgelöst -> nichts tun*/
+    /* Trigger fuers schieÃŸen nicht ausgelÃ¶st -> nichts tun*/
 }    
