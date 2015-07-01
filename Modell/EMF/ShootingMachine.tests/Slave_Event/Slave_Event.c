@@ -4,6 +4,7 @@
 #include "ecrobot_bluetooth.h"
 #include "YASA_generated_variables.h"
 #include "YASA_global_variables.h"
+#include "YASA_types.h"
 
 DeclareTask(InitHook);
 DeclareTask(TASK_BT_INTERFACE_READER);
