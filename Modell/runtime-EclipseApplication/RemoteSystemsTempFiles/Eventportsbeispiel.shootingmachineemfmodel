@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <shootingmachineemfmodel:ToplevelSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:shootingmachineemfmodel="http://shootingmachineemfmodel/1.0">
-  <hasComponent xsi:type="shootingmachineemfmodel:SW_Component">
-    <hasRunnable name="Trigger_Runnable" applicationcode="C:\Users\Magee\Documents\YASA\Modell\EMF\ShootingMachine.tests\runnable\runnable.c">
-      <hasSWPorts xsi:type="shootingmachineemfmodel:SendEvent" name="RTE_Trigger_Schussanlage_SetEvent_Out"/>
+  <hasComponent xsi:type="shootingmachineemfmodel:SW_Component" name="Trigger">
+    <hasRunnable name="Trigger_Runnable" applicationcode="C:\Users\Flo-virtual\Documents\GitRepos\YASA\Modell\EMF\ShootingMachine.tests\runnable\runnable.c">
+      <hasSWPorts xsi:type="shootingmachineemfmodel:Receiver" name="RTE_Trigger_GetValue_Receiver_In"/>
     </hasRunnable>
   </hasComponent>
-  <hasComponent xsi:type="shootingmachineemfmodel:SW_Component">
-    <hasRunnable name="Schussanlage_Runnable" applicationcode="C:\Users\Magee\Documents\YASA\Modell\EMF\ShootingMachine.tests\runnable\runnable.c">
-      <hasSWPorts xsi:type="shootingmachineemfmodel:GetEvent" name="RTE_Schussanlage_Trigger_GetValue_Event_In"/>
+  <hasComponent xsi:type="shootingmachineemfmodel:SW_Component" name="Schussanlage">
+    <hasRunnable name="Schussanlage_Runnable" applicationcode="C:\Users\Flo-virtual\Documents\GitRepos\YASA\Modell\EMF\ShootingMachine.tests\runnable\runnable.c">
+      <hasSWPorts xsi:type="shootingmachineemfmodel:Sender" name="RTE_Schussanlage_SetValue_Sender_Out"/>
     </hasRunnable>
   </hasComponent>
   <hasBrick name="Master_Event" IsMaster="true">
-    <hasTaskBrick name="Schussanlagen_Task" hasRunnable="//@hasComponent.1/@hasRunnable.0" PRIORITY="1"/>
+    <hasTaskBrick name="Schussanlagen_Task" hasRunnable="//@hasComponent.1/@hasRunnable.0" AUTOSTART="true" PRIORITY="1" ACTIVATION="1"/>
+    <hasTaskBrick name="Trigger_Task" hasRunnable="//@hasComponent.0/@hasRunnable.0" AUTOSTART="true" PRIORITY="1" ACTIVATION="1"/>
   </hasBrick>
-  <hasBrick name="Slave_Event">
-    <hasTaskBrick name="Trigger_Task" hasRunnable="//@hasComponent.0/@hasRunnable.0" PRIORITY="1"/>
-  </hasBrick>
-  <hasConnections name="TriggerNachSchussanlage_SlaveNachMaster" hasReceiverPorts="//@hasComponent.1/@hasRunnable.0/@hasSWPorts.0" hasSenderPorts="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.0">
-    <hasInterBrickCommunicationSystem hasIBCOut="//@hasBrick.1" hasIBCIn="//@hasBrick.0" hasReceiverPort="//@hasComponent.1/@hasRunnable.0/@hasSWPorts.0"/>
-  </hasConnections>
+  <hasConnections name="SRSchussanlageTrigger" hasReceiverPorts="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.0" hasSenderPorts="//@hasComponent.1/@hasRunnable.0/@hasSWPorts.0"/>
 </shootingmachineemfmodel:ToplevelSystem>

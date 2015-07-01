@@ -19,11 +19,45 @@ CPU ATMEL_AT91SAM7S256
 
 	TASK Schussanlagen_Task
 	{
-		AUTOSTART = FALSE;
+	TASK Schussanlagen_Task
+	{
+		AUTOSTART = TRUE
+		{
+			APPMODE = LEGOSAR;
+		};
 		PRIORITY = 1;
-		ACTIVATION = 0;
+		ACTIVATION = 1;
 		SCHEDULE = FULL;
 		STACKSIZE = 512;
+	};
+
+	TASK Trigger_Task
+	{
+	TASK Schussanlagen_Task
+	{
+	TASK Schussanlagen_Task
+	{
+		AUTOSTART = TRUE
+		{
+			APPMODE = LEGOSAR;
+		};
+		PRIORITY = 1;
+		ACTIVATION = 1;
+		SCHEDULE = FULL;
+		STACKSIZE = 512;
+	};
+
+	TASK Trigger_Task
+	{
+		AUTOSTART = TRUE
+		{
+			APPMODE = LEGOSAR;
+		};
+		PRIORITY = 1;
+		ACTIVATION = 1;
+		SCHEDULE = FULL;
+		STACKSIZE = 512;
+		EVENT = RTE_Trigger_GetValue_Receiver_In_EVENT;
 	};
 
 	TASK InitHook
@@ -49,7 +83,6 @@ CPU ATMEL_AT91SAM7S256
 		SCHEDULE = FULL;
 		STACKSIZE = 512;
 		EVENT = BT_HAS_RECEIVED_PACKAGE;
-		EVENT = RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT;
 	};
 
 	TASK TASK_BT_INTERFACE_WRITER
@@ -87,7 +120,7 @@ CPU ATMEL_AT91SAM7S256
 		MASK = AUTO;
 	};
 
-	EVENT RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT
+	EVENT RTE_Trigger_GetValue_Receiver_In_EVENT
 	{
 		MASK = AUTO;
 	};
