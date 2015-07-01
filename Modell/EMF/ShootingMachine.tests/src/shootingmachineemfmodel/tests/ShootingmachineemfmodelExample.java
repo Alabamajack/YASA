@@ -179,9 +179,9 @@ public class ShootingmachineemfmodelExample {
             		+"\t\t\tAPPMODE = LEGOSAR;\n"
             		+"\t\t};\n"
             		+"\t\tPRIORITY = 10;\n"
-            		+"\t\tACTIVATION = 1\n"
-            		+"\t\tSCHEDULE = FULL\n"
-            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t\tACTIVATION = 1;\n"
+            		+"\t\tSCHEDULE = FULL;\n"
+            		+"\t\tSTACKSIZE = 512;\n"
             		+"\t};\n\n";
 
             System.out.print("\t\tImpliziten Task InitHook hinzugefuegt.\n");
@@ -193,9 +193,9 @@ public class ShootingmachineemfmodelExample {
             		+"\t\t\tAPPMODE = LEGOSAR;\n"
             		+"\t\t};\n"
             		+"\t\tPRIORITY = 7;\n"
-            		+"\t\tACTIVATION = 1\n"
-            		+"\t\tSCHEDULE = FULL\n"
-            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t\tACTIVATION = 1;\n"
+            		+"\t\tSCHEDULE = FULL;\n"
+            		+"\t\tSTACKSIZE = 512;\n"
             		+"\t\tEVENT = BT_HAS_RECEIVED_PACKAGE;\n";
             for(int k = 0; k < ReceiverEvents.size(); k++) //Hier werden alle Events die zum InterfaceReader gehoeren aus der Liste geholt
             {
@@ -209,9 +209,9 @@ public class ShootingmachineemfmodelExample {
     				+"\t\t\tAPPMODE = LEGOSAR;\n"
     				+"\t\t};\n"
     				+"\t\tPRIORITY = 7;\n"
-    				+"\t\tACTIVATION = 1\n"
-    				+"\t\tSCHEDULE = FULL\n"
-    				+"\t\tSTACKSIZE = 512\n";
+    				+"\t\tACTIVATION = 1;\n"
+    				+"\t\tSCHEDULE = FULL;\n"
+    				+"\t\tSTACKSIZE = 512;\n";
     		for(int k = 0; k < SenderEvents.size(); k++) //Hier werden alle Events die zum InterfaceWriter gehoeren aus der Liste geholt
     		{
     			oilFileBTInterface += "\t\tEVENT = " + SenderEvents.get(k) + ";\n";
@@ -236,9 +236,9 @@ public class ShootingmachineemfmodelExample {
             		+"\t\t\tAPPMODE = LEGOSAR;\n"
             		+"\t\t};\n"
             		+"\t\tPRIORITY = 9;\n"
-            		+"\t\tACTIVATION = 1\n"
-            		+"\t\tSCHEDULE = FULL\n"
-            		+"\t\tSTACKSIZE = 512\n"
+            		+"\t\tACTIVATION = 1;\n"
+            		+"\t\tSCHEDULE = FULL;\n"
+            		+"\t\tSTACKSIZE = 512;\n"
             		+"\t\tEVENT = BT_SEND_MY_MESSAGE;\n"
             		+"\t};\n\n";
 
@@ -408,7 +408,7 @@ public class ShootingmachineemfmodelExample {
         }
 
         cFiledeclareBTEvents += "DeclareEvent(BT_HAS_RECEIVED_PACKAGE);\n"
-        		+"DeclareEvent(BT_SEND_MY_MESSAGE)\n";
+        		+"DeclareEvent(BT_SEND_MY_MESSAGE);\n";
 
         //For Schleife in welcher alle Tasks deklariert werden
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
@@ -630,7 +630,7 @@ public class ShootingmachineemfmodelExample {
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\tGetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())) + ",&event);\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\tif(event & " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT)\n\t{\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
-	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\t*a = 1;\n\t}\n\telse\n\t\t*a = 0;\n\t}\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\t\t*a = 1;\n\t}\n\telse\n\t{\n\t\t*a = 0;\n\t}\n";
 	                    		}
 	                    		myReceiverrtefunc += "}\n";
 	                    		System.out.print("\t\tReceiver einer Eventbasierten Kommunikation ueber 2 Bricks\n");
@@ -1030,7 +1030,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Magee\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("Eventportsbeispiel.shootingmachineemfmodel");
 
 
