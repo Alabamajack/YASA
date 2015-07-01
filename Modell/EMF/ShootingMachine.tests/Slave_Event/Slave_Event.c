@@ -10,7 +10,7 @@ DeclareTask(TASK_BT_INTERFACE_READER);
 DeclareTask(TASK_BT_INTERFACE_WRITER);
 DeclareTask(BT_IMPLIZIT_SLAVE);
 DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
-DeclareEvent(BT_SEND_MY_MESSAGE)
+DeclareEvent(BT_SEND_MY_MESSAGE);
 DeclareTask(Trigger_Task);
 
 

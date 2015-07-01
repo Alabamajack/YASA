@@ -10,7 +10,7 @@ DeclareTask(TASK_BT_INTERFACE_READER);
 DeclareTask(TASK_BT_INTERFACE_WRITER);
 DeclareTask(BT_IMPLIZIT_MASTER);
 DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
-DeclareEvent(BT_SEND_MY_MESSAGE)
+DeclareEvent(BT_SEND_MY_MESSAGE);
 DeclareTask(Schussanlagen_Task);
 
 
@@ -28,6 +28,7 @@ inline std_return RTE_Schussanlage_Trigger_GetValue_Event_In(uint8_t *a)
 		*a = 1;
 	}
 	else
+	{
 		*a = 0;
 	}
 }
@@ -60,12 +61,7 @@ TASK(TASK_BT_INTERFACE_READER)
 		id = *locBuffer_ptr; // die id extrahieren
 		locBuffer_ptr++; // auf die zweite Stelle speichern
 		
-		( switch(id){case 0:
-		strcpy(COMSERVICE_receive_package[0], locBuffer_ptr);
-		SetEvent(Schussanlagen_Task,RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
-		break;
-		}
-	);
+		BT_DYNAMIC_READER_CODE;
     }
     Terminate_Task();
 }
