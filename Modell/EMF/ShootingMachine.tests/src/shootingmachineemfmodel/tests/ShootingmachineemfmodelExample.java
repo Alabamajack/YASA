@@ -223,14 +223,17 @@ public class ShootingmachineemfmodelExample {
 
             System.out.print("\t\tTasks fuer Com-Service hinzugefuegt\n");
 
+            String zweiterterimplizitTask = "";
             if (mySystem.getHasBrick().get(Brickindex).isIsMaster())
             {
             	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_MASTER\n";  //Hier kein +=, weil es nur einmal pro Datei und nicht einmal pro Task eingefuegt werden soll
+            	zweiterterimplizitTask = "\tTASK BT_IMPLIZIT_MASTER2\n";
             	System.out.print("\t\tBT_MASTER hinzugefuegt.\n");
             }
             else
             {
             	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_SLAVE\n";  //Hier kein +=, weil es nur einmal pro Datei und nicht einmal pro Task eingefuegt werden soll
+            	zweiterterimplizitTask = "\tTTASK BT_IMPLIZIT_SLAVE\n";
             	System.out.print("\t\tBT_SLAVE hinzugefuegt\n");
             }
             oilFileBTImplizit += "\t{\n"
@@ -245,6 +248,17 @@ public class ShootingmachineemfmodelExample {
             		+"\t\tEVENT = BT_SEND_MY_MESSAGE;\n"
             		+"\t};\n\n";
 
+            zweiterterimplizitTask += "\t{\n"
+            		+"\t\tAUTOSTART = TRUE\n"
+            		+"\t\t{\n"
+            		+"\t\t\tAPPMODE = LEGOSAR;\n"
+            		+"\t\t};\n"
+            		+"\t\tPRIORITY = 1;\n"
+            		+"\t\tACTIVATION = 1;\n"
+            		+"\t\tSCHEDULE = FULL;\n"
+            		+"\t\tSTACKSIZE = 512;\n"
+            		+"\t};\n\n";
+            oilFileBTImplizit += zweiterterimplizitTask;
 
             //EVENTS die zu den TASKS gehoeren
             for(int k = 0; k < actualTask.getHasEvent().size(); k++)
@@ -437,10 +451,12 @@ public class ShootingmachineemfmodelExample {
         if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
         {
         	cFileDeclareBTImplizit += "DeclareTask(BT_IMPLIZIT_MASTER);\n";
+        	cFileDeclareBTImplizit += "DeclareTask(BT_IMPLIZIT_MASTER2);\n";
         }
         else
         {
         	cFileDeclareBTImplizit += "DeclareTask(BT_IMPLIZIT_SLAVE);\n";
+        	cFileDeclareBTImplizit += "DeclareTask(BT_IMPLIZIT_SLAVE2);\n";
         }
 
         cFiledeclareBTEvents += "DeclareEvent(BT_HAS_RECEIVED_PACKAGE);\n"
@@ -973,20 +989,23 @@ public class ShootingmachineemfmodelExample {
     	{
     		if(Brickindex == TaskBrick.get(RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasSenderPorts().getName()))))
     		{
-    			//Senderport auf aktuellem Brick
-    			loc_WaitEvents += "WaitEvent(";
-    			for(int j = 0; j < mySystem.getHasConnections().get(i).getHasReceiverPorts().size(); j++)
+    			if((mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem() != null))
     			{
-    				loc_WaitEvents += mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT | ";
-    				if_bed += "if(event & " + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT){";
-    				if_bed += "ClearEvent(" + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
-    				if_bed += "*transmit_pack_ptr = " + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ";" + "transmit_pack_ptr++;";
-    				if_bed += "strcpy(BT_transmit_package, COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "]);";
-    				if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
-    					if_bed += "SetEvent(BT_IMPLIZIT_MASTER,BT_SEND_MY_MESSAGE);";
-    				else
-    					if_bed += "SetEvent(BT_IMPLIZIT_SLAVE,BT_SEND_MY_MESSAGE);";
-    				if_bed += "}";
+	    			//Senderport auf aktuellem Brick
+	    			loc_WaitEvents += "WaitEvent(";
+	    			for(int j = 0; j < mySystem.getHasConnections().get(i).getHasReceiverPorts().size(); j++)
+	    			{
+	    				loc_WaitEvents += mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT | ";
+	    				if_bed += "if(event & " + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT){";
+	    				if_bed += "ClearEvent(" + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
+	    				if_bed += "*transmit_pack_ptr = " + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ";" + "transmit_pack_ptr++;";
+	    				if_bed += "strcpy(BT_transmit_package, COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "]);";
+	    				if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
+	    					if_bed += "SetEvent(BT_IMPLIZIT_MASTER,BT_SEND_MY_MESSAGE);";
+	    				else
+	    					if_bed += "SetEvent(BT_IMPLIZIT_SLAVE,BT_SEND_MY_MESSAGE);";
+	    				if_bed += "}";
+	    			}
     			}
     		}
     		else
@@ -1087,8 +1106,8 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Magee\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
-        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
+        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("Eventportsbeispiel.shootingmachineemfmodel");
 
 
 

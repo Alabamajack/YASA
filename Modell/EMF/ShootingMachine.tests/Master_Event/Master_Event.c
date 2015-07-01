@@ -11,33 +11,52 @@ DeclareTask(InitHook);
 DeclareTask(TASK_BT_INTERFACE_READER);
 DeclareTask(TASK_BT_INTERFACE_WRITER);
 DeclareTask(BT_IMPLIZIT_MASTER);
+DeclareTask(BT_IMPLIZIT_MASTER2);
 DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
 DeclareEvent(BT_SEND_MY_MESSAGE);
 DeclareTask(Schussanlagen_Task);
 
+DeclareTask(Trigger_Task);
+
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
-DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+U8 RTE_Trigger_GetValue_Receiver_In_SPEICHER;
 
-inline std_return RTE_Schussanlage_Trigger_GetValue_Event_In(uint8_t *a)
+inline std_return RTE_Schussanlage_SetValue_Sender_Out(char *a)
+{
+	strcpy(RTE_Trigger_GetValue_Receiver_In_SPEICHER,a);
+	SetEvent(Trigger_Task, RTE_Trigger_GetValue_Receiver_In_EVENT);
+	return 0;
+}
+
+inline std_return RTE_Trigger_GetValue_Receiver_In(char *a)
 {
 	EventMaskType event = 0;
-	GetEvent(Schussanlagen_Task,&event);
-	if(event & RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT)
+	GetEvent(Trigger_Task,&event);
+	if(event & RTE_Trigger_GetValue_Receiver_In_EVENT)
 	{
-		ClearEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
-		*a = 1;
+		ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+		strcpy(a,RTE_Trigger_GetValue_Receiver_In_SPEICHER);
 	}
 	else
 	{
-		*a = 0;
+		strcpy(a,"");
 	}
 	return 0;
 }
 
 //Schussanlage_Runnable
 void Schussanlage_Runnable()
+{
+asdjkahsfdjklahsfjksdhfg+
+sdfgdukfgklsfdgjklg
+
+}
+
+//Trigger_Runnable
+void Trigger_Runnable()
 {
 asdjkahsfdjklahsfjksdhfg+
 sdfgdukfgklsfdgjklg
@@ -92,25 +111,34 @@ void ecrobot_device_initialize()
 	ecrobot_init_bt_master(slaveAddr,"YASA");
 }
 
+//kriegt Events von der Comschicht
+//bekommt die höchste Priorität im gesamten Prozess
+//in extra Tasks aufgeteilt um Starvation zu vermeiden
 TASK(BT_IMPLIZIT_MASTER)
 {
-	U8 lastValue[BT_PACKAGE_SIZE];
-	EventMaskType bt_event;
-	
 	while(1)
 	{
-		GetEvent(BT_IMPLIZIT_MASTER, &bt_event);
+		WaitEvent(BT_SEND_MY_MESSAGE);
+		ClearEvent(BT_SEND_MY_MESSAGE);
+		ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
+	}
+	TerminateTask();
+}
+
+//pullt ständig aufm bluetooth
+// sehr niedrige Priorität, kommt also nur dran, wenn grad nix anderes zu tun ist
+TASK(BT_IMPLIZIT_MASTER2)
+{
+	U8 lastValue[BT_PACKAGE_SIZE];
+	while(1)
+	{
 		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
 		{
 			strcpy(BT_receive_package, lastValue);
 			SetEvent(TASK_BT_INTERFACE_READER, BT_HAS_RECEIVED_PACKAGE);
 		}
-		if(bt_event & BT_SEND_MY_MESSAGE)
-		{
-			ClearEvent(BT_SEND_MY_MESSAGE);
-			ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
-		}
 	}
+	
 	TerminateTask();
 }
 
@@ -119,6 +147,14 @@ TASK(Schussanlagen_Task)
 	while(1)
 	{
 		Schussanlage_Runnable();
+	}
+	TerminateTask();
+}
+TASK(Trigger_Task)
+{
+	while(1)
+	{
+		Trigger_Runnable();
 	}
 	TerminateTask();
 }

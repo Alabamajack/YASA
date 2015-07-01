@@ -4,4 +4,4 @@ TOPPERS_OSEK_OIL_SOURCE := Master_Event.oil
 
 O_PATH ?= build
 
-include ../../../../../../../nxtOSEK/ecrobot/ecrobot.mak
+include ../../../../../../../../nxtOSEK/ecrobot/ecrobot.mak
