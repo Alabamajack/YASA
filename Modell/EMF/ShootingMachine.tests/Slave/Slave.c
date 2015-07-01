@@ -4,19 +4,53 @@
 #include "ecrobot_bluetooth.h"
 #include "YASA_generated_variables.h"
 #include "YASA_global_variables.h"
+#include "YASA_types.h"
+#include <string.h>
 
 DeclareTask(InitHook);
 DeclareTask(TASK_BT_INTERFACE_READER);
 DeclareTask(TASK_BT_INTERFACE_WRITER);
 DeclareTask(BT_IMPLIZIT_SLAVE);
 DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
-DeclareEvent(BT_SEND_MY_MESSAGE)
+DeclareEvent(BT_SEND_MY_MESSAGE);
 DeclareTask(Trigger);
+
+DeclareTask(StartTrigger);
 
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
+DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+DeclareEvent(RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT);
 DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+
+inline std_return RTE_Trigger_Schussanlage_SetEvent_Out()
+{
+	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+	return 0;
+}
+
+inline std_return RTE_StartTrigger_Trigger_SetValue_Event_Out()
+{
+	SetEvent(Trigger, RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT);
+	return 0;
+}
+
+inline std_return RTE_Trigger_StartTrigger_GetValue_Event_In(uint8_t *a)
+{
+	EventMaskType event = 0;
+	GetEvent(Trigger,&event);
+	if(event & RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT)
+	{
+		ClearEvent(RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT);
+		*a = 1;
+	}
+	else
+	{
+		*a = 0;
+	}
+	return 0;
+}
 
 inline std_return RTE_Trigger_GetValue_Receiver_In(uint8_t *a)
 {
@@ -25,12 +59,13 @@ inline std_return RTE_Trigger_GetValue_Receiver_In(uint8_t *a)
 	if(event & RTE_Trigger_GetValue_Receiver_In_EVENT)
 	{
 		ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
-		strcpy(a,COMSERVICE_receive_package[0]);
+		strcpy(a,COMSERVICE_receive_package[3]);
 	}
 	else
 	{
 		strcpy(a,"");
 	}
+	return 0;
 }
 
 //Trigger_Runnable
@@ -41,8 +76,19 @@ sdfgdukfgklsfdgjklg
 
 }
 
+//StartTrigger_Runnable
+void StartTrigger_Runnable()
+{
+asdjkahsfdjklahsfjksdhfg+
+sdfgdukfgklsfdgjklg
+
+}
+
+void user_1ms_isr_type2(void){}
+
 TASK(InitHook)
 {
+	TerminateTask();
 }
 
 //bekommt Nachrichten vom BT und verteilt diese an die Ports
@@ -63,7 +109,7 @@ TASK(TASK_BT_INTERFACE_READER)
 		
 		BT_DYNAMIC_READER_CODE;
     }
-    Terminate_Task();
+    TerminateTask();
 }
 //bekommt Nachrichten von Ports und verschickt diese über BT
 TASK(TASK_BT_INTERFACE_WRITER)
@@ -117,6 +163,14 @@ TASK(Trigger)
 	while(1)
 	{
 		Trigger_Runnable();
+	}
+	TerminateTask();
+}
+TASK(StartTrigger)
+{
+	while(1)
+	{
+		StartTrigger_Runnable();
 	}
 	TerminateTask();
 }
