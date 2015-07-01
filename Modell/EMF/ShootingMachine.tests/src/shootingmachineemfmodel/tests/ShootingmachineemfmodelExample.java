@@ -158,7 +158,7 @@ public class ShootingmachineemfmodelExample {
             //Wenn AUTOSTART true ist:
             if (actualTask.isAUTOSTART() == true)
             {
-                oilFileTask += oilFileTask + "\t\tAUTOSTART = TRUE\n"
+                oilFileTask +=  "\t\tAUTOSTART = TRUE\n"
                         + "\t\t{\n"
                         + "\t\t\tAPPMODE = LEGOSAR;\n"
                         + "\t\t};\n";
