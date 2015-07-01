@@ -16,20 +16,13 @@ DeclareTask(SchussanlagenTask);
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
-DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+U8 RTE_Trigger_GetValue_Receiver_In_SPEICHER;
 
-inline std_return RTE_Schussanlage_Trigger_GetValue_Event_In(uint8_t *a)
+inline std_return RTE_Schussanlage_SendMessage_Sender_Out(char *a)
 {
-	EventMaskType event = 0;
-	GetEvent(SchussanlagenTask,&event);
-	if(event & RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT)
-	{
-		ClearEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
-		*a= 1;
-	}
-	else
-		*a= 0;
-	}
+	strcpy(COMSERVICE_transmit_package[0] ,a);
+	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Trigger_GetValue_Receiver_In_EVENT);
 }
 
 //Schussanlage_Runnable
@@ -51,9 +44,16 @@ TASK(TASK_BT_INTERFACE_READER)
     U8 id;
 	U8* locBuffer_ptr = localBuffer;
 	EventMaskType event;
+	
     while(1)
     {
-	
+		WaitEvent(BT_HAS_RECEIVED_PACKAGE); // auf Event von BT-Handler warten
+		ClearEvent(BT_HAS_RECEIVED_PACKAGE);
+		strcpy(localBuffer, BT_receive_package); // Wert aus BT-Handler zwischenspeichern
+		id = *locBuffer_ptr; // die id extrahieren
+		locBuffer_ptr++; // auf die zweite Stelle speichern
+		
+		BT_DYNAMIC_READER_CODE;
     }
     Terminate_Task();
 }
@@ -82,20 +82,22 @@ TASK(BT_IMPLIZIT_MASTER)
 {
 	U8 lastValue[BT_PACKAGE_SIZE];
 	EventMaskType bt_event;
+	
 	while(1)
 	{
+		GetEvent(BT_IMPLIZIT_MASTER, &bt_event);
 		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
 		{
-			BT_receive_package = lastValue;
+			strcpy(BT_receive_package, lastValue);
 			SetEvent(TASK_BT_INTERFACE_READER, BT_HAS_RECEIVED_PACKAGE);
 		}
-		if(GetEvent(BT_IMPLIZIT_MASTER, &bt_event)
+		if(bt_event & BT_SEND_MY_MESSAGE)
 		{
-			ClearEvent(bt_event);
+			ClearEvent(BT_SEND_MY_MESSAGE);
 			ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
 		}
 	}
-	Terminate_Task();
+	TerminateTask();
 }
 
 TASK(SchussanlagenTask)

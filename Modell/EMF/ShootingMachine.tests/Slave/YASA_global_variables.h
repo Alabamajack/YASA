@@ -26,7 +26,7 @@
 
 /** \brief die maximale Länge einer Nachricht, die verschickt werden kann(ohne Overhead produziert durch die verschiedenen Schichten, also direkt nutzbar von Appliaktion)
  * @TODO muss noch ausgerechnet werden */
-#define MAX_MESSAGE_LENGHT
+#define MAX_MESSAGE_LENGHT (BT_PACKAGE_SIZE - 1)
 
 ///#define __DEBUG__
 

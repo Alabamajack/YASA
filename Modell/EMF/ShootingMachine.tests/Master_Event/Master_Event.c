@@ -8,33 +8,32 @@
 DeclareTask(InitHook);
 DeclareTask(TASK_BT_INTERFACE_READER);
 DeclareTask(TASK_BT_INTERFACE_WRITER);
-DeclareTask(BT_IMPLIZIT_SLAVE);
+DeclareTask(BT_IMPLIZIT_MASTER);
 DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
 DeclareEvent(BT_SEND_MY_MESSAGE)
-DeclareTask(Trigger);
+DeclareTask(Schussanlagen_Task);
 
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
-DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
 
-inline std_return RTE_Trigger_GetValue_Receiver_In(uint8_t *a)
+inline std_return RTE_Schussanlage_Trigger_GetValue_Event_In(uint8_t *a)
 {
 	EventMaskType event = 0;
-	GetEvent(Trigger,&event);
-	if(event & RTE_Trigger_GetValue_Receiver_In_EVENT)
+	GetEvent(Schussanlagen_Task,&event);
+	if(event & RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT)
 	{
-		ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
-		strcpy(a,COMSERVICE_receive_package[0]);
+		ClearEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+		*a = 1;
 	}
 	else
-	{
-		strcpy(a,"");
+		*a = 0;
 	}
 }
 
-//Trigger_Runnable
-void Trigger_Runnable()
+//Schussanlage_Runnable
+void Schussanlage_Runnable()
 {
 asdjkahsfdjklahsfjksdhfg+
 sdfgdukfgklsfdgjklg
@@ -61,7 +60,12 @@ TASK(TASK_BT_INTERFACE_READER)
 		id = *locBuffer_ptr; // die id extrahieren
 		locBuffer_ptr++; // auf die zweite Stelle speichern
 		
-		BT_DYNAMIC_READER_CODE;
+		( switch(id){case 0:
+		strcpy(COMSERVICE_receive_package[0], locBuffer_ptr);
+		SetEvent(Schussanlagen_Task,RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+		break;
+		}
+	);
     }
     Terminate_Task();
 }
@@ -80,24 +84,20 @@ TASK(TASK_BT_INTERFACE_WRITER)
     TerminateTask();
 }
 
-TASK(BT_IMPLIZIT_SLAVE)
+void ecrobot_device_initialize()
+{
+	const U8 slaveAddr[7] = {BT_SLAVE_ADDRESS};
+	ecrobot_init_bt_master(slaveAddr,"YASA");
+}
+
+TASK(BT_IMPLIZIT_MASTER)
 {
 	U8 lastValue[BT_PACKAGE_SIZE];
 	EventMaskType bt_event;
 	
-	while(ecrobot_get_bt_status()!=BT_STREAM)
-	{
-		#ifdef __DEBUG__
-		display_goto_xy(0,0);
-		display_int(ecrobot_get_bt_status(), 0);
-		display_update();
-		#endif
-		ecrobot_init_bt_slave("YASA");
-	}
-
 	while(1)
 	{
-		GetEvent(BT_IMPLIZIT_SLAVE, &bt_event);
+		GetEvent(BT_IMPLIZIT_MASTER, &bt_event);
 		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
 		{
 			strcpy(BT_receive_package, lastValue);
@@ -112,11 +112,11 @@ TASK(BT_IMPLIZIT_SLAVE)
 	TerminateTask();
 }
 
-TASK(Trigger)
+TASK(Schussanlagen_Task)
 {
 	while(1)
 	{
-		Trigger_Runnable();
+		Schussanlage_Runnable();
 	}
 	TerminateTask();
 }

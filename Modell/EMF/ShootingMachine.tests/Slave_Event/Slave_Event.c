@@ -11,26 +11,16 @@ DeclareTask(TASK_BT_INTERFACE_WRITER);
 DeclareTask(BT_IMPLIZIT_SLAVE);
 DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
 DeclareEvent(BT_SEND_MY_MESSAGE)
-DeclareTask(Trigger);
+DeclareTask(Trigger_Task);
 
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
-DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
 
-inline std_return RTE_Trigger_GetValue_Receiver_In(uint8_t *a)
+inline std_return RTE_Trigger_Schussanlage_SetEvent_Out()
 {
-	EventMaskType event = 0;
-	GetEvent(Trigger,&event);
-	if(event & RTE_Trigger_GetValue_Receiver_In_EVENT)
-	{
-		ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
-		strcpy(a,COMSERVICE_receive_package[0]);
-	}
-	else
-	{
-		strcpy(a,"");
-	}
+	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
 }
 
 //Trigger_Runnable
@@ -112,7 +102,7 @@ TASK(BT_IMPLIZIT_SLAVE)
 	TerminateTask();
 }
 
-TASK(Trigger)
+TASK(Trigger_Task)
 {
 	while(1)
 	{

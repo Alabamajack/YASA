@@ -938,7 +938,7 @@ public class ShootingmachineemfmodelExample {
     			for(int j = 0; j < mySystem.getHasConnections().get(i).getHasReceiverPorts().size(); j++)
     			{
     				loc_red_string += "case " + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ":";
-    				loc_red_string += "strcpy(" + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_SPEICHER, locBuffer_ptr);";
+    				loc_red_string += "strcpy(" + "COMSERVICE_receive_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "], locBuffer_ptr);";
     				loc_red_string += "SetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()));
     				loc_red_string +=  "," + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
     				loc_red_string += "break;";
@@ -1030,8 +1030,8 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Magee\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
-        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
+        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("Eventportsbeispiel.shootingmachineemfmodel");
 
 
 
