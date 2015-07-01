@@ -1,0 +1,19 @@
+noch Fehler:
+BEI EVENTS:
+1. Oil file: -> Fipsi
+	generiertes Event wird dem falschen Task zugeordnet, gehört zum Applikationscode
+	
+2. EVENT_NAME_SPEICHER: -> Magge/Flo
+	immer speicher für jedes Event anlegen, auch wenn Eventport dies nicht benötigt?! 
+	-> oder unterscheidung in ComService op Eventport oder SR Port -> wahrscheinlich einfacher
+	
+3. in YASA_generated_variables ein ifndef am Anfang dazugenerieren, damits nicht doppelt oder dreifach inkludiert wird -> Flo
+
+BEI SR:
+1. Speicherkopieren -> magee
+	bitte noch mit strcpy, ist noch nicht überall so(gefunden: SR-Port, Beim Sender)
+	Speicherkopieren in dem ComService und nicht in die Variable, die nur für die Kommunikation auf einem Brick gedacht ist, könnte man aber auch noch ändern
+
+	
+Sonst: 
+	Test: Eventport, nicht blockierend, über 2 Tasks: funktioniert
