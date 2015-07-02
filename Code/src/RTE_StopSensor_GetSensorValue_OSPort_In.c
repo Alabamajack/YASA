@@ -2,7 +2,7 @@
 #include "kernel_id.h"
 #include "YASA_global_variables.h"
 #include "YASA_types.h"
-#inlcude "YASA_generated_variables.h"
+#include "YASA_generated_variables.h"
 /** @file RTE_StopSensor_GetSensorValue_OSPort_In.c
  *
  * Funktion die sich aus dem Betriebssystem den Status holt, mit dem die ganze Maschinerie gestoppt werden kann.

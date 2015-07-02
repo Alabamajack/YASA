@@ -1,23 +1,19 @@
 TASK(BT_IMPLIZIT_SLAVE)
 {
-	#ifdef __DEBUG__
-		display_goto_xy(0,0);
-		display_string("BT MASTER");
-		display_update();
-	#endif
-	
+
 	while(ecrobot_get_bt_status()!=BT_STREAM)
 	{
-		#ifdef __DEBUG__
 		display_goto_xy(0,1);
 		display_int(ecrobot_get_bt_status(), 0);
 		display_update();
-		#endif
 		ecrobot_init_bt_slave("YASA");
 	}
 
 	while(1)
 	{
+		display_goto_xy(0,1);
+		display_string("Verbunden");
+		display_update();
 		WaitEvent(BT_SEND_MY_MESSAGE);
 		ClearEvent(BT_SEND_MY_MESSAGE);
 		ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);

@@ -204,13 +204,15 @@ public class ShootingmachineemfmodelExample {
             {
             	oilFileBTInterface += "\t\tEVENT = " + ReceiverEvents.get(k) + ";\n";
             }
+            /*
+             *
+             * Hier haben wir den TASK AUTOSTART auf FALSE gesetzt!!!!!!!
+             *
+             */
     		oilFileBTInterface += "\t};\n\n"
     				+ "\tTASK TASK_BT_INTERFACE_WRITER\n"
     				+ "\t{\n"
-    				+"\t\tAUTOSTART = TRUE\n"
-    				+"\t\t{\n"
-    				+"\t\t\tAPPMODE = LEGOSAR;\n"
-    				+"\t\t};\n"
+    				+"\t\tAUTOSTART = FALSE;\n"
     				+"\t\tPRIORITY = 7;\n"
     				+"\t\tACTIVATION = 1;\n"
     				+"\t\tSCHEDULE = FULL;\n"
@@ -233,7 +235,7 @@ public class ShootingmachineemfmodelExample {
             else
             {
             	oilFileBTImplizit = "\tTASK BT_IMPLIZIT_SLAVE\n";  //Hier kein +=, weil es nur einmal pro Datei und nicht einmal pro Task eingefuegt werden soll
-            	zweiterterimplizitTask = "\tTTASK BT_IMPLIZIT_SLAVE\n";
+            	zweiterterimplizitTask = "\tTASK BT_IMPLIZIT_SLAVE2\n";
             	System.out.print("\t\tBT_SLAVE hinzugefuegt\n");
             }
             oilFileBTImplizit += "\t{\n"
@@ -1106,8 +1108,8 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
-        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("Eventportsbeispiel.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\eip46272\\Desktop\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\SRInterLokal.shootingmachineemfmodel");
+        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("SRInterLokal.shootingmachineemfmodel");
 
 
 
@@ -1224,6 +1226,27 @@ public class ShootingmachineemfmodelExample {
                 File YASA_types_dest = new File(Brickname + "\\YASA_types.h");
 
                 Files.copy(YASA_types_src.toPath(), YASA_types_dest.toPath());
+
+                File RTE_Output_src = new File("..\\..\\..\\Code\\src\\RTE_Output_SetOutput_OSPort_Out.c");
+                File RTE_Output_dest = new File(Brickname + "\\RTE_Output_SetOutput_OSPort_Out.c");
+
+                Files.copy(RTE_Output_src.toPath(), RTE_Output_dest.toPath());
+
+                File RTE_StartTrigger_src = new File("..\\..\\..\\Code\\src\\RTE_StartTrigger_GetSensorValue_OSPort_In.c");
+                File RTE_StartTrigger_dest = new File(Brickname + "\\RTE_StartTrigger_GetSensorValue_OSPort_In.c");
+
+                Files.copy(RTE_StartTrigger_src.toPath(), RTE_StartTrigger_dest.toPath());
+
+                File RTE_Schussmotor_src = new File("..\\..\\..\\Code\\src\\RTE_SchussMotor_SetOutputValue_OSPort_Out.c");
+                File RTE_Schussmotor_dest = new File(Brickname + "\\RTE_SchussMotor_SetOutputValue_OSPort_Out.c");
+
+                Files.copy(RTE_Schussmotor_src.toPath(), RTE_Schussmotor_dest.toPath());
+
+                File RTE_StopSensor_src = new File("..\\..\\..\\Code\\src\\RTE_StopSensor_GetSensorValue_OSPort_In.c");
+                File RTE_StopSensor_dest = new File(Brickname + "\\RTE_StopSensor_GetSensorValue_OSPort_In.c");
+
+                Files.copy(RTE_StopSensor_src.toPath(), RTE_StopSensor_dest.toPath());
+
 
 
                 setPortDefines(mySystem, i);
@@ -1365,10 +1388,10 @@ public class ShootingmachineemfmodelExample {
                 java.nio.file.Path relative = sourcepath.relativize(includepath);
 
                 String Makefilestring = "TARGET = " + Brickname +"\n"
-                		+ "TARGET_SOURCES := " + Brickname + ".c RTE_Output_SetOutput_OSPort_Out.c RTE_SchussMotor_SetOutputValue_OSPort_Out.c RTE_StartTrigger_GetSensorValue_OSPort_In.c RTE_StopSensor_GetSensorValue_OSPort_In.c\n"
+                		+ "TARGET_SOURCES := " + Brickname + ".c RTE_Output_SetOutput_OSPort_Out.c RTE_SchussMotor_SetOutputValue_OSPort_Out.c RTE_StartTrigger_GetSensorValue_OSPort_In.c RTE_StopSensor_GetSensorValue_OSPort_In.c \n"
                 		+ "TOPPERS_OSEK_OIL_SOURCE := " + Brickname + ".oil\n\n"
                 		+ "O_PATH ?= build\n\n"
-                		+ "include " + relative.toString().replace("\\", "/") + "/ecrobot.mak";
+                		+ "include ../" + relative.toString().replace("\\", "/") + "/ecrobot.mak";
                 makefileWriter.write(Makefilestring);
                 makefileWriter.close();
 

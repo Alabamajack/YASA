@@ -21,17 +21,7 @@ CPU ATMEL_AT91SAM7S256
 	{
 		AUTOSTART = FALSE;
 		PRIORITY = 0;
-		ACTIVATION = 0;
-		SCHEDULE = FULL;
-		STACKSIZE = 512;
-		EVENT = RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT;
-	};
-
-	TASK StartTrigger
-	{
-		AUTOSTART = FALSE;
-		PRIORITY = 0;
-		ACTIVATION = 0;
+		ACTIVATION = 1;
 		SCHEDULE = FULL;
 		STACKSIZE = 512;
 	};
@@ -72,7 +62,6 @@ CPU ATMEL_AT91SAM7S256
 		ACTIVATION = 1;
 		SCHEDULE = FULL;
 		STACKSIZE = 512;
-		EVENT = RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT;
 	};
 
 	TASK BT_IMPLIZIT_SLAVE
@@ -88,6 +77,18 @@ CPU ATMEL_AT91SAM7S256
 		EVENT = BT_SEND_MY_MESSAGE;
 	};
 
+	TTASK BT_IMPLIZIT_SLAVE
+	{
+		AUTOSTART = TRUE
+		{
+			APPMODE = LEGOSAR;
+		};
+		PRIORITY = 1;
+		ACTIVATION = 1;
+		SCHEDULE = FULL;
+		STACKSIZE = 512;
+	};
+
 	EVENT BT_HAS_RECEIVED_PACKAGE
 	{
 		MASK = AUTO;
@@ -98,17 +99,7 @@ CPU ATMEL_AT91SAM7S256
 		MASK = AUTO;
 	};
 
-	EVENT RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT
-	{
-		MASK = AUTO;
-	};
-
 	EVENT RTE_Trigger_GetValue_Receiver_In_EVENT
-	{
-		MASK = AUTO;
-	};
-
-	EVENT RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT
 	{
 		MASK = AUTO;
 	};

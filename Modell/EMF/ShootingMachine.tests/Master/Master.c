@@ -11,68 +11,27 @@ DeclareTask(InitHook);
 DeclareTask(TASK_BT_INTERFACE_READER);
 DeclareTask(TASK_BT_INTERFACE_WRITER);
 DeclareTask(BT_IMPLIZIT_MASTER);
+DeclareTask(BT_IMPLIZIT_MASTER2);
 DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
 DeclareEvent(BT_SEND_MY_MESSAGE);
 DeclareTask(SchussanlagenTask);
 
 DeclareTask(Output);
 
-DeclareTask(StopSensor);
-
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
-DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
-DeclareEvent(RTE_Schussanlage_StopSensor_GetValue_Event_In_EVENT);
 DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
 U8 RTE_Trigger_GetValue_Receiver_In_SPEICHER;
 DeclareEvent(RTE_Output_GetValue_Receiver_In_EVENT);
 U8 RTE_Output_GetValue_Receiver_In_SPEICHER;
 
-inline std_return RTE_StopSensor_Schussanlage_SetValue_Event_Out()
-{
-	SetEvent(SchussanlagenTask, RTE_Schussanlage_StopSensor_GetValue_Event_In_EVENT);
-	return 0;
-}
-
 inline std_return RTE_Schussanlage_SendMessage_Sender_Out(char *a)
 {
-	strcpy(COMSERVICE_transmit_package[3] ,a);
+	strcpy(COMSERVICE_transmit_package[0] ,a);
 	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Trigger_GetValue_Receiver_In_EVENT);
 	strcpy(RTE_Output_GetValue_Receiver_In_SPEICHER,a);
 	SetEvent(Output, RTE_Output_GetValue_Receiver_In_EVENT);
-	return 0;
-}
-
-inline std_return RTE_Schussanlage_Trigger_GetValue_Event_In(uint8_t *a)
-{
-	EventMaskType event = 0;
-	GetEvent(SchussanlagenTask,&event);
-	if(event & RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT)
-	{
-		ClearEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
-		*a = 1;
-	}
-	else
-	{
-		*a = 0;
-	}
-	return 0;
-}
-
-inline std_return RTE_Schussanlage_StopSensor_GetValue_Event_In(uint8_t *a)
-{
-	EventMaskType event = 0;
-	GetEvent(SchussanlagenTask,&event);
-	if(event & RTE_Schussanlage_StopSensor_GetValue_Event_In_EVENT)
-	{
-		ClearEvent(RTE_Schussanlage_StopSensor_GetValue_Event_In_EVENT);
-		*a = 1;
-	}
-	else
-	{
-		*a = 0;
-	}
 	return 0;
 }
 
@@ -102,14 +61,6 @@ sdfgdukfgklsfdgjklg
 
 //Output_Runnable
 void Output_Runnable()
-{
-asdjkahsfdjklahsfjksdhfg+
-sdfgdukfgklsfdgjklg
-
-}
-
-//StopSensor_Runnable
-void StopSensor_Runnable()
 {
 asdjkahsfdjklahsfjksdhfg+
 sdfgdukfgklsfdgjklg
@@ -164,25 +115,34 @@ void ecrobot_device_initialize()
 	ecrobot_init_bt_master(slaveAddr,"YASA");
 }
 
+//kriegt Events von der Comschicht
+//bekommt die höchste Priorität im gesamten Prozess
+//in extra Tasks aufgeteilt um Starvation zu vermeiden
 TASK(BT_IMPLIZIT_MASTER)
 {
-	U8 lastValue[BT_PACKAGE_SIZE];
-	EventMaskType bt_event;
-	
 	while(1)
 	{
-		GetEvent(BT_IMPLIZIT_MASTER, &bt_event);
+		WaitEvent(BT_SEND_MY_MESSAGE);
+		ClearEvent(BT_SEND_MY_MESSAGE);
+		ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
+	}
+	TerminateTask();
+}
+
+//pullt ständig aufm bluetooth
+// sehr niedrige Priorität, kommt also nur dran, wenn grad nix anderes zu tun ist
+TASK(BT_IMPLIZIT_MASTER2)
+{
+	U8 lastValue[BT_PACKAGE_SIZE];
+	while(1)
+	{
 		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
 		{
 			strcpy(BT_receive_package, lastValue);
 			SetEvent(TASK_BT_INTERFACE_READER, BT_HAS_RECEIVED_PACKAGE);
 		}
-		if(bt_event & BT_SEND_MY_MESSAGE)
-		{
-			ClearEvent(BT_SEND_MY_MESSAGE);
-			ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
-		}
 	}
+	
 	TerminateTask();
 }
 
@@ -199,14 +159,6 @@ TASK(Output)
 	while(1)
 	{
 		Output_Runnable();
-	}
-	TerminateTask();
-}
-TASK(StopSensor)
-{
-	while(1)
-	{
-		StopSensor_Runnable();
 	}
 	TerminateTask();
 }

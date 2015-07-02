@@ -11,46 +11,15 @@ DeclareTask(InitHook);
 DeclareTask(TASK_BT_INTERFACE_READER);
 DeclareTask(TASK_BT_INTERFACE_WRITER);
 DeclareTask(BT_IMPLIZIT_SLAVE);
+DeclareTask(BT_IMPLIZIT_SLAVE2);
 DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
 DeclareEvent(BT_SEND_MY_MESSAGE);
 DeclareTask(Trigger);
 
-DeclareTask(StartTrigger);
-
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
-DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
-DeclareEvent(RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT);
 DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
-
-inline std_return RTE_Trigger_Schussanlage_SetEvent_Out()
-{
-	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
-	return 0;
-}
-
-inline std_return RTE_StartTrigger_Trigger_SetValue_Event_Out()
-{
-	SetEvent(Trigger, RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT);
-	return 0;
-}
-
-inline std_return RTE_Trigger_StartTrigger_GetValue_Event_In(uint8_t *a)
-{
-	EventMaskType event = 0;
-	GetEvent(Trigger,&event);
-	if(event & RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT)
-	{
-		ClearEvent(RTE_Trigger_StartTrigger_GetValue_Event_In_EVENT);
-		*a = 1;
-	}
-	else
-	{
-		*a = 0;
-	}
-	return 0;
-}
 
 inline std_return RTE_Trigger_GetValue_Receiver_In(uint8_t *a)
 {
@@ -59,7 +28,7 @@ inline std_return RTE_Trigger_GetValue_Receiver_In(uint8_t *a)
 	if(event & RTE_Trigger_GetValue_Receiver_In_EVENT)
 	{
 		ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
-		strcpy(a,COMSERVICE_receive_package[3]);
+		strcpy(a,COMSERVICE_receive_package[0]);
 	}
 	else
 	{
@@ -70,14 +39,6 @@ inline std_return RTE_Trigger_GetValue_Receiver_In(uint8_t *a)
 
 //Trigger_Runnable
 void Trigger_Runnable()
-{
-asdjkahsfdjklahsfjksdhfg+
-sdfgdukfgklsfdgjklg
-
-}
-
-//StartTrigger_Runnable
-void StartTrigger_Runnable()
 {
 asdjkahsfdjklahsfjksdhfg+
 sdfgdukfgklsfdgjklg
@@ -128,13 +89,16 @@ TASK(TASK_BT_INTERFACE_WRITER)
 
 TASK(BT_IMPLIZIT_SLAVE)
 {
-	U8 lastValue[BT_PACKAGE_SIZE];
-	EventMaskType bt_event;
+	#ifdef __DEBUG__
+		display_goto_xy(0,0);
+		display_string("BT MASTER");
+		display_update();
+	#endif
 	
 	while(ecrobot_get_bt_status()!=BT_STREAM)
 	{
 		#ifdef __DEBUG__
-		display_goto_xy(0,0);
+		display_goto_xy(0,1);
 		display_int(ecrobot_get_bt_status(), 0);
 		display_update();
 		#endif
@@ -143,16 +107,24 @@ TASK(BT_IMPLIZIT_SLAVE)
 
 	while(1)
 	{
-		GetEvent(BT_IMPLIZIT_SLAVE, &bt_event);
+		WaitEvent(BT_SEND_MY_MESSAGE);
+		ClearEvent(BT_SEND_MY_MESSAGE);
+		ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
+	}
+	TerminateTask();
+}
+
+//pullt ständig aufm BT
+//hat relativ niedirge prio
+TASK(BT_IMPLIZIT_SLAVE2)
+{
+	U8 lastValue[BT_PACKAGE_SIZE];
+	while(1)
+	{
 		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
 		{
 			strcpy(BT_receive_package, lastValue);
 			SetEvent(TASK_BT_INTERFACE_READER, BT_HAS_RECEIVED_PACKAGE);
-		}
-		if(bt_event & BT_SEND_MY_MESSAGE)
-		{
-			ClearEvent(BT_SEND_MY_MESSAGE);
-			ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
 		}
 	}
 	TerminateTask();
@@ -163,14 +135,6 @@ TASK(Trigger)
 	while(1)
 	{
 		Trigger_Runnable();
-	}
-	TerminateTask();
-}
-TASK(StartTrigger)
-{
-	while(1)
-	{
-		StartTrigger_Runnable();
 	}
 	TerminateTask();
 }
