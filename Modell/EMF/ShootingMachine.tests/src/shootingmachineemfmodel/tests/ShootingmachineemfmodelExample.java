@@ -9,15 +9,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-
 import shootingmachineemfmodel.Client;
 import shootingmachineemfmodel.Display;
 import shootingmachineemfmodel.GetEvent;
@@ -204,15 +201,13 @@ public class ShootingmachineemfmodelExample {
             {
             	oilFileBTInterface += "\t\tEVENT = " + ReceiverEvents.get(k) + ";\n";
             }
-            /*
-             *
-             * Hier haben wir den TASK AUTOSTART auf FALSE gesetzt!!!!!!!
-             *
-             */
     		oilFileBTInterface += "\t};\n\n"
     				+ "\tTASK TASK_BT_INTERFACE_WRITER\n"
     				+ "\t{\n"
-    				+"\t\tAUTOSTART = FALSE;\n"
+    				+"\t\tAUTOSTART = TRUE\n"
+            		+"\t\t{\n"
+            		+"\t\t\tAPPMODE = LEGOSAR;\n"
+            		+"\t\t};\n"
     				+"\t\tPRIORITY = 7;\n"
     				+"\t\tACTIVATION = 1;\n"
     				+"\t\tSCHEDULE = FULL;\n"
@@ -255,11 +250,19 @@ public class ShootingmachineemfmodelExample {
             		+"\t\t{\n"
             		+"\t\t\tAPPMODE = LEGOSAR;\n"
             		+"\t\t};\n"
-            		+"\t\tPRIORITY = 1;\n"
+            		+"\t\tPRIORITY = 7;\n"
             		+"\t\tACTIVATION = 1;\n"
             		+"\t\tSCHEDULE = FULL;\n"
-            		+"\t\tSTACKSIZE = 512;\n"
-            		+"\t};\n\n";
+            		+"\t\tSTACKSIZE = 512;\n";
+            if(mySystem.getHasBrick().get(Brickindex).isIsMaster() == true)
+            {
+            	zweiterterimplizitTask += "\t\tEVENT = BT_IMPLIZIT_MASTER2_EVENT;\n";
+            }
+            else
+            {
+            	zweiterterimplizitTask += "\t\tEVENT = BT_IMPLIZIT_SLAVE2_EVENT;\n";
+            }
+            zweiterterimplizitTask += "\t};\n\n";
             oilFileBTImplizit += zweiterterimplizitTask;
 
             //EVENTS die zu den TASKS gehoeren
@@ -399,6 +402,21 @@ public class ShootingmachineemfmodelExample {
                     + "\t};\n\n";
         }
 
+        if (mySystem.getHasBrick().get(Brickindex).isIsMaster() == true)
+        {
+        	oilFileEvent += "\tEVENT BT_IMPLIZIT_MASTER2_EVENT\n"
+                    + "\t{\n"
+                    + "\t\tMASK = AUTO;\n"
+                    + "\t};\n\n";
+        }
+        else
+        {
+        	oilFileEvent += "\tEVENT BT_IMPLIZIT_SLAVE2_EVENT\n"
+                    + "\t{\n"
+                    + "\t\tMASK = AUTO;\n"
+                    + "\t};\n\n";
+        }
+
 
         retlist.add(oilFileBeginn);
         retlist.add(oilFileTask);
@@ -484,6 +502,15 @@ public class ShootingmachineemfmodelExample {
             cFileDeclareEvent += "DeclareEvent(" + mySystem.getHasBrick().get(Brickindex).getHasEventBrick().get(j).getName() + ");\n";
         }
 
+        if(mySystem.getHasBrick().get(Brickindex).isIsMaster() == true)
+        {
+        	cFileDeclareEvent += "DeclareEvent(BT_IMPLIZIT_MASTER2_EVENT);";
+        }
+        else
+        {
+        	cFileDeclareEvent += "DeclareEvent(BT_IMPLIZIT_SLAVE2_EVENT);";
+        }
+
 
         //For Schleife in welcher die Runnables deklariert werden
         for(int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().size(); j++)
@@ -501,7 +528,17 @@ public class ShootingmachineemfmodelExample {
             }
         }
 
-        cFileInitHook += "void user_1ms_isr_type2(void){}\n\n";
+        cFileInitHook += "void user_1ms_isr_type2(void){\n\tstatic int a = 0;\n if(a == 10){\n";
+        if (mySystem.getHasBrick().get(Brickindex).isIsMaster() == true)
+        {
+        	cFileInitHook += "\tSetEvent(BT_IMPLIZIT_MASTER2, BT_IMPLIZIT_MASTER2_EVENT);";
+        }
+        else
+        {
+        	cFileInitHook += "\tSetEvent(BT_IMPLIZIT_SLAVE2, BT_IMPLIZIT_SLAVE2_EVENT);";
+        }
+        cFileInitHook += "a = 0;}\na++;\n}\n\n";
+
 
         cFileInitHook += "TASK(InitHook)\n"
         		+ "{\n";
@@ -672,7 +709,10 @@ public class ShootingmachineemfmodelExample {
 	        					//Aktueller Eintrag laesst sich nach SendEvent casten -> Kommunikation uber Events und aktueller Brick ist Sender
 	                    		shootingmachineemfmodel.GetEvent myEventgetter =  (GetEvent) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
 	                    		genc = genc + "DeclareEvent(" + myEventgetter.getName() + "_EVENT);\n";
-	                    		ReceiverList.add(myEventgetter.getName() + "_EVENT");
+
+	                    		//ReceiverList.add(myEventgetter.getName() + "_EVENT");
+	                    		RTEEventtoTask.put(myEventgetter.getName() + "_EVENT", RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())));
+
 	                    		//blockierend
 	                    		if(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).isBlockierend() == true)
 	                    		{
@@ -962,6 +1002,14 @@ public class ShootingmachineemfmodelExample {
 
     	Brick_SR_Events.add(Bricklist);
 
+    	System.out.print("here:");
+    	for(String key:RTEEventtoTask.keySet())
+    	{
+    		System.out.print(key);
+    		System.out.print(RTEEventtoTask.get(key));
+    	}
+
+
         return retlist;
     }
 
@@ -1108,8 +1156,8 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\eip46272\\Desktop\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\SRInterLokal.shootingmachineemfmodel");
-        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("SRInterLokal.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\eip46272\\Desktop\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
+        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("Eventportsbeispiel.shootingmachineemfmodel");
 
 
 

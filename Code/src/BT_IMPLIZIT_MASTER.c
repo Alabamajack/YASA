@@ -25,6 +25,8 @@ TASK(BT_IMPLIZIT_MASTER2)
 	U8 lastValue[BT_PACKAGE_SIZE];
 	while(1)
 	{
+		WaitEvent(BT_IMPLIZIT_MASTER2_EVENT);
+		ClearEvent(BT_IMPLIZIT_MASTER2_EVENT);
 		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
 		{
 			strcpy(BT_receive_package, lastValue);
