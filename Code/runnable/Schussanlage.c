@@ -1,6 +1,6 @@
 uint8_t StopEvent = 0;
 uint8_t StartEvent = 0;
-const uint8_t msg = "Alles aus!";
+const char* msg = "Alles aus!";
 const char* msg2 = "you are dead!";
 uint8_t shots = 1;
 uint32_t retval = 0;
