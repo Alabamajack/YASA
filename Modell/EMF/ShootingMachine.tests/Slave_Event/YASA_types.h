@@ -20,10 +20,16 @@
   * @author Florian Laufenböck
   * @date 2015-06-08
   */
-typedef U32 std_return;
-typedef U8 uint8_t;
-typedef U32 uint32_t;
-typedef U16 uint16_t;
-typedef SINT int32_t;
+// typedef U32 std_return;
+// typedef U8 uint8_t;
+// typedef U32 uint32_t;
+// typedef U16 uint16_t;
+// typedef SINT int32_t;
+
+typedef unsigned int std_return;
+typedef unsigned char uint8_t;
+typedef unsigned int uint32_t;
+typedef unsigned short uint16_t;
+typedef int int32_t;
 
  #endif /* YASA_types */

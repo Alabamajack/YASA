@@ -16,8 +16,6 @@ DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
 DeclareEvent(BT_SEND_MY_MESSAGE);
 DeclareTask(Schussanlagen_Task);
 
-DeclareTask(Trigger_Task);
-
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
@@ -26,44 +24,37 @@ U8 RTE_Trigger_GetValue_Receiver_In_SPEICHER;
 
 inline std_return RTE_Schussanlage_SetValue_Sender_Out(char *a)
 {
-	strcpy(RTE_Trigger_GetValue_Receiver_In_SPEICHER,a);
-	SetEvent(Trigger_Task, RTE_Trigger_GetValue_Receiver_In_EVENT);
+	strcpy(COMSERVICE_transmit_package[0] ,a);
+	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Trigger_GetValue_Receiver_In_EVENT);
 	return 0;
 }
-
-inline std_return RTE_Trigger_GetValue_Receiver_In(char *a)
-{
-	EventMaskType event = 0;
-	GetEvent(Trigger_Task,&event);
-	if(event & RTE_Trigger_GetValue_Receiver_In_EVENT)
-	{
-		ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
-		strcpy(a,RTE_Trigger_GetValue_Receiver_In_SPEICHER);
-	}
-	else
-	{
-		strcpy(a,"");
-	}
-	return 0;
-}
-
+DeclareEvent(BT_IMPLIZIT_MASTER2_EVENT);
 //Schussanlage_Runnable
 void Schussanlage_Runnable()
 {
-asdjkahsfdjklahsfjksdhfg+
-sdfgdukfgklsfdgjklg
+uint8_t temp = 0;
+	RTE_Schussanlage_GetValueFromTrigger_Event_In(&temp);
+	if (temp)
+	{
+		display_goto_xy(0,0);
+		display_string("Event");
+		display_update();
+	}
+	else
+	{
+		display_goto_xy(0,0);
+		display_string("else");
+		display_update();
+	}
 
 }
 
-//Trigger_Runnable
-void Trigger_Runnable()
-{
-asdjkahsfdjklahsfjksdhfg+
-sdfgdukfgklsfdgjklg
-
+void user_1ms_isr_type2(void){
+	static int a = 0;
+ if(a == 10){
+	SetEvent(BT_IMPLIZIT_MASTER2, BT_IMPLIZIT_MASTER2_EVENT);a = 0;}
+a++;
 }
-
-void user_1ms_isr_type2(void){}
 
 TASK(InitHook)
 {
@@ -132,6 +123,8 @@ TASK(BT_IMPLIZIT_MASTER2)
 	U8 lastValue[BT_PACKAGE_SIZE];
 	while(1)
 	{
+		WaitEvent(BT_IMPLIZIT_MASTER2_EVENT);
+		ClearEvent(BT_IMPLIZIT_MASTER2_EVENT);
 		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
 		{
 			strcpy(BT_receive_package, lastValue);
@@ -147,14 +140,6 @@ TASK(Schussanlagen_Task)
 	while(1)
 	{
 		Schussanlage_Runnable();
-	}
-	TerminateTask();
-}
-TASK(Trigger_Task)
-{
-	while(1)
-	{
-		Trigger_Runnable();
 	}
 	TerminateTask();
 }

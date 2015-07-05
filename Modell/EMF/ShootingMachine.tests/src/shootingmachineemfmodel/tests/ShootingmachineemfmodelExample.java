@@ -1002,12 +1002,12 @@ public class ShootingmachineemfmodelExample {
 
     	Brick_SR_Events.add(Bricklist);
 
-    	System.out.print("here:");
-    	for(String key:RTEEventtoTask.keySet())
-    	{
-    		System.out.print(key);
-    		System.out.print(RTEEventtoTask.get(key));
-    	}
+//    	System.out.print("here:");
+//    	for(String key:RTEEventtoTask.keySet())
+//    	{
+//    		System.out.print(key);
+//    		System.out.print(RTEEventtoTask.get(key));
+//    	}
 
 
         return retlist;

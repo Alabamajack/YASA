@@ -11,30 +11,58 @@ DeclareTask(InitHook);
 DeclareTask(TASK_BT_INTERFACE_READER);
 DeclareTask(TASK_BT_INTERFACE_WRITER);
 DeclareTask(BT_IMPLIZIT_SLAVE);
+DeclareTask(BT_IMPLIZIT_SLAVE2);
 DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
 DeclareEvent(BT_SEND_MY_MESSAGE);
-DeclareTask(Trigger_Task);
+DeclareTask(Trigger);
 
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
-DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
 
-inline std_return RTE_Trigger_Schussanlage_SetEvent_Out()
+inline std_return RTE_Trigger_GetValue_Receiver_In(uint8_t *a)
 {
-	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+	EventMaskType event = 0;
+	GetEvent(Trigger,&event);
+	if(event & RTE_Trigger_GetValue_Receiver_In_EVENT)
+	{
+		ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+		strcpy(a,COMSERVICE_receive_package[0]);
+	}
+	else
+	{
+		strcpy(a,"");
+	}
 	return 0;
 }
-
+DeclareEvent(BT_IMPLIZIT_SLAVE2_EVENT);
 //Trigger_Runnable
 void Trigger_Runnable()
 {
-asdjkahsfdjklahsfjksdhfg+
-sdfgdukfgklsfdgjklg
+uint8_t temp = 0;
+	RTE_Schussanlage_GetValueFromTrigger_Event_In(&temp);
+	if (temp)
+	{
+		display_goto_xy(0,0);
+		display_string("Event");
+		display_update();
+	}
+	else
+	{
+		display_goto_xy(0,0);
+		display_string("else");
+		display_update();
+	}
 
 }
 
-void user_1ms_isr_type2(void){}
+void user_1ms_isr_type2(void){
+	static int a = 0;
+ if(a == 10){
+	SetEvent(BT_IMPLIZIT_SLAVE2, BT_IMPLIZIT_SLAVE2_EVENT);a = 0;}
+a++;
+}
 
 TASK(InitHook)
 {
@@ -78,37 +106,46 @@ TASK(TASK_BT_INTERFACE_WRITER)
 
 TASK(BT_IMPLIZIT_SLAVE)
 {
-	U8 lastValue[BT_PACKAGE_SIZE];
-	EventMaskType bt_event;
-	
+
 	while(ecrobot_get_bt_status()!=BT_STREAM)
 	{
-		#ifdef __DEBUG__
-		display_goto_xy(0,0);
+		display_goto_xy(0,1);
 		display_int(ecrobot_get_bt_status(), 0);
 		display_update();
-		#endif
 		ecrobot_init_bt_slave("YASA");
 	}
 
 	while(1)
 	{
-		GetEvent(BT_IMPLIZIT_SLAVE, &bt_event);
+		display_goto_xy(0,1);
+		display_string("Verbunden");
+		display_update();
+		WaitEvent(BT_SEND_MY_MESSAGE);
+		ClearEvent(BT_SEND_MY_MESSAGE);
+		ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
+	}
+	TerminateTask();
+}
+
+//pullt ständig aufm BT
+//hat relativ niedirge prio
+TASK(BT_IMPLIZIT_SLAVE2)
+{
+	U8 lastValue[BT_PACKAGE_SIZE];
+	while(1)
+	{
+		WaitEvent(BT_IMPLIZIT_SLAVE2_EVENT);
+		ClearEvent(BT_IMPLIZIT_SLAVE2_EVENT);
 		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
 		{
 			strcpy(BT_receive_package, lastValue);
 			SetEvent(TASK_BT_INTERFACE_READER, BT_HAS_RECEIVED_PACKAGE);
 		}
-		if(bt_event & BT_SEND_MY_MESSAGE)
-		{
-			ClearEvent(BT_SEND_MY_MESSAGE);
-			ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
-		}
 	}
 	TerminateTask();
 }
 
-TASK(Trigger_Task)
+TASK(Trigger)
 {
 	while(1)
 	{

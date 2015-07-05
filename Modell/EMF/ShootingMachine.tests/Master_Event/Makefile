@@ -1,7 +1,7 @@
 TARGET = Master_Event
-TARGET_SOURCES := Master_Event.c RTE_Output_SetOutput_OSPort_Out.c RTE_SchussMotor_SetOutputValue_OSPort_Out.c RTE_StartTrigger_GetSensorValue_OSPort_In.c RTE_StopSensor_GetSensorValue_OSPort_In.c
+TARGET_SOURCES := Master_Event.c RTE_Output_SetOutput_OSPort_Out.c RTE_SchussMotor_SetOutputValue_OSPort_Out.c RTE_StartTrigger_GetSensorValue_OSPort_In.c RTE_StopSensor_GetSensorValue_OSPort_In.c 
 TOPPERS_OSEK_OIL_SOURCE := Master_Event.oil
 
 O_PATH ?= build
 
-include ../../../../../../../../nxtOSEK/ecrobot/ecrobot.mak
+include ../../../../../../../../../nxtOSEK/ecrobot/ecrobot.mak

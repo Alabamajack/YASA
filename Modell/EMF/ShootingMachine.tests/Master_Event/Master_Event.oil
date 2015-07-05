@@ -19,8 +19,6 @@ CPU ATMEL_AT91SAM7S256
 
 	TASK Schussanlagen_Task
 	{
-	TASK Schussanlagen_Task
-	{
 		AUTOSTART = TRUE
 		{
 			APPMODE = LEGOSAR;
@@ -29,35 +27,6 @@ CPU ATMEL_AT91SAM7S256
 		ACTIVATION = 1;
 		SCHEDULE = FULL;
 		STACKSIZE = 512;
-	};
-
-	TASK Trigger_Task
-	{
-	TASK Schussanlagen_Task
-	{
-	TASK Schussanlagen_Task
-	{
-		AUTOSTART = TRUE
-		{
-			APPMODE = LEGOSAR;
-		};
-		PRIORITY = 1;
-		ACTIVATION = 1;
-		SCHEDULE = FULL;
-		STACKSIZE = 512;
-	};
-
-	TASK Trigger_Task
-	{
-		AUTOSTART = TRUE
-		{
-			APPMODE = LEGOSAR;
-		};
-		PRIORITY = 1;
-		ACTIVATION = 1;
-		SCHEDULE = FULL;
-		STACKSIZE = 512;
-		EVENT = RTE_Trigger_GetValue_Receiver_In_EVENT;
 	};
 
 	TASK InitHook
@@ -95,6 +64,7 @@ CPU ATMEL_AT91SAM7S256
 		ACTIVATION = 1;
 		SCHEDULE = FULL;
 		STACKSIZE = 512;
+		EVENT = RTE_Trigger_GetValue_Receiver_In_EVENT;
 	};
 
 	TASK BT_IMPLIZIT_MASTER
@@ -116,10 +86,11 @@ CPU ATMEL_AT91SAM7S256
 		{
 			APPMODE = LEGOSAR;
 		};
-		PRIORITY = 1;
+		PRIORITY = 7;
 		ACTIVATION = 1;
 		SCHEDULE = FULL;
 		STACKSIZE = 512;
+		EVENT = BT_IMPLIZIT_MASTER2_EVENT;
 	};
 
 	EVENT BT_HAS_RECEIVED_PACKAGE
@@ -133,6 +104,11 @@ CPU ATMEL_AT91SAM7S256
 	};
 
 	EVENT RTE_Trigger_GetValue_Receiver_In_EVENT
+	{
+		MASK = AUTO;
+	};
+
+	EVENT BT_IMPLIZIT_MASTER2_EVENT
 	{
 		MASK = AUTO;
 	};
