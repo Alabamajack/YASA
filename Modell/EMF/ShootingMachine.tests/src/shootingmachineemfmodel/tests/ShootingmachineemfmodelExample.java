@@ -741,7 +741,10 @@ public class ShootingmachineemfmodelExample {
                 			{
                 				shootingmachineemfmodel.Receiver myReceiver =  (Receiver) mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l);
                 				genc = genc + "DeclareEvent(" + myReceiver.getName() + "_EVENT);\n";
-                				ReceiverList.add(myReceiver.getName() + "_EVENT");
+                				//ReceiverList.add(myReceiver.getName() + "_EVENT");
+
+                				//Hier Bugfix fuer Event das falsch zugeordnet wurde
+                				RTEEventtoTask.put(myReceiver.getName() + "_EVENT", RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())));
                 				//blockierend
                 				if(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).isBlockierend() == true)
 	                    		{
@@ -1158,7 +1161,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Philipp\\Documents\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("Eventportsbeispiel.shootingmachineemfmodel");
 
 
