@@ -1079,8 +1079,10 @@ public class ShootingmachineemfmodelExample {
     		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE " + loc_WaitEvents + "GetEvent(TASK_BT_INTERFACE_WRITER, &event);" + if_bed;
     	}
     	else
-    		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE";
+    		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE break;";
 
+    	if(loc_red_string == "switch(id){")
+    		loc_red_string += "default:break;";
     	loc_red_string += "}";
     	BT_Receiver_String = "#define BT_DYNAMIC_READER_CODE "+ loc_red_string;
 
@@ -1156,7 +1158,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\eip46272\\Desktop\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("Eventportsbeispiel.shootingmachineemfmodel");
 
 
