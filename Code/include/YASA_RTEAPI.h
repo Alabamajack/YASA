@@ -22,12 +22,6 @@
  */
 #include "YASA_types.h"
 
-
-extern Output_Message;
-
-extern COMSERVICE_transmit_package;
-extern COMSERVICE_receive_package;
-
 ///
 ///SAK StopSensor
 ///
@@ -166,7 +160,7 @@ inline std_return RTE_Schussanlage_StopSensor_GetValue_Event_In(uint8_t*);
  *
  * @todo Nachdenken ob Dreiecksbeziehung so richtig und sinnvoll/funtkioniert
  */
-inline std_return RTE_Schussanlage_SendMessage_Sender_Out(const char*);
+inline std_return RTE_Schussanlage_SendMessage_Sender_Out(char*);
 
 /**
  * \brief wie viele Schüsse sollen von SchussMotor ausgeführt werden

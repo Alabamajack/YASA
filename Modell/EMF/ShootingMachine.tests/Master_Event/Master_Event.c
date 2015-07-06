@@ -20,33 +20,41 @@ DeclareTask(Schussanlagen_Task);
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
 DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
-U8 RTE_Trigger_GetValue_Receiver_In_SPEICHER;
 
-inline std_return RTE_Schussanlage_SetValue_Sender_Out(char *a)
+inline std_return RTE_Trigger_GetValue_Receiver_In(char *a)
 {
-	strcpy(COMSERVICE_transmit_package[0] ,a);
-	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Trigger_GetValue_Receiver_In_EVENT);
+	EventMaskType event = 0;
+	GetEvent(Schussanlagen_Task,&event);
+	if(event & RTE_Trigger_GetValue_Receiver_In_EVENT)
+	{
+		ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+		for(int i=0; i< MAX_MESSAGE_LENGHT; i++)
+			a[i] = COMSERVICE_receive_package[0][i];
+	}
+	else
+	{
+		strcpy(a,"0");
+	}
 	return 0;
 }
 DeclareEvent(BT_IMPLIZIT_MASTER2_EVENT);
 //Schussanlage_Runnable
 void Schussanlage_Runnable()
 {
-uint8_t temp = 0;
-	RTE_Schussanlage_GetValueFromTrigger_Event_In(&temp);
-	if (temp)
+	char a[MAX_MESSAGE_LENGHT] = {0};
+	RTE_Trigger_GetValue_Receiver_In(a);
+	display_goto_xy(0,4);
+		display_hex(a[0],2);
+		display_update();
+	if(a[0] != '0')
 	{
 		display_goto_xy(0,0);
-		display_string("Event");
+		display_hex(a[0],2);
 		display_update();
 	}
 	else
 	{
-		display_goto_xy(0,0);
-		display_string("else");
-		display_update();
 	}
-
 }
 
 void user_1ms_isr_type2(void){
@@ -61,39 +69,35 @@ TASK(InitHook)
 	TerminateTask();
 }
 
-//bekommt Nachrichten vom BT und verteilt diese an die Ports
 TASK(TASK_BT_INTERFACE_READER)
 {
     U8 localBuffer[BT_PACKAGE_SIZE];
     U8 id;
-	U8* locBuffer_ptr = localBuffer;
 	EventMaskType event;
 	
     while(1)
     {
 		WaitEvent(BT_HAS_RECEIVED_PACKAGE); // auf Event von BT-Handler warten
 		ClearEvent(BT_HAS_RECEIVED_PACKAGE);
-		strcpy(localBuffer, BT_receive_package); // Wert aus BT-Handler zwischenspeichern
-		id = *locBuffer_ptr; // die id extrahieren
-		locBuffer_ptr++; // auf die zweite Stelle speichern
+		for(int i = 0; i < BT_PACKAGE_SIZE; i++)
+			localBuffer[i] = BT_receive_package[i];
+		id = localBuffer[0];
 		
 		BT_DYNAMIC_READER_CODE;
     }
     TerminateTask();
 }
-//bekommt Nachrichten von Ports und verschickt diese über BT
+//bekommt Nachrichten von Ports und verschickt diese ueber BT
 TASK(TASK_BT_INTERFACE_WRITER)
 {
     U8 localBuffer[BT_PACKAGE_SIZE];
     U8 id;
 	EventMaskType event;
-	U8* transmit_pack_ptr = BT_transmit_package;
     while(1)
     {
 		BT_DYNAMIC_WRITER_CODE;
     }
-
-    TerminateTask();
+	TerminateTask();
 }
 
 void ecrobot_device_initialize()
@@ -111,7 +115,7 @@ TASK(BT_IMPLIZIT_MASTER)
 	{
 		WaitEvent(BT_SEND_MY_MESSAGE);
 		ClearEvent(BT_SEND_MY_MESSAGE);
-		ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
+		ecrobot_send_bt_packet(BT_transmit_package, BT_PACKAGE_SIZE);
 	}
 	TerminateTask();
 }
@@ -125,9 +129,11 @@ TASK(BT_IMPLIZIT_MASTER2)
 	{
 		WaitEvent(BT_IMPLIZIT_MASTER2_EVENT);
 		ClearEvent(BT_IMPLIZIT_MASTER2_EVENT);
-		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
+		if(ecrobot_read_bt_packet(lastValue, BT_PACKAGE_SIZE) > 0)
 		{
-			strcpy(BT_receive_package, lastValue);
+			for(int i = 0; i < BT_PACKAGE_SIZE; i++) {
+				BT_receive_package[i] = lastValue[i];
+			}
 			SetEvent(TASK_BT_INTERFACE_READER, BT_HAS_RECEIVED_PACKAGE);
 		}
 	}

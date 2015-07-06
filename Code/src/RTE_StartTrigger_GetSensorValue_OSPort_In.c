@@ -22,19 +22,20 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 {
 #ifdef RTE_StartTrigger_GetSensorValue_OSPort_In_BUTTON
 	/* als Trigger ist ein Button definiert */
-	uint8_t currentStatus = ecrobot_get_touch_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
+	uint8_t currentStatus = ecrobot_get_touch_sensor(StartTriggerPort_PORT);
 	static uint8_t driverButtonLastState = 0;
 	if ( currentStatus != driverButtonLastState && currentStatus != 0)
 	{
 		/* Button is gedrückt */
-		*value = 1;
+		value = 1;
+		driverButtonLastState = currentStatus;
 	}
 	else
 	{
 		/* Button nicht gedrückt */
-		*value = 0;
+		value = 0;
+		driverButtonLastState = 0;
 	}
-	driverButtonLastState = currentStatus;
 #endif
 #ifdef RTE_StartTrigger_GetSensorValue_OSPort_In_SONIC
 	/* als Trigger ist ein Ultraschallsensor definiert */
@@ -45,15 +46,15 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
         // InitializedSonar = 1;
 		// ecrobot_init_sonar_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
 	// }
-	measurement = ecrobot_get_sonar_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
+	measurement = ecrobot_get_sonar_sensor(StartTriggerPort_PORT);
 	/* ab dem gemessenen Wert 80, wird getriggert */
 	if( measurement < 80 )
 	{
-		*value = 1;
+		value = 1;
 	}
 	else
 	{
-		*value = 0;
+		value = 0;
 	}
 #endif
 #ifdef RTE_StartTrigger_GetSensorValue_OSPort_In_IIC
@@ -72,11 +73,11 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 	if( (currentStatus == 0xD0)  || (currentStatus == 0xE0))
     {
         /* button gedrückt */
-        *value = 1;
+        value = 1;
     }
     else
     {
-        *value = 0;
+        value = 0;
     }
 #endif
 	return 0;

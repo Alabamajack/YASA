@@ -7,7 +7,7 @@ uint32_t retval = 0;
 RTE_Schussanlage_StopSensor_GetValue_Event_In(&StopEvent);
 if(StopEvent)
 {
-	RTE_Output_SetOutput_OSPort_Out(&msg);
+	RTE_Output_SetOutput_OSPort_Out(msg);
 }
 else
 {

@@ -13,7 +13,7 @@ TASK(BT_IMPLIZIT_MASTER)
 	{
 		WaitEvent(BT_SEND_MY_MESSAGE);
 		ClearEvent(BT_SEND_MY_MESSAGE);
-		ecrobot_send_bt_packet(&BT_transmit_package, BT_PACKAGE_SIZE);
+		ecrobot_send_bt_packet(BT_transmit_package, BT_PACKAGE_SIZE);
 	}
 	TerminateTask();
 }
@@ -27,9 +27,11 @@ TASK(BT_IMPLIZIT_MASTER2)
 	{
 		WaitEvent(BT_IMPLIZIT_MASTER2_EVENT);
 		ClearEvent(BT_IMPLIZIT_MASTER2_EVENT);
-		if(ecrobot_read_bt_packet(&lastValue, BT_PACKAGE_SIZE) > 0)
+		if(ecrobot_read_bt_packet(lastValue, BT_PACKAGE_SIZE) > 0)
 		{
-			strcpy(BT_receive_package, lastValue);
+			for(int i = 0; i < BT_PACKAGE_SIZE; i++) {
+				BT_receive_package[i] = lastValue[i];
+			}
 			SetEvent(TASK_BT_INTERFACE_READER, BT_HAS_RECEIVED_PACKAGE);
 		}
 	}
