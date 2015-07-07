@@ -71,7 +71,10 @@ inline std_return RTE_StopSensor_Schussanlage_SetValue_Event_Out();
  * @author Florian Laufenböck
  * @date 2015-06-08
  */
-inline std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(const uint32_t *);
+ inline std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(const uint32_t *);
+ 
+ 
+inline std_return RTE_SchussMotor_GetValue_Receiver_In(char*);
 
 
 ///
@@ -195,6 +198,9 @@ inline std_return RTE_Schussanlage_SetOrder_Client_Out(const uint8_t *, uint32_t
  * 
  */
 inline std_return RTE_Schussanlage_Trigger_GetValue_Event_In(uint8_t*);
+
+//funktion für SchussMotor
+inline std_return RTE_Schussanlage_SchussMotor_SetValue_Sender_Out(char*);
 
 ///
 ///SWK Trigger

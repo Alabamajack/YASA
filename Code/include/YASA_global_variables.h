@@ -50,4 +50,8 @@ char COMSERVICE_transmit_package[BT_COM_SERVICE][MAX_MESSAGE_LENGHT];
 //U8 Output_Message[MAX_MESSAGE_LENGHT];
 char Output_Message[MAX_MESSAGE_LENGHT];
 
+//display debug-messages
+#define DISPLAY_OUTPUT(x,y,c) display_goto_xy(x,y);display_string(c);display_update();
+
+
 #endif YASA_GLOBAL_VARIABLES
