@@ -90,7 +90,14 @@ TASK(TASK_BT_INTERFACE_READER)
 			case 0:
 			for( i = 1; i < MAX_MESSAGE_LENGHT; i++)
 				COMSERVICE_receive_package[0][i-1] = localBuffer[i];
-						
+						display_goto_xy(0,5);
+		display_hex(BT_receive_package[0], 2);
+		display_goto_xy(2,5);
+		display_hex(BT_receive_package[1], 2);
+		display_goto_xy(5,5);
+		display_hex(BT_receive_package[2], 2);
+		display_update();
+		systick_wait_ms(2000);
 			SetEvent(Trigger,RTE_Trigger_GetValue_Receiver_In_EVENT);break;
 		}
     }

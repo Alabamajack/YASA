@@ -20,12 +20,21 @@ DeclareTask(Trigger);
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
 DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
-U8 RTE_Trigger_GetValue_Receiver_In_SPEICHER;
+DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
 
-inline std_return RTE_Schussanlage_SetValue_Sender_Out(char *a)
+inline std_return RTE_Trigger_Schussanlage_SetValue_Event_Out()
 {
-	strcpy(COMSERVICE_transmit_package[0] ,a);
-	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Trigger_GetValue_Receiver_In_EVENT);
+	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+	return 0;
+}
+
+inline std_return RTE_Trigger_GetValue_Receiver_In(char *a)
+{
+	WaitEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+	ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+	for(int i=0; i< MAX_MESSAGE_LENGHT; i++){
+		a[i] = COMSERVICE_receive_package[0][i];
+	}
 	return 0;
 }
 DeclareEvent(BT_IMPLIZIT_SLAVE2_EVENT);
@@ -33,22 +42,16 @@ DeclareEvent(BT_IMPLIZIT_SLAVE2_EVENT);
 void Trigger_Runnable()
 {
 systick_wait_ms(5000);
-	///
-			display_goto_xy(0,3);
-			display_string("user_task versendet");
-			display_update();
-	///
-	char a[MAX_MESSAGE_LENGHT];
-	strcpy(a, "A");
-	
-			// display_goto_xy(0,4);
-		// display_hex(a[0], 2);
-		// display_goto_xy(2,4);
-		// display_hex(a[1], 2);
-		// display_goto_xy(5,4);
-		// display_hex(a[2], 2);
-	
-	RTE_Schussanlage_SetValue_Sender_Out(a);
+RTE_Trigger_Schussanlage_SetValue_Event_Out();
+display_goto_xy(0,1);
+display_string("event verschickt");
+display_update();
+char a[MAX_MESSAGE_LENGHT] = {0};
+RTE_Trigger_GetValue_Receiver_In(a);
+display_goto_xy(0,0);
+display_string(a);
+display_update();
+
 }
 
 void user_1ms_isr_type2(void){
@@ -63,6 +66,7 @@ TASK(InitHook)
 	TerminateTask();
 }
 
+//bekommt Nachrichten vom BT und verteilt diese an die Ports
 TASK(TASK_BT_INTERFACE_READER)
 {
     U8 localBuffer[BT_PACKAGE_SIZE];
@@ -77,7 +81,13 @@ TASK(TASK_BT_INTERFACE_READER)
 			localBuffer[i] = BT_receive_package[i];
 		id = localBuffer[0];
 		
-		BT_DYNAMIC_READER_CODE;
+		switch(id){
+			case 0:
+				for(int i = 0; i < MAX_MESSAGE_LENGHT; i++)
+					COMSERVICE_receive_package[0][i] = localBuffer[i+1];
+				SetEvent(Trigger,RTE_Trigger_GetValue_Receiver_In_EVENT);
+				break;
+		}
     }
     TerminateTask();
 }
@@ -89,7 +99,16 @@ TASK(TASK_BT_INTERFACE_WRITER)
 	EventMaskType event;
     while(1)
     {
-		BT_DYNAMIC_WRITER_CODE;
+		WaitEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT );
+		GetEvent(TASK_BT_INTERFACE_WRITER, &event);
+		if(event & RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT){
+			ClearEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+			BT_transmit_package[0] =1;
+			for(int i = 0; i < MAX_MESSAGE_LENGHT; i++) 
+				BT_transmit_package[i+1] = COMSERVICE_transmit_package[1][i];
+			SetEvent(BT_IMPLIZIT_SLAVE,BT_SEND_MY_MESSAGE);
+		}
+
     }
 	TerminateTask();
 }
@@ -135,7 +154,7 @@ TASK(BT_IMPLIZIT_SLAVE2)
 		}
 	}
 	TerminateTask();
-	}
+}
 
 TASK(Trigger)
 {

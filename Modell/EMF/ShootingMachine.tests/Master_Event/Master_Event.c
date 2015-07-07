@@ -20,41 +20,35 @@ DeclareTask(Schussanlagen_Task);
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
 DeclareEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
+U8 RTE_Trigger_GetValue_Receiver_In_SPEICHER;
+DeclareEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
 
-inline std_return RTE_Trigger_GetValue_Receiver_In(char *a)
+inline std_return RTE_Schussanlage_SetValue_Sender_In(char *a)
 {
-	EventMaskType event = 0;
-	GetEvent(Schussanlagen_Task,&event);
-	if(event & RTE_Trigger_GetValue_Receiver_In_EVENT)
-	{
-		ClearEvent(RTE_Trigger_GetValue_Receiver_In_EVENT);
-		for(int i=0; i< MAX_MESSAGE_LENGHT; i++)
-			a[i] = COMSERVICE_receive_package[0][i];
-	}
-	else
-	{
-		strcpy(a,"0");
-	}
+	strcpy(COMSERVICE_transmit_package[0] ,a);
+	SetEvent(TASK_BT_INTERFACE_WRITER, RTE_Trigger_GetValue_Receiver_In_EVENT);
+	return 0;
+}
+
+inline std_return RTE_Schussanlage_Trigger_GetValue_Event_In(char *a)
+{
+	WaitEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
+	ClearEvent(RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT);
 	return 0;
 }
 DeclareEvent(BT_IMPLIZIT_MASTER2_EVENT);
 //Schussanlage_Runnable
 void Schussanlage_Runnable()
 {
-	char a[MAX_MESSAGE_LENGHT] = {0};
-	RTE_Trigger_GetValue_Receiver_In(a);
-	display_goto_xy(0,4);
-		display_hex(a[0],2);
-		display_update();
-	if(a[0] != '0')
-	{
-		display_goto_xy(0,0);
-		display_hex(a[0],2);
-		display_update();
-	}
-	else
-	{
-	}
+	char a = 0;
+	RTE_Schussanlage_Trigger_GetValue_Event_In(&a);
+	display_goto_xy(0,0);
+	display_string("empfangen");
+	display_update();
+	systick_wait_ms(5000);
+	RTE_Schussanlage_SetValue_Sender_In("A");
+	systick_wait_ms(20000);
+
 }
 
 void user_1ms_isr_type2(void){
@@ -69,6 +63,7 @@ TASK(InitHook)
 	TerminateTask();
 }
 
+//bekommt Nachrichten vom BT und verteilt diese an die Ports
 TASK(TASK_BT_INTERFACE_READER)
 {
     U8 localBuffer[BT_PACKAGE_SIZE];

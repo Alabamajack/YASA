@@ -1,6 +1,6 @@
 /*
  *  kernel_cfg.c
- *  Mon Jul 06 15:14:44 2015
+ *  Mon Jul 06 16:14:58 2015
  *  SG Version 2.00
  *  sg.exe Master_Event.oil -os=ECC2 -I../../../../../../../../nxtOSEK/ecrobot/../toppers_osek/sg/impl_oil -template=../../../../../../../../nxtOSEK/ecrobot/../toppers_osek/sg/lego_nxt.sgt
  */
@@ -19,7 +19,7 @@
 #define TNUM_ISR2      0
 #define TNUM_RESOURCE  0
 #define TNUM_TASK      6
-#define TNUM_EXTTASK   4
+#define TNUM_EXTTASK   5
 
 const UINT8 tnum_alarm    = TNUM_ALARM;
 const UINT8 tnum_counter  = TNUM_COUNTER;
@@ -34,31 +34,31 @@ const UINT8 tnum_exttask  = TNUM_EXTTASK;
 
 const TaskType Schussanlagen_Task = 0;
 const TaskType TASK_BT_INTERFACE_READER = 1;
-const TaskType BT_IMPLIZIT_MASTER = 2;
-const TaskType BT_IMPLIZIT_MASTER2 = 3;
-const TaskType InitHook = 4;
-const TaskType TASK_BT_INTERFACE_WRITER = 5;
+const TaskType TASK_BT_INTERFACE_WRITER = 2;
+const TaskType BT_IMPLIZIT_MASTER = 3;
+const TaskType BT_IMPLIZIT_MASTER2 = 4;
+const TaskType InitHook = 5;
 
 extern void TASKNAME( Schussanlagen_Task )( void );
 extern void TASKNAME( TASK_BT_INTERFACE_READER )( void );
+extern void TASKNAME( TASK_BT_INTERFACE_WRITER )( void );
 extern void TASKNAME( BT_IMPLIZIT_MASTER )( void );
 extern void TASKNAME( BT_IMPLIZIT_MASTER2 )( void );
 extern void TASKNAME( InitHook )( void );
-extern void TASKNAME( TASK_BT_INTERFACE_WRITER )( void );
 
 static __STK_UNIT _stack_Schussanlagen_Task[__TCOUNT_STK_UNIT(512)];
 static __STK_UNIT _stack_TASK_BT_INTERFACE_READER[__TCOUNT_STK_UNIT(512)];
+static __STK_UNIT _stack_TASK_BT_INTERFACE_WRITER[__TCOUNT_STK_UNIT(512)];
 static __STK_UNIT _stack_BT_IMPLIZIT_MASTER[__TCOUNT_STK_UNIT(512)];
 static __STK_UNIT _stack_BT_IMPLIZIT_MASTER2[__TCOUNT_STK_UNIT(512)];
 static __STK_UNIT _stack_InitHook[__TCOUNT_STK_UNIT(512)];
-static __STK_UNIT _stack_TASK_BT_INTERFACE_WRITER[__TCOUNT_STK_UNIT(512)];
 
-const Priority tinib_inipri[TNUM_TASK] = { TPRI_MINTASK + 1, TPRI_MINTASK + 7, TPRI_MINTASK + 9, TPRI_MINTASK + 7, TPRI_MINTASK + 10, TPRI_MINTASK + 7, };
-const Priority tinib_exepri[TNUM_TASK] = { TPRI_MINTASK + 1, TPRI_MINTASK + 7, TPRI_MINTASK + 9, TPRI_MINTASK + 7, TPRI_MINTASK + 10, TPRI_MINTASK + 7, };
+const Priority tinib_inipri[TNUM_TASK] = { TPRI_MINTASK + 1, TPRI_MINTASK + 7, TPRI_MINTASK + 7, TPRI_MINTASK + 9, TPRI_MINTASK + 7, TPRI_MINTASK + 10, };
+const Priority tinib_exepri[TNUM_TASK] = { TPRI_MINTASK + 1, TPRI_MINTASK + 7, TPRI_MINTASK + 7, TPRI_MINTASK + 9, TPRI_MINTASK + 7, TPRI_MINTASK + 10, };
 const UINT8 tinib_maxact[TNUM_TASK] = { (1) - 1, (1) - 1, (1) - 1, (1) - 1, (1) - 1, (1) - 1, };
 const AppModeType tinib_autoact[TNUM_TASK] = { 0x00000001, 0x00000001, 0x00000001, 0x00000001, 0x00000001, 0x00000001, };
-const FP tinib_task[TNUM_TASK] = { TASKNAME( Schussanlagen_Task ), TASKNAME( TASK_BT_INTERFACE_READER ), TASKNAME( BT_IMPLIZIT_MASTER ), TASKNAME( BT_IMPLIZIT_MASTER2 ), TASKNAME( InitHook ), TASKNAME( TASK_BT_INTERFACE_WRITER ), };
-const __STK_UNIT tinib_stk[TNUM_TASK] = { (__STK_UNIT)_stack_Schussanlagen_Task, (__STK_UNIT)_stack_TASK_BT_INTERFACE_READER, (__STK_UNIT)_stack_BT_IMPLIZIT_MASTER, (__STK_UNIT)_stack_BT_IMPLIZIT_MASTER2, (__STK_UNIT)_stack_InitHook, (__STK_UNIT)_stack_TASK_BT_INTERFACE_WRITER, };
+const FP tinib_task[TNUM_TASK] = { TASKNAME( Schussanlagen_Task ), TASKNAME( TASK_BT_INTERFACE_READER ), TASKNAME( TASK_BT_INTERFACE_WRITER ), TASKNAME( BT_IMPLIZIT_MASTER ), TASKNAME( BT_IMPLIZIT_MASTER2 ), TASKNAME( InitHook ), };
+const __STK_UNIT tinib_stk[TNUM_TASK] = { (__STK_UNIT)_stack_Schussanlagen_Task, (__STK_UNIT)_stack_TASK_BT_INTERFACE_READER, (__STK_UNIT)_stack_TASK_BT_INTERFACE_WRITER, (__STK_UNIT)_stack_BT_IMPLIZIT_MASTER, (__STK_UNIT)_stack_BT_IMPLIZIT_MASTER2, (__STK_UNIT)_stack_InitHook, };
 const UINT16 tinib_stksz[TNUM_TASK] = { 512, 512, 512, 512, 512, 512, };
 
 TaskType tcb_next[TNUM_TASK];
@@ -107,8 +107,9 @@ ResourceType rescb_prevres[TNUM_RESOURCE+1];
 
 const EventMaskType BT_HAS_RECEIVED_PACKAGE = (1UL << 0);
 const EventMaskType BT_SEND_MY_MESSAGE = (1UL << 1);
-const EventMaskType RTE_Trigger_GetValue_Receiver_In_EVENT = (1UL << 2);
-const EventMaskType BT_IMPLIZIT_MASTER2_EVENT = (1UL << 3);
+const EventMaskType RTE_Schussanlage_Trigger_GetValue_Event_In_EVENT = (1UL << 2);
+const EventMaskType RTE_Trigger_GetValue_Receiver_In_EVENT = (1UL << 3);
+const EventMaskType BT_IMPLIZIT_MASTER2_EVENT = (1UL << 4);
 
  /****** Object ISR ******/
 

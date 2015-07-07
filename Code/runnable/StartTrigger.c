@@ -12,3 +12,4 @@ else
 {
     /* Trigger fuers schießen nicht ausgelöst -> nichts tun*/
 }    
+TerminateTask();

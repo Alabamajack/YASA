@@ -11,3 +11,4 @@ else
 {
     /* kein AbbruchTaster gedrückt -> alles weiter */
 }
+TerminateTask();

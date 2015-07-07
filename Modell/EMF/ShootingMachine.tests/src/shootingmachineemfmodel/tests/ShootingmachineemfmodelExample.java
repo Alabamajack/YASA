@@ -309,7 +309,7 @@ public class ShootingmachineemfmodelExample {
             {
                 oilFileAlarm += "\tALARM " + actualTask.getHasAlarm().get(k).getName() + "\n"
                         + "\t{\n"
-                        + "\t\tCOUNTER = " + actualTask.getHasAlarm().get(k).getName() + ";\n"
+                        + "\t\tCOUNTER = C_" + actualTask.getHasAlarm().get(k).getName() + ";\n"
                         + "\t\tACTION = ACTIVATETASK\n"
                         + "\t\t{\n"
                         + "\t\t\tTASK = " + actualTask.getName() + ";\n"
@@ -317,7 +317,7 @@ public class ShootingmachineemfmodelExample {
                 //AUTOSTART ist true
                 if(actualTask.getHasAlarm().get(k).isAUTOSTART() == true)
                 {
-                    oilFileAlarm += oilFileAlarm + "\t\tAUTOSTART = TRUE\n"
+                    oilFileAlarm += "\t\tAUTOSTART = TRUE\n"
                             + "\t\t{\n"
                             + "\t\t\tALARMTIME = " + actualTask.getHasAlarm().get(k).getALARMTIME() + ";\n"
                             + "\t\t\tCYCLETIME = " + actualTask.getHasAlarm().get(k).getCYCLETIME() + ";\n"
@@ -461,6 +461,7 @@ public class ShootingmachineemfmodelExample {
                 + "#include \"YASA_generated_variables.h\"\n"
                 + "#include \"YASA_global_variables.h\"\n"
                 + "#include \"YASA_types.h\"\n"
+                + "#include \"YASA_RTEAPI.h\"\n"
                 + "#include <string.h>\n\n";
 
 
@@ -492,7 +493,7 @@ public class ShootingmachineemfmodelExample {
             for(int k = 0; k < mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().size(); k++)
             {
                 cFileDeclareAlarm += "DeclareAlarm(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + ");\n"
-                        + "DeclareCounter(" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + ");\n";
+                        + "DeclareCounter(C_" + mySystem.getHasBrick().get(Brickindex).getHasTaskBrick().get(j).getHasAlarm().get(k).getName() + ");\n";
             }
         }
 
@@ -528,7 +529,13 @@ public class ShootingmachineemfmodelExample {
             }
         }
 
-        cFileInitHook += "void user_1ms_isr_type2(void){\n\tstatic int a = 0;\n if(a == 10){\n";
+        cFileInitHook += "void user_1ms_isr_type2(void){\n";
+        for (int j = 0; j < mySystem.getHasBrick().get(Brickindex).getHasAlarmBrick().size(); j ++)
+        {
+        	cFileInitHook += "\tSignalCounter(C_" + mySystem.getHasBrick().get(Brickindex).getHasAlarmBrick().get(j).getName() + ");\n";
+        }
+
+        cFileInitHook += "\tstatic int a = 0;\n if(a == 10){\n";
         if (mySystem.getHasBrick().get(Brickindex).isIsMaster() == true)
         {
         	cFileInitHook += "\tSetEvent(BT_IMPLIZIT_MASTER2, BT_IMPLIZIT_MASTER2_EVENT);";
@@ -669,7 +676,7 @@ public class ShootingmachineemfmodelExample {
                 		{
                     		genc = genc + "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
                     		SenderList.add(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT");
-            				genc = genc + "U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER;\n";
+            				genc = genc + "U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER[MAX_MESSAGE_LENGHT];\n";
             				mySenderEinZweirtefunc = mySenderEinZweirtefunc + "\tstrcpy(COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName()) +"] ,a);\n";
             				mySenderEinZweirtefunc = mySenderEinZweirtefunc + "\tSetEvent(TASK_BT_INTERFACE_WRITER, " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
                 		}
@@ -751,7 +758,7 @@ public class ShootingmachineemfmodelExample {
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\ninline std_return " + myReceiver.getName() + "(char *a)\n{\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\tWaitEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
-	                    			myReceiverrtefunc = myReceiverrtefunc + "\tfor(int i=0; i< MAX_MESSAGE_LENGHT; i++)\n\t\ta[i] = COMSERVICE_receive_package[" + PortToID.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName()) + "][i];\n\t}\n";
+	                    			myReceiverrtefunc = myReceiverrtefunc + "\tfor(int i=0; i< MAX_MESSAGE_LENGHT; i++){\n\t\ta[i] = COMSERVICE_receive_package[" + PortToID.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName()) + "][i];\n\t}\n";
 	                    		}
 	                    		//nicht blockierend
 	                    		else
@@ -839,7 +846,7 @@ public class ShootingmachineemfmodelExample {
                     			if(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).isBlockierend() == true)
     	                    	{
                             		myReceiverrtefunc = myReceiverrtefunc + "\ninline std_return " + myEventGetter.getName() + "(char *a)\n{\n";
-                    				myReceiverrtefunc = myReceiverrtefunc + "\tWaitEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())) + ", " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
+                    				myReceiverrtefunc = myReceiverrtefunc + "\tWaitEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
                     				myReceiverrtefunc = myReceiverrtefunc + "\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
     	                    	}
                     			//nicht blockierend
@@ -876,7 +883,7 @@ public class ShootingmachineemfmodelExample {
                 			for(int k = 0; k < mySystem.getHasConnections().get(j).getHasReceiverPorts().size(); k++)
                 			{
                 				genc = genc + "DeclareEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT);\n";
-                				genc = genc + "U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER;\n";
+                				genc = genc + "U8 " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_SPEICHER[MAX_MESSAGE_LENGHT];\n";
 
                 				//SenderList.add(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(k).getName() + "_EVENT");
 
@@ -913,7 +920,7 @@ public class ShootingmachineemfmodelExample {
                 				//blockierend
                 				if(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).isBlockierend() == true)
 	                    		{
-                					myReceiverrtefunc = myReceiverrtefunc + "\tWaitEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName())) + ", " + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
+                					myReceiverrtefunc = myReceiverrtefunc + "\tWaitEvent(" + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
                 					myReceiverrtefunc = myReceiverrtefunc + "\tClearEvent("+ mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_EVENT);\n";
 	                    			myReceiverrtefunc = myReceiverrtefunc + "\tstrcpy(a," + mySystem.getHasConnections().get(j).getHasReceiverPorts().get(l).getName() + "_SPEICHER);\n";
 	                    		}
@@ -1038,6 +1045,7 @@ public class ShootingmachineemfmodelExample {
     	String if_bed = "";
 
     	String loc_red_string = "switch(id){";
+    	loc_WaitEvents += "WaitEvent(";
     	for(int i = 0; i < mySystem.getHasConnections().size(); i++)
     	{
     		if(Brickindex == TaskBrick.get(RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasSenderPorts().getName()))))
@@ -1045,13 +1053,12 @@ public class ShootingmachineemfmodelExample {
     			if((mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem() != null))
     			{
 	    			//Senderport auf aktuellem Brick
-	    			loc_WaitEvents += "WaitEvent(";
 	    			for(int j = 0; j < mySystem.getHasConnections().get(i).getHasReceiverPorts().size(); j++)
 	    			{
 	    				loc_WaitEvents += mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT | ";
 	    				if_bed += "if(event & " + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT){";
 	    				if_bed += "ClearEvent(" + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
-	    				if_bed += "BT_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "] =" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ";";
+	    				if_bed += "BT_transmit_package[0] =" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ";";
 	    				if_bed += "for(int i = 0; i < MAX_MESSAGE_LENGHT; i++) BT_transmit_package[i+1] = COMSERVICE_transmit_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "][i];";
 	    				if(mySystem.getHasBrick().get(Brickindex).isIsMaster())
 	    					if_bed += "SetEvent(BT_IMPLIZIT_MASTER,BT_SEND_MY_MESSAGE);";
@@ -1066,11 +1073,13 @@ public class ShootingmachineemfmodelExample {
     			//Receiverport auf aktuellem Brick
     			for(int j = 0; j < mySystem.getHasConnections().get(i).getHasReceiverPorts().size(); j++)
     			{
-    				loc_red_string += "case " + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ":";
-    				loc_red_string += "for(int i = 0; i < MAX_MESSAGE_LENGHT; i++)COMSERVICE_receive_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "][i] = localBuffer[i+1];";
-    				loc_red_string += "SetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()));
-    				loc_red_string +=  "," + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
-    				loc_red_string += "break;";
+    				if((mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem() != null)){
+	    				loc_red_string += "case " + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + ":";
+	    				loc_red_string += "for(int i = 0; i < MAX_MESSAGE_LENGHT; i++)COMSERVICE_receive_package[" + PortToID.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()) + "][i] = localBuffer[i+1];";
+	    				loc_red_string += "SetEvent(" + RunnablesToTask.get(PortRunnable.get(mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName()));
+	    				loc_red_string +=  "," + mySystem.getHasConnections().get(i).getHasReceiverPorts().get(j).getName() + "_EVENT);";
+	    				loc_red_string += "break;";
+    				}
     			}
 
     		}
@@ -1115,15 +1124,15 @@ public class ShootingmachineemfmodelExample {
     		try{
     			shootingmachineemfmodel.HWIntern myHWIntern = (HWIntern) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
     			retstring += "#define " + myHWIntern.getHas_OSPORTS_IN().getName() + "_PORT "+ mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + "\n"
-    					+ "#define " + myHWIntern.getHas_OSPORTS_IN().getName() + "_In_" + myHWIntern.getType() + "\n";
+    					+ "#define " + myHWIntern.getHas_OSPORTS_IN().getName() + "_" + myHWIntern.getType() + "\n";
     		}
     		catch (java.lang.ClassCastException e){
 
         	}
     		try{
     			shootingmachineemfmodel.Motor myMotor =  (Motor) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
-    			retstring += "#define " + myMotor.getHas_OSPORTS_OUT().getName() + "PORT "+ mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + "\n"
-    					+ "#define " + myMotor.getHas_OSPORTS_OUT().getName() + "_Out_ENGINE\n";
+    			retstring += "#define " + myMotor.getHas_OSPORTS_OUT().getName() + "_PORT "+ mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + "\n"
+    					+ "#define " + myMotor.getHas_OSPORTS_OUT().getName() + "_ENGINE\n";
 
     		}
     		catch (java.lang.ClassCastException e){
@@ -1131,8 +1140,8 @@ public class ShootingmachineemfmodelExample {
         	}
     		try{
     			shootingmachineemfmodel.Display myDisplay = (Display) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
-    			retstring += "#define " + myDisplay.getHas_OSPORTS_OUT().getName() + "PORT "+ mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + "\n"
-    					+ "#define " + myDisplay.getHas_OSPORTS_OUT().getName() + "_Out_DSIPLAY\n";
+    			retstring += "#define " + myDisplay.getHas_OSPORTS_OUT().getName() + "_PORT "+ mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + "\n"
+    					+ "#define " + myDisplay.getHas_OSPORTS_OUT().getName() + "_DISPLAY\n";
     		}
     		catch (java.lang.ClassCastException e){
 
@@ -1161,8 +1170,8 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\laf46718\\Autosar\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Eventportsbeispiel.shootingmachineemfmodel");
-        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("Eventportsbeispiel.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\laf46718\\Autosar\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
+        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
 
 
 
