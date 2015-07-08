@@ -4,4 +4,4 @@ TOPPERS_OSEK_OIL_SOURCE := Slave_Abgabe.oil
 
 O_PATH ?= build
 
-include ../../../../../../../../../nxtOSEK/ecrobot/ecrobot.mak
+include ../../../../../../../../nxtOSEK/ecrobot/ecrobot.mak

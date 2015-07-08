@@ -90,9 +90,9 @@ CPU ATMEL_AT91SAM7S256
 		EVENT = BT_IMPLIZIT_SLAVE2_EVENT;
 	};
 
-	ALARM Input
+	ALARM Input_Alarm
 	{
-		COUNTER = C_Input;
+		COUNTER = C_Input_Alarm;
 		ACTION = ACTIVATETASK
 		{
 			TASK = Input;
@@ -105,7 +105,7 @@ CPU ATMEL_AT91SAM7S256
 		};
 	};
 
-	COUNTER C_Input
+	COUNTER C_Input_Alarm
 	{
 		MINCYCLE = 1;
 		MAXALLOWEDVALUE = 100;

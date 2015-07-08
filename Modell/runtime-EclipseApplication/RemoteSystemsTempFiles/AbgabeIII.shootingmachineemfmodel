@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shootingmachineemfmodel:ToplevelSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:shootingmachineemfmodel="http://shootingmachineemfmodel/1.0">
+  <hasComponent xsi:type="shootingmachineemfmodel:SW_Component" name="Manager">
+    <hasRunnable name="Manager_Code" applicationcode="C:\Users\eip46272\Desktop\YASA-master\Code\runnable\abgabe_test\AbgabeIII\managercode.c">
+      <hasSWPorts xsi:type="shootingmachineemfmodel:GetEvent" name="RTE_Manager_Input_GetValue_Event_In" blockierend="true"/>
+      <hasSWPorts xsi:type="shootingmachineemfmodel:Sender" name="RTE_Manager_Output_SetValue_Sender_Out"/>
+      <hasSWPorts xsi:type="shootingmachineemfmodel:SendEvent" name="RTE_Manager_DisplayOutput_SetValue_Event_Out"/>
+      <hasSWPorts xsi:type="shootingmachineemfmodel:GetEvent" name="RTE_Manager_StopSensor_GetValue_Event_In"/>
+    </hasRunnable>
+  </hasComponent>
+  <hasComponent xsi:type="shootingmachineemfmodel:SA_Component" name="Input">
+    <hasRunnable name="Input_Code" applicationcode="C:\Users\eip46272\Desktop\YASA-master\Code\runnable\abgabe_test\AbgabeIII\input_taster.c">
+      <hasSWPorts xsi:type="shootingmachineemfmodel:SendEvent" name="RTE_Input_Manager_SetValue_Event_Out"/>
+      <hasSWPorts xsi:type="shootingmachineemfmodel:OSPortIN" name="RTE_StartTrigger_GetSensorValue_OSPort_In"/>
+    </hasRunnable>
+  </hasComponent>
+  <hasComponent xsi:type="shootingmachineemfmodel:SA_Component" name="Motor_Output">
+    <hasRunnable name="Output_Code" applicationcode="C:\Users\eip46272\Desktop\YASA-master\Code\runnable\abgabe_test\AbgabeIII\Motoroutput.c">
+      <hasSWPorts xsi:type="shootingmachineemfmodel:Receiver" name="RTE_Output_Manager_GetValue_Receiver_In" blockierend="true"/>
+      <hasSWPorts xsi:type="shootingmachineemfmodel:OSPortOUT" name="RTE_SchussMotor_SetOutputValue_OSPort_Out"/>
+    </hasRunnable>
+  </hasComponent>
+  <hasComponent xsi:type="shootingmachineemfmodel:SA_Component" name="Display_Output">
+    <hasRunnable name="Display_Ausgabe" applicationcode="C:\Users\eip46272\Desktop\YASA-master\Code\runnable\abgabe_test\AbgabeIII\DisplayOutput.c">
+      <hasSWPorts xsi:type="shootingmachineemfmodel:OSPortOUT" name="RTE_Output_SetOutput_OSPort_Out"/>
+      <hasSWPorts xsi:type="shootingmachineemfmodel:GetEvent" name="RTE_DisplayOutput_Manager_GetValue_Event_In" blockierend="true"/>
+    </hasRunnable>
+  </hasComponent>
+  <hasComponent xsi:type="shootingmachineemfmodel:SA_Component" name="StopSensor">
+    <hasRunnable name="StopSensor_Runnable" applicationcode="C:\Users\eip46272\Desktop\YASA-master\Code\runnable\abgabe_test\AbgabeIII\StopSensor.c">
+      <hasSWPorts xsi:type="shootingmachineemfmodel:SendEvent" name="RTE_StopSensor_Manager_SetValue_Event_Out"/>
+      <hasSWPorts xsi:type="shootingmachineemfmodel:OSPortIN" name="RTE_StopSensor_GetSensorValue_OSPort_In"/>
+    </hasRunnable>
+  </hasComponent>
+  <hasBrick name="Master_Abgabe3" IsMaster="true">
+    <hasTaskBrick name="Manager" hasRunnable="//@hasComponent.0/@hasRunnable.0" AUTOSTART="true" PRIORITY="1" ACTIVATION="1"/>
+    <hasTaskBrick name="Motor_Output" hasRunnable="//@hasComponent.2/@hasRunnable.0" AUTOSTART="true" PRIORITY="2" ACTIVATION="1"/>
+    <hasTaskBrick name="StopSensor_Task" hasAlarm="//@hasBrick.0/@hasAlarmBrick.0" hasRunnable="//@hasComponent.4/@hasRunnable.0" PRIORITY="5" ACTIVATION="1"/>
+    <hasAlarmBrick name="StopSensor_Alarm" MINCYCLE="1" MAXALLOWEDVALUE="100" TICKSPERBASE="1" AUTOSTART="true" ALARMTIME="100" CYCLETIME="100"/>
+    <hasHWPortsBrick xsi:type="shootingmachineemfmodel:Motor" name="Motor_Output" Portname="NXT_PORT_A" Has_OSPORTS_OUT="//@hasComponent.2/@hasRunnable.0/@hasSWPorts.1"/>
+    <hasHWPortsBrick xsi:type="shootingmachineemfmodel:HWIntern" name="StopSensor_Button" Portname="NXT_PORT_S2" Has_OSPORTS_IN="//@hasComponent.4/@hasRunnable.0/@hasSWPorts.1"/>
+  </hasBrick>
+  <hasBrick name="Slave_Abgabe3">
+    <hasTaskBrick name="Input" hasAlarm="//@hasBrick.1/@hasAlarmBrick.0" hasRunnable="//@hasComponent.1/@hasRunnable.0" PRIORITY="3" ACTIVATION="1"/>
+    <hasTaskBrick name="Display_Task" hasRunnable="//@hasComponent.3/@hasRunnable.0" AUTOSTART="true" PRIORITY="1" ACTIVATION="1"/>
+    <hasAlarmBrick name="Input_Alarm" MINCYCLE="1" MAXALLOWEDVALUE="100" TICKSPERBASE="1" AUTOSTART="true" ALARMTIME="100" CYCLETIME="100"/>
+    <hasHWPortsBrick xsi:type="shootingmachineemfmodel:HWIntern" name="TasterInput" Has_OSPORTS_IN="//@hasComponent.1/@hasRunnable.0/@hasSWPorts.1"/>
+    <hasHWPortsBrick xsi:type="shootingmachineemfmodel:Display" name="Display_Ausgabe_Port" Portname="Display" Has_OSPORTS_OUT="//@hasComponent.3/@hasRunnable.0/@hasSWPorts.0"/>
+  </hasBrick>
+  <hasConnections name="Input-Manager-Event" hasReceiverPorts="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.0" hasSenderPorts="//@hasComponent.1/@hasRunnable.0/@hasSWPorts.0">
+    <hasInterBrickCommunicationSystem name="InterBrickSlaveMaster" hasIBCOut="//@hasBrick.1" hasIBCIn="//@hasBrick.0" hasReceiverPort="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.0"/>
+  </hasConnections>
+  <hasConnections name="Manager-OutputSR" hasReceiverPorts="//@hasComponent.2/@hasRunnable.0/@hasSWPorts.0" hasSenderPorts="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.1"/>
+  <hasConnections name="ManagerDisplayOutput" hasReceiverPorts="//@hasComponent.3/@hasRunnable.0/@hasSWPorts.1" hasSenderPorts="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.2">
+    <hasInterBrickCommunicationSystem name="InterBrick" hasIBCOut="//@hasBrick.0" hasIBCIn="//@hasBrick.1" hasReceiverPort="//@hasComponent.3/@hasRunnable.0/@hasSWPorts.1"/>
+  </hasConnections>
+  <hasConnections name="StopSensorManager" hasReceiverPorts="//@hasComponent.0/@hasRunnable.0/@hasSWPorts.3" hasSenderPorts="//@hasComponent.4/@hasRunnable.0/@hasSWPorts.0"/>
+</shootingmachineemfmodel:ToplevelSystem>

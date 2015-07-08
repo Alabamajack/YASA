@@ -17,8 +17,8 @@ DeclareEvent(BT_HAS_RECEIVED_PACKAGE);
 DeclareEvent(BT_SEND_MY_MESSAGE);
 DeclareTask(Input);
 
-DeclareAlarm(Input);
-DeclareCounter(C_Input);
+DeclareAlarm(Input_Alarm);
+DeclareCounter(C_Input_Alarm);
 
 
 //Ab hier werden alle Events und variablen zur Kommunikation eingefuegt:
@@ -33,13 +33,19 @@ DeclareEvent(BT_IMPLIZIT_SLAVE2_EVENT);
 //Input_Code
 void Input_Code()
 {
-asdjkahsfdjklahsfjksdhfg+
-sdfgdukfgklsfdgjklg
+	uint8_t a = 0;
+	RTE_StartTrigger_GetSensorValue_OSPort_In(&a);
+	if(a)
+	{
+		DISPLAY_OUTPUT(0,1,"Taster gedruckt");
+		RTE_Input_Manager_SetValue_Event_Out();
+	}
+	TerminateTask();
 
 }
 
 void user_1ms_isr_type2(void){
-	SignalCounter(C_Input);
+	SignalCounter(C_Input_Alarm);
 	static int a = 0;
  if(a == 10){
 	SetEvent(BT_IMPLIZIT_SLAVE2, BT_IMPLIZIT_SLAVE2_EVENT);a = 0;}

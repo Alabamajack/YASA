@@ -25,7 +25,7 @@ inline std_return RTE_SchussMotor_SetOutputValue_OSPort_Out(uint32_t* degree)
 #define CORRECTION 11
 #ifdef RTE_SchussMotor_SetOutputValue_OSPort_Out_ENGINE
 		nxt_motor_set_count(RTE_SchussMotor_SetOutputValue_OSPort_Out_PORT, 0);
-		nxt_motor_set_speed(RTE_SchussMotor_SetOutputValue_OSPort_Out_PORT, 35, 1);
+		nxt_motor_set_speed(RTE_SchussMotor_SetOutputValue_OSPort_Out_PORT, 100, 1);
 		while ( nxt_motor_get_count(RTE_SchussMotor_SetOutputValue_OSPort_Out_PORT) < (*degree - CORRECTION) )
 		{
 			;

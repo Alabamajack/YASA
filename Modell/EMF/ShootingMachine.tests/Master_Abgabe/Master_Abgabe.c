@@ -51,17 +51,21 @@ DeclareEvent(BT_IMPLIZIT_MASTER2_EVENT);
 //Manager_Code
 void Manager_Code()
 {
-asdjkahsfdjklahsfjksdhfg+
-sdfgdukfgklsfdgjklg
-
+	char a = 5;
+	RTE_Manager_Input_GetValue_Event_In(&a);
+	DISPLAY_OUTPUT(0,1, "Event empfangen");
+	RTE_Manager_Output_SetValue_Sender_Out(&a);
+	DISPLAY_OUTPUT(0,2, "Sender gesetzt");
 }
 
 //Output_Code
 void Output_Code()
 {
-asdjkahsfdjklahsfjksdhfg+
-sdfgdukfgklsfdgjklg
-
+	char a = 0;
+	RTE_Output_Manager_GetValue_Receiver_In(&a);
+	DISPLAY_OUTPUT(0,3,"Output emfangen");
+	uint32_t b = a * 360;
+	RTE_SchussMotor_SetOutputValue_OSPort_Out(&b);
 }
 
 void user_1ms_isr_type2(void){

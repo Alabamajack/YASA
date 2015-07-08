@@ -1085,7 +1085,7 @@ public class ShootingmachineemfmodelExample {
     		}
 
     	}
-    	if(loc_WaitEvents.length() > 0)
+    	if(loc_WaitEvents.length() > "WaitEvent(".length() )
     	{
     		loc_WaitEvents = loc_WaitEvents.substring(0, loc_WaitEvents.length() - 2) + ");";
     		BT_Transmitter_String = "#define BT_DYNAMIC_WRITER_CODE " + loc_WaitEvents + "GetEvent(TASK_BT_INTERFACE_WRITER, &event);" + if_bed;
@@ -1116,7 +1116,7 @@ public class ShootingmachineemfmodelExample {
     			//Wenn Cast gut geht, ist des vom Typ HWExtern
     			shootingmachineemfmodel.HWExtern myHWExtern = (HWExtern) mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j);
     			retstring +=  "#define " + myHWExtern.getHas_OSPORTS_IN().getName() + "_PORT "+ mySystem.getHasBrick().get(Brickindex).getHasHWPortsBrick().get(j).getPortname() + "\n"
-    					+ "#define " + myHWExtern.getHas_OSPORTS_IN().getName() + "_In_IIC\n";
+    					+ "#define " + myHWExtern.getHas_OSPORTS_IN().getName() + "_IIC\n";
 
         	}catch (java.lang.ClassCastException e){
 
@@ -1170,8 +1170,8 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Abgabe.shootingmachineemfmodel");
-        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("Abgabe.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\eip46272\\Desktop\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\AbgabeIII.shootingmachineemfmodel");
+        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("AbgabeIII.shootingmachineemfmodel");
 
 
 
