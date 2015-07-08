@@ -49,7 +49,7 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 	// }
 	measurement = ecrobot_get_sonar_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
 	/* ab dem gemessenen Wert 80, wird getriggert */
-	if( measurement < 80 )
+	if( (measurement < 80) && (measurement > 0))
 	{
 		*value = 1;
 	}
