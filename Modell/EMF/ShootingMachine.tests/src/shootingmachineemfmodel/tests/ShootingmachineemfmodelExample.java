@@ -1170,8 +1170,8 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\laf46718\\Autosar\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\My.shootingmachineemfmodel");
-        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("My.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\Abgabe.shootingmachineemfmodel");
+        URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("Abgabe.shootingmachineemfmodel");
 
 
 
