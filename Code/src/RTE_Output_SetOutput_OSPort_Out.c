@@ -9,7 +9,7 @@
 /** @file RTE_Output_SetOutput_OSPort_Out.c
  *
  * Aufruf einer Funktion, die Ausgaben macht.
- * zusammenfassend benötigt folgende externe Abhängigkeiten:
+ * benötigt folgende externe Abhängigkeiten:
  * Variablen: message 
  * Makros: 
  * Events: 
@@ -41,13 +41,7 @@ inline std_return RTE_Output_SetOutput_OSPort_Out(const char* message)
     print(message);
 #endif
 #ifdef RTE_Output_SetOutput_OSPort_Out_IIC
-    uint8_t data_IIC = 0x5F; /* wenn 0 auf ein LED ausgegeben wird, dann leuchtet eine LED, wobei die ersten 4 bit entscheiden */
-	// static uint8_t IIC_Initialized = 0;
-	// if(!IIC_Initialized) 
-    // {
-        // IIC_Initialized = 1;
-        // i2c_enable(RTE_Output_SetOutput_OSPort_Out_PORT);
-    // }
+    uint8_t data_IIC = 0x5F;
 	while(i2c_busy(RTE_Output_SetOutput_OSPort_Out_PORT) != 0);
     ecrobot_send_i2c(RTE_Output_SetOutput_OSPort_Out_PORT, 0x20, data_IIC, &data_IIC, 0);
 #endif
