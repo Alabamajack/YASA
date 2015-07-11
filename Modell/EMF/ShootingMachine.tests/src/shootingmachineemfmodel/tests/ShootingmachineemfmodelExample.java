@@ -1170,7 +1170,7 @@ public class ShootingmachineemfmodelExample {
             (ShootingmachineemfmodelPackage.eNS_URI,
              ShootingmachineemfmodelPackage.eINSTANCE);
 
-        File file = new File("C:\\Users\\eip46272\\Desktop\\YASA-master\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\AbgabeIII.shootingmachineemfmodel");
+        File file = new File("C:\\Users\\Flo-virtual\\Documents\\GitRepos\\YASA\\Modell\\runtime-EclipseApplication\\RemoteSystemsTempFiles\\AbgabeIII.shootingmachineemfmodel");
         URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI("AbgabeIII.shootingmachineemfmodel");
 
 
@@ -1216,6 +1216,7 @@ public class ShootingmachineemfmodelExample {
 	            }
             }
 
+            int ids = 0;
             for(int i = 0; i < mySystem.getHasConnections().size(); i++)
             {
             	//for(int j = 0; j < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().size(); j++)
@@ -1225,7 +1226,10 @@ public class ShootingmachineemfmodelExample {
             		for(int k = 0; k < mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().getHasReceiverPort().size(); k++)
             		{
             			if(!PortToID.containsKey(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().getHasReceiverPort().get(k).getName()))
-            				PortToID.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().getHasReceiverPort().get(k).getName(), i + k );
+            			{
+            				PortToID.put(mySystem.getHasConnections().get(i).getHasInterBrickCommunicationSystem().getHasReceiverPort().get(k).getName(), ids );
+            				ids++;
+            			}
             		}
             	}
 
