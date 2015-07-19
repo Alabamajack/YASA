@@ -40,13 +40,7 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 #endif
 #ifdef RTE_StartTrigger_GetSensorValue_OSPort_In_SONIC
 	/* als Trigger ist ein Ultraschallsensor definiert */
-	// static uint8_t InitializedSonar = 0;
 	uint8_t measurement = 0;
-	// if(!InitializedSonar)
-	// {
-        // InitializedSonar = 1;
-		// ecrobot_init_sonar_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
-	// }
 	measurement = ecrobot_get_sonar_sensor(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
 	/* ab dem gemessenen Wert 80, wird getriggert */
 	if( (measurement < 80) && (measurement > 0))
@@ -61,17 +55,11 @@ inline std_return RTE_StartTrigger_GetSensorValue_OSPort_In(uint8_t* value)
 #ifdef RTE_StartTrigger_GetSensorValue_OSPort_In_IIC
     /* als Trigger ist der IIC Expander mit Taster definiert */
     static uint8_t currentStatus = 0xFF;
-	// static uint8_t IIC_Initialized = 0;
-    // if(!IIC_Initialized)
-    // {
-        // IIC_Initialized = 1;
-        // i2c_enable(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT);
-    // }
-	ecrobot_send_i2c(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT, 0x20, currentStatus, &currentStatus, 0);
-	while(i2c_busy(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT) != 0);
+    ecrobot_send_i2c(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT, 0x20, currentStatus, &currentStatus, 0);
+    while(i2c_busy(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT) != 0);
     ecrobot_read_i2c(RTE_StartTrigger_GetSensorValue_OSPort_In_PORT, 0x20, 0xF0, &currentStatus, 1);
-	/* linker Taster und rechter Taster */
-	if( (currentStatus == 0xD0)  || (currentStatus == 0xE0))
+    /* linker Taster und rechter Taster */
+    if( (currentStatus == 0xD0)  || (currentStatus == 0xE0))
     {
         /* button gedrückt */
         *value = 1;
